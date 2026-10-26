@@ -1,0 +1,13 @@
+section,model,layers,parameters,val_loss,perplexity,best_step,last_step,seconds,eval_seconds,initialized_from,model_id,split,threshold,parameter_MiB,seconds_per_text,accuracy,coverage,accepted_accuracy
+mini_gpt,minigpt_v1,2.0,1689728.0,3.4327194571495054,30.960724733412633,4000.0,4000.0,135.41183924899997,6.806775199999947,,,,,,,,,
+mini_gpt,minigpt_v2,4.0,2578304.0,3.3983280539512633,29.914043546264132,4000.0,4000.0,247.835897402,11.364043241000218,,,,,,,,,
+mini_gpt,minigpt_v3_long,4.0,2578304.0,2.936996352672577,18.859115024076335,8000.0,8000.0,490.5095385950001,21.54051150600094,minigpt_v2,,,,,,,,
+zero_shot,zero_small,,106995075.0,,,,,,,,MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli,calibration,0.0,408.1538200378418,0.004557490999991387,1.0,1.0,1.0
+zero_shot,zero_small,,106995075.0,,,,,,,,MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli,holdout,0.0,408.1538200378418,0.004557490999991387,0.8333333333333334,1.0,0.8333333333333334
+zero_shot,zero_base,,278811651.0,,,,,,,,MoritzLaurer/mDeBERTa-v3-base-mnli-xnli,calibration,0.0,531.7910213470459,0.014949176800018903,0.875,1.0,0.875
+zero_shot,zero_base,,278811651.0,,,,,,,,MoritzLaurer/mDeBERTa-v3-base-mnli-xnli,holdout,0.0,531.7910213470459,0.014949176800018903,0.75,1.0,0.75
+threshold,zero_small,,,,,,,,,,,calibration,0.0,,,1.0,1.0,1.0
+threshold,zero_small,,,,,,,,,,,calibration,0.4,,,1.0,1.0,1.0
+threshold,zero_small,,,,,,,,,,,calibration,0.6,,,0.75,0.75,1.0
+threshold,zero_small,,,,,,,,,,,calibration,0.8,,,0.625,0.625,1.0
+threshold,zero_small,,,,,,,,,,,holdout,0.4,,,0.8333333333333334,1.0,0.8333333333333334
