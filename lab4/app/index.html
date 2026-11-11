@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3eb">
+  <title>Покупки по відділах</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <span class="connection" id="model-status">Перевіряю Ollama…</span>
+    </header>
+    <nav class="views" aria-label="Розділи">
+      <button id="show-sort" type="button" aria-pressed="true">Сортування</button>
+      <button id="show-benchmark" type="button" aria-pressed="false">Бенчмарк</button>
+    </nav>
+    <form id="settings" class="panel settings">
+      <details open>
+        <summary>Налаштування моделі</summary>
+        <div class="settings-grid">
+          <label>Протокол<select name="protocol">
+              <option value="openai">OpenAI-сумісний</option>
+              <option value="ollama">Ollama API</option>
+            </select></label>
+          <label>Модель<select name="model" required>
+              <option value="">Пошук локальних моделей…</option>
+            </select></label>
+          <label>Міркування<select name="reasoning">
+              <option value="">За замовчуванням</option>
+              <option value="none">Без міркування</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select></label>
+          <label>Макс. токенів<input name="max_tokens" type="number" min="1" max="4096" value="440" required></label>
+          <label>Температура<input name="temperature" type="number" min="0" max="2" step="any" value="0"></label>
+          <label>Top-p<input name="top_p" type="number" min="0" max="1" step="any" placeholder="Модель"></label>
+          <label>Seed<input name="seed" type="number" min="-2147483648" max="2147483647" value="42"></label>
+          <label>Frequency penalty<input name="frequency_penalty" type="number" min="-2" max="2" step="any"
+              placeholder="Модель"></label>
+          <label>Presence penalty<input name="presence_penalty" type="number" min="-2" max="2" step="any"
+              placeholder="Модель"></label>
+          <label class="native-only" hidden>Top-k<input name="top_k" type="number" min="1" max="200"
+              placeholder="Модель" disabled></label>
+          <label class="native-only" hidden>Контекст, токенів<input name="num_ctx" type="number" min="256" max="32768"
+              placeholder="Модель" disabled></label>
+        </div>
+        <p id="settings-hint" class="hint"></p>
+        <button id="refresh-models" type="button">Оновити список моделей</button>
+      </details>
+    </form>
+    <div id="sort-view" class="workspace">
+      <form id="shopping-form" class="panel">
+        <label for="shopping">Список покупок</label>
+        <p class="hint" id="input-hint">Пиши з нового рядка, через кому або крапку з комою. До 24 позицій.</p>
+        <textarea id="shopping" name="shopping" maxlength="900" required aria-describedby="input-hint count"
+          placeholder="яблука 1,5 кг, молоко 1 л, хліб, гречка"></textarea>
+        <div class="controls">
+          <button id="example" type="button">Підставити приклад</button>
+          <span id="count">0 / 900</span>
+        </div>
+        <button id="submit" class="primary" type="submit">Розкласти по відділах</button>
+      </form>
+      <section class="panel result" aria-labelledby="result-heading">
+        <div class="result-heading">
+          <h2 id="result-heading">По відділах</h2>
+          <span id="progress" hidden></span>
+        </div>
+        <p id="status" class="status" role="status"></p>
+        <div id="output">
+          <p id="placeholder" class="placeholder">Тут з’являться покупки, згруповані за відділами.</p>
+          <div id="departments" class="departments" hidden></div>
+        </div>
+        <p id="sort-metrics" class="hint" hidden></p>
+      </section>
+    </div>
+    <section id="benchmark-view" class="panel" hidden>
+      <h2>Бенчмарк</h2>
+      <form id="benchmark-form">
+        <div class="settings-grid">
+          <label>Набір промптів<select name="mode">
+              <option value="shopping">Сортування покупок</option>
+              <option value="text">Звичайні запити</option>
+            </select></label>
+          <label>Паралельні клієнти<input name="levels" value="1, 2, 4" required></label>
+          <label>Запитів на рівень<input name="requests" type="number" min="1" max="64" value="10" required></label>
+          <label>Таймаут запиту, с<input name="timeout" type="number" min="1" max="180" value="120" required></label>
+          <label>Назва запуску<input name="label" maxlength="64" placeholder="before / after"></label>
+        </div>
+        <label for="bench-prompts">Промпти, по одному на рядок</label>
+        <textarea id="bench-prompts" name="prompts" maxlength="12000" required></textarea>
+        <div class="bench-actions">
+          <button type="button" id="bench-examples">Підставити приклади</button>
+          <button type="submit" class="primary">Запустити бенчмарк</button>
+          <button type="button" id="bench-stop" disabled>Зупинити</button>
+          <button type="button" id="bench-download" disabled>Завантажити CSV</button>
+          <button type="button" id="bench-clear">Очистити таблицю</button>
+        </div>
+      </form>
+      <p id="bench-status" class="status" role="status"></p>
+      <div class="table-wrap" tabindex="0" aria-label="Результати бенчмарку">
+        <table>
+          <thead>
+            <tr>
+              <th>Запуск</th>
+              <th>Модель</th>
+              <th>Клієнтів</th>
+              <th>Запитів</th>
+              <th>Помилок</th>
+              <th>Тривалість, с</th>
+              <th>Токенів на запит</th>
+              <th title="Час до першого видимого токена, медіана">TTFT p50, с</th>
+              <th title="95-й перцентиль часу до першого видимого токена">TTFT p95, с</th>
+              <th title="99-й перцентиль часу до першого видимого токена">TTFT p99, с</th>
+              <th title="Медіана швидкості генерації після першого токена">Ток/с на клієнта p50</th>
+              <th title="95-й перцентиль швидкості генерації після першого токена">Ток/с на клієнта p95</th>
+              <th title="99-й перцентиль швидкості генерації після першого токена">Ток/с на клієнта p99</th>
+              <th title="Усі згенеровані токени, поділені на тривалість тесту">Throughput, ток/с</th>
+              <th>Міркування</th>
+            </tr>
+          </thead>
+          <tbody id="bench-results"></tbody>
+        </table>
+      </div>
+      <p id="reasoning-note" class="hint" hidden>TTFT включає очікування під час міркувань. Лічильник токенів може
+        включати приховані токени міркувань.</p>
+    </section>
+  </main>
+</body>
+
+</html>
