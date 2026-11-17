@@ -1,5 +1,7 @@
 # Oracle Cloud + Groq
 
+For the running Oracle VM and automatic GitHub deployments, see [CI/CD setup](CI-CD.md).
+
 Oracle запускає Python-бота, Groq виконує AI-запити. Ollama та GPU на сервері не потрібні.
 Поточний локальний запуск `python start_bot.py` залишається доступним.
 
