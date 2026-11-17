@@ -1,0 +1,3 @@
+# Optional web file manager and PDF reader. Python 3.10+ (Oracle uses 3.12).
+waitress>=3.0.2,<4
+pypdf>=7.1,<8

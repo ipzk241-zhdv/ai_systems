@@ -97,6 +97,9 @@ class GuestAnswers:
             handle_quoted_voice(self.api, message, db, self.reply)
             return
         prompt = self.mention.sub("", message.get("text") or message.get("caption") or "").strip()
+        if re.match(r"^(?:/files?\b|файли\b|файл\s+\d)", prompt, re.I):
+            self.reply(message, "Команди сховища працюють в особистому чаті з @" + self.username + ". Надішли там /files.")
+            return
         if image_source(message):
             try:
                 answer = analyze_message(self.api, message, prompt)

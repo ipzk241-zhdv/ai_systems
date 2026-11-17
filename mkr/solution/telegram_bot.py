@@ -27,6 +27,9 @@ from guest_bot import GuestAnswers
 from voice_notes import initialize as initialize_voice, handle_voice, voice_source, VoiceError
 from image_notes import image_source, handle_image
 from news_cache import NewsCollector, initialize as initialize_cache, latest_fetch, cached_articles, cached_ids, poll_seconds, refresh_news
+from file_questions import respond as file_response
+from file_store import FileError
+from file_web import FileWeb
 
 
 SINCE_LAST = "З останньої перевірки"
@@ -245,6 +248,8 @@ def handle_update(api, update, db, conversations, model):
     update_id = update["update_id"]
     if chat.get("type") != "private" or chat_id is None:
         return
+    if file_response(api, message, model, format_chat_html):
+        return
     if voice_source(message):
         handle_voice(api, chat_id, message, db, conversations)
         return
@@ -259,6 +264,7 @@ def handle_update(api, update, db, conversations, model):
                  "«Що змінилося» — порівняння двох останніх надісланих випусків.\n"
                  "Надішли голосове або відповідай на нього зі згадкою @DBresh_bot — отримаєш розшифровку.\n"
                  "Надішли картинку з підписом-запитанням або відповідай на неї зі згадкою @DBresh_bot.\n"
+                 "/id — твій Telegram user_id. /files — сховище для дозволених користувачів.\n"
                  "У звичайному приватному чаті чи групі: надішли @DBresh_bot запитання — бот відповість сам (Guest Mode).",
                  reply_markup=KEYBOARD)
         return
@@ -406,13 +412,19 @@ def main():
             print("Inline mode: enable /setinline in @BotFather for queries in other chats.", flush=True)
         RUNTIME_DIR.mkdir(exist_ok=True)
         db = open_state(RUNTIME_DIR / f"bot-{bot['id']}.sqlite3")
+        file_web = FileWeb()
         try:
+            file_web.start()
             print(f"Бот запущено: https://t.me/{bot['username']}", flush=True)
             print(f"ШІ: {provider(config)} · {model}", flush=True)
             print("Для зупинки натисни Ctrl+C або закрий вікно консолі.", flush=True)
             poll(api, db, model)
         finally:
+            file_web.close()
             db.close()
+    except FileError as exc:
+        print("Сховище: " + str(exc), file=sys.stderr)
+        return 1
     except TelegramError as exc:
         print(exc, file=sys.stderr)
         if exc.code == 409:
