@@ -20,11 +20,12 @@ from news_questions import respond as news_response, EXPLAIN, COMPARE
 from outages import current_message, schedule_messages
 from sources import KYIV, collect, page
 from settings import read_config, default_model, provider
-from llm import error_message
+from llm import error_message, LLMError
 from inline_bot import InlineAnswers
 from message_worker import PrivateMessages
 from guest_bot import GuestAnswers
 from voice_notes import initialize as initialize_voice, handle_voice, voice_source, VoiceError
+from image_notes import image_source, handle_image
 
 
 SINCE_LAST = "З останньої перевірки"
@@ -117,6 +118,23 @@ class Telegram:
                 'Content-Type: text/html; charset=utf-8\r\n\r\n')
         body = f"{head}{html}\r\n--{boundary}--\r\n".encode("utf-8")
         self.request("sendDocument", body, f"multipart/form-data; boundary={boundary}", timeout=45)
+
+    def download_image(self, file_id, max_bytes):
+        file = self.call("getFile", file_id=file_id)
+        path = file.get("file_path", "")
+        if (not isinstance(path, str) or not path or path.startswith("/") or ".." in path.split("/")
+                or "\\" in path or ":" in path):
+            raise LLMError("Telegram не повернув коректну адресу картинки.")
+        if file.get("file_size", 0) > max_bytes:
+            raise LLMError("Картинка перевищує обмеження 8 МБ.")
+        try:
+            with urlopen(self.file_base_url + quote(path, safe="/"), timeout=30) as response:
+                data = response.read(max_bytes + 1)
+        except OSError:
+            raise LLMError("Не вдалося завантажити картинку з Telegram. Перешли її в особистий чат бота.") from None
+        if not data or len(data) > max_bytes:
+            raise LLMError("Картинка порожня або перевищує обмеження 8 МБ.")
+        return data
 
 
 def open_state(path):
@@ -227,6 +245,9 @@ def handle_update(api, update, db, conversations, model):
     if voice_source(message):
         handle_voice(api, chat_id, message, db, conversations)
         return
+    if image_source(message):
+        handle_image(api, chat_id, message, conversations, format_chat_html)
+        return
     text = message.get("text", "").strip()
     if text == "/start" or text.startswith("/start "):
         api.send(chat_id, "Обери період для дайджесту, натисни «Відключення» або напиши запитання ШІ.\n"
@@ -234,6 +255,7 @@ def handle_update(api, update, db, conversations, model):
                  "«Поясни 3: що це означає для мешканців?» — уточнення до статті.\n"
                  "«Що змінилося» — порівняння двох останніх надісланих випусків.\n"
                  "Надішли голосове або відповідай на нього зі згадкою @DBresh_bot — отримаєш розшифровку.\n"
+                 "Надішли картинку з підписом-запитанням або відповідай на неї зі згадкою @DBresh_bot.\n"
                  "У звичайному приватному чаті чи групі: надішли @DBresh_bot запитання — бот відповість сам (Guest Mode).",
                  reply_markup=KEYBOARD)
         return

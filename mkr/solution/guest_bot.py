@@ -11,6 +11,7 @@ from threading import Event, Lock, Thread
 from inline_bot import trim_text
 from llm import chat
 from voice_notes import voice_source, handle_quoted_voice, initialize as initialize_voice
+from image_notes import image_source, analyze_message, safe_image_error
 
 
 GUEST_PROMPT = ("Відповідай прямо, до 200 слів, мовою запиту; українська — мова за замовчуванням. "
@@ -54,7 +55,7 @@ class GuestAnswers:
             return True
         if message.get("chat", {}).get("type") not in {"group", "supergroup"}:
             return False
-        text = message.get("text", "")
+        text = message.get("text") or message.get("caption") or ""
         replied = message.get("reply_to_message", {}).get("from", {})
         return bool(self.mention.search(text) or (
             replied.get("is_bot") and replied.get("username", "").casefold() == self.username.casefold()))
@@ -95,7 +96,16 @@ class GuestAnswers:
         if voice_source(message):
             handle_quoted_voice(self.api, message, db, self.reply)
             return
-        prompt = self.mention.sub("", message.get("text", "")).strip()
+        prompt = self.mention.sub("", message.get("text") or message.get("caption") or "").strip()
+        if image_source(message):
+            try:
+                answer = analyze_message(self.api, message, prompt)
+            except Exception as error:
+                answer = safe_image_error(error)
+            if len(answer.encode("utf-16-le")) > 6800:
+                answer = trim_text(answer, units=3000) + "\n\n[Відповідь скорочена через ліміт Guest Mode. Для повного тексту надішли картинку в особистий чат бота.]"
+            self.reply(message, answer)
+            return
         if not prompt:
             self.reply(message, "Напиши текстове запитання після @" + self.username + ".")
             return

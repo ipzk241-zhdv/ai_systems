@@ -125,6 +125,8 @@ def kyiv_time(value, *, checked_at=None, switching_minutes=0):
 
 def current_message(now, street_query=None):
     link = f'<a href="{CURRENT_URL}">Діючі відключення на сайті Житомиробленерго</a>'
+    if not street_query:
+        return "Для діючих відключень на своїй вулиці напиши <code>Відключення: Михайла Грушевського</code>.\n" + link
     scope = "Житомир"
     params = {"city.id": ZHYTOMYR_ID, "page": 1}
     try:
@@ -141,8 +143,7 @@ def current_message(now, street_query=None):
         if any(row["city"]["id"] != ZHYTOMYR_ID or
                (street_query and row["street"]["id"] != params["street.id"]) for row in rows):
             raise ValueError("API не застосував фільтр адреси.")
-        limit = 8 if street_query else 5
-        shown = rows[:limit]
+        shown = rows[:8]
         lines = [f"<b>Діючі відключення · {escape(scope)}</b>", f"Перевірено {now:%d.%m %H:%M} за Києвом."]
         if total == 0:
             lines.append("У джерелі немає записів для цього пошуку.")
@@ -161,7 +162,5 @@ def current_message(now, street_query=None):
                          f"Початок {started} · очікуване ввімкнення {expected}")
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
         return f"Не вдалося отримати діючі відключення в Житомирі.\n{link}"
-    if not street_query:
-        lines.append("\nДля конкретної вулиці напиши <code>Відключення: Київська</code>.")
     lines.append(link)
     return "\n".join(lines)

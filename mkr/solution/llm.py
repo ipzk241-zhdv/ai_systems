@@ -10,13 +10,27 @@ from settings import read_config, provider
 
 _remaining_tokens = None
 _reset_at = 0.0
+_quota_model = None
+
+
+def token_estimate(messages):
+    # Base64 is transport encoding, not text tokens. Qwen charges 2048/image.
+    total = 0
+    for message in messages:
+        content = message.get("content", "")
+        if isinstance(content, list):
+            for part in content:
+                total += 2048 if part.get("type") == "image_url" else len(part.get("text", "").encode("utf-8")) // 3
+        else:
+            total += len(str(content).encode("utf-8")) // 3
+    return total
 
 
 def wait_for_quota(payload, fast=False):
     global _remaining_tokens
     # Conservative estimate; the provider's own headers are authoritative.
-    estimate = len(json.dumps(payload["messages"], ensure_ascii=False).encode("utf-8")) // 3 + payload["max_completion_tokens"] + 300
-    if _remaining_tokens is not None and estimate > _remaining_tokens:
+    estimate = token_estimate(payload["messages"]) + payload["max_completion_tokens"] + 300
+    if _quota_model in (None, payload.get("model")) and _remaining_tokens is not None and estimate > _remaining_tokens:
         remaining = _reset_at - monotonic()
         if fast and remaining > 0:
             raise LLMError("ШІ зайнятий або досягнуто хвилинного ліміту. Спробуй трохи пізніше.")
@@ -28,8 +42,9 @@ def wait_for_quota(payload, fast=False):
         _remaining_tokens = None
 
 
-def remember_quota(headers):
-    global _remaining_tokens, _reset_at
+def remember_quota(headers, model=None):
+    global _remaining_tokens, _reset_at, _quota_model
+    _quota_model = model
     try:
         _remaining_tokens = int(headers["x-ratelimit-remaining-tokens"])
         reset = headers.get("x-ratelimit-reset-tokens", "")
@@ -75,6 +90,8 @@ def groq_chat(messages, model, options, schema, config, timeout, fast=False):
     if model.startswith("openai/gpt-oss-"):
         payload["reasoning_effort"] = "low"
         payload["include_reasoning"] = False
+    elif model == "qwen/qwen3.8-27b":
+        payload["reasoning_effort"] = "none"
     if schema is not None:
         payload["response_format"] = {"type": "json_schema", "json_schema": {
             "name": "news_result", "strict": True, "schema": schema}}
@@ -86,7 +103,7 @@ def groq_chat(messages, model, options, schema, config, timeout, fast=False):
     for attempt in range(3):
         try:
             with urlopen(request, timeout=timeout) as response:
-                remember_quota(response.headers)
+                remember_quota(response.headers, model)
                 result = json.load(response)
             choice = result["choices"][0]
             content = choice["message"].get("content")
@@ -112,7 +129,7 @@ def groq_chat(messages, model, options, schema, config, timeout, fast=False):
             if code in {401, 403}:
                 raise LLMError("Groq відхилив доступ. Перевір API-ключ і дозволи моделі.") from None
             if code in {400, 404, 413, 422}:
-                raise LLMError("Groq не прийняв модель, формат або розмір запиту. Перевір LLM_MODEL і налаштування.") from None
+                raise LLMError("Groq не прийняв модель, формат або розмір запиту. Перевір назву моделі та налаштування.") from None
             raise LLMError("Groq тимчасово недоступний. Спробуй пізніше.") from None
         except (KeyError, IndexError, TypeError):
             raise LLMError("Groq повернув невідому структуру відповіді.") from None
