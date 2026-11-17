@@ -12,12 +12,14 @@ _remaining_tokens = None
 _reset_at = 0.0
 
 
-def wait_for_quota(payload):
+def wait_for_quota(payload, fast=False):
     global _remaining_tokens
     # Conservative estimate; the provider's own headers are authoritative.
     estimate = len(json.dumps(payload["messages"], ensure_ascii=False).encode("utf-8")) // 3 + payload["max_completion_tokens"] + 300
     if _remaining_tokens is not None and estimate > _remaining_tokens:
         remaining = _reset_at - monotonic()
+        if fast and remaining > 0:
+            raise LLMError("ШІ зайнятий або досягнуто хвилинного ліміту. Спробуй трохи пізніше.")
         if remaining > 65:
             raise LLMError("Ліміт токенів Groq тимчасово вичерпано. Спробуй пізніше.")
         while remaining > 0:
@@ -48,10 +50,10 @@ def error_message(error):
     return "Не вдалося отримати відповідь ШІ. Перевір налаштування та повтори запит."
 
 
-def chat(messages, model, *, options, schema=None, think=None, timeout=240):
+def chat(messages, model, *, options, schema=None, think=None, timeout=240, fast=False):
     config = read_config()
     if provider(config) == "groq":
-        return groq_chat(messages, model, options, schema, config, timeout)
+        return groq_chat(messages, model, options, schema, config, timeout, fast=fast)
     payload = {"model": model, "stream": False, "messages": messages, "options": options}
     if schema is not None:
         payload["format"] = schema
@@ -63,7 +65,7 @@ def chat(messages, model, *, options, schema=None, think=None, timeout=240):
         return json.load(response)
 
 
-def groq_chat(messages, model, options, schema, config, timeout):
+def groq_chat(messages, model, options, schema, config, timeout, fast=False):
     key = config.get("GROQ_API_KEY", "").strip()
     if not key:
         raise LLMError("Не задано GROQ_API_KEY у конфігурації бота.")
@@ -80,7 +82,7 @@ def groq_chat(messages, model, options, schema, config, timeout):
                       data=json.dumps(payload).encode("utf-8"),
                       headers={"Content-Type": "application/json", "Authorization": "Bearer " + key,
                                "User-Agent": "PersonalNewsBot/1.0"})
-    wait_for_quota(payload)
+    wait_for_quota(payload, fast=fast)
     for attempt in range(3):
         try:
             with urlopen(request, timeout=timeout) as response:
@@ -99,7 +101,7 @@ def groq_chat(messages, model, options, schema, config, timeout):
             except (ValueError, TypeError):
                 delay = 2 ** attempt
             exc.close()
-            if code in {429, 500, 502, 503, 504} and attempt < 2 and 0 <= delay <= 60:
+            if not fast and code in {429, 500, 502, 503, 504} and attempt < 2 and 0 <= delay <= 60:
                 while delay > 0:
                     step = min(delay, 10)
                     sleep(step)

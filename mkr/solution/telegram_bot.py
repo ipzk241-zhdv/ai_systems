@@ -21,6 +21,9 @@ from outages import current_message, schedule_messages
 from sources import KYIV, collect, page
 from settings import read_config, default_model, provider
 from llm import error_message
+from inline_bot import InlineAnswers
+from message_worker import PrivateMessages
+from guest_bot import GuestAnswers
 
 
 SINCE_LAST = "З останньої перевірки"
@@ -201,7 +204,8 @@ def handle_update(api, update, db, conversations, model):
         api.send(chat_id, "Обери період для дайджесту, натисни «Відключення» або напиши запитання ШІ.\n"
                  "«Поясни 3» — пояснення новини №3 з останнього дайджесту.\n"
                  "«Поясни 3: що це означає для мешканців?» — уточнення до статті.\n"
-                 "«Що змінилося» — порівняння двох останніх надісланих випусків.",
+                 "«Що змінилося» — порівняння двох останніх надісланих випусків.\n"
+                 "У звичайному приватному чаті чи групі: надішли @DBresh_bot запитання — бот відповість сам (Guest Mode).",
                  reply_markup=KEYBOARD)
         return
     action, _, street = text.partition(":")
@@ -266,25 +270,45 @@ def handle_update(api, update, db, conversations, model):
 
 def poll(api, db, model):
     offset = 0
-    conversations = OrderedDict()
-    while True:
-        try:
-            updates = api.call("getUpdates", timeout=25, offset=offset, limit=1,
-                               allowed_updates=["message"])
-        except TelegramError as exc:
-            if exc.code in {401, 404, 409}:
-                raise
-            print(exc, file=sys.stderr)
-            sleep(max(1, exc.retry_after))
-            continue
-        for update in updates:
+    database_path = db.execute("PRAGMA database_list").fetchone()[2]
+    messages = PrivateMessages(api, database_path, model, handle_update, open_state)
+    inline = InlineAnswers(api, model, format_chat_html)
+    guests = GuestAnswers(api, model, format_chat_html, username=getattr(api, "username", "DBresh_bot"))
+    messages.start()
+    inline.start()
+    guests.start()
+    try:
+        while True:
+            messages.check()
             try:
-                handle_update(api, update, db, conversations, model)
+                updates = api.call("getUpdates", timeout=25, offset=offset, limit=20,
+                                   allowed_updates=["message", "inline_query", "guest_message"])
             except TelegramError as exc:
-                if exc.code in {401, 404}:
+                if exc.code in {401, 404, 409}:
                     raise
                 print(exc, file=sys.stderr)
-            offset = update["update_id"] + 1
+                sleep(max(1, exc.retry_after))
+                continue
+            for update in updates:
+                try:
+                    if "guest_message" in update:
+                        guests.submit(update["guest_message"])
+                    elif "inline_query" in update:
+                        inline.submit(update["inline_query"])
+                    elif "message" in update:
+                        if guests.accepts(update["message"]):
+                            guests.submit(update["message"])
+                        else:
+                            messages.submit(update)
+                except TelegramError as exc:
+                    if exc.code in {401, 404}:
+                        raise
+                    print(exc, file=sys.stderr)
+                offset = update["update_id"] + 1
+    finally:
+        inline.close()
+        guests.close()
+        messages.close()
 
 
 def main():
@@ -301,6 +325,9 @@ def main():
             return 1
         api = Telegram(token)
         bot = api.call("getMe")
+        api.username = bot["username"]
+        if not bot.get("supports_inline_queries"):
+            print("Inline mode: enable /setinline in @BotFather for queries in other chats.", flush=True)
         RUNTIME_DIR.mkdir(exist_ok=True)
         db = open_state(RUNTIME_DIR / f"bot-{bot['id']}.sqlite3")
         try:
