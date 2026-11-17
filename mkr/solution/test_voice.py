@@ -25,17 +25,14 @@ class VoiceTest(unittest.TestCase):
         self.assertEqual(normal["saved_seconds"], 115)
         fast_audio = voice.estimate(300, 600, 5, 200, 2)
         self.assertEqual(fast_audio["saved_seconds"], -35)
-        self.assertIn("прослухати швидше", voice.statistics_text(300, 600, 5, 200, 2))
         for rate in (0, -1, float("nan"), float("inf")):
             with self.assertRaises(ValueError): voice.estimate(300, 600, 5, rate, 1)
 
-    def test_word_count_and_lossless_unicode_chunks(self):
+    def test_word_count_and_unicode_message_limit(self):
         text = "П’ять слів: зв'язок, Python-код, 2026."
         self.assertEqual(len(voice.WORDS.findall(text)), 5)
-        long = (text + " 🙂\n") * 200
-        chunks = list(voice.text_chunks(long))
-        self.assertEqual("".join(chunks), long)
-        self.assertTrue(all(len(("Розшифровка\n" + chunk).encode("utf-16-le")) <= 8192 for chunk in chunks))
+        self.assertTrue(voice.fits_message(text))
+        self.assertFalse(voice.fits_message("🙂" * 3000))
 
     def test_transcription_is_binary_upload_not_telegram_url_or_translation(self):
         response = io.BytesIO(json.dumps({"text": "Привіт, це тест."}).encode())
@@ -98,6 +95,10 @@ class VoiceTest(unittest.TestCase):
         self.assertEqual(self.db.execute("SELECT count(*) FROM checks").fetchone()[0], 0)
         row = self.db.execute("SELECT audio_seconds,word_count,reading_wpm,playback_speed FROM voice_runs").fetchone()
         self.assertEqual(row, (300, len(voice.WORDS.findall(text)), 200, 1))
+        self.assertEqual(api.send.call_count, 1)
+        api.send_document.assert_not_called()
+        self.assertNotIn("економ", rendered[0])
+        self.assertNotIn("Розшифровую", rendered[0])
         columns = [r[1] for r in self.db.execute("PRAGMA table_info(voice_runs)")]
         self.assertNotIn("text", columns)
         self.assertNotIn("chat_id", columns)
@@ -115,11 +116,48 @@ class VoiceTest(unittest.TestCase):
     def test_failed_telegram_delivery_does_not_save_success(self):
         api = Mock()
         api.download_voice.return_value = (b"ogg", "voice.ogg")
-        api.send.side_effect = [None, RuntimeError("delivery failed")]
+        api.send.side_effect = RuntimeError("delivery failed")
         with patch.object(voice, "read_config", return_value=self.config), patch.object(voice, "transcribe", return_value=("text", "whisper-large-v3-turbo")):
             with self.assertRaises(RuntimeError):
                 voice.handle_voice(api, 1, {"voice": {"file_id": "id", "duration": 60}}, self.db, OrderedDict())
         self.assertEqual(self.db.execute("SELECT count(*) FROM voice_runs").fetchone()[0], 0)
+
+    def test_private_reply_to_voice_works_without_forwarding(self):
+        api = Mock()
+        api.download_voice.return_value = (b"ogg", "voice.ogg")
+        value = {"update_id": 3, "message": {"chat": {"id": 1, "type": "private"},
+            "text": "@DBresh_bot розшифруй", "reply_to_message": {
+                "voice": {"file_id": "original-voice", "duration": 6}}}}
+        with patch.object(voice, "read_config", return_value=self.config), patch.object(voice, "transcribe", return_value=("Повний текст.", "whisper-large-v3-turbo")):
+            handle_update(api, value, self.db, OrderedDict(), "model")
+        api.download_voice.assert_called_once_with("original-voice", voice.MAX_BYTES)
+        api.send.assert_called_once()
+        self.assertEqual(api.send.call_args.args[1], "<b>Розшифровка</b>\nПовний текст.")
+
+    def test_long_private_transcript_is_one_complete_document(self):
+        api = Mock()
+        api.download_voice.return_value = (b"ogg", "voice.ogg")
+        text = "Довгий текст <literal>. " * 500
+        with patch.object(voice, "read_config", return_value=self.config), patch.object(voice, "transcribe", return_value=(text, "whisper-large-v3-turbo")):
+            voice.handle_voice(api, 1, {"voice": {"file_id": "id", "duration": 600}}, self.db, OrderedDict())
+        api.send.assert_not_called()
+        api.send_document.assert_called_once()
+        html = api.send_document.call_args.args[2]
+        self.assertIn(text, unescape(html))
+        self.assertEqual(self.db.execute("SELECT count(*) FROM voice_runs").fetchone()[0], 1)
+
+    def test_voice_schema_upgrade_preserves_old_history(self):
+        legacy = sqlite3.connect(":memory:")
+        try:
+            legacy.execute("""CREATE TABLE voice_runs (id INTEGER PRIMARY KEY, completed_at TEXT NOT NULL,
+                audio_seconds REAL NOT NULL,word_count INTEGER NOT NULL,processing_seconds REAL NOT NULL,
+                reading_wpm REAL NOT NULL,playback_speed REAL NOT NULL,estimated_saved_seconds REAL NOT NULL,stt_model TEXT NOT NULL)""")
+            legacy.execute("INSERT INTO voice_runs VALUES (1,'2026-11-17',6,8,.4,200,1,3.2,'whisper-large-v3-turbo')")
+            voice.initialize(legacy)
+            voice.initialize(legacy)
+            self.assertEqual(legacy.execute("SELECT estimated_saved_seconds,context FROM voice_runs").fetchone(), (3.2, "private"))
+        finally:
+            legacy.close()
 
     def test_ordinary_group_voice_is_not_transcribed(self):
         api = Mock()

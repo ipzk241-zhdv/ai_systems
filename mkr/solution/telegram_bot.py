@@ -24,7 +24,7 @@ from llm import error_message
 from inline_bot import InlineAnswers
 from message_worker import PrivateMessages
 from guest_bot import GuestAnswers
-from voice_notes import initialize as initialize_voice, handle_voice, VoiceError
+from voice_notes import initialize as initialize_voice, handle_voice, voice_source, VoiceError
 
 
 SINCE_LAST = "З останньої перевірки"
@@ -224,7 +224,7 @@ def handle_update(api, update, db, conversations, model):
     update_id = update["update_id"]
     if chat.get("type") != "private" or chat_id is None:
         return
-    if message.get("voice"):
+    if voice_source(message):
         handle_voice(api, chat_id, message, db, conversations)
         return
     text = message.get("text", "").strip()
@@ -233,7 +233,7 @@ def handle_update(api, update, db, conversations, model):
                  "«Поясни 3» — пояснення новини №3 з останнього дайджесту.\n"
                  "«Поясни 3: що це означає для мешканців?» — уточнення до статті.\n"
                  "«Що змінилося» — порівняння двох останніх надісланих випусків.\n"
-                 "Надішли або перешли голосове — отримаєш текст і оцінку економії часу.\n"
+                 "Надішли голосове або відповідай на нього зі згадкою @DBresh_bot — отримаєш розшифровку.\n"
                  "У звичайному приватному чаті чи групі: надішли @DBresh_bot запитання — бот відповість сам (Guest Mode).",
                  reply_markup=KEYBOARD)
         return
@@ -302,7 +302,7 @@ def poll(api, db, model):
     database_path = db.execute("PRAGMA database_list").fetchone()[2]
     messages = PrivateMessages(api, database_path, model, handle_update, open_state)
     inline = InlineAnswers(api, model, format_chat_html)
-    guests = GuestAnswers(api, model, format_chat_html, username=getattr(api, "username", "DBresh_bot"))
+    guests = GuestAnswers(api, model, format_chat_html, username=getattr(api, "username", "DBresh_bot"), database_path=database_path)
     messages.start()
     inline.start()
     guests.start()
@@ -321,6 +321,7 @@ def poll(api, db, model):
             for update in updates:
                 try:
                     if "guest_message" in update:
+                        update["guest_message"]["_bot_received_at"] = monotonic()
                         guests.submit(update["guest_message"])
                     elif "inline_query" in update:
                         inline.submit(update["inline_query"])

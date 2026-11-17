@@ -35,6 +35,9 @@ def initialize(db):
         estimated_saved_seconds REAL NOT NULL,
         stt_model TEXT NOT NULL
     )""")
+    columns = {row[1] for row in db.execute("PRAGMA table_info(voice_runs)")}
+    if "context" not in columns:
+        db.execute("ALTER TABLE voice_runs ADD COLUMN context TEXT NOT NULL DEFAULT 'private'")
     db.commit()
 
 
@@ -118,74 +121,81 @@ def transcribe(audio, filename="voice.ogg", config=None):
     return text.strip(), model
 
 
-def text_chunks(text, size=1500):
-    while text:
-        cut = min(size, len(text))
-        if cut < len(text):
-            boundary = max(text.rfind(" ", 0, cut), text.rfind("\n", 0, cut))
-            if boundary > cut // 2:
-                cut = boundary + 1
-        yield text[:cut]
-        text = text[cut:]
+def voice_source(message):
+    if message.get("voice"):
+        return message
+    quoted = message.get("reply_to_message", {})
+    return quoted if quoted.get("voice") else None
 
 
-def statistics_text(duration, words, processing, reading_wpm, playback_speed):
-    values = estimate(duration, words, processing, reading_wpm, playback_speed)
-    saved = values["saved_seconds"]
-    label = (f"Оціночна економія: <b>{saved:.0f} с</b>." if saved >= 0 else
-             f"За цих припущень прослухати швидше приблизно на <b>{-saved:.0f} с</b>.")
-    return (f"Аудіо: {duration:g} с · слів у розшифровці: {words}.\n"
-            f"Від отримання ботом до надсилання тексту: {processing:.1f} с.\n"
-            f"Припущення: читання {reading_wpm:g} слів/хв, прослуховування {playback_speed:g}×.\n"
-            f"Читання ≈ {values['reading_seconds']:.0f} с; обробка + читання ≈ {values['total_seconds']:.0f} с.\n"
-            f"{label}\nЦе розрахункова оцінка, не замір твоєї швидкості. Вона не враховує завантаження "
-            "голосового з телефона в Telegram, доставку цієї статистики та виправлення помилок. "
-            "Імена, числа й важливі деталі перевір за аудіо.")
-
-
-def handle_voice(api, chat_id, message, db, conversations):
+def recognize(api, source, received_at=None):
     start = monotonic()
-    received = message.get("_bot_received_at")
+    received = received_at if received_at is not None else source.get("_bot_received_at")
     if isinstance(received, (int, float)) and math.isfinite(received) and received <= start:
         start = received
-    voice = message["voice"]
-    try:
-        duration = float(voice.get("duration", 0))
-        if not math.isfinite(duration) or not 0 < duration <= MAX_DURATION:
-            raise VoiceError("Надішли голосове тривалістю до 10 хвилин.")
-        if voice.get("file_size", 0) > MAX_BYTES:
-            raise VoiceError("Надішли голосове до 19 МБ і до 10 хвилин.")
-        config = read_config()
-        reading_wpm, playback_speed = preferences(config)
-        if not config.get("GROQ_API_KEY", "").strip():
-            raise VoiceError("Для розшифровки потрібен GROQ_API_KEY у .env.")
-        api.send(chat_id, "Розшифровую голосове… Аудіо буде передано Groq для розпізнавання.")
-        audio, filename = api.download_voice(voice["file_id"], MAX_BYTES)
-        text, model = transcribe(audio, filename, config)
-    except Exception as error:
-        print("Voice transcription failed (" + type(error).__name__ + ").", file=sys.stderr)
-        safe = str(error) if isinstance(error, VoiceError) else "Не вдалося завантажити або розшифрувати голосове. Спробуй ще раз."
-        api.send(chat_id, safe)
+    voice = source["voice"]
+    duration = float(voice.get("duration", 0))
+    if not math.isfinite(duration) or not 0 < duration <= MAX_DURATION:
+        raise VoiceError("Надішли голосове тривалістю до 10 хвилин.")
+    if voice.get("file_size", 0) > MAX_BYTES:
+        raise VoiceError("Надішли голосове до 19 МБ і до 10 хвилин.")
+    config = read_config()
+    reading_wpm, playback_speed = preferences(config)
+    if not config.get("GROQ_API_KEY", "").strip():
+        raise VoiceError("Для розшифровки потрібен GROQ_API_KEY у .env.")
+    audio, filename = api.download_voice(voice["file_id"], MAX_BYTES)
+    text, model = transcribe(audio, filename, config)
+    return {"text": text, "model": model, "duration": duration, "started": start,
+            "reading_wpm": reading_wpm, "playback_speed": playback_speed}
+
+
+def safe_error(error):
+    print("Voice transcription failed (" + type(error).__name__ + ").", file=sys.stderr)
+    return str(error) if isinstance(error, VoiceError) else "Не вдалося завантажити або розшифрувати голосове. Перешли його в особистий чат бота й спробуй ще раз."
+
+
+def record_run(db, result, context="private"):
+    if db is None:
         return
-    for index, part in enumerate(text_chunks(text), 1):
-        prefix = "<b>Розшифровка</b>\n" if index == 1 else ""
-        api.send(chat_id, prefix + escape(part, quote=False), parse_mode="HTML",
-                 link_preview_options={"is_disabled": True})
-    processing = monotonic() - start
-    words = len(WORDS.findall(text))
-    stats = statistics_text(duration, words, processing, reading_wpm, playback_speed)
-    if len(text) > 3500:
-        stats += "\nДля наступних запитань у пам’яті чату лише перші 3500 символів. Повна розшифровка — вище."
-    api.send(chat_id, stats, parse_mode="HTML")
-    # Persist numeric measurements only. Audio and transcript are not written to disk.
+    processing = monotonic() - result["started"]
+    words = len(WORDS.findall(result["text"]))
+    duration, reading_wpm, playback_speed = (result[key] for key in ("duration", "reading_wpm", "playback_speed"))
     try:
         with db:
             db.execute("""INSERT INTO voice_runs (completed_at, audio_seconds, word_count, processing_seconds,
-                reading_wpm, playback_speed, estimated_saved_seconds, stt_model) VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+                reading_wpm, playback_speed, estimated_saved_seconds, stt_model, context) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                 (datetime.now(timezone.utc).isoformat(), duration, words, processing, reading_wpm, playback_speed,
-                 estimate(duration, words, processing, reading_wpm, playback_speed)["saved_seconds"], model))
+                 estimate(duration, words, processing, reading_wpm, playback_speed)["saved_seconds"], result["model"], context))
     except Exception as error:
         print("Voice metrics not saved (" + type(error).__name__ + ").", file=sys.stderr)
+
+
+def formatted_transcript(text):
+    return "<b>Розшифровка</b>\n" + escape(text, quote=False)
+
+
+def fits_message(text):
+    return len(("Розшифровка\n" + text).encode("utf-16-le")) <= 8192
+
+
+def handle_voice(api, chat_id, message, db, conversations):
+    source = voice_source(message)
+    try:
+        result = recognize(api, source, received_at=message.get("_bot_received_at"))
+    except Exception as error:
+        api.send(chat_id, safe_error(error))
+        return
+    text = result["text"]
+    if fits_message(text):
+        api.send(chat_id, formatted_transcript(text), parse_mode="HTML", link_preview_options={"is_disabled": True})
+    else:
+        # One complete document instead of many chat bubbles or a truncated transcript.
+        html = ('<!doctype html><html lang="uk"><meta charset="utf-8">'
+                '<meta name="viewport" content="width=device-width,initial-scale=1">'
+                '<title>Розшифровка</title><body><h1>Розшифровка</h1>'
+                '<pre style="white-space:pre-wrap;overflow-wrap:anywhere">' + escape(text) + '</pre></body></html>')
+        api.send_document(chat_id, "transcript.html", html)
+    record_run(db, result)
     context_label = ("Лише початок голосового, перші 3500 символів; решта тексту недоступна в контексті."
                      if len(text) > 3500 else "Текст голосового повідомлення.")
     conversations[chat_id] = [
@@ -195,3 +205,18 @@ def handle_voice(api, chat_id, message, db, conversations):
     conversations.move_to_end(chat_id)
     while len(conversations) > 32:
         conversations.popitem(last=False)
+
+
+def handle_quoted_voice(api, message, db, reply):
+    try:
+        result = recognize(api, voice_source(message), received_at=message.get("_bot_received_at"))
+    except Exception as error:
+        reply(message, safe_error(error))
+        return
+    if not fits_message(result["text"]):
+        # Guest Mode permits one result. Never silently truncate a transcript or
+        # send a document to a guest chat's numeric ID using ordinary sendMessage.
+        reply(message, "Розшифровка довша за ліміт одного гостьового повідомлення. Перешли голосове в особистий чат бота — там отримаєш повний текст файлом.")
+        return
+    reply(message, formatted_transcript(result["text"]), formatted=True)
+    record_run(db, result, context="guest" if message.get("guest_query_id") else "group")

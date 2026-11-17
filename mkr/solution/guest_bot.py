@@ -4,11 +4,13 @@ import hashlib
 import json
 from queue import Empty, Full, Queue
 import re
+import sqlite3
 import sys
 from threading import Event, Lock, Thread
 
 from inline_bot import trim_text
 from llm import chat
+from voice_notes import voice_source, handle_quoted_voice, initialize as initialize_voice
 
 
 GUEST_PROMPT = ("Відповідай прямо, до 200 слів, мовою запиту; українська — мова за замовчуванням. "
@@ -31,9 +33,10 @@ def generate_reply(prompt, context, model):
 
 
 class GuestAnswers:
-    def __init__(self, api, model, formatter, username="DBresh_bot", generate=generate_reply):
+    def __init__(self, api, model, formatter, username="DBresh_bot", generate=generate_reply, database_path=None):
         self.api, self.model, self.formatter = api, model, formatter
         self.username, self.generate = username, generate
+        self.database_path = database_path
         self.mention = re.compile(r"(?<!\w)@" + re.escape(username) + r"(?!\w)", re.I)
         self.queue = Queue(maxsize=16)
         self.seen = OrderedDict()
@@ -72,8 +75,8 @@ class GuestAnswers:
         except Full:
             self.reply(message, "Бот зайнятий. Спробуй ще раз трохи пізніше.")
 
-    def reply(self, message, text):
-        content = self.formatter(trim_text(text))
+    def reply(self, message, text, formatted=False):
+        content = text if formatted else self.formatter(trim_text(text))
         if message.get("guest_query_id"):
             # Guest chat IDs can overlap private bot chat IDs: never use sendMessage here.
             result = {"type": "article", "id": hashlib.sha256(message["guest_query_id"].encode()).hexdigest()[:32],
@@ -88,7 +91,10 @@ class GuestAnswers:
                 params["message_thread_id"] = message["message_thread_id"]
             self.api.send(message["chat"]["id"], content, **params)
 
-    def process(self, message):
+    def process(self, message, db=None):
+        if voice_source(message):
+            handle_quoted_voice(self.api, message, db, self.reply)
+            return
         prompt = self.mention.sub("", message.get("text", "")).strip()
         if not prompt:
             self.reply(message, "Напиши текстове запитання після @" + self.username + ".")
@@ -107,19 +113,27 @@ class GuestAnswers:
             self.reply(message, answer)
 
     def run(self):
-        while not self.stopped.is_set():
-            try:
-                message = self.queue.get(timeout=.2)
-            except Empty:
-                continue
-            try:
-                self.process(message)
-            except Exception as error:
-                # Expired/used query IDs must not cause a retry in a different chat.
-                print("Guest reply failed (" + type(error).__name__ +
-                      ", HTTP " + str(getattr(error, "code", None)) + ").", file=sys.stderr)
-            finally:
-                self.queue.task_done()
+        db = None
+        try:
+            if self.database_path:
+                db = sqlite3.connect(self.database_path)
+                initialize_voice(db)
+            while not self.stopped.is_set():
+                try:
+                    message = self.queue.get(timeout=.2)
+                except Empty:
+                    continue
+                try:
+                    self.process(message, db)
+                except Exception as error:
+                    # Expired queries must never fall back to a different private chat.
+                    print("Guest reply failed (" + type(error).__name__ +
+                          ", HTTP " + str(getattr(error, "code", None)) + ").", file=sys.stderr)
+                finally:
+                    self.queue.task_done()
+        finally:
+            if db is not None:
+                db.close()
 
     def close(self):
         self.stopped.set()

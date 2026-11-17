@@ -1,9 +1,13 @@
 import threading
+from pathlib import Path
+import sqlite3
+import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
 from guest_bot import GuestAnswers
 from telegram_bot import format_chat_html, poll
+import voice_notes
 
 
 def message(text="@DBresh_bot explain this", kind="private", guest=True):
@@ -100,6 +104,76 @@ class GuestTest(unittest.TestCase):
             self.assertEqual(api.call.call_args.args[0], "answerGuestQuery")
         finally:
             worker.close()
+
+    def voice_reply(self, guest=True):
+        value = message("@DBresh_bot", kind="private" if guest else "group", guest=guest)
+        value["reply_to_message"] = {"message_id": 6, "voice": {"file_id": "someone-elses-voice", "duration": 6},
+                                     "from": {"id": 999, "is_bot": False}}
+        return value
+
+    def test_guest_mention_alone_transcribes_quoted_voice_and_records_metrics(self):
+        api, worker = self.worker()
+        api.download_voice.return_value = (b"ogg", "voice.ogg")
+        db = sqlite3.connect(":memory:")
+        try:
+            voice_notes.initialize(db)
+            with patch.object(voice_notes, "read_config", return_value={"GROQ_API_KEY": "fake"}), patch.object(voice_notes, "transcribe", return_value=("**Буквальний** <текст>", "whisper-large-v3-turbo")):
+                worker.process(self.voice_reply(), db)
+            worker.generate.assert_not_called()
+            api.download_voice.assert_called_once_with("someone-elses-voice", voice_notes.MAX_BYTES)
+            api.send.assert_not_called()
+            api.call.assert_called_once()
+            content = api.call.call_args.kwargs["result"]["input_message_content"]["message_text"]
+            self.assertEqual(content, "<b>Розшифровка</b>\n**Буквальний** &lt;текст&gt;")
+            self.assertEqual(db.execute("SELECT context,word_count FROM voice_runs").fetchone(), ("guest", 2))
+        finally:
+            db.close()
+
+    def test_member_group_voice_uses_one_reply(self):
+        api, worker = self.worker()
+        api.download_voice.return_value = (b"ogg", "voice.ogg")
+        with patch.object(voice_notes, "read_config", return_value={"GROQ_API_KEY": "fake"}), patch.object(voice_notes, "transcribe", return_value=("Розпізнаний текст", "whisper-large-v3-turbo")):
+            worker.process(self.voice_reply(guest=False))
+        api.call.assert_not_called()
+        api.send.assert_called_once()
+        self.assertEqual(api.send.call_args.args[1], "<b>Розшифровка</b>\nРозпізнаний текст")
+
+    def test_long_guest_transcript_is_not_silently_truncated_or_counted(self):
+        api, worker = self.worker()
+        api.download_voice.return_value = (b"ogg", "voice.ogg")
+        db = sqlite3.connect(":memory:")
+        try:
+            voice_notes.initialize(db)
+            with patch.object(voice_notes, "read_config", return_value={"GROQ_API_KEY": "fake"}), patch.object(voice_notes, "transcribe", return_value=("Текст " * 1000, "whisper-large-v3-turbo")):
+                worker.process(self.voice_reply(), db)
+            api.send.assert_not_called()
+            api.call.assert_called_once()
+            content = api.call.call_args.kwargs["result"]["input_message_content"]["message_text"]
+            self.assertIn("особистий чат", content)
+            self.assertEqual(db.execute("SELECT count(*) FROM voice_runs").fetchone()[0], 0)
+        finally:
+            db.close()
+
+    def test_guest_voice_worker_owns_metrics_connection(self):
+        done = threading.Event()
+        with tempfile.TemporaryDirectory() as directory:
+            path = str(Path(directory) / "bot.sqlite3")
+            api = Mock()
+            api.download_voice.return_value = (b"ogg", "voice.ogg")
+            api.call.side_effect = lambda *args, **kwargs: done.set()
+            worker = GuestAnswers(api, "model", format_chat_html, database_path=path)
+            with patch.object(voice_notes, "read_config", return_value={"GROQ_API_KEY": "fake"}), patch.object(voice_notes, "transcribe", return_value=("Текст", "whisper-large-v3-turbo")):
+                worker.start()
+                try:
+                    worker.submit(self.voice_reply())
+                    self.assertTrue(done.wait(2))
+                finally:
+                    worker.close()
+            db = sqlite3.connect(path)
+            try:
+                self.assertEqual(db.execute("SELECT context FROM voice_runs").fetchone(), ("guest",))
+            finally:
+                db.close()
 
     def test_poll_subscribes_to_guest_and_routes_it_separately(self):
         class DB:
