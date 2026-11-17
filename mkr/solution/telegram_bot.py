@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, timezone
 from html import escape
 from pathlib import Path
 from textwrap import wrap
-from time import sleep
+from time import sleep, monotonic
 from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
@@ -24,6 +24,7 @@ from llm import error_message
 from inline_bot import InlineAnswers
 from message_worker import PrivateMessages
 from guest_bot import GuestAnswers
+from voice_notes import initialize as initialize_voice, handle_voice, VoiceError
 
 
 SINCE_LAST = "З останньої перевірки"
@@ -59,6 +60,7 @@ class TelegramError(Exception):
 class Telegram:
     def __init__(self, token):
         self.base_url = f"https://api.telegram.org/bot{token}/"
+        self.file_base_url = f"https://api.telegram.org/file/bot{token}/"
 
     def call(self, method, **params):
         return self.request(method, json.dumps(params).encode("utf-8"), "application/json",
@@ -86,6 +88,28 @@ class Telegram:
     def send(self, chat_id, text, **params):
         self.call("sendMessage", chat_id=chat_id, text=text, **params)
 
+    def download_voice(self, file_id, max_bytes):
+        file = self.call("getFile", file_id=file_id)
+        path = file.get("file_path", "")
+        if (not isinstance(path, str) or not path or path.startswith("/") or ".." in path.split("/")
+                or "\\" in path or ":" in path):
+            raise VoiceError("Telegram не повернув коректну адресу аудіо.")
+        if file.get("file_size", 0) > max_bytes:
+            raise VoiceError("Голосове перевищує обмеження 19 МБ.")
+        extension = Path(path).suffix.lower()
+        if extension == ".oga":
+            extension = ".ogg"
+        if extension not in {".ogg", ".mp3", ".m4a", ".wav", ".webm", ".mp4"}:
+            raise VoiceError("Непідтримуваний формат аудіо.")
+        try:
+            with urlopen(self.file_base_url + quote(path, safe="/"), timeout=45) as response:
+                data = response.read(max_bytes + 1)
+        except OSError:
+            raise VoiceError("Не вдалося завантажити голосове з Telegram.") from None
+        if not data or len(data) > max_bytes:
+            raise VoiceError("Аудіо порожнє або перевищує обмеження 19 МБ.")
+        return data, "voice" + extension
+
     def send_document(self, chat_id, filename, html):
         boundary = secrets.token_hex(24)
         head = (f'--{boundary}\r\nContent-Disposition: form-data; name="chat_id"\r\n\r\n{chat_id}\r\n'
@@ -102,6 +126,7 @@ def open_state(path):
         chat_id INTEGER PRIMARY KEY, checked_at TEXT NOT NULL, update_id INTEGER NOT NULL
     )""")
     initialize(db)
+    initialize_voice(db)
     return db
 
 
@@ -199,12 +224,16 @@ def handle_update(api, update, db, conversations, model):
     update_id = update["update_id"]
     if chat.get("type") != "private" or chat_id is None:
         return
+    if message.get("voice"):
+        handle_voice(api, chat_id, message, db, conversations)
+        return
     text = message.get("text", "").strip()
     if text == "/start" or text.startswith("/start "):
         api.send(chat_id, "Обери період для дайджесту, натисни «Відключення» або напиши запитання ШІ.\n"
                  "«Поясни 3» — пояснення новини №3 з останнього дайджесту.\n"
                  "«Поясни 3: що це означає для мешканців?» — уточнення до статті.\n"
                  "«Що змінилося» — порівняння двох останніх надісланих випусків.\n"
+                 "Надішли або перешли голосове — отримаєш текст і оцінку економії часу.\n"
                  "У звичайному приватному чаті чи групі: надішли @DBresh_bot запитання — бот відповість сам (Guest Mode).",
                  reply_markup=KEYBOARD)
         return
@@ -296,6 +325,7 @@ def poll(api, db, model):
                     elif "inline_query" in update:
                         inline.submit(update["inline_query"])
                     elif "message" in update:
+                        update["message"]["_bot_received_at"] = monotonic()
                         if guests.accepts(update["message"]):
                             guests.submit(update["message"])
                         else:
