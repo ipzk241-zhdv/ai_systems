@@ -154,7 +154,7 @@ class InlineTest(unittest.TestCase):
         update = {"update_id": 2, "inline_query": query("question")}
         api = unittest.mock.Mock()
         api.call.side_effect = [[{"update_id": 1, "message": {}}, update], KeyboardInterrupt()]
-        with patch("telegram_bot.PrivateMessages") as messages, patch("telegram_bot.InlineAnswers") as inline, patch("telegram_bot.GuestAnswers") as guests:
+        with patch("telegram_bot.NewsCollector"), patch("telegram_bot.PrivateMessages") as messages, patch("telegram_bot.InlineAnswers") as inline, patch("telegram_bot.GuestAnswers") as guests:
             guests.return_value.accepts.return_value = False
             with self.assertRaises(KeyboardInterrupt): poll(api, FakeDB(), "model")
             messages.return_value.submit.assert_called_once()

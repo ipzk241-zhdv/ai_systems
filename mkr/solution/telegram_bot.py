@@ -15,10 +15,10 @@ from urllib.request import Request, urlopen
 
 from digest import MODEL, ollama_chat, select_items, limit_items
 from html_digest import fetch_market, render_html
-from news_history import initialize, save_articles, previous_articles, compare_items, prepare_digest, confirm_delivery
+from news_history import initialize, previous_articles, compare_items, prepare_digest, confirm_delivery
 from news_questions import respond as news_response, EXPLAIN, COMPARE
 from outages import current_message, schedule_messages
-from sources import KYIV, collect, page
+from sources import KYIV, page
 from settings import read_config, default_model, provider
 from llm import error_message, LLMError
 from inline_bot import InlineAnswers
@@ -26,6 +26,7 @@ from message_worker import PrivateMessages
 from guest_bot import GuestAnswers
 from voice_notes import initialize as initialize_voice, handle_voice, voice_source, VoiceError
 from image_notes import image_source, handle_image
+from news_cache import NewsCollector, initialize as initialize_cache, latest_fetch, cached_articles, cached_ids, poll_seconds, refresh_news
 
 
 SINCE_LAST = "З останньої перевірки"
@@ -138,13 +139,15 @@ class Telegram:
 
 
 def open_state(path):
-    db = sqlite3.connect(path)
+    db = sqlite3.connect(path, timeout=30)
+    db.execute("PRAGMA journal_mode=WAL")
     db.execute("PRAGMA foreign_keys=ON")
     db.execute("""CREATE TABLE IF NOT EXISTS checks (
         chat_id INTEGER PRIMARY KEY, checked_at TEXT NOT NULL, update_id INTEGER NOT NULL
     )""")
     initialize(db)
     initialize_voice(db)
+    initialize_cache(db)
     return db
 
 
@@ -292,15 +295,31 @@ def handle_update(api, update, db, conversations, model):
                           (chat_id,)).fetchone()
     if previous and previous[1] == update_id:
         return
-    until = datetime.now(timezone.utc)
-    since = window_start(text, datetime.fromisoformat(previous[0]) if previous else None, until)
-    api.send(chat_id, "Збираю новини…")
     try:
-        articles, status = collect(since, until)
-        if not articles and all(error for _, error in status.values()):
-            api.send(chat_id, "Джерела зараз недоступні. Спробуй ще раз трохи пізніше.")
+        now = datetime.now(timezone.utc)
+        api.send(chat_id, "Перевіряю нові публікації перед дайджестом…")
+        refresh_failed = False
+        try:
+            refresh_news(db, until=now)
+        except (OSError, ValueError, KeyError, TypeError, AttributeError, sqlite3.Error) as error:
+            print("News refresh failed (" + type(error).__name__ + ").", file=sys.stderr)
+            refresh_failed = True
+        checked_at, fetch_status = latest_fetch(db)
+        if checked_at is None:
+            api.send(chat_id, "Новини поки не вдалося зібрати. Спробуй ще раз за кілька хвилин.")
             return
-        article_ids = save_articles(db, articles, until)
+        until = min(now, checked_at)
+        since = window_start(text, datetime.fromisoformat(previous[0]) if previous else None, until)
+        articles, status = cached_articles(db, since, until, fetch_status)
+        age = now - checked_at
+        note = ("\nДозбір не вдався; використовую збережені новини." if refresh_failed else "")
+        if age.total_seconds() > 2 * poll_seconds(read_config()):
+            note += "\nДані застаріли: фоновий збір затримується."
+        api.send(chat_id, f"Формую дайджест. Останній збір: {checked_at.astimezone(KYIV):%d.%m %H:%M} за Києвом." + note)
+        if not articles and status and all(error for _, error in status.values()):
+            api.send(chat_id, "У БД поки немає новин за цей період; джерела не вдалося повністю прочитати. Фоновий збір повторить спробу.")
+            return
+        article_ids = cached_ids(db, articles)
         items = select_items(articles, model, limit=None)
         items, updates, repeated = compare_items(articles, items, previous_articles(db, chat_id, until), model)
         items = limit_items(articles, items)
@@ -325,12 +344,15 @@ def poll(api, db, model):
     messages = PrivateMessages(api, database_path, model, handle_update, open_state)
     inline = InlineAnswers(api, model, format_chat_html)
     guests = GuestAnswers(api, model, format_chat_html, username=getattr(api, "username", "DBresh_bot"), database_path=database_path)
+    collector = NewsCollector(database_path, interval=poll_seconds(read_config()))
     messages.start()
     inline.start()
     guests.start()
+    collector.start()
     try:
         while True:
             messages.check()
+            collector.check()
             try:
                 updates = api.call("getUpdates", timeout=25, offset=offset, limit=20,
                                    allowed_updates=["message", "inline_query", "guest_message"])
@@ -359,6 +381,7 @@ def poll(api, db, model):
                     print(exc, file=sys.stderr)
                 offset = update["update_id"] + 1
     finally:
+        collector.close()
         inline.close()
         guests.close()
         messages.close()

@@ -182,7 +182,7 @@ class GuestTest(unittest.TestCase):
         api = Mock()
         guest = message()
         api.call.side_effect = [[{"update_id": 1, "guest_message": guest}], KeyboardInterrupt()]
-        with patch("telegram_bot.PrivateMessages") as private, patch("telegram_bot.InlineAnswers"), patch("telegram_bot.GuestAnswers") as guests:
+        with patch("telegram_bot.NewsCollector"), patch("telegram_bot.PrivateMessages") as private, patch("telegram_bot.InlineAnswers"), patch("telegram_bot.GuestAnswers") as guests:
             with self.assertRaises(KeyboardInterrupt): poll(api, DB(), "model")
             guests.return_value.submit.assert_called_once_with(guest)
             private.return_value.submit.assert_not_called()

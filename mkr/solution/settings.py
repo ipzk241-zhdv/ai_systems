@@ -5,7 +5,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 KEYS = {"TELEGRAM_BOT_TOKEN", "LLM_PROVIDER", "LLM_MODEL", "GROQ_API_KEY", "OLLAMA_MODEL",
-        "STT_MODEL", "STT_LANGUAGE", "READING_WPM", "PLAYBACK_SPEED", "VISION_MODEL"}
+        "STT_MODEL", "STT_LANGUAGE", "READING_WPM", "PLAYBACK_SPEED", "VISION_MODEL", "NEWS_POLL_MINUTES"}
 
 
 def read_config(path=None):
