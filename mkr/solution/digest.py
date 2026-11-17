@@ -7,12 +7,13 @@ from html import escape
 from pathlib import Path
 from urllib.error import URLError
 from urllib.parse import quote, urlsplit
-from urllib.request import Request, urlopen
 
 from sources import KYIV, collect
+from settings import default_model, read_config, provider
+from llm import chat as ollama_chat
 
 
-MODEL = "qwen3.5:9b"
+MODEL = default_model()
 IMPORTANCE_RULES = Path(__file__).with_name("importance.txt")
 SECTIONS = {
     "important": "Важливе",
@@ -29,27 +30,7 @@ PROMPT = """Для кожного заголовка окремо обери о�
 Для кожного заголовка потрібна оцінка, навіть якщо вона skip."""
 
 
-def ollama_chat(messages, model, *, options, schema=None, think=None, timeout=240):
-    payload = {
-        "model": model,
-        "stream": False,
-        "messages": messages,
-        "options": options,
-    }
-    if schema is not None:
-        payload["format"] = schema
-    if think is not None:
-        payload["think"] = think
-    request = Request(
-        "http://127.0.0.1:11434/api/chat",
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
-    )
-    with urlopen(request, timeout=timeout) as response:
-        return json.load(response)
-
-
-def summarize(articles, model):
+def summarize(articles, model, limit=16):
     schema = {
         "type": "object",
         "properties": {"labels": {
@@ -75,13 +56,17 @@ def summarize(articles, model):
     if not isinstance(labels, list) or len(labels) != len(articles) or any(label not in LABELS for label in labels):
         raise ValueError("Модель не повернула по одній допустимій оцінці для кожного заголовка.")
     items = [{"id": index, "section": label} for index, label in enumerate(labels, 1) if label != "skip"]
-    if len(items) <= 16:
+    return limit_items(articles, items, limit)
+
+
+def limit_items(articles, items, limit=16):
+    if limit is None or len(items) <= limit:
         return items
     important = [item for item in items if item["section"] == "important"]
     important.sort(key=lambda item: articles[item["id"] - 1].source not in LOCAL_SOURCES)
     fun = [item for item in items if item["section"] == "fun"]
     news = [item for item in items if item["section"] == "news"]
-    return (important + fun[:3] + news + fun[3:])[:16]
+    return (important + fun[:3] + news + fun[3:])[:limit]
 
 
 def clean_markdown(value):
@@ -89,20 +74,27 @@ def clean_markdown(value):
     return re.sub(r"([\\`*_\[\]])", r"\\\1", value)
 
 
-def select_items(articles, model):
-    batch_size = 120
+def select_items(articles, model, limit=16):
+    batch_size = 24 if provider(read_config()) == "groq" else 120
     if not articles:
         return []
     if len(articles) <= batch_size:
-        return summarize(articles, model)
+        return summarize(articles, model, limit)
+
+    if limit is None:
+        items = []
+        for start in range(0, len(articles), batch_size):
+            batch = articles[start:start + batch_size]
+            items.extend({**item, "id": start + item["id"]} for item in summarize(batch, model, limit=None))
+        return items
 
     finalists = []
     for start in range(0, len(articles), batch_size):
         batch = articles[start:start + batch_size]
-        finalists.extend(start + item["id"] for item in summarize(batch, model))
+        finalists.extend(start + item["id"] for item in summarize(batch, model, limit))
     if not finalists:
         return []
-    items = summarize([articles[index - 1] for index in finalists], model)
+    items = summarize([articles[index - 1] for index in finalists], model, limit)
     return [{**item, "id": finalists[item["id"] - 1]} for item in items]
 
 
@@ -142,7 +134,7 @@ def main():
     parser = argparse.ArgumentParser(description="Локальний дайджест новин Житомира, України і світу")
     parser.add_argument("--hours", type=int, choices=range(1, 49), metavar="1–48",
                         help="період у годинах до запуску замість нічного вікна")
-    parser.add_argument("--model", default=MODEL, help="назва встановленої моделі Ollama")
+    parser.add_argument("--model", default=MODEL, help="ідентифікатор моделі обраного провайдера")
     parser.add_argument("--output", type=Path, default=Path("digest.md"))
     parser.add_argument("--collect-only", action="store_true", help="лише перевірити покриття джерел")
     args = parser.parse_args()
@@ -168,7 +160,7 @@ def main():
         items = select_items(articles, args.model)
         args.output.write_text(render(articles, items, status, since, until), encoding="utf-8")
     except (URLError, OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
-        print(f"Дайджест не створено. Перевір Ollama та параметри запуску. {exc}", file=sys.stderr)
+        print(f"Дайджест не створено. Перевір налаштування ШІ. {type(exc).__name__}", file=sys.stderr)
         return 1
     print(f"Збережено {len(items)} подій у {args.output.resolve()}")
     return 0

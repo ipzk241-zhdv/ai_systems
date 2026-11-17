@@ -49,6 +49,9 @@ h2 { font-size: 1.32rem; letter-spacing: -.025em; margin: 0 0 .65rem; }
             font-weight: 650; text-decoration: none; overflow-wrap: anywhere; }
 .headline:hover { color: var(--blue); text-decoration: underline; }
 .meta { color: var(--muted); font-size: .82rem; margin-top: .28rem; }
+.update { display: inline-block; color: #136045; background: #e8f5ee; border-radius: .3rem;
+          padding: .15rem .4rem; margin-bottom: .35rem; font-size: .76rem; font-weight: 700; }
+.previous { margin-top: .5rem; color: var(--muted); font-size: .85rem; line-height: 1.45; }
 details summary { cursor: pointer; font-weight: 650; }
 .coverage { margin: .75rem 0 0; padding-left: 1.25rem; color: var(--muted); line-height: 1.6; }
 @media (max-width: 32rem) { body { padding: .75rem; } }
@@ -92,25 +95,35 @@ def market_cards(quotes):
     return "\n".join(cards)
 
 
-def render_html(articles, items, status, quotes, since, until):
+def render_html(articles, items, status, quotes, since, until, *, updates=None, repeated=0):
+    updates = updates or {}
     start, end = since.astimezone(KYIV), until.astimezone(KYIV)
     links = []
     sections = []
+    number = 0
     for n, (title, group) in enumerate(group_items(articles, items), 1):
         section_id = f"news-{n}"
         style = " important" if title == "Важливе" else ""
         links.append(f'<a href="#{section_id}">{escape(title)}</a>')
         rows = []
         for article in group:
+            number += 1
             stamp = article.published.astimezone(KYIV)
+            previous = updates.get(article.url)
+            badge = '<span class="update">Оновлення події</span>' if previous else ""
+            earlier = (f'<details class="previous"><summary>Що було в попередньому дайджесті</summary>'
+                       f'<a href="{escape(previous["url"])}">{escape(previous["title"])}</a></details>') if previous else ""
             rows.append(f'''<li>
-<a class="headline" href="{escape(article.url)}">{escape(article.title)}</a>
+{badge}
+<a class="headline" href="{escape(article.url)}">{number}. {escape(article.title)}</a>
 <div class="meta">{escape(article.source)} · <time datetime="{stamp.isoformat()}">{stamp:%d.%m, %H:%M}</time></div>
+{earlier}
 </li>''')
         sections.append(f'<section id="{section_id}" class="panel news{style}">'
                         f'<h2>{escape(title)}</h2><ol>{"".join(rows)}</ol></section>')
     if not sections:
-        empty = "Серед зібраних публікацій немає відібраних новин." if articles else "За цей період публікацій не знайдено."
+        empty = ("Нових відібраних подій чи суттєвих оновлень немає." if repeated
+                 else "Серед зібраних публікацій немає відібраних новин.") if articles else "За цей період публікацій не знайдено."
         sections.append(f'<section class="panel"><h2>Новини</h2><p>{empty}</p></section>')
     links.extend(['<a href="#market">Ринки</a>', '<a href="#sources">Джерела</a>'])
     coverage = []
@@ -131,9 +144,12 @@ def render_html(articles, items, status, quotes, since, until):
 <h1>Дайджест новин</h1>
 <p class="period">{start:%d.%m.%Y, %H:%M} — {end:%d.%m.%Y, %H:%M} за Києвом</p>
 <p class="stats">Відібрано <b>{len(items)}</b> із <b>{len(articles)}</b> публікацій</p>
+<p class="stats">Повторів із попередніх дайджестів прибрано <b>{repeated}</b> · оновлень подій <b>{len(updates)}</b></p>
 </header>
 <nav aria-label="Розділи дайджесту">{" ".join(links)}</nav>
 <main>
+<p class="hint">У чаті бота: «Поясни 3» — пояснення новини за номером з останнього дайджесту;
+«Що змінилося» — порівняння двох останніх надісланих дайджестів.</p>
 {"".join(sections)}
 <section id="market" class="panel">
 <h2>Ринки США</h2>

@@ -5,7 +5,10 @@ from html import unescape
 from subprocess import run
 from urllib.parse import urljoin, urlsplit
 from xml.etree import ElementTree
-from zoneinfo import ZoneInfo
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:
+    from backports.zoneinfo import ZoneInfo
 
 from bs4 import BeautifulSoup
 

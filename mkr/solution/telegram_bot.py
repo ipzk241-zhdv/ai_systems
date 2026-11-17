@@ -1,5 +1,4 @@
 import json
-import os
 import re
 import secrets
 import sqlite3
@@ -14,10 +13,14 @@ from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
-from digest import MODEL, ollama_chat, select_items
+from digest import MODEL, ollama_chat, select_items, limit_items
 from html_digest import fetch_market, render_html
+from news_history import initialize, save_articles, previous_articles, compare_items, prepare_digest, confirm_delivery
+from news_questions import respond as news_response, EXPLAIN, COMPARE
 from outages import current_message, schedule_messages
 from sources import KYIV, collect, page
+from settings import read_config, default_model, provider
+from llm import error_message
 
 
 SINCE_LAST = "З останньої перевірки"
@@ -25,7 +28,6 @@ OUTAGE_BUTTON = "Відключення"
 WINDOWS = {"За 4 години": 4, "За 8 годин": 8, "За 24 години": 24, SINCE_LAST: 24}
 BASE_DIR = Path(__file__).resolve().parent
 RUNTIME_DIR = BASE_DIR / ".runtime"
-CHAT_MODEL = "qwen3.5:9b"
 CHAT_PROMPT = ("Відповідай прямо й стисло. Українська — мова за замовчуванням. "
                "Якщо не впевнений у відповіді, скажи про це.")
 DEFINITION_QUERY = re.compile(
@@ -38,7 +40,7 @@ CHAT_REPLIES = {"так", "ні", "привіт", "вітаю", "дякую", "�
 CHAT_MARKUP = re.compile(r"(```[^`\n]*\n[\s\S]*?```|`[^`\n]+`|(?<!\*)\*\*(?=\S)[^*\n]+?(?<=\S)\*\*(?!\*))")
 KEYBOARD = {
     "keyboard": [[{"text": label} for label in row] for row in
-                 (list(WINDOWS)[:2], ["За 24 години"], [SINCE_LAST], [OUTAGE_BUTTON])],
+                 (list(WINDOWS)[:2], ["За 24 години"], [SINCE_LAST], ["Що змінилося", OUTAGE_BUTTON])],
     "resize_keyboard": True,
     "is_persistent": True,
 }
@@ -92,22 +94,12 @@ class Telegram:
 
 def open_state(path):
     db = sqlite3.connect(path)
+    db.execute("PRAGMA foreign_keys=ON")
     db.execute("""CREATE TABLE IF NOT EXISTS checks (
         chat_id INTEGER PRIMARY KEY, checked_at TEXT NOT NULL, update_id INTEGER NOT NULL
     )""")
+    initialize(db)
     return db
-
-
-def read_config():
-    values = {}
-    try:
-        for line in (BASE_DIR / ".env").read_text(encoding="utf-8-sig").splitlines():
-            key, sep, value = line.partition("=")
-            if sep and key.strip() in {"TELEGRAM_BOT_TOKEN", "OLLAMA_MODEL"}:
-                values[key.strip()] = value.strip().strip("\"'")
-    except FileNotFoundError:
-        pass
-    return {**values, **os.environ}
 
 
 def window_start(button, last_check, now):
@@ -159,13 +151,16 @@ def format_chat_html(text):
     return "".join(parts)
 
 
-def answer_question(api, chat_id, text, conversations):
+def answer_question(api, chat_id, text, conversations, model=MODEL):
     if len(text) > 1500:
         api.send(chat_id, "Скороти запитання до 1500 символів і надішли ще раз.")
         return
 
     word = definition_word(text)
     previous = [] if word else conversations.get(chat_id, [])
+    if provider(read_config()) == "groq":
+        while previous and sum(len(entry["content"]) for entry in previous) > 4500:
+            previous = previous[2:]
     history = [*previous, {"role": "user", "content": text}]
     api.call("sendChatAction", chat_id=chat_id, action="typing")
     try:
@@ -174,15 +169,15 @@ def answer_question(api, chat_id, text, conversations):
             messages = [{"role": "system", "content": CHAT_PROMPT}, *history]
             if word:
                 messages[-1] = {"role": "user", "content": f"Коротко поясни значення слова «{word}»."}
-            result = ollama_chat(messages, CHAT_MODEL,
+            result = ollama_chat(messages, model,
                                  options={"temperature": 0.35, "num_ctx": 8192, "num_predict": 650},
                                  think=False, timeout=120)
             answer = result["message"]["content"].strip()
         if not answer:
             raise ValueError("Порожня відповідь моделі.")
     except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
-        print(f"Не вдалося отримати відповідь Qwen ({type(exc).__name__}).", file=sys.stderr)
-        api.send(chat_id, "Qwen зараз недоступна. Спробуй ще раз трохи пізніше.")
+        print(f"Не вдалося отримати відповідь ШІ ({type(exc).__name__}).", file=sys.stderr)
+        api.send(chat_id, error_message(exc))
         return
 
     chunks = [answer] if len(answer.encode("utf-16-le")) <= 8000 else wrap(answer, 1900, replace_whitespace=False)
@@ -203,7 +198,10 @@ def handle_update(api, update, db, conversations, model):
         return
     text = message.get("text", "").strip()
     if text == "/start" or text.startswith("/start "):
-        api.send(chat_id, "Обери період для дайджесту, натисни «Відключення» або напиши запитання Qwen.",
+        api.send(chat_id, "Обери період для дайджесту, натисни «Відключення» або напиши запитання ШІ.\n"
+                 "«Поясни 3» — пояснення новини №3 з останнього дайджесту.\n"
+                 "«Поясни 3: що це означає для мешканців?» — уточнення до статті.\n"
+                 "«Що змінилося» — порівняння двох останніх надісланих випусків.",
                  reply_markup=KEYBOARD)
         return
     action, _, street = text.partition(":")
@@ -220,8 +218,19 @@ def handle_update(api, update, db, conversations, model):
         api.send(chat_id, report, parse_mode="HTML", link_preview_options={"is_disabled": True})
         return
     if text not in WINDOWS:
+        if EXPLAIN.fullmatch(text) or text.casefold().rstrip(".!?") in COMPARE:
+            api.call("sendChatAction", chat_id=chat_id, action="typing")
+            try:
+                answer = news_response(db, chat_id, text, model)
+            except (OSError, ValueError, KeyError, TypeError, AttributeError, sqlite3.Error) as exc:
+                print(f"Не вдалося пояснити новини ({type(exc).__name__}).", file=sys.stderr)
+                api.send(chat_id, error_message(exc))
+                return
+            for chunk in wrap(answer, 1900, replace_whitespace=False, break_long_words=False, break_on_hyphens=False):
+                api.send(chat_id, format_chat_html(chunk), parse_mode="HTML", link_preview_options={"is_disabled": True})
+            return
         if text and not text.startswith("/"):
-            answer_question(api, chat_id, text, conversations)
+            answer_question(api, chat_id, text, conversations, model)
         return
 
     previous = db.execute("SELECT checked_at, update_id FROM checks WHERE chat_id = ?",
@@ -236,19 +245,23 @@ def handle_update(api, update, db, conversations, model):
         if not articles and all(error for _, error in status.values()):
             api.send(chat_id, "Джерела зараз недоступні. Спробуй ще раз трохи пізніше.")
             return
-        items = select_items(articles, model)
-    except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+        article_ids = save_articles(db, articles, until)
+        items = select_items(articles, model, limit=None)
+        items, updates, repeated = compare_items(articles, items, previous_articles(db, chat_id, until), model)
+        items = limit_items(articles, items)
+        shown_urls = {articles[item["id"] - 1].url for item in items}
+        updates = {url: previous for url, previous in updates.items() if url in shown_urls}
+        html = render_html(articles, items, status, fetch_market(), since, until,
+                           updates=updates, repeated=repeated)
+        digest_id = prepare_digest(db, chat_id, since, until, html, articles, article_ids, items, updates)
+    except (OSError, ValueError, KeyError, TypeError, AttributeError, sqlite3.Error) as exc:
         print(f"Не вдалося зібрати дайджест ({type(exc).__name__}).", file=sys.stderr)
-        api.send(chat_id, "Дайджест не сформувався. Перевір, чи працює Ollama, і повтори запит.")
+        api.send(chat_id, "Дайджест не сформувався. " + error_message(exc))
         return
 
-    html = render_html(articles, items, status, fetch_market(), since, until)
     filename = f"digest-{until.astimezone(KYIV):%Y-%m-%d-%H%M}.html"
     api.send_document(chat_id, filename, html)
-    with db:
-        db.execute("""INSERT INTO checks (chat_id, checked_at, update_id) VALUES (?, ?, ?)
-            ON CONFLICT(chat_id) DO UPDATE SET checked_at=excluded.checked_at, update_id=excluded.update_id
-        """, (chat_id, until.isoformat(), update_id))
+    confirm_delivery(db, digest_id, chat_id, until, update_id)
 
 
 def poll(api, db, model):
@@ -277,6 +290,10 @@ def poll(api, db, model):
 def main():
     try:
         config = read_config()
+        model = default_model(config)
+        if provider(config) == "groq" and not config.get("GROQ_API_KEY", "").strip():
+            print("Вкажи GROQ_API_KEY у solution/.env.", file=sys.stderr)
+            return 1
         token = config.get("TELEGRAM_BOT_TOKEN", "").strip()
         if not re.fullmatch(r"[0-9]+:[A-Za-z0-9_-]+", token):
             print("Вкажи TELEGRAM_BOT_TOKEN у файлі .env поруч зі скриптом або у змінній середовища.",
@@ -288,7 +305,9 @@ def main():
         db = open_state(RUNTIME_DIR / f"bot-{bot['id']}.sqlite3")
         try:
             print(f"Бот запущено: https://t.me/{bot['username']}", flush=True)
-            poll(api, db, config.get("OLLAMA_MODEL") or MODEL)
+            print(f"ШІ: {provider(config)} · {model}", flush=True)
+            print("Для зупинки натисни Ctrl+C або закрий вікно консолі.", flush=True)
+            poll(api, db, model)
         finally:
             db.close()
     except TelegramError as exc:

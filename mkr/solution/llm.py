@@ -1,0 +1,116 @@
+"""Ollama and Groq transport with the same response shape for existing callers."""
+import json
+import re
+from time import sleep, monotonic
+from urllib.error import HTTPError
+from urllib.request import Request, urlopen
+
+from settings import read_config, provider
+
+
+_remaining_tokens = None
+_reset_at = 0.0
+
+
+def wait_for_quota(payload):
+    global _remaining_tokens
+    # Conservative estimate; the provider's own headers are authoritative.
+    estimate = len(json.dumps(payload["messages"], ensure_ascii=False).encode("utf-8")) // 3 + payload["max_completion_tokens"] + 300
+    if _remaining_tokens is not None and estimate > _remaining_tokens:
+        remaining = _reset_at - monotonic()
+        if remaining > 65:
+            raise LLMError("Ліміт токенів Groq тимчасово вичерпано. Спробуй пізніше.")
+        while remaining > 0:
+            sleep(min(remaining, 10))
+            remaining = _reset_at - monotonic()
+        _remaining_tokens = None
+
+
+def remember_quota(headers):
+    global _remaining_tokens, _reset_at
+    try:
+        _remaining_tokens = int(headers["x-ratelimit-remaining-tokens"])
+        reset = headers.get("x-ratelimit-reset-tokens", "")
+        parts = re.findall(r"([\d.]+)(ms|s|m|h)", reset)
+        seconds = sum(float(value) * {"ms": .001, "s": 1, "m": 60, "h": 3600}[unit] for value, unit in parts)
+        _reset_at = monotonic() + seconds + 1
+    except (KeyError, TypeError, ValueError):
+        _remaining_tokens = None
+
+
+class LLMError(ValueError):
+    """Safe to show to the user; never includes API bodies, prompts or secrets."""
+
+
+def error_message(error):
+    if isinstance(error, LLMError):
+        return str(error)
+    return "Не вдалося отримати відповідь ШІ. Перевір налаштування та повтори запит."
+
+
+def chat(messages, model, *, options, schema=None, think=None, timeout=240):
+    config = read_config()
+    if provider(config) == "groq":
+        return groq_chat(messages, model, options, schema, config, timeout)
+    payload = {"model": model, "stream": False, "messages": messages, "options": options}
+    if schema is not None:
+        payload["format"] = schema
+    if think is not None:
+        payload["think"] = think
+    request = Request("http://127.0.0.1:11434/api/chat", data=json.dumps(payload).encode("utf-8"),
+                      headers={"Content-Type": "application/json"})
+    with urlopen(request, timeout=timeout) as response:
+        return json.load(response)
+
+
+def groq_chat(messages, model, options, schema, config, timeout):
+    key = config.get("GROQ_API_KEY", "").strip()
+    if not key:
+        raise LLMError("Не задано GROQ_API_KEY у конфігурації бота.")
+    payload = {"model": model, "messages": messages, "stream": False,
+               "temperature": options.get("temperature", 0),
+               "max_completion_tokens": max(2048, options.get("num_predict", 1000))}
+    if model.startswith("openai/gpt-oss-"):
+        payload["reasoning_effort"] = "low"
+        payload["include_reasoning"] = False
+    if schema is not None:
+        payload["response_format"] = {"type": "json_schema", "json_schema": {
+            "name": "news_result", "strict": True, "schema": schema}}
+    request = Request("https://api.groq.com/openai/v1/chat/completions",
+                      data=json.dumps(payload).encode("utf-8"),
+                      headers={"Content-Type": "application/json", "Authorization": "Bearer " + key,
+                               "User-Agent": "PersonalNewsBot/1.0"})
+    wait_for_quota(payload)
+    for attempt in range(3):
+        try:
+            with urlopen(request, timeout=timeout) as response:
+                remember_quota(response.headers)
+                result = json.load(response)
+            choice = result["choices"][0]
+            content = choice["message"].get("content")
+            if not isinstance(content, str) or not content.strip():
+                raise LLMError("Groq повернув порожню відповідь. Повтори запит.")
+            return {"message": {"role": "assistant", "content": content},
+                    "done_reason": choice.get("finish_reason"), "usage": result.get("usage", {})}
+        except HTTPError as exc:
+            code = exc.code
+            try:
+                delay = float(exc.headers.get("Retry-After", 2 ** attempt))
+            except (ValueError, TypeError):
+                delay = 2 ** attempt
+            exc.close()
+            if code in {429, 500, 502, 503, 504} and attempt < 2 and 0 <= delay <= 60:
+                while delay > 0:
+                    step = min(delay, 10)
+                    sleep(step)
+                    delay -= step
+                continue
+            if code == 429:
+                raise LLMError("Досягнуто ліміту Groq. Спробуй пізніше; денний ліміт відновиться за правилами Groq.") from None
+            if code in {401, 403}:
+                raise LLMError("Groq відхилив доступ. Перевір API-ключ і дозволи моделі.") from None
+            if code in {400, 404, 413, 422}:
+                raise LLMError("Groq не прийняв модель, формат або розмір запиту. Перевір LLM_MODEL і налаштування.") from None
+            raise LLMError("Groq тимчасово недоступний. Спробуй пізніше.") from None
+        except (KeyError, IndexError, TypeError):
+            raise LLMError("Groq повернув невідому структуру відповіді.") from None

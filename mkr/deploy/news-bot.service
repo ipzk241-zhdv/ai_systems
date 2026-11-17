@@ -1,0 +1,28 @@
+[Unit]
+Description=Telegram news digest bot
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/news-bot
+ExecStart=/usr/bin/python3 -u /home/ubuntu/news-bot/start_bot.py
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=on-failure
+RestartSec=20
+TimeoutStopSec=20
+KillSignal=SIGINT
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/ubuntu/news-bot/solution/.runtime
+
+[Install]
+WantedBy=multi-user.target
