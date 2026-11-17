@@ -24,8 +24,18 @@ SERVICE = "news-bot"
 
 def run(args, cwd=None):
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
-    return subprocess.run(args, cwd=cwd, env=env, check=True,
-                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True).stdout.strip()
+    try:
+        return subprocess.run(args, cwd=cwd, env=env, check=True,
+                              stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True).stdout.strip()
+    except subprocess.CalledProcessError as error:
+        if "unittest" in args:
+            label = "unit tests in " + args[args.index("-s") + 1]
+        else:
+            label = " ".join(str(value) for value in args[:4])
+        reason = ""
+        if args[:2] == ["git", "fetch"] and "non-fast-forward" in (error.stderr or ""):
+            reason = " Remote history was rewritten; refresh the installed deployment handler."
+        raise ValueError("Deployment step failed: " + label + " (exit " + str(error.returncode) + ")." + reason) from None
 
 
 def parse_command(command):
@@ -86,7 +96,9 @@ def healthy(service, checks=8):
 
 def deploy(sha, repo=REPO, state=STATE, service=SERVICE):
     ensure_clean(repo)
-    run(["git", "fetch", "--no-tags", "origin", "master:refs/remotes/origin/master"], cwd=repo)
+    # A rewritten master may update the tracking ref. This does not touch HEAD,
+    # local files or runtime data; candidate validation still happens below.
+    run(["git", "fetch", "--no-tags", "origin", "+master:refs/remotes/origin/master"], cwd=repo)
     head = run(["git", "rev-parse", "refs/remotes/origin/master"], cwd=repo)
     if head != sha:
         print("Skipped: a newer commit is already on master.")

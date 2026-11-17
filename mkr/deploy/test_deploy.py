@@ -3,6 +3,7 @@ from contextlib import closing
 import json
 from pathlib import Path
 import sqlite3
+import subprocess
 import tarfile
 import tempfile
 import unittest
@@ -80,6 +81,25 @@ class DeployTest(unittest.TestCase):
                 with self.assertRaises(ValueError): deploy_vm.deploy(sha, root, root / "state")
             self.assertIn(["git", "reset", "--hard", old], calls)
             self.assertEqual((root / "mkr/solution/.env").read_text(), "PRIVATE")
+
+    def test_fetch_can_refresh_rewritten_tracking_ref_without_resetting_checkout(self):
+        calls = []
+        def run(args, cwd=None):
+            calls.append(args)
+            return "b" * 40 if args[:2] == ["git", "rev-parse"] else ""
+        with patch.object(deploy_vm, "ensure_clean"), patch.object(deploy_vm, "run", side_effect=run):
+            deploy_vm.deploy("a" * 40)
+        self.assertIn(["git", "fetch", "--no-tags", "origin", "+master:refs/remotes/origin/master"], calls)
+        self.assertFalse(any(command[:3] == ["git", "reset", "--hard"] for command in calls))
+
+    def test_failed_command_names_stage_without_echoing_private_output(self):
+        error = subprocess.CalledProcessError(1, ["git", "fetch"], stderr="non-fast-forward private-secret")
+        with patch.object(deploy_vm.subprocess, "run", side_effect=error):
+            with self.assertRaises(ValueError) as caught:
+                deploy_vm.run(["git", "fetch", "--no-tags", "origin"])
+        self.assertIn("git fetch", str(caught.exception))
+        self.assertIn("history was rewritten", str(caught.exception))
+        self.assertNotIn("private-secret", str(caught.exception))
 
 
 if __name__ == "__main__":

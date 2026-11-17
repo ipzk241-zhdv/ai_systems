@@ -73,6 +73,12 @@ VM-side tests catch missing Python dependencies before the running bot is stoppe
 Do not edit tracked application code directly on the VM. Local tracked changes intentionally
 block automatic deployment instead of being overwritten. Keep VM configuration in `.env`.
 
+The handler refreshes `origin/master` even after an intentional history rewrite, then
+validates the exact requested commit before changing application files. Avoid force-pushing
+for ordinary updates: after an automated commit, pull the latest master before editing.
+If you change `deploy_vm.py`, also refresh its installed root-owned copy on the VM;
+ordinary deployments intentionally cannot update their own SSH entry point.
+
 GitHub environment `oracle` shows deployment history. Deployment concurrency is serialized;
 pull-request workflows never receive the deployment key. Revoke the key by removing its line
 from `~/.ssh/authorized_keys` and deleting/replacing the Actions secret.
