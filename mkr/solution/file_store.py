@@ -12,7 +12,7 @@ import time
 from settings import BASE_DIR, read_config
 
 
-MAX_FILE_BYTES = 100 * 1024 * 1024
+MAX_FILE_BYTES = 2048 * 1024 * 1024
 MAX_STORAGE_BYTES = 5120 * 1024 * 1024
 SESSION_SECONDS = 2 * 60 * 60
 
@@ -77,7 +77,7 @@ class FileStore:
             if not 1 <= number <= maximum:
                 raise FileError(key + " має бути від 1 до " + str(maximum) + " МБ.")
             return number * 1024 * 1024
-        return {"max_file_bytes": value("FILES_MAX_FILE_MB", MAX_FILE_BYTES, 1024),
+        return {"max_file_bytes": value("FILES_MAX_FILE_MB", MAX_FILE_BYTES, 16384),
                 "limit_bytes": value("FILES_STORAGE_LIMIT_MB", MAX_STORAGE_BYTES, 1048576)}
 
     def connect(self):
@@ -245,6 +245,87 @@ class FileStore:
         finally:
             db.close()
 
+    def import_folders(self, user_id, directories, files, parent_id=None):
+        """Validate the complete manifest, then create its folders in one transaction."""
+        self.require_user(user_id)
+        if (not isinstance(directories, list) or not isinstance(files, list)
+                or not 1 <= len(directories) + len(files) <= 10000):
+            raise FileError("Обери папку з не більш ніж 10 000 файлів і підпапок.")
+        paths, canonical, file_paths, total = {}, {}, set(), 0
+        limits = self.limits()
+
+        def parts(path, is_file=False):
+            if (not isinstance(path, str) or not path or len(path) > 6000 or "\\" in path
+                    or path.startswith("/") or re.match(r"^[A-Za-z]:", path)):
+                raise FileError("Некоректний відносний шлях у папці.")
+            result = path.split("/")
+            if len(result) > (33 if is_file else 32):
+                raise FileError("Максимальна глибина папок — 32 рівні.")
+            for name in result:
+                self.valid_name(name)
+            return result
+
+        def add_directory(names):
+            for depth in range(1, len(names) + 1):
+                path = "/".join(names[:depth])
+                key = "/".join(self.valid_name(name).casefold() for name in names[:depth])
+                if key in canonical and canonical[key] != path:
+                    raise FileError("У вибраній папці є неоднозначні назви підпапок.")
+                canonical[key], paths[path] = path, names[:depth]
+                if len(paths) + len(files) > 10000:
+                    raise FileError("Обери папку з не більш ніж 10 000 файлів і підпапок.")
+
+        for path in directories:
+            add_directory(parts(path))
+        for entry in files:
+            if not isinstance(entry, dict):
+                raise FileError("Некоректний список файлів папки.")
+            names = parts(entry.get("path"), is_file=True)
+            length = entry.get("size")
+            if type(length) is not int or length < 0 or length > limits["max_file_bytes"]:
+                raise FileError("Один із файлів перевищує налаштований максимальний розмір.")
+            if entry["path"] in file_paths:
+                raise FileError("У списку є повторний шлях до файла.")
+            file_paths.add(entry["path"])
+            total += length
+            add_directory(names[:-1])
+        if len(paths) + len(files) > 10000:
+            raise FileError("Обери папку з не більш ніж 10 000 файлів і підпапок.")
+        if set(paths) & file_paths:
+            raise FileError("Файл і папка мають однаковий шлях.")
+        db = self.connect()
+        try:
+            with db:
+                db.execute("BEGIN IMMEDIATE")
+                base_depth = len(self.folder_path(db, parent_id))
+                if any(base_depth + len(names) > 32 for names in paths.values()):
+                    raise FileError("Максимальна глибина папок — 32 рівні.")
+                used = db.execute("SELECT COALESCE(sum(size),0) FROM files").fetchone()[0]
+                if used + total > limits["limit_bytes"]:
+                    raise FileError("Для всієї папки не вистачає місця у сховищі.")
+                largest = max((entry["size"] for entry in files), default=0)
+                if shutil.disk_usage(str(self.root)).free < total + largest + 64 * 1024 * 1024:
+                    raise FileError("На диску сервера недостатньо місця для цієї папки.")
+                mapping, roots = {}, []
+                for path, names in sorted(paths.items(), key=lambda item: (len(item[1]), item[0])):
+                    parent = mapping["/".join(names[:-1])] if len(names) > 1 else parent_id
+                    name = self.valid_name(names[-1])
+                    if len(names) == 1:
+                        existing = {row[0] for row in db.execute("SELECT name_key FROM folders WHERE parent_id IS ?", (parent,))}
+                        base, number = name, 1
+                        while name.casefold() in existing:
+                            number += 1
+                            suffix = " (" + str(number) + ")"
+                            name = base[:180 - len(suffix)].rstrip() + suffix
+                    cursor = db.execute("INSERT INTO folders (parent_id,name,name_key,created_at) VALUES (?,?,?,?)",
+                                        (parent, name, name.casefold(), time.time()))
+                    mapping[path] = cursor.lastrowid
+                    if len(names) == 1:
+                        roots.append({"id": cursor.lastrowid, "name": name})
+                return {"folders": mapping, "roots": roots}
+        finally:
+            db.close()
+
     def update_item(self, user_id, kind, item_id, name, parent_id=None):
         self.require_user(user_id)
         name = self.valid_name(name)
@@ -286,8 +367,8 @@ class FileStore:
         name = str(name).replace("\\", "/").rsplit("/", 1)[-1].strip()
         name = self.valid_name(name)
         limits = self.limits()
-        if type(length) is not int or length <= 0 or length > limits["max_file_bytes"]:
-            raise FileError("Файл порожній або перевищує налаштований максимальний розмір.")
+        if type(length) is not int or length < 0 or length > limits["max_file_bytes"]:
+            raise FileError("Файл перевищує налаштований максимальний розмір.")
         db = self.connect()
         blob = secrets.token_hex(24)
         path = self.blobs / blob

@@ -3,3 +3,6 @@
 #edit-error{color:#b3261e;font-size:12px}#edit-error:empty{display:none}@media(min-width:651px){#menu{display:none}}
 
 .close-menu{display:none}@media(max-width:650px){.close-menu{display:inline-grid;position:absolute;right:10px;top:8px}.sidebar{padding-top:55px}}
+
+.heading-actions{flex-wrap:wrap;justify-content:flex-end}
+.file-panel.drop-active{outline:3px dashed #3376e8;outline-offset:-5px;background:#eef5ff}

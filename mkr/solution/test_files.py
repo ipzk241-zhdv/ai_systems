@@ -34,7 +34,7 @@ class FileTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def request(self, path, method="GET", body=b"", token="", csrf="", origin="https://files.example.org", content_type="application/json"):
+    def request(self, path, method="GET", body=b"", token="", csrf="", origin="https://files.example.org", content_type="application/json", headers=None):
         if isinstance(body, dict):
             body = json.dumps(body).encode("utf-8")
         route, _, query = path.partition("?")
@@ -43,6 +43,7 @@ class FileTests(unittest.TestCase):
                "wsgi.input": BytesIO(body), "HTTP_HOST": "files.example.org",
                "HTTP_ORIGIN": origin, "HTTP_COOKIE": "files_session=" + token,
                "HTTP_X_CSRF_TOKEN": csrf}
+        env.update(headers or {})
         captured = {}
         def start(status, headers):
             captured.update(status=status, headers=dict(headers))
@@ -123,8 +124,8 @@ class FileTests(unittest.TestCase):
             with self.assertRaises(FileError):
                 self.store.get_file(user, file_id)
 
-    def test_empty_large_and_over_quota_uploads_leave_no_orphan_files(self):
-        for name, data in (("", b"a"), ("..", b"a"), ("a\n.txt", b"a"), ("file", b"")):
+    def test_invalid_large_and_over_quota_uploads_leave_no_orphan_files(self):
+        for name, data in (("", b"a"), ("..", b"a"), ("a\n.txt", b"a")):
             with self.assertRaises(FileError):
                 self.store.upload(101, name, data)
         with patch("file_store.MAX_FILE_BYTES", 2):
@@ -134,6 +135,81 @@ class FileTests(unittest.TestCase):
             with self.assertRaises(FileError):
                 self.store.upload(101, "large", b"abc")
         self.assertEqual(list(self.store.blobs.iterdir()), [])
+
+    def test_folder_import_uploads_nested_and_empty_files_into_selected_destination(self):
+        parent = self.store.create_folder(101, "Destination")
+        token, csrf = self.session()
+        response = self.request('/api/folders/import', 'POST', {
+            "directories": ["Root", "Root/Nested", "Root/Empty"],
+            "files": [{"path": "Root/Nested/notes.txt", "size": 5}, {"path": "Root/zero", "size": 0}],
+            "parent_id": parent}, token, csrf)
+        self.assertEqual(response["status"], "200 OK")
+        mapping = json.loads(response["body"])["folders"]
+        for name, data, folder in (("notes.txt", b"hello", "Root/Nested"), ("zero", b"", "Root")):
+            uploaded = self.request('/api/files?name=' + name + '&folder=' + str(mapping[folder]),
+                                    'POST', data, token, csrf, content_type='application/octet-stream')
+            self.assertEqual(uploaded["status"], "200 OK")
+            file_id = json.loads(uploaded["body"])["id"]
+            self.assertEqual(self.store.get_file(202, file_id)[0].read_bytes(), data)
+        folders = {item["id"]: item for item in self.store.list_folders(101)}
+        self.assertEqual(folders[mapping["Root"]]["parent_id"], parent)
+        self.assertEqual(folders[mapping["Root/Empty"]]["parent_id"], mapping["Root"])
+
+    def test_folder_import_does_not_merge_or_overwrite_existing_roots(self):
+        old = self.store.create_folder(101, "Root")
+        file_id = self.store.upload(101, "old.txt", b"old", old)
+        result = self.store.import_folders(101, ["Root/Child"], [])
+        self.assertEqual(result["roots"][0]["name"], "Root (2)")
+        self.assertNotEqual(result["folders"]["Root"], old)
+        self.assertEqual(self.store.get_file(101, file_id)[0].read_bytes(), b"old")
+        self.assertEqual(self.store.import_folders(101, ["Root"], [])["roots"][0]["name"], "Root (3)")
+
+    def test_folder_manifest_validation_precedes_any_mutation(self):
+        for directories, files in [
+            (["../outside"], []), (["/root"], []), (["C:/root"], []), (["a\\b"], []),
+            (["a/./b"], []), (["a//b"], []), (["a/.. /b"], []),
+            (["Root/Sub", "Root/sub"], []), (["/".join(["x"] * 33)], []),
+            (["Root"], [{"path":"Root/a", "size":-1}]),
+            (["Root"], [{"path":"Root/a", "size":True}]),
+            (["Root"], [{"path":"../x", "size":1}]),
+            (["Root"], [{"path":"Root/a", "size":1}] * 2),
+            (["Root/a"], [{"path":"Root/a", "size":1}]),
+            ([], []), (["Root"] * 10001, [])]:
+            with self.subTest(directories=directories[:2]):
+                with self.assertRaises(FileError):
+                    self.store.import_folders(101, directories, files)
+                self.assertEqual(self.store.list_folders(101), [])
+        with patch('file_store.MAX_FILE_BYTES', 2):
+            with self.assertRaises(FileError):
+                self.store.import_folders(101, ["Root"], [{"path":"Root/a", "size":3}])
+        with patch('file_store.MAX_STORAGE_BYTES', 2):
+            with self.assertRaises(FileError):
+                self.store.import_folders(101, ["Root"], [{"path":"Root/a", "size":2}, {"path":"Root/b", "size":1}])
+        with patch('file_store.shutil.disk_usage', return_value=SimpleNamespace(free=0)):
+            with self.assertRaises(FileError):
+                self.store.import_folders(101, ["Root"], [])
+        self.assertEqual(self.store.list_folders(101), [])
+
+    def test_folder_import_endpoint_rechecks_permissions_and_csrf(self):
+        body = {"directories":["Root"], "files":[]}
+        self.assertEqual(self.request('/api/folders/import', 'POST', body)["status"], '403 Forbidden')
+        token, csrf = self.session()
+        self.assertEqual(self.request('/api/folders/import', 'POST', body, token)["status"], '403 Forbidden')
+        self.assertEqual(self.request('/api/folders/import', 'POST', body, token, csrf, 'https://evil.example')["status"], '403 Forbidden')
+        self.config["FILES_ALLOWED_USER_IDS"] = "202"
+        self.assertEqual(self.request('/api/folders/import', 'POST', body, token, csrf)["status"], '403 Forbidden')
+        self.assertEqual(self.store.list_folders(202), [])
+        asset = self.request('/folder-upload.js')
+        self.assertEqual(asset["status"], '200 OK')
+        self.assertIn(b'fromEntries', asset["body"])
+
+    def test_folder_import_depth_counts_destination_and_rolls_back(self):
+        parent = None
+        for index in range(31):
+            parent = self.store.create_folder(101, str(index), parent)
+        with self.assertRaises(FileError):
+            self.store.import_folders(101, ["Root/Child"], [], parent)
+        self.assertEqual(len(self.store.list_folders(101)), 31)
 
     def test_login_requires_nonce_password_and_origin_and_sets_secure_cookie(self):
         grant = self.store.issue_grant(101)
@@ -307,7 +383,7 @@ class FileTests(unittest.TestCase):
         self.assertEqual(info["available_bytes"], 2 * 1024 * 1024 - 5)
         with self.assertRaises(FileError):
             self.store.upload(101, "big", b"x" * (1024 * 1024 + 1))
-        for value in ("0", "bad", "-5", "1025"):
+        for value in ("0", "bad", "-5", "16385"):
             self.config["FILES_MAX_FILE_MB"] = value
             with self.assertRaises(FileError):
                 self.store.limits()
@@ -383,6 +459,78 @@ class FileTests(unittest.TestCase):
         self.assertEqual(item["id"], 7)
         self.assertIsNone(item["folder_id"])
         self.assertEqual(self.store.get_file(202, 7)[0].read_bytes(), b'hello')
+
+    def test_large_file_limit_accepts_one_and_half_gib_and_upload_stays_chunked(self):
+        length = 1536 * 1024 * 1024
+        self.assertGreaterEqual(self.store.limits()["max_file_bytes"], length)
+        class VirtualStream:
+            remaining = length
+            largest = 0
+            block = b'x' * (1024 * 1024)
+            def read(self, count):
+                self.largest = max(self.largest, count)
+                amount = min(count, self.remaining)
+                self.remaining -= amount
+                return self.block[:amount]
+        class CountingOutput:
+            total = 0
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def write(self, data): self.total += len(data)
+        stream, output = VirtualStream(), CountingOutput()
+        digest = SimpleNamespace(update=Mock(), hexdigest=lambda: '0' * 64)
+        with patch.object(Path, 'open', return_value=output), patch('file_store.hashlib.sha256', return_value=digest), patch('file_store.shutil.disk_usage', return_value=SimpleNamespace(free=4 * length)):
+            file_id = self.store.upload_stream(101, 'archive.bin', stream, length)
+        self.assertEqual(stream.remaining, 0)
+        self.assertLessEqual(stream.largest, 1024 * 1024)
+        self.assertEqual(output.total, length)
+        self.assertEqual(self.store.list_files(101)[0]['size'], length)
+        self.assertEqual(self.store.list_files(101)[0]['id'], file_id)
+
+    def test_download_supports_open_closed_and_suffix_ranges(self):
+        file_id = self.store.upload(101, 'data.bin', b'0123456789abcdefghij')
+        token, _ = self.session()
+        for header, expected, content_range in [('bytes=3-7', b'34567', 'bytes 3-7/20'),
+                                                ('bytes=15-', b'fghij', 'bytes 15-19/20'),
+                                                ('bytes=-4', b'ghij', 'bytes 16-19/20'),
+                                                ('bytes=18-999', b'ij', 'bytes 18-19/20')]:
+            result = self.request('/api/files/' + str(file_id) + '/download', token=token, headers={'HTTP_RANGE':header})
+            self.assertEqual(result['status'], '206 Partial Content')
+            self.assertEqual(result['body'], expected)
+            self.assertEqual(result['headers']['Content-Range'], content_range)
+            self.assertEqual(result['headers']['Content-Length'], str(len(expected)))
+            self.assertEqual(result['headers']['Accept-Ranges'], 'bytes')
+
+    def test_range_requires_auth_and_checks_file_identity_before_resuming(self):
+        file_id = self.store.upload(101, 'data.bin', b'abcdefghij')
+        path = '/api/files/' + str(file_id) + '/download'
+        denied = self.request(path, headers={'HTTP_RANGE':'bytes=4-'})
+        self.assertEqual(denied['status'], '403 Forbidden')
+        self.assertNotIn('Content-Range', denied['headers'])
+        token, _ = self.session()
+        etag = self.request(path, token=token)['headers']['ETag']
+        result = self.request(path, token=token, headers={'HTTP_RANGE':'bytes=4-', 'HTTP_IF_RANGE':etag})
+        self.assertEqual(result['body'], b'efghij')
+        result = self.request(path, token=token, headers={'HTTP_RANGE':'bytes=4-', 'HTTP_IF_RANGE':'"different-version"'})
+        self.assertEqual(result['status'], '200 OK')
+        self.assertEqual(result['body'], b'abcdefghij')
+
+    def test_unsatisfiable_range_and_head_and_unsupported_ranges(self):
+        file_id = self.store.upload(101, 'data.bin', b'abcdefghij')
+        path = '/api/files/' + str(file_id) + '/download'
+        token, _ = self.session()
+        for header in ('bytes=10-', 'bytes=8-3', 'bytes=-0'):
+            result = self.request(path, token=token, headers={'HTTP_RANGE':header})
+            self.assertEqual(result['status'], '416 Range Not Satisfiable')
+            self.assertEqual(result['headers']['Content-Range'], 'bytes */10')
+        result = self.request(path, method='HEAD', token=token, headers={'HTTP_RANGE':'bytes=2-4'})
+        self.assertEqual(result['status'], '200 OK')
+        self.assertEqual(result['body'], b'')
+        self.assertEqual(result['headers']['Content-Length'], '10')
+        for header in ('items=0-1', 'bytes=0-1,3-4', 'bytes=invalid'):
+            result = self.request(path, token=token, headers={'HTTP_RANGE':header})
+            self.assertEqual(result['status'], '200 OK')
+            self.assertEqual(result['body'], b'abcdefghij')
 
 
 if __name__ == "__main__":

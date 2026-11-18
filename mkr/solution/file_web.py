@@ -1,5 +1,6 @@
 """Small WSGI file manager, served on loopback behind HTTPS by Waitress."""
 from http.cookies import SimpleCookie
+from email.utils import formatdate
 import hmac
 import json
 from pathlib import Path
@@ -15,16 +16,39 @@ ASSETS = Path(__file__).resolve().parent / "file_web_assets"
 
 
 class FileBody:
-    def __init__(self, path, length):
-        self.path, self.length = path, length
+    def __init__(self, path, length, offset=0):
+        self.path, self.length, self.offset = path, length, offset
 
     def __iter__(self):
         with self.path.open("rb") as source:
-            while True:
-                chunk = source.read(256 * 1024)
+            source.seek(self.offset)
+            remaining = self.length
+            while remaining:
+                chunk = source.read(min(256 * 1024, remaining))
                 if not chunk:
-                    break
+                    raise OSError("Stored file ended before the requested length")
+                remaining -= len(chunk)
                 yield chunk
+
+
+def requested_range(header, size):
+    """One byte range; unsupported or malformed Range headers use a full response."""
+    if len(header) > 200:
+        return None
+    match = re.fullmatch(r"bytes=(\d*)-(\d*)", header.strip())
+    if not match or not any(match.groups()):
+        return None
+    start, end = match.groups()
+    if not start:
+        suffix = int(end)
+        if not suffix or not size:
+            raise ValueError("Unsatisfiable byte range")
+        return max(0, size - suffix), size - 1
+    start = int(start)
+    end = min(int(end), size - 1) if end else size - 1
+    if start >= size or end < start:
+        raise ValueError("Unsatisfiable byte range")
+    return start, end
 
 
 def public_origin(config):
@@ -69,10 +93,11 @@ class FileApp:
         method, path = env.get("REQUEST_METHOD", "GET"), env.get("PATH_INFO", "/")
         if env.get("HTTP_HOST", "") != urlsplit(origin).netloc:
             raise FileError("Невідома адреса сайта.")
-        if method in {"GET", "HEAD"} and path in {"/", "/app.css", "/app.js"}:
+        if method in {"GET", "HEAD"} and path in {"/", "/app.css", "/app.js", "/folder-upload.js"}:
             filename, mime = {"/": ("index.html", "text/html; charset=utf-8"),
                               "/app.css": ("app.css", "text/css; charset=utf-8"),
-                              "/app.js": ("app.js", "text/javascript; charset=utf-8")}[path]
+                              "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+                              "/folder-upload.js": ("folder-upload.js", "text/javascript; charset=utf-8")}[path]
             return "200 OK", mime, (ASSETS / filename).read_bytes(), []
         if method == "POST" and env.get("HTTP_ORIGIN") != origin:
             raise FileError("Запит має надходити з відкритого сайта сховища.")
@@ -98,6 +123,10 @@ class FileApp:
             body = self.read_json(env, 4096)
             folder_id = self.store.create_folder(user_id, body.get("name"), body.get("parent_id"))
             return self.json_response({"id": folder_id})
+        if method == "POST" and path == "/api/folders/import":
+            body = self.read_json(env, 2 * 1024 * 1024)
+            result = self.store.import_folders(user_id, body.get("directories"), body.get("files"), body.get("parent_id"))
+            return self.json_response(result)
         match = re.fullmatch(r"/api/(files|folders)/([1-9][0-9]*)", path)
         if method == "POST" and match:
             body = self.read_json(env, 4096)
@@ -118,7 +147,22 @@ class FileApp:
         if method in {"GET", "HEAD"} and match:
             file_path, name, size = self.store.get_file(user_id, int(match[1]))
             disposition = "attachment; filename=download; filename*=UTF-8''" + quote(name, safe="")
-            return "200 OK", "application/octet-stream", FileBody(file_path, size), [("Content-Disposition", disposition)]
+            modified = formatdate(file_path.stat().st_mtime, usegmt=True)
+            etag = '"' + file_path.name + '"'
+            headers = [("Content-Disposition", disposition), ("Accept-Ranges", "bytes"),
+                       ("ETag", etag), ("Last-Modified", modified)]
+            byte_range = None
+            if method == "GET" and env.get("HTTP_RANGE") and env.get("HTTP_IF_RANGE", etag) in {etag, modified}:
+                try:
+                    byte_range = requested_range(env["HTTP_RANGE"], size)
+                except ValueError:
+                    return ("416 Range Not Satisfiable", "application/json", b'{"error":"Invalid byte range"}',
+                            headers + [("Content-Range", "bytes */" + str(size))])
+            if byte_range:
+                start, end = byte_range
+                return ("206 Partial Content", "application/octet-stream", FileBody(file_path, end - start + 1, start),
+                        headers + [("Content-Range", "bytes " + str(start) + "-" + str(end) + "/" + str(size))])
+            return "200 OK", "application/octet-stream", FileBody(file_path, size), headers
         return "404 Not Found", "application/json", b'{"error":"Not found"}', []
 
     @staticmethod

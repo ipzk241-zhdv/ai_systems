@@ -15,6 +15,7 @@ def package():
     files.extend((solution / "file_web_assets").glob("*.*"))
     files.extend((root / "deploy").glob("*.md"))
     files.append(root / "deploy" / "news-bot.service")
+    files.append(root / "deploy" / "direct_files_https.py")
     with ZipFile(output, "w", ZIP_DEFLATED) as archive:
         for path in sorted(files):
             archive.write(path, path.relative_to(root).as_posix())

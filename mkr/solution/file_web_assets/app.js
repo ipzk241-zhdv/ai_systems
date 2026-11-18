@@ -178,16 +178,89 @@ function uploadOne(file, folderId) {
     request.send(file);
   });
 }
-$('upload-button').addEventListener('click', () => $('upload').click()); $('sidebar-upload').addEventListener('click', () => { document.body.classList.remove('menu-open'); $('upload').click(); });
-$('upload').addEventListener('change', async () => {
-  const selected = [...$('upload').files]; if (!selected.length) return;
-  if (selected.some(file => !file.size || file.size > storage.max_file_bytes)) { notice('Обери непорожні файли, кожен до ' + size(storage.max_file_bytes) + '.'); $('upload').value = ''; return; }
-  const target = currentFolder; $('upload-button').disabled = true; $('sidebar-upload').disabled = true; $('upload-state').hidden = false; notice('');
-  try { for (let index=0; index<selected.length; index++) { $('upload-label').textContent = (index+1) + '/' + selected.length + ' · ' + selected[index].name; $('upload-progress').value = 0; await uploadOne(selected[index], target); }
-    notice('Завантажено файлів: ' + selected.length + '.'); }
-  catch(error) { notice(error.message); }
-  finally { $('upload').value = ''; $('upload-button').disabled = false; $('sidebar-upload').disabled = false; $('upload-state').hidden = true; try { await load(); } catch(error) { notice(error.message); } }
+let uploadBusy = false;
+function setUploadBusy(value) {
+  uploadBusy = value;
+  for (const id of ['upload-button', 'sidebar-upload', 'upload-folder-button']) $(id).disabled = value;
+  $('upload-state').hidden = !value;
+  if (value) { notice(''); $('upload-label').textContent = 'Читаю список файлів…'; $('upload-progress').value = 0; }
+}
+async function uploadBatch(collect) {
+  if (uploadBusy) return;
+  const target = currentFolder;
+  let saved = 0, total = 0, prepared = false;
+  setUploadBusy(true);
+  try {
+    const plan = await collect(); total = plan.files.length;
+    if (!total && !plan.directories.length) return;
+    if (plan.files.some(item => item.file.size > storage.max_file_bytes)) throw new Error('Один файл — до ' + size(storage.max_file_bytes) + '.');
+    const bytes = plan.files.reduce((sum, item) => sum + item.file.size, 0);
+    if (bytes > storage.available_bytes) throw new Error('Для всієї папки або вибраних файлів не вистачає місця.');
+    let mapping = {};
+    if (plan.directories.length) {
+      $('upload-label').textContent = 'Створюю структуру папок…';
+      const result = await api('/api/folders/import', jsonOptions(FolderUpload.manifest(plan, target)));
+      mapping = result.folders; prepared = true;
+    }
+    for (const item of plan.files) {
+      const slash = item.path.lastIndexOf('/');
+      const folder = slash < 0 ? target : mapping[item.path.slice(0, slash)];
+      if (slash >= 0 && !folder) throw new Error('Не знайдено папку для ' + item.path);
+      $('upload-label').textContent = (saved + 1) + '/' + total + ' · ' + item.path;
+      $('upload-progress').value = 0;
+      await uploadOne(item.file, folder); saved++;
+    }
+    notice('Завантажено файлів: ' + saved + (plan.directories.length ? '. Структуру папок збережено.' : '.'));
+  } catch(error) {
+    if (error.name !== 'AbortError') notice(error.message + (saved || prepared ? ' Збережено файлів: ' + saved + ' із ' + total + '. Уже створені папки залишено.' : ''));
+  } finally {
+    $('upload').value = ''; $('upload-folder').value = ''; setUploadBusy(false);
+    try { await load(); } catch(error) { notice(error.message); }
+  }
+}
+$('upload-button').addEventListener('click', () => { if (!uploadBusy) $('upload').click(); });
+$('sidebar-upload').addEventListener('click', () => { document.body.classList.remove('menu-open'); if (!uploadBusy) $('upload').click(); });
+$('upload').addEventListener('change', () => {
+  const selected = [...$('upload').files];
+  if (selected.length) uploadBatch(() => FolderUpload.fromFiles(selected));
 });
+$('upload-folder-button').addEventListener('click', () => {
+  if (uploadBusy) return;
+  if (window.showDirectoryPicker) {
+    // Open synchronously from the click to preserve the browser's user activation.
+    const selection = window.showDirectoryPicker({mode:'read'});
+    uploadBatch(async () => FolderUpload.fromHandle(await selection));
+  } else $('upload-folder').click();
+});
+$('upload-folder').addEventListener('change', () => {
+  const selected = [...$('upload-folder').files];
+  if (selected.length) uploadBatch(() => FolderUpload.fromFiles(selected));
+});
+const dropZone = document.querySelector('.file-panel');
+let dragDepth = 0;
+function fileDrag(event) { return [...(event.dataTransfer.types || [])].includes('Files'); }
+dropZone.addEventListener('dragenter', event => {
+  if (!fileDrag(event)) return;
+  event.preventDefault(); dragDepth++;
+  if (!uploadBusy) dropZone.classList.add('drop-active');
+});
+dropZone.addEventListener('dragover', event => {
+  if (fileDrag(event)) { event.preventDefault(); event.dataTransfer.dropEffect = uploadBusy ? 'none' : 'copy'; }
+});
+dropZone.addEventListener('dragleave', event => { if (fileDrag(event) && --dragDepth <= 0) { dragDepth = 0; dropZone.classList.remove('drop-active'); } });
+dropZone.addEventListener('drop', event => {
+  if (!fileDrag(event)) return;
+  event.preventDefault(); dragDepth = 0; dropZone.classList.remove('drop-active');
+  if (uploadBusy) return;
+  // DataTransfer access expires after this event; snapshot entries before any await.
+  const items = [...event.dataTransfer.items].filter(item => item.kind === 'file');
+  const entries = items.map(item => item.webkitGetAsEntry ? item.webkitGetAsEntry() : item.getAsEntry ? item.getAsEntry() : null);
+  const selected = [...event.dataTransfer.files];
+  uploadBatch(() => entries.length && entries.every(Boolean) ? FolderUpload.fromEntries(entries) : FolderUpload.fromFiles(selected));
+});
+// Prevent a missed drop from navigating away to a local file.
+window.addEventListener('dragover', event => { if (fileDrag(event)) event.preventDefault(); });
+window.addEventListener('drop', event => { if (fileDrag(event)) event.preventDefault(); });
 $('logout').addEventListener('click', async () => { try { await api('/api/logout',{method:'POST'}); location.reload(); } catch(error) { notice(error.message); } });
 $('search').addEventListener('input', render); $('sort').addEventListener('change', render);
 document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => navigate(null,button.dataset.view)));
