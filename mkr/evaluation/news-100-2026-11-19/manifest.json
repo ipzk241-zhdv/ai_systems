@@ -1,0 +1,17 @@
+{
+  "frozen_at": "2026-11-18T22:47:46.977280+00:00",
+  "sample_size": 100,
+  "ratings_count": 100,
+  "model": "openai/gpt-oss-20b",
+  "rules_sha256": "1ed18980497db5064abe207cf3870d27739e9c91653c6d1ea5b0402a18900cf9",
+  "files_sha256": {
+    "classification-prompt.txt": "d870832fbb45048ef265c08b72dc163aa496c8aeee3e1ce583fbc6dbc67a5b15",
+    "final-rating-save-times.csv": "3640e389a20c292d91476b5d0049f46a3e5c57bdabbc005ec093ba5ff8786f1c",
+    "metrics.json": "3cdca3d2c539235fb4350e33cbe03db0bf1c82f1a55062a330f8660ec162e179",
+    "prediction-run.json": "4fb878d4f7c6f15ae8f8f25a5f570ba851ce177ec4618ee984dbe3e5c9387ab4",
+    "rated-news.json": "f44970df8a8985866f240520147256a9dcfc59bc4b580725d3cbcdfc6f945310",
+    "ratings-snapshot.sqlite3": "8092e873168421751db3caef4e0dde6ca28b89f02b3613f0a6f3fa5898387611",
+    "ratings.csv": "1fc98160e218e012df071183ae08d952e862cb419ed72c58bccc24fff4c36182",
+    "report.md": "87a2425835b46508771c45860d608ef6198be2909abc6f5593ce3243df023c33"
+  }
+}

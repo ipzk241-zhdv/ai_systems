@@ -68,16 +68,16 @@ class CacheTests(unittest.TestCase):
         cache.collect_once(self.db, self.now, self.fetch)
         api = Mock()
         update = {"update_id": 1, "message": {"chat": {"id": 123, "type": "private"}, "text": "За 4 години"}}
-        with patch.object(cache, "collect", side_effect=AssertionError("must not fetch on demand")), patch.object(bot, "select_items", return_value=[{"id": 1, "section": "news"}]) as select, patch.object(bot, "compare_items", return_value=([{"id": 1, "section": "news"}], {}, 0)), patch.object(bot, "fetch_market", return_value={}), patch.object(bot, "render_html", return_value="<html>cached</html>"):
+        with patch.object(cache, "collect", side_effect=AssertionError("must not fetch on demand")), patch.object(bot, "ready_items", return_value=([{"id": 1, "section": "news"}], {}, 0, {})) as select, patch.object(bot, "prepare_news", return_value=0), patch.object(bot, "cached_market", return_value={}), patch.object(bot, "render_html", return_value="<html>cached</html>"):
             bot.handle_update(api, update, self.db, OrderedDict(), "model")
-        self.assertEqual(select.call_args.args[0], [self.article])
+        self.assertEqual(select.call_args.args[1], [self.article])
         api.send_document.assert_called_once()
         self.assertEqual(self.db.execute("SELECT checked_at FROM checks").fetchone()[0], self.now.isoformat())
         self.assertIsNotNone(self.db.execute("SELECT delivered_at FROM news_digests").fetchone()[0])
 
     def test_new_install_collects_initial_day_before_digest(self):
         api = Mock()
-        with patch.object(cache, "collect", return_value=([], {"source": (0, "")})) as fetch, patch.object(bot, "select_items", return_value=[]) as select, patch.object(bot, "compare_items", return_value=([], {}, 0)), patch.object(bot, "fetch_market", return_value={}), patch.object(bot, "render_html", return_value="html"):
+        with patch.object(cache, "collect", return_value=([], {"source": (0, "")})) as fetch, patch.object(bot, "ready_items", return_value=([], {}, 0, {})) as select, patch.object(bot, "prepare_news", return_value=0), patch.object(bot, "cached_market", return_value={}), patch.object(bot, "render_html", return_value="html"):
             bot.handle_update(api, {"update_id": 1, "message": {"chat": {"id": 123, "type": "private"}, "text": "За 24 години"}}, self.db, OrderedDict(), "model")
         fetch.assert_called_once()
         since, until = fetch.call_args.args
@@ -90,7 +90,7 @@ class CacheTests(unittest.TestCase):
         old_article = Article("Old cache", self.article.url, old_time - timedelta(minutes=15), "source")
         cache.collect_once(self.db, old_time, lambda *args: ([old_article], {"source": (1, "")}))
         api = Mock()
-        with patch.object(bot, "refresh_news", side_effect=OSError("offline")), patch.object(bot, "select_items", return_value=[]), patch.object(bot, "compare_items", return_value=([], {}, 0)), patch.object(bot, "fetch_market", return_value={}), patch.object(bot, "render_html", return_value="html"):
+        with patch.object(bot, "refresh_news", side_effect=OSError("offline")), patch.object(bot, "ready_items", return_value=([], {}, 0, {})), patch.object(bot, "prepare_news", return_value=0), patch.object(bot, "cached_market", return_value={}), patch.object(bot, "render_html", return_value="html"):
             bot.handle_update(api, {"update_id": 1, "message": {"chat": {"id": 123, "type": "private"}, "text": "За 4 години"}}, self.db, OrderedDict(), "model")
         self.assertIn("застаріли", api.send.call_args_list[1].args[1])
         self.assertIn("Дозбір не вдався", api.send.call_args_list[1].args[1])
@@ -110,10 +110,10 @@ class CacheTests(unittest.TestCase):
         before = self.now - timedelta(minutes=30)
         cache.collect_once(self.db, before, lambda *args: ([], {"source": (0, "")}))
         api = Mock()
-        with patch.object(cache, "collect", return_value=([self.article], {"source": (1, "")})) as fetch, patch.object(bot, "select_items", return_value=[]) as select, patch.object(bot, "compare_items", return_value=([], {}, 0)), patch.object(bot, "fetch_market", return_value={}), patch.object(bot, "render_html", return_value="html"):
+        with patch.object(cache, "collect", return_value=([self.article], {"source": (1, "")})) as fetch, patch.object(bot, "ready_items", return_value=([], {}, 0, {})) as select, patch.object(bot, "prepare_news", return_value=0), patch.object(bot, "cached_market", return_value={}), patch.object(bot, "render_html", return_value="html"):
             bot.handle_update(api, {"update_id": 1, "message": {"chat": {"id": 123, "type": "private"}, "text": "За 24 години"}}, self.db, OrderedDict(), "model")
         self.assertEqual(fetch.call_args.args[0], before)
-        self.assertEqual(select.call_args.args[0], [self.article])
+        self.assertEqual(select.call_args.args[1], [self.article])
         api.send_document.assert_called_once()
 
     def test_recent_refresh_is_reused_and_long_gaps_are_capped_at_day(self):
@@ -243,7 +243,7 @@ class CacheTests(unittest.TestCase):
         collector.return_value.close.assert_called_once()
 
     def test_interval_setting_validation(self):
-        self.assertEqual(cache.poll_seconds({}), 1800)
+        self.assertEqual(cache.poll_seconds({}), 60)
         self.assertEqual(cache.poll_seconds({"NEWS_POLL_MINUTES": "15"}), 900)
         for value in ("0", "1441", "no", "1.5", ""):
             with self.assertRaises(ValueError):

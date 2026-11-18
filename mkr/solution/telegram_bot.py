@@ -14,9 +14,9 @@ from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
-from digest import MODEL, ollama_chat, select_items, limit_items
-from html_digest import fetch_market, render_html
-from news_history import initialize, previous_articles, compare_items, prepare_digest, confirm_delivery
+from digest import MODEL, ollama_chat, limit_items
+from html_digest import render_html
+from news_history import initialize, prepare_digest, confirm_delivery
 from news_questions import respond as news_response, EXPLAIN, COMPARE
 from outages import current_message, schedule_messages
 from sources import KYIV, page
@@ -27,6 +27,7 @@ from message_worker import PrivateMessages
 from guest_bot import GuestAnswers
 from voice_notes import initialize as initialize_voice, handle_voice, voice_source, VoiceError
 from image_notes import image_source, handle_image
+from news_preparation import initialize as initialize_preparation, prepare as prepare_news, ready_items, cached_market, pending_count
 from news_cache import NewsCollector, initialize as initialize_cache, latest_fetch, cached_articles, cached_ids, poll_seconds, refresh_news
 from file_questions import respond as file_response
 from file_commands import respond as file_command_response
@@ -206,6 +207,7 @@ def open_state(path):
     initialize(db)
     initialize_voice(db)
     initialize_cache(db)
+    initialize_preparation(db)
     return db
 
 
@@ -384,17 +386,21 @@ def handle_update(api, update, db, conversations, model):
         note = ("\nДозбір не вдався; використовую збережені новини." if refresh_failed else "")
         if age.total_seconds() > 2 * poll_seconds(read_config()):
             note += "\nДані застаріли: фоновий збір затримується."
-        api.send(chat_id, f"Формую дайджест. Останній збір: {checked_at.astimezone(KYIV):%d.%m %H:%M} за Києвом." + note)
         if not articles and status and all(error for _, error in status.values()):
             api.send(chat_id, "У БД поки немає новин за цей період; джерела не вдалося повністю прочитати. Фоновий збір повторить спробу.")
             return
         article_ids = cached_ids(db, articles)
-        items = select_items(articles, model, limit=None)
-        items, updates, repeated = compare_items(articles, items, previous_articles(db, chat_id, until), model)
+        pending = pending_count(db, model, article_ids)
+        preparation_note = (f"\nЄ {pending} новин без готової оцінки. Запускаю позапланове оцінювання; наступний відлік почнеться після нього."
+                            if pending else "\nОцінки вже готові; збираю файл зі збережених результатів.")
+        api.send(chat_id, f"Формую дайджест. Останній збір: {checked_at.astimezone(KYIV):%d.%m %H:%M} за Києвом." + note + preparation_note)
+        # A missed background run is shared with the request; committed annotations are reused.
+        prepare_news(db, model, article_ids, interval=poll_seconds(read_config()))
+        items, updates, repeated, preparation_stats = ready_items(db, articles, article_ids, chat_id, model, until)
         items = limit_items(articles, items)
         shown_urls = {articles[item["id"] - 1].url for item in items}
         updates = {url: previous for url, previous in updates.items() if url in shown_urls}
-        html = render_html(articles, items, status, fetch_market(), since, until,
+        html = render_html(articles, items, status, cached_market(db), since, until,
                            updates=updates, repeated=repeated)
         digest_id = prepare_digest(db, chat_id, since, until, html, articles, article_ids, items, updates)
     except (OSError, ValueError, KeyError, TypeError, AttributeError, sqlite3.Error) as exc:
@@ -413,7 +419,7 @@ def poll(api, db, model):
     messages = PrivateMessages(api, database_path, model, handle_update, open_state)
     inline = InlineAnswers(api, model, format_chat_html)
     guests = GuestAnswers(api, model, format_chat_html, username=getattr(api, "username", "DBresh_bot"), database_path=database_path)
-    collector = NewsCollector(database_path, interval=poll_seconds(read_config()))
+    collector = NewsCollector(database_path, interval=poll_seconds(read_config()), model=model)
     messages.start()
     inline.start()
     guests.start()

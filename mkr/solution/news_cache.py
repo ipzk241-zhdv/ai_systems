@@ -11,7 +11,7 @@ from news_history import initialize as initialize_history, save_articles, title_
 from sources import Article, collect
 
 
-DEFAULT_INTERVAL = 30 * 60
+DEFAULT_INTERVAL = 60
 REFRESH_REUSE_SECONDS = 60
 _refresh_locks = {}
 _locks_guard = Lock()
@@ -26,7 +26,7 @@ def refresh_lock(db):
 
 def poll_seconds(config):
     try:
-        minutes = int(config.get("NEWS_POLL_MINUTES", "30"))
+        minutes = int(config.get("NEWS_POLL_MINUTES", "1"))
     except (ValueError, TypeError):
         raise ValueError("NEWS_POLL_MINUTES має бути цілим числом від 1 до 1440.") from None
     if not 1 <= minutes <= 1440:
@@ -78,14 +78,14 @@ def latest_fetch(db):
     return datetime.fromisoformat(row[0]), json.loads(row[1])
 
 
-def refresh_news(db, until=None, full=False, collect_fn=None):
+def refresh_news(db, until=None, full=False, collect_fn=None, reuse_seconds=REFRESH_REUSE_SECONDS):
     target = until or datetime.now(timezone.utc)
     # Each caller owns its SQLite connection. The per-database lock covers network
     # collection too, so a button and a background scan cannot fetch in parallel.
     with refresh_lock(db):
         last, status = latest_fetch(db)
         age = (target - last).total_seconds() if last else None
-        if last and (age <= 0 or (not full and age <= REFRESH_REUSE_SECONDS)):
+        if last and (age <= 0 or (not full and age <= reuse_seconds)):
             return last, status
         start = None if full or last is None else max(last, target - timedelta(hours=24))
         collect_once(db, target, collect_fn, since=start,
@@ -115,8 +115,10 @@ def cached_ids(db, articles):
 
 
 class NewsCollector:
-    def __init__(self, database_path, interval=DEFAULT_INTERVAL, collect_fn=None):
+    def __init__(self, database_path, interval=DEFAULT_INTERVAL, collect_fn=None, model=None):
         self.path, self.interval, self.collect_fn = database_path, interval, collect_fn
+        self.model = model
+        self.preparation_state = None
         self.failure = None
         self.stopped = Event()
         self.thread = Thread(target=self.run, name="news-collector", daemon=True)
@@ -134,6 +136,22 @@ class NewsCollector:
             db = sqlite3.connect(self.path, timeout=30)
             initialize_history(db)
             initialize(db)
+            if self.model is not None:
+                from news_preparation import initialize as initialize_preparation, state_for, prepare
+                initialize_preparation(db)
+                self.preparation_state = state_for(db)
+                while not self.stopped.is_set():
+                    delay = self.preparation_state.next_due - monotonic()
+                    if delay > 0:
+                        self.preparation_state.wake.wait(min(delay, 1))
+                        self.preparation_state.wake.clear()
+                        continue
+                    try:
+                        prepare(db,self.model,scheduled=True,interval=self.interval,collect_fn=self.collect_fn)
+                        print("Background news preparation completed.",flush=True)
+                    except Exception as error:
+                        print("Background news preparation deferred (" + type(error).__name__ + ").",file=sys.stderr)
+                return
             last, _ = latest_fetch(db)
             if last:
                 delay = max(0, self.interval - (datetime.now(timezone.utc) - last).total_seconds())
@@ -158,4 +176,6 @@ class NewsCollector:
 
     def close(self):
         self.stopped.set()
+        if self.preparation_state is not None:
+            self.preparation_state.wake.set()
         self.thread.join(timeout=1)
