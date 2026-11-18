@@ -60,6 +60,10 @@ class LLMError(ValueError):
     """Safe to show to the user; never includes API bodies, prompts or secrets."""
 
 
+class LLMSchemaError(LLMError):
+    """The provider rejected generated JSON; safe for bounded formatting repair."""
+
+
 def error_message(error):
     if isinstance(error, LLMError):
         return str(error)
@@ -120,6 +124,15 @@ def groq_chat(messages, model, options, schema, config, timeout, fast=False):
                     "done_reason": choice.get("finish_reason"), "usage": result.get("usage", {})}
         except HTTPError as exc:
             code = exc.code
+            schema_failed = False
+            if code in {400, 422}:
+                try:
+                    raw = exc.read(65537)
+                    if len(raw) <= 65536:
+                        error_data = json.loads(raw)
+                        schema_failed = error_data.get("error", {}).get("code") == "json_validate_failed"
+                except (OSError, ValueError, TypeError, AttributeError):
+                    pass
             try:
                 delay = float(exc.headers.get("Retry-After", 2 ** attempt))
             except (ValueError, TypeError):
@@ -131,6 +144,8 @@ def groq_chat(messages, model, options, schema, config, timeout, fast=False):
                     sleep(step)
                     delay -= step
                 continue
+            if schema_failed:
+                raise LLMSchemaError("Модель повернула JSON поза дозволеною схемою. Неоцінені новини збережено для повторної підготовки.") from None
             if code == 429:
                 raise LLMError("Досягнуто ліміту Groq. Спробуй пізніше; денний ліміт відновиться за правилами Groq.") from None
             if code in {401, 403}:

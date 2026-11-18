@@ -161,6 +161,55 @@ class PreparationTests(unittest.TestCase):
         api.send_document.assert_called_once()
         self.assertIn('Оцінки вже готові',str(api.send.call_args_list))
 
+    def test_provider_schema_failure_is_repaired_by_smaller_batches(self):
+        ids=[self.article('News story '+str(i),str(i),offset=20-i)[1] for i in range(8)]
+        def classify(batch,*args,**kwargs):
+            if len(batch)>2:raise prep.LLMSchemaError('invalid generated label')
+            return [{'label':'skip','relation':'new','previous_id':0} for _ in batch]
+        model=Mock(side_effect=classify)
+        self.assertEqual(prep.prepare(self.db,'model',ids,annotate_fn=model),8)
+        self.assertEqual(prep.missing(self.db,ids,'version'),[])
+        self.assertEqual([len(call.args[0]) for call in model.call_args_list],[8,4,2,2,4,2,2])
+        self.assertEqual(self.db.execute("SELECT count(*) FROM news_annotations WHERE label='skip'").fetchone()[0],8)
+
+    def test_persistent_invalid_singleton_keeps_other_successful_parts(self):
+        ids=[self.article('News story '+str(i),str(i),offset=20-i)[1] for i in range(8)]
+        def classify(batch,*args,**kwargs):
+            return [{'label':'wrong' if article['id']==ids[4] else 'news','relation':'new','previous_id':0} for article in batch]
+        with self.assertRaises(prep.AnnotationError):prep.prepare(self.db,'model',ids,annotate_fn=classify)
+        ready={row[0] for row in self.db.execute('SELECT article_id FROM news_annotations')}
+        self.assertEqual(ready,set(ids[:4]))
+        model=self.classifier();prep.prepare(self.db,'model',ids,annotate_fn=model)
+        self.assertEqual({a['id'] for a in model.call_args.args[0]},set(ids[4:]))
+
+    def test_quota_failure_does_not_split_or_repeat_the_batch(self):
+        ids=[self.article('Story '+str(i),str(i))[1] for i in range(8)]
+        from llm import LLMError
+        model=Mock(side_effect=LLMError('quota exceeded'))
+        with self.assertRaises(LLMError):prep.prepare(self.db,'model',ids,annotate_fn=model)
+        self.assertEqual(model.call_count,1)
+        self.assertEqual(len(prep.missing(self.db,ids,'version')),8)
+
+    def test_singleton_relaxed_provider_schema_still_validates_enums_locally(self):
+        import json
+        _,article_id=self.article()
+        good={'message':{'content':json.dumps({'annotations':[{'label':'skip','relation':'new','previous_id':0}]})}}
+        with patch.object(prep,'chat',side_effect=[prep.LLMSchemaError('invalid enum'),good]) as request:
+            prep.prepare(self.db,'model',[article_id])
+        self.assertEqual(request.call_count,2)
+        self.assertIn('enum',request.call_args_list[0].kwargs['schema']['properties']['annotations']['items']['properties']['label'])
+        self.assertNotIn('enum',request.call_args_list[1].kwargs['schema']['properties']['annotations']['items']['properties']['label'])
+        self.assertEqual(self.db.execute('SELECT label FROM news_annotations').fetchone()[0],'skip')
+
+    def test_relaxed_response_with_invalid_enum_is_never_saved(self):
+        import json
+        _,article_id=self.article()
+        bad={'message':{'content':json.dumps({'annotations':[{'label':'not-a-category','relation':'new','previous_id':0}]})}}
+        with patch.object(prep,'chat',side_effect=[prep.LLMSchemaError('invalid enum'),bad]) as request:
+            with self.assertRaises(prep.AnnotationError):prep.prepare(self.db,'model',[article_id])
+        self.assertEqual(request.call_count,2)
+        self.assertEqual(prep.missing(self.db,[article_id],'version'),[article_id])
+
     def test_one_representative_per_event_for_a_new_user(self):
         old,old_id=self.article('Water restored','old',offset=10)
         prep.prepare(self.db,'model',[old_id],annotate_fn=self.classifier())

@@ -8,7 +8,7 @@ from threading import Event, Lock
 from time import monotonic, time
 
 from digest import IMPORTANCE_RULES, LABELS
-from llm import chat
+from llm import LLMSchemaError, chat
 from settings import read_config, provider
 import usage_metrics
 
@@ -27,6 +27,31 @@ update — та сама подія з новим суттєвим фактом,
 Категорія описує корисність, а повторність — окреме поле: не став skip лише тому,
 що це повтор; skip означає непотрібний користувачу матеріал. Аварії, смерті й
 атаки не віднось до fun. Поверни annotations рівно в порядку incoming."""
+
+
+class AnnotationError(LLMSchemaError):
+    """Invalid model output, distinct from transport/quota/configuration errors."""
+    def __init__(self,reason):
+        self.reason=reason
+        super().__init__('Модель не повернула коректні оцінки після повторних спроб. Готові оцінки збережено; повтори запит трохи пізніше.')
+
+
+def validate(incoming, previous, annotations):
+    if not isinstance(annotations,list) or len(annotations) != len(incoming):
+        raise AnnotationError('Incomplete news annotations')
+    allowed = {item['id'] for item in previous}
+    for article,item in zip(incoming,annotations):
+        if not isinstance(item,dict) or set(item) != {'label','relation','previous_id'}:
+            raise AnnotationError('Invalid annotation fields')
+        predecessor=item['previous_id']
+        if (not isinstance(item['label'],str) or not isinstance(item['relation'],str)
+                or item['label'] not in LABELS or item['relation'] not in {'new','repeat','update'}
+                or type(predecessor) is not int
+                or (item['relation']=='new' and predecessor!=0)
+                or (item['relation']!='new' and predecessor not in allowed)):
+            raise AnnotationError('Invalid news annotation')
+        allowed.add(article['id'])
+    return annotations
 
 
 class State:
@@ -80,29 +105,29 @@ def neighbors(incoming, previous):
     return list(selected.values())
 
 
-def annotate(incoming, previous, model, rules, fast=False):
+def annotate(incoming, previous, model, rules, fast=False, relaxed=False):
     schema = {'type':'object','properties':{'annotations':{'type':'array','minItems':len(incoming),'maxItems':len(incoming),
         'items':{'type':'object','properties':{'label':{'type':'string','enum':LABELS},
             'relation':{'type':'string','enum':['new','repeat','update']}, 'previous_id':{'type':'integer'}},
             'required':['label','relation','previous_id'],'additionalProperties':False}}},'required':['annotations'],'additionalProperties':False}
-    result = chat([{'role':'system','content':PROMPT + '\n\nКритерії відбору\n' + rules},
+    if relaxed:
+        # Keep JSON structure strict, validate enum values and links locally below.
+        properties=schema['properties']['annotations']['items']['properties']
+        properties['label']={'type':'string'}
+        properties['relation']={'type':'string'}
+    format_note=("\nФормат JSON: label — лише один точний англійський рядок important, news, fun, skip; "
+                 "relation — лише new, repeat, update. Не перекладай і не перейменовуй значення. "
+                 "previous_id — числовий id із вхідних даних або 0, не порядковий номер.")
+    result = chat([{'role':'system','content':PROMPT + '\n\nКритерії відбору\n' + rules + format_note},
                    {'role':'user','content':json.dumps({'previous':previous,'incoming':incoming},ensure_ascii=False)}],
                   model, options={'temperature':0,'num_predict':2048}, schema=schema, think=False, timeout=90, fast=fast)
     if result.get('done_reason') == 'length':
-        raise ValueError('Incomplete news annotations')
-    annotations = json.loads(result['message']['content'])['annotations']
-    if not isinstance(annotations,list) or len(annotations) != len(incoming):
-        raise ValueError('Incomplete news annotations')
-    allowed = {item['id'] for item in previous}
-    for article, item in zip(incoming, annotations):
-        predecessor = item.get('previous_id')
-        if (item.get('label') not in LABELS or item.get('relation') not in {'new','repeat','update'}
-                or type(predecessor) is not int
-                or (item['relation'] == 'new' and predecessor != 0)
-                or (item['relation'] != 'new' and predecessor not in allowed)):
-            raise ValueError('Invalid news annotation link')
-        allowed.add(article['id'])
-    return annotations
+        raise AnnotationError('Incomplete news annotations')
+    try:
+        annotations = json.loads(result['message']['content'])['annotations']
+    except (ValueError, TypeError, KeyError):
+        raise AnnotationError('Invalid annotation JSON') from None
+    return validate(incoming,previous,annotations)
 
 
 def evaluate(db, model, ids, version, rules, annotate_fn=None, fast=False):
@@ -114,28 +139,35 @@ def evaluate(db, model, ids, version, rules, annotate_fn=None, fast=False):
     ready_ids = {row[0] for row in db.execute('SELECT article_id FROM news_annotations WHERE version=?',(version,))}
     known = [dict(zip(('id','title','published'),row)) for row in rows if row[0] in ready_ids][-240:]
     count = 0
-    for start in range(0,len(queue),BATCH_SIZE):
-        batch = queue[start:start+BATCH_SIZE]
-        previous = neighbors(batch, known)
-        # Keep repeated context within a bounded payload for the provider's token rate limits.
-        while previous and len(json.dumps(previous,ensure_ascii=False).encode()) > 6000:
+    def process(batch):
+        nonlocal count, known
+        previous=neighbors(batch,known)
+        while previous and len(json.dumps(previous,ensure_ascii=False).encode())>6000:
             previous.pop()
-        annotations = (annotate_fn or annotate)(batch, previous, model, rules, fast=fast)
-        # Injected/custom providers obey the same validation before a transaction is committed.
-        allowed = {item['id'] for item in previous}
-        if len(annotations) != len(batch):raise ValueError('Incomplete annotations')
-        for article, item in zip(batch, annotations):
-            if (item['label'] not in LABELS or item['relation'] not in {'new','repeat','update'}
-                    or type(item['previous_id']) is not int
-                    or (item['relation']=='new' and item['previous_id']!=0)
-                    or (item['relation']!='new' and item['previous_id'] not in allowed)):
-                raise ValueError('Invalid annotation')
-            allowed.add(article['id'])
+        try:
+            annotations=(annotate_fn or annotate)(batch,previous,model,rules,fast=fast)
+            validate(batch,previous,annotations)
+        except (LLMSchemaError,AnnotationError):
+            if len(batch)>1:
+                middle=len(batch)//2
+                process(batch[:middle])
+                process(batch[middle:])
+                return
+            # A final bounded attempt relaxes provider-side enums only; local checks remain strict.
+            if annotate_fn is None:
+                annotations=annotate(batch,previous,model,rules,fast=fast,relaxed=True)
+            else:
+                annotations=annotate_fn(batch,previous,model,rules,fast=fast)
+            validate(batch,previous,annotations)
         with db:
             for article,item in zip(batch,annotations):
                 db.execute('INSERT OR REPLACE INTO news_annotations VALUES (?,?,?,?,?,?)',
                            (article['id'],version,item['label'],item['relation'],item['previous_id'] or None,datetime.now(timezone.utc).isoformat()))
-        count += len(batch); known = (known + batch)[-240:]
+        count+=len(batch)
+        known=(known+batch)[-240:]
+    for start in range(0,len(queue),BATCH_SIZE):
+        process(queue[start:start+BATCH_SIZE])
+
     return count
 
 

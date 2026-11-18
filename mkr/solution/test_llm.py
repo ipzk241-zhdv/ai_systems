@@ -70,6 +70,21 @@ class ProviderTest(unittest.TestCase):
             with self.assertRaises(llm.LLMError): self.call()
             request.assert_not_called()
 
+    def test_schema_generation_error_is_typed_without_exposing_failed_generation(self):
+        body={'request_id':'req_test','error':{'code':'json_validate_failed','message':'private provider message','failed_generation':'secret generated text'}}
+        error=HTTPError('https://test',400,'bad json',{},io.BytesIO(json.dumps(body).encode()))
+        with patch.object(llm,'read_config',return_value=self.config),patch.object(llm,'urlopen',side_effect=error) as request:
+            with self.assertRaises(llm.LLMSchemaError) as caught:self.call()
+        self.assertEqual(request.call_count,1)
+        self.assertNotIn('secret generated',str(caught.exception))
+        self.assertNotIn('private provider',str(caught.exception))
+
+    def test_model_configuration_error_is_not_a_schema_retry(self):
+        error=HTTPError('https://test',400,'bad model',{},io.BytesIO(b'{"error":{"code":"model_not_found"}}'))
+        with patch.object(llm,'read_config',return_value=self.config),patch.object(llm,'urlopen',side_effect=error):
+            with self.assertRaises(llm.LLMError) as caught:self.call()
+        self.assertNotIsInstance(caught.exception,llm.LLMSchemaError)
+
     def test_short_rate_limit_retries_but_long_limit_does_not(self):
         short = HTTPError("https://test", 429, "limited", {"Retry-After": "2"}, io.BytesIO())
         with patch.object(llm, "read_config", return_value=self.config), patch.object(llm, "urlopen", side_effect=[short, self.response()]) as request, patch.object(llm, "sleep") as wait:
