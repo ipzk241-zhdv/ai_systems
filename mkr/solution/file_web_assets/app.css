@@ -6,3 +6,12 @@
 
 .heading-actions{flex-wrap:wrap;justify-content:flex-end}
 .file-panel.drop-active{outline:3px dashed #3376e8;outline-offset:-5px;background:#eef5ff}
+
+.document-dialog{width:min(1120px,96vw);max-width:96vw;height:90vh;max-height:94vh;padding:20px;border:1px solid var(--line);border-radius:14px}
+.document-dialog[open]{display:flex;flex-direction:column;gap:10px}.document-header{display:flex;align-items:center;gap:12px;justify-content:space-between}.document-header h2{font-size:18px;margin:0;overflow-wrap:anywhere}.document-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}.document-actions a{text-decoration:none}.document-dialog p{margin:0}.document-dialog #document-error{color:#b42318;white-space:pre-wrap}.document-editor{flex:1;min-height:200px;width:100%;resize:none;padding:16px;border:1px solid var(--line);border-radius:8px;font:14px/1.6 ui-monospace,Consolas,monospace;tab-size:4;color:var(--ink);background:#fff}.document-body{min-height:0;overflow:auto;flex:1}.document-editor:not([hidden])~.document-body{display:none}.document-paragraph{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 12px!important}.document-table-scroll{max-width:100%;overflow:auto;margin-bottom:14px}.document-table{border-collapse:collapse;font-size:13px}.document-table td{border:1px solid #d5dce6;padding:6px 9px;min-width:70px;max-width:420px;white-space:pre-wrap;overflow-wrap:anywhere;vertical-align:top}.spreadsheet-preview .document-table tr:first-child,.spreadsheet-preview .document-table td:first-child{background:#eef3f9;font-weight:600;white-space:nowrap}.sheet-tabs{display:flex;gap:6px;overflow:auto;margin-bottom:10px}.sheet-tabs button.active{background:var(--light);color:var(--blue)}.document-pdf{width:100%;height:calc(100% - 35px);min-height:300px;border:0}.document-dialog::backdrop{background:#15223866}
+@media(max-width:640px){.document-dialog{padding:12px}.document-header{align-items:flex-start;flex-wrap:wrap}.document-header h2{font-size:15px}.document-actions{margin-left:auto}.file-actions{flex-wrap:wrap}}
+
+.tree-row{display:flex;align-items:center;min-width:0}.folder-tree .tree-toggle{flex:0 0 24px;width:24px;padding:5px 0;text-align:center}.tree-spacer{flex:0 0 24px}.folder-tree .tree-name{min-width:0;flex:1;padding:5px 4px}
+
+.file-actions{flex-wrap:wrap}
+@media(min-width:801px){.list-header,.file-row{grid-template-columns:38px minmax(0,1fr) 120px 84px 140px}}

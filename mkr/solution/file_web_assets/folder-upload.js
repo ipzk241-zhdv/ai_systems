@@ -1,7 +1,7 @@
 'use strict';
 // Enumeration keeps File references only; file bytes are streamed later by XHR.
 const FolderUpload = (() => {
-  function builder() {
+  function builder(maxItems = 10000) {
     const directories = new Set(), files = [], seen = new Set();
     function check(path, file = false) {
       const names = path.split('/');
@@ -12,7 +12,7 @@ const FolderUpload = (() => {
       return names;
     }
     function limit() {
-      if (directories.size + files.length > 10000) throw new Error('За раз можна завантажити до 10 000 файлів і папок.');
+      if (directories.size + files.length > maxItems) throw new Error('За раз можна завантажити до ' + maxItems + ' файлів і папок.');
     }
     function directory(path) {
       const names = check(path);
@@ -26,13 +26,13 @@ const FolderUpload = (() => {
     }
     return {directory, file, result:() => ({directories:[...directories], files})};
   }
-  function fromFiles(values) {
-    const plan = builder();
+  function fromFiles(values, maxItems) {
+    const plan = builder(maxItems);
     for (const file of values) plan.file(file, file.webkitRelativePath || file.name);
     return plan.result();
   }
-  async function fromHandle(handle) {
-    const plan = builder();
+  async function fromHandle(handle, maxItems) {
+    const plan = builder(maxItems);
     async function visit(node, path) {
       if (node.kind === 'file') plan.file(await node.getFile(), path);
       else {
@@ -42,8 +42,8 @@ const FolderUpload = (() => {
     }
     await visit(handle, handle.name); return plan.result();
   }
-  async function fromEntries(entries) {
-    const plan = builder();
+  async function fromEntries(entries, maxItems) {
+    const plan = builder(maxItems);
     async function visit(entry, path) {
       if (entry.isFile) plan.file(await new Promise((resolve, reject) => entry.file(resolve, reject)), path);
       else if (entry.isDirectory) {

@@ -9,6 +9,8 @@ import sys
 from threading import Event, Lock, Thread
 
 from inline_bot import trim_text
+from file_commands import respond as file_command_response
+import usage_metrics
 from llm import chat
 from voice_notes import voice_source, handle_quoted_voice, initialize as initialize_voice
 from image_notes import image_source, analyze_message, safe_image_error
@@ -92,7 +94,11 @@ class GuestAnswers:
                 params["message_thread_id"] = message["message_thread_id"]
             self.api.send(message["chat"]["id"], content, **params)
 
+    @usage_metrics.track_message("guest")
     def process(self, message, db=None):
+        prompt = self.mention.sub("", message.get("text") or message.get("caption") or "").strip()
+        if file_command_response(self.api, message, self.model, self.reply, text=prompt):
+            return
         if voice_source(message):
             handle_quoted_voice(self.api, message, db, self.reply)
             return

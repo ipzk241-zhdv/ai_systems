@@ -6,6 +6,7 @@ from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 from settings import read_config, provider
+from usage_metrics import track_llm
 
 
 _remaining_tokens = None
@@ -69,6 +70,11 @@ def chat(messages, model, *, options, schema=None, think=None, timeout=240, fast
     config = read_config()
     if provider(config) == "groq":
         return groq_chat(messages, model, options, schema, config, timeout, fast=fast)
+    return _ollama_chat(messages, model, options=options, schema=schema, think=think, timeout=timeout)
+
+
+@track_llm
+def _ollama_chat(messages, model, *, options, schema=None, think=None, timeout=240):
     payload = {"model": model, "stream": False, "messages": messages, "options": options}
     if schema is not None:
         payload["format"] = schema
@@ -80,6 +86,7 @@ def chat(messages, model, *, options, schema=None, think=None, timeout=240, fast
         return json.load(response)
 
 
+@track_llm
 def groq_chat(messages, model, options, schema, config, timeout, fast=False):
     key = config.get("GROQ_API_KEY", "").strip()
     if not key:

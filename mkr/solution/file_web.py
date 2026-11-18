@@ -9,7 +9,8 @@ import sys
 from threading import Thread
 from urllib.parse import parse_qs, quote, urlsplit
 
-from file_store import FileError, FileStore, SESSION_SECONDS
+from file_preview import read_office
+from file_store import FileConflict, FileError, FileStore, SESSION_SECONDS
 
 
 ASSETS = Path(__file__).resolve().parent / "file_web_assets"
@@ -18,9 +19,10 @@ ASSETS = Path(__file__).resolve().parent / "file_web_assets"
 class FileBody:
     def __init__(self, path, length, offset=0):
         self.path, self.length, self.offset = path, length, offset
+        self.source = path.open("rb")
 
     def __iter__(self):
-        with self.path.open("rb") as source:
+        with self.source as source:
             source.seek(self.offset)
             remaining = self.length
             while remaining:
@@ -29,6 +31,9 @@ class FileBody:
                     raise OSError("Stored file ended before the requested length")
                 remaining -= len(chunk)
                 yield chunk
+
+    def close(self):
+        self.source.close()
 
 
 def requested_range(header, size):
@@ -68,10 +73,16 @@ class FileApp:
     def __call__(self, env, start_response):
         headers = [("Cache-Control", "no-store"), ("X-Content-Type-Options", "nosniff"),
                    ("Referrer-Policy", "no-referrer"), ("X-Frame-Options", "DENY"),
-                   ("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'")]
+                   ("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; frame-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'")]
         try:
             status, content_type, body, extra = self.dispatch(env)
+            if content_type == "application/pdf":
+                headers = [(key, value) for key, value in headers if key not in {"X-Frame-Options", "Content-Security-Policy"}]
+                headers += [("X-Frame-Options", "SAMEORIGIN"), ("Content-Security-Policy", "default-src 'none'; frame-ancestors 'self'")]
             headers += extra
+        except FileConflict as error:
+            status, content_type = "409 Conflict", "application/json; charset=utf-8"
+            body = json.dumps({"error": str(error)}, ensure_ascii=False).encode("utf-8")
         except FileError as error:
             status, content_type = "403 Forbidden", "application/json; charset=utf-8"
             body = json.dumps({"error": str(error)}, ensure_ascii=False).encode("utf-8")
@@ -83,6 +94,8 @@ class FileApp:
         headers += [("Content-Type", content_type), ("Content-Length", str(body.length if isinstance(body, FileBody) else len(body)))]
         start_response(status, headers)
         if env.get("REQUEST_METHOD") == "HEAD":
+            if isinstance(body, FileBody):
+                body.close()
             return [b""]
         return body if isinstance(body, FileBody) else [body]
 
@@ -93,11 +106,13 @@ class FileApp:
         method, path = env.get("REQUEST_METHOD", "GET"), env.get("PATH_INFO", "/")
         if env.get("HTTP_HOST", "") != urlsplit(origin).netloc:
             raise FileError("Невідома адреса сайта.")
-        if method in {"GET", "HEAD"} and path in {"/", "/app.css", "/app.js", "/folder-upload.js"}:
+        if method in {"GET", "HEAD"} and path in {"/", "/app.css", "/app.js", "/folder-upload.js", "/document-preview.js", "/folder-tree.js"}:
             filename, mime = {"/": ("index.html", "text/html; charset=utf-8"),
                               "/app.css": ("app.css", "text/css; charset=utf-8"),
                               "/app.js": ("app.js", "text/javascript; charset=utf-8"),
-                              "/folder-upload.js": ("folder-upload.js", "text/javascript; charset=utf-8")}[path]
+                              "/folder-upload.js": ("folder-upload.js", "text/javascript; charset=utf-8"),
+                              "/document-preview.js": ("document-preview.js", "text/javascript; charset=utf-8"),
+                              "/folder-tree.js": ("folder-tree.js", "text/javascript; charset=utf-8")}[path]
             return "200 OK", mime, (ASSETS / filename).read_bytes(), []
         if method == "POST" and env.get("HTTP_ORIGIN") != origin:
             raise FileError("Запит має надходити з відкритого сайта сховища.")
@@ -124,7 +139,7 @@ class FileApp:
             folder_id = self.store.create_folder(user_id, body.get("name"), body.get("parent_id"))
             return self.json_response({"id": folder_id})
         if method == "POST" and path == "/api/folders/import":
-            body = self.read_json(env, 2 * 1024 * 1024)
+            body = self.read_json(env, 16 * 1024 * 1024)
             result = self.store.import_folders(user_id, body.get("directories"), body.get("files"), body.get("parent_id"))
             return self.json_response(result)
         match = re.fullmatch(r"/api/(files|folders)/([1-9][0-9]*)", path)
@@ -143,10 +158,36 @@ class FileApp:
             length = int(env.get("CONTENT_LENGTH") or "0")
             file_id = self.store.upload_stream(user_id, name, env["wsgi.input"], length, folder_id)
             return self.json_response({"id": file_id})
-        match = re.fullmatch(r"/api/files/([1-9][0-9]*)/download", path)
+        preview = re.fullmatch(r"/api/files/([1-9][0-9]*)/(preview|content)", path)
+        if preview and method in {"GET", "POST"}:
+            file_id, action = int(preview[1]), preview[2]
+            if action == "content" and method == "POST":
+                body = self.read_json(env, 6 * 1024 * 1024 + 8192)
+                return self.json_response(self.store.replace_text(user_id, file_id, body.get("text"), body.get("revision")))
+            if action == "preview" and method == "GET":
+                file_path, name, size = self.store.get_file(user_id, file_id)
+                suffix = Path(name).suffix.casefold()
+                if suffix in {".txt", ".md", ".csv", ".json", ".log"}:
+                    return self.json_response(self.store.text_preview(user_id, file_id))
+                if suffix == ".pdf":
+                    return self.json_response({"kind": "pdf", "name": name, "url": "/api/files/" + str(file_id) + "/preview.pdf"})
+                if suffix in {".docx", ".xlsx"}:
+                    result = read_office(file_path, suffix)
+                    self.store.require_user(user_id)
+                    return self.json_response(dict(result, name=name, editable=False))
+                raise FileError("Перегляд підтримує DOCX, XLSX, PDF, TXT, MD, CSV, JSON і LOG. Старі DOC/XLS скачай або збережи як DOCX/XLSX.")
+        match = re.fullmatch(r"/api/files/([1-9][0-9]*)/(download|preview\.pdf)", path)
         if method in {"GET", "HEAD"} and match:
             file_path, name, size = self.store.get_file(user_id, int(match[1]))
-            disposition = "attachment; filename=download; filename*=UTF-8''" + quote(name, safe="")
+            inline_pdf = match[2] == "preview.pdf"
+            if inline_pdf:
+                if Path(name).suffix.casefold() != ".pdf":
+                    raise FileError("Це не PDF-файл.")
+                with file_path.open("rb") as source:
+                    if not source.read(1024).lstrip().startswith(b"%PDF-"):
+                        raise FileError("Файл не містить коректного заголовка PDF.")
+            mime = "application/pdf" if inline_pdf else "application/octet-stream"
+            disposition = ("inline" if inline_pdf else "attachment") + "; filename=download; filename*=UTF-8''" + quote(name, safe="")
             modified = formatdate(file_path.stat().st_mtime, usegmt=True)
             etag = '"' + file_path.name + '"'
             headers = [("Content-Disposition", disposition), ("Accept-Ranges", "bytes"),
@@ -160,9 +201,9 @@ class FileApp:
                             headers + [("Content-Range", "bytes */" + str(size))])
             if byte_range:
                 start, end = byte_range
-                return ("206 Partial Content", "application/octet-stream", FileBody(file_path, end - start + 1, start),
+                return ("206 Partial Content", mime, FileBody(file_path, end - start + 1, start),
                         headers + [("Content-Range", "bytes " + str(start) + "-" + str(end) + "/" + str(size))])
-            return "200 OK", "application/octet-stream", FileBody(file_path, size), headers
+            return "200 OK", mime, FileBody(file_path, size), headers
         return "404 Not Found", "application/json", b'{"error":"Not found"}', []
 
     @staticmethod
@@ -211,7 +252,7 @@ class FileWeb:
         if not 1024 <= port <= 65535:
             raise FileError("FILES_PORT має бути від 1024 до 65535.")
         self.server = create_server(FileApp(self.store), host="127.0.0.1", port=port, threads=2,
-                                    max_request_body_size=self.store.limits()["max_file_bytes"] + 8192,
+                                    max_request_body_size=max(self.store.limits()["max_file_bytes"], 16 * 1024 * 1024) + 8192,
                                     connection_limit=20, channel_timeout=30)
         self.thread = Thread(target=self.server.run, name="file-web", daemon=True)
         self.thread.start()

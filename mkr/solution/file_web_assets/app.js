@@ -41,22 +41,35 @@ function fileType(name) {
   if (['csv','xlsx','xls'].includes(extension)) return {label:extension.toUpperCase(), style:'sheet'};
   return {label:extension.slice(0,4).toUpperCase() || 'FILE', style:''};
 }
+const expandedTreeFolders = new Set();
 function tree() {
   $('folder-tree').replaceChildren();
-  function branch(parentId, parent, depth) {
-    if (depth > 31) return;
-    for (const folder of folders.filter(item => item.parent_id === parentId)) {
-      const li = document.createElement('li'), button = document.createElement('button');
-      button.textContent = '▱  ' + folder.name; button.title = folder.name;
-      if (currentFolder === folder.id) button.classList.add('active');
-      button.addEventListener('click', () => navigate(folder.id)); li.append(button);
-      const children = document.createElement('ul'); branch(folder.id, children, depth + 1);
-      if (children.children.length) li.append(children);
+  function append(nodes, parent) {
+    for (const node of nodes) {
+      const li = document.createElement('li'), row = document.createElement('div'); row.className = 'tree-row';
+      if (node.hasChildren) {
+        const toggle = document.createElement('button'); toggle.className = 'tree-toggle';
+        toggle.textContent = node.expanded ? '▾' : '▸';
+        toggle.setAttribute('aria-expanded', String(node.expanded));
+        toggle.setAttribute('aria-label', (node.expanded ? 'Згорнути ' : 'Розгорнути ') + node.folder.name);
+        toggle.addEventListener('click', () => {
+          if (expandedTreeFolders.has(node.folder.id)) expandedTreeFolders.delete(node.folder.id);
+          else expandedTreeFolders.add(node.folder.id);
+          tree();
+        });
+        row.append(toggle);
+      } else { const spacer = document.createElement('span'); spacer.className = 'tree-spacer'; row.append(spacer); }
+      const button = document.createElement('button'); button.className = 'tree-name';
+      button.textContent = '▱ ' + node.folder.name; button.title = node.folder.name;
+      button.classList.toggle('active', node.folder.id === currentFolder);
+      button.addEventListener('click', () => navigate(node.folder.id)); row.append(button); li.append(row);
+      if (node.children.length) { const children = document.createElement('ul'); append(node.children, children); li.append(children); }
       parent.append(li);
     }
   }
-  branch(null, $('folder-tree'), 0);
+  append(FolderTree.visible(folders, expandedTreeFolders), $('folder-tree'));
 }
+
 function iconButton(text, label, action) {
   const button = document.createElement('button'); button.className = 'icon-button'; button.textContent = text;
   button.title = label; button.setAttribute('aria-label', label); button.addEventListener('click', action); return button;
@@ -109,7 +122,7 @@ function render() {
       if (isFolder) navigate(entry.id);
       else { document.querySelectorAll('.file-row').forEach(item => item.classList.remove('selected')); row.classList.add('selected'); }
     });
-    if (!isFolder) name.addEventListener('dblclick', () => { location.href = '/api/files/' + entry.id + '/download'; });
+    if (!isFolder) name.addEventListener('dblclick', () => openDocument(entry));
     const meta = document.createElement('div'); meta.className = 'file-meta';
     meta.textContent = isFolder ? 'Папка' : size(entry.size) + ' · #' + entry.id;
     details.append(name, meta);
@@ -117,6 +130,7 @@ function render() {
     const bytes = document.createElement('span'); bytes.className = 'file-size'; bytes.textContent = isFolder ? '—' : size(entry.size);
     const actions = document.createElement('div'); actions.className = 'file-actions';
     if (!isFolder) {
+      actions.append(iconButton('◉', 'Переглянути: ' + entry.name, () => openDocument(entry)));
       actions.append(iconButton('✦', 'Команда для ШІ: ' + entry.name, () => askFile(entry)));
       const download = document.createElement('a'); download.className = 'icon-button'; download.textContent = '↓'; download.title = 'Завантажити ' + entry.name;
       download.setAttribute('aria-label', download.title); download.href = '/api/files/' + entry.id + '/download'; actions.append(download);
@@ -222,19 +236,19 @@ $('upload-button').addEventListener('click', () => { if (!uploadBusy) $('upload'
 $('sidebar-upload').addEventListener('click', () => { document.body.classList.remove('menu-open'); if (!uploadBusy) $('upload').click(); });
 $('upload').addEventListener('change', () => {
   const selected = [...$('upload').files];
-  if (selected.length) uploadBatch(() => FolderUpload.fromFiles(selected));
+  if (selected.length) uploadBatch(() => FolderUpload.fromFiles(selected, storage.max_upload_items));
 });
 $('upload-folder-button').addEventListener('click', () => {
   if (uploadBusy) return;
   if (window.showDirectoryPicker) {
     // Open synchronously from the click to preserve the browser's user activation.
     const selection = window.showDirectoryPicker({mode:'read'});
-    uploadBatch(async () => FolderUpload.fromHandle(await selection));
+    uploadBatch(async () => FolderUpload.fromHandle(await selection, storage.max_upload_items));
   } else $('upload-folder').click();
 });
 $('upload-folder').addEventListener('change', () => {
   const selected = [...$('upload-folder').files];
-  if (selected.length) uploadBatch(() => FolderUpload.fromFiles(selected));
+  if (selected.length) uploadBatch(() => FolderUpload.fromFiles(selected, storage.max_upload_items));
 });
 const dropZone = document.querySelector('.file-panel');
 let dragDepth = 0;
@@ -256,7 +270,7 @@ dropZone.addEventListener('drop', event => {
   const items = [...event.dataTransfer.items].filter(item => item.kind === 'file');
   const entries = items.map(item => item.webkitGetAsEntry ? item.webkitGetAsEntry() : item.getAsEntry ? item.getAsEntry() : null);
   const selected = [...event.dataTransfer.files];
-  uploadBatch(() => entries.length && entries.every(Boolean) ? FolderUpload.fromEntries(entries) : FolderUpload.fromFiles(selected));
+  uploadBatch(() => entries.length && entries.every(Boolean) ? FolderUpload.fromEntries(entries, storage.max_upload_items) : FolderUpload.fromFiles(selected, storage.max_upload_items));
 });
 // Prevent a missed drop from navigating away to a local file.
 window.addEventListener('dragover', event => { if (fileDrag(event)) event.preventDefault(); });

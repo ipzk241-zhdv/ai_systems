@@ -114,6 +114,10 @@ def respond(api, message, model, formatter, store=None):
             if not files:
                 lines.append("Файлів поки немає. Додай перший на сайті.")
             lines.append("\nЗапит до файла: /file 12 поясни головне")
+            lines.append("У відповідь на вкладення: збережи в /Папка/")
+            lines.append("Надіслати в поточний чат: надішли #12")
+            lines.append("Пошук: знайди звіт · знайди через ші лабу про мережі")
+            lines.append("/stats — статистика · /stats csv — експорт")
             api.send(chat_id, "\n".join(lines), link_preview_options={"is_disabled": True})
         else:
             api.send(chat_id, "Читаю вибраний файл…")

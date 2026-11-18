@@ -1,6 +1,7 @@
 """Shared private file storage. Telegram identities and passwords are verified in code."""
 import hashlib
 import hmac
+import os
 from io import BytesIO
 from pathlib import Path
 import re
@@ -18,6 +19,10 @@ SESSION_SECONDS = 2 * 60 * 60
 
 
 class FileError(ValueError):
+    pass
+
+
+class FileConflict(FileError):
     pass
 
 
@@ -77,7 +82,13 @@ class FileStore:
             if not 1 <= number <= maximum:
                 raise FileError(key + " має бути від 1 до " + str(maximum) + " МБ.")
             return number * 1024 * 1024
-        return {"max_file_bytes": value("FILES_MAX_FILE_MB", MAX_FILE_BYTES, 16384),
+        try:
+            max_items = int(config.get("FILES_MAX_UPLOAD_ITEMS", "").strip() or "10000")
+        except (ValueError, TypeError):
+            raise FileError("FILES_MAX_UPLOAD_ITEMS має бути цілим числом.") from None
+        if not 1 <= max_items <= 100000:
+            raise FileError("FILES_MAX_UPLOAD_ITEMS має бути від 1 до 100000.")
+        return {"max_upload_items": max_items, "max_file_bytes": value("FILES_MAX_FILE_MB", MAX_FILE_BYTES, 16384),
                 "limit_bytes": value("FILES_STORAGE_LIMIT_MB", MAX_STORAGE_BYTES, 1048576)}
 
     def connect(self):
@@ -90,6 +101,14 @@ class FileStore:
                 id INTEGER PRIMARY KEY, blob TEXT NOT NULL UNIQUE, name TEXT NOT NULL,
                 size INTEGER NOT NULL, sha256 TEXT NOT NULL, uploaded_by INTEGER NOT NULL,
                 created_at REAL NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS telegram_files (
+                file_id INTEGER NOT NULL REFERENCES files(id), bot_key TEXT NOT NULL, blob TEXT NOT NULL,
+                name TEXT NOT NULL, telegram_id TEXT NOT NULL, kind TEXT NOT NULL,
+                PRIMARY KEY(file_id,bot_key)
+            );
+            CREATE TABLE IF NOT EXISTS telegram_saves (
+                request_key TEXT PRIMARY KEY, file_id INTEGER NOT NULL REFERENCES files(id)
             );
             CREATE TABLE IF NOT EXISTS grants (
                 hash TEXT PRIMARY KEY, user_id INTEGER NOT NULL, expires REAL NOT NULL
@@ -248,11 +267,12 @@ class FileStore:
     def import_folders(self, user_id, directories, files, parent_id=None):
         """Validate the complete manifest, then create its folders in one transaction."""
         self.require_user(user_id)
-        if (not isinstance(directories, list) or not isinstance(files, list)
-                or not 1 <= len(directories) + len(files) <= 10000):
-            raise FileError("Обери папку з не більш ніж 10 000 файлів і підпапок.")
-        paths, canonical, file_paths, total = {}, {}, set(), 0
         limits = self.limits()
+        max_items = limits["max_upload_items"]
+        if (not isinstance(directories, list) or not isinstance(files, list)
+                or not 1 <= len(directories) + len(files) <= max_items):
+            raise FileError("Обери папку з не більш ніж " + str(max_items) + " файлів і підпапок.")
+        paths, canonical, file_paths, total = {}, {}, set(), 0
 
         def parts(path, is_file=False):
             if (not isinstance(path, str) or not path or len(path) > 6000 or "\\" in path
@@ -272,8 +292,8 @@ class FileStore:
                 if key in canonical and canonical[key] != path:
                     raise FileError("У вибраній папці є неоднозначні назви підпапок.")
                 canonical[key], paths[path] = path, names[:depth]
-                if len(paths) + len(files) > 10000:
-                    raise FileError("Обери папку з не більш ніж 10 000 файлів і підпапок.")
+                if len(paths) + len(files) > max_items:
+                    raise FileError("Обери папку з не більш ніж " + str(max_items) + " файлів і підпапок.")
 
         for path in directories:
             add_directory(parts(path))
@@ -289,8 +309,8 @@ class FileStore:
             file_paths.add(entry["path"])
             total += length
             add_directory(names[:-1])
-        if len(paths) + len(files) > 10000:
-            raise FileError("Обери папку з не більш ніж 10 000 файлів і підпапок.")
+        if len(paths) + len(files) > max_items:
+            raise FileError("Обери папку з не більш ніж " + str(max_items) + " файлів і підпапок.")
         if set(paths) & file_paths:
             raise FileError("Файл і папка мають однаковий шлях.")
         db = self.connect()
@@ -362,7 +382,7 @@ class FileStore:
     def upload(self, user_id, name, data, folder_id=None):
         return self.upload_stream(user_id, name, BytesIO(data), len(data), folder_id)
 
-    def upload_stream(self, user_id, name, stream, length, folder_id=None):
+    def upload_stream(self, user_id, name, stream, length, folder_id=None, unique=False, request_key=None):
         self.require_user(user_id)
         name = str(name).replace("\\", "/").rsplit("/", 1)[-1].strip()
         name = self.valid_name(name)
@@ -375,7 +395,20 @@ class FileStore:
         try:
             with db:
                 db.execute("BEGIN IMMEDIATE")
+                if request_key:
+                    previous = db.execute("SELECT file_id FROM telegram_saves WHERE request_key=?", (request_key,)).fetchone()
+                    if previous:
+                        return previous[0]
                 self.folder_path(db, folder_id)
+                if unique:
+                    existing = {row[0].casefold() for row in db.execute("SELECT name FROM files WHERE folder_id IS ?", (folder_id,))}
+                    base, suffix, number = Path(name).stem, Path(name).suffix, 1
+                    if len(suffix) > 40:
+                        base, suffix = name, ""
+                    while name.casefold() in existing:
+                        number += 1
+                        tail = " (" + str(number) + ")" + suffix
+                        name = base[:180-len(tail)] + tail
                 total = db.execute("SELECT COALESCE(sum(size), 0) FROM files").fetchone()[0]
                 if total + length > limits["limit_bytes"]:
                     raise FileError("Недостатньо місця в межах налаштованого обсягу сховища.")
@@ -392,6 +425,8 @@ class FileStore:
                         remaining -= len(chunk)
                 cursor = db.execute("INSERT INTO files (blob, name, size, sha256, uploaded_by, created_at,folder_id) VALUES (?, ?, ?, ?, ?, ?, ?)",
                                     (blob, name, length, digest.hexdigest(), user_id, time.time(), folder_id))
+                if request_key:
+                    db.execute("INSERT INTO telegram_saves(request_key,file_id) VALUES (?,?)", (request_key, cursor.lastrowid))
                 return cursor.lastrowid
         except Exception:
             if path.exists():
@@ -399,6 +434,102 @@ class FileStore:
             raise
         finally:
             db.close()
+
+    def telegram_remember(self, user_id, file_id, bot_key, telegram_id, kind, expected_blob=None, expected_name=None, expected_digest=None):
+        path, name, _ = self.get_file(user_id, file_id)
+        if kind not in {"document", "photo", "video", "audio", "voice"}:
+            raise FileError("Непідтримуваний Telegram-файл.")
+        db = self.connect()
+        try:
+            with db:
+                db.execute("BEGIN IMMEDIATE")
+                row = db.execute("SELECT blob,name,sha256 FROM files WHERE id=?", (file_id,)).fetchone()
+                if (not row or row[0] != (expected_blob or path.name) or row[1] != (expected_name or name)
+                        or (expected_digest is not None and row[2] != expected_digest)):
+                    raise FileConflict("Файл змінився під час завантаження в Telegram. Повтори команду для актуальної версії.")
+                db.execute("INSERT OR REPLACE INTO telegram_files(file_id,bot_key,blob,name,telegram_id,kind) VALUES (?,?,?,?,?,?)",
+                           (file_id, bot_key, row[0], row[1], telegram_id, kind))
+        finally:
+            db.close()
+
+    def telegram_cached(self, user_id, file_id, bot_key, expected_blob=None):
+        path, name, _ = self.get_file(user_id, file_id)
+        if expected_blob is not None and path.name != expected_blob:
+            raise FileConflict("Файл змінився; повтори команду для актуальної версії.")
+        db = self.connect()
+        try:
+            row = db.execute("SELECT telegram_id,kind FROM telegram_files WHERE file_id=? AND bot_key=? AND blob=? AND name=?",
+                             (file_id, bot_key, path.name, name)).fetchone()
+            return {"telegram_id":row[0], "kind":row[1]} if row else None
+        finally:
+            db.close()
+
+    def text_preview(self, user_id, file_id):
+        path, name, length = self.get_file(user_id, file_id)
+        if length > 1024 * 1024:
+            raise FileError("Текстовий перегляд і редагування — для файлів до 1 МіБ. Оригінал можна скачати.")
+        try:
+            data = path.read_bytes()
+            text = data.decode("utf-8-sig")
+        except UnicodeError:
+            raise FileError("Для текстового перегляду збережи файл у кодуванні UTF-8.") from None
+        if any(ord(char) < 32 and char not in "\r\n\t" for char in text):
+            raise FileError("Файл містить двійкові дані; текстовий перегляд недоступний.")
+        return {"kind": "text", "name": name, "text": text, "revision": fingerprint(path.name + ":" + name),
+                "editable": Path(name).suffix.casefold() in {".txt", ".md"}}
+
+    def replace_text(self, user_id, file_id, text, revision):
+        self.require_user(user_id)
+        if not isinstance(text, str) or not isinstance(revision, str) or len(text) > 1024 * 1024:
+            raise FileError("Некоректний або завеликий текст.")
+        db = self.connect()
+        new_path = self.blobs / secrets.token_hex(24)
+        old_path = None
+        try:
+            with db:
+                db.execute("BEGIN IMMEDIATE")
+                old_path, name, old_size = self.get_file(user_id, file_id)
+                if Path(name).suffix.casefold() not in {".txt", ".md"}:
+                    raise FileError("Редагувати можна лише TXT і MD.")
+                if not hmac.compare_digest(fingerprint(old_path.name + ":" + name), revision):
+                    raise FileConflict("Файл уже змінився в іншій вкладці або іншим користувачем. Скопіюй свої правки й відкрий актуальну версію.")
+                if old_size > 1024 * 1024:
+                    raise FileError("Редагування доступне для файлів до 1 МіБ.")
+                old_data = old_path.read_bytes()
+                try:
+                    old_data.decode("utf-8-sig")
+                    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+                    if b"\r\n" in old_data:
+                        normalized = normalized.replace("\n", "\r\n")
+                    data = (b"\xef\xbb\xbf" if old_data.startswith(b"\xef\xbb\xbf") else b"") + normalized.encode("utf-8")
+                except UnicodeError:
+                    raise FileError("Для редагування потрібен текст UTF-8.") from None
+                limits = self.limits()
+                if len(data) > min(1024 * 1024, limits["max_file_bytes"]):
+                    raise FileError("Збережений текст має бути до 1 МіБ і в межах ліміту на файл.")
+                total = db.execute("SELECT COALESCE(sum(size),0) FROM files").fetchone()[0]
+                if total - old_size + len(data) > limits["limit_bytes"]:
+                    raise FileError("Для зміненого файла не вистачає місця у сховищі.")
+                if shutil.disk_usage(str(self.root)).free < len(data) + 64 * 1024 * 1024:
+                    raise FileError("На диску сервера недостатньо місця.")
+                with new_path.open("xb") as output:
+                    output.write(data); output.flush(); os.fsync(output.fileno())
+                self.require_user(user_id)
+                db.execute("UPDATE files SET blob=?,size=?,sha256=? WHERE id=?",
+                           (new_path.name, len(data), hashlib.sha256(data).hexdigest(), file_id))
+            result = {"revision": fingerprint(new_path.name + ":" + name), "size": len(data)}
+        except Exception:
+            if new_path.exists():
+                new_path.unlink()
+            raise
+        finally:
+            db.close()
+        # The committed new blob is complete; existing open downloads can finish on Linux.
+        try:
+            old_path.unlink()
+        except OSError:
+            pass
+        return result
 
     def get_file(self, user_id, file_id):
         self.require_user(user_id)

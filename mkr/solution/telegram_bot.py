@@ -1,4 +1,5 @@
 import json
+import hashlib
 import re
 import secrets
 import sqlite3
@@ -28,6 +29,8 @@ from voice_notes import initialize as initialize_voice, handle_voice, voice_sour
 from image_notes import image_source, handle_image
 from news_cache import NewsCollector, initialize as initialize_cache, latest_fetch, cached_articles, cached_ids, poll_seconds, refresh_news
 from file_questions import respond as file_response
+from file_commands import respond as file_command_response
+import usage_metrics
 from file_store import FileError
 from file_web import FileWeb
 
@@ -64,6 +67,7 @@ class TelegramError(Exception):
 
 class Telegram:
     def __init__(self, token):
+        self.file_cache_key = hashlib.sha256(token.encode()).hexdigest()
         self.base_url = f"https://api.telegram.org/bot{token}/"
         self.file_base_url = f"https://api.telegram.org/file/bot{token}/"
 
@@ -71,8 +75,11 @@ class Telegram:
         return self.request(method, json.dumps(params).encode("utf-8"), "application/json",
                             timeout=params.get("timeout", 0) + 15)
 
-    def request(self, method, body, content_type, timeout):
-        request = Request(self.base_url + method, data=body, headers={"Content-Type": content_type})
+    def request(self, method, body, content_type, timeout, length=None):
+        headers = {"Content-Type": content_type}
+        if length is not None:
+            headers["Content-Length"] = str(length)
+        request = Request(self.base_url + method, data=body, headers=headers)
         try:
             with urlopen(request, timeout=timeout) as response:
                 result = json.load(response)
@@ -92,6 +99,54 @@ class Telegram:
 
     def send(self, chat_id, text, **params):
         self.call("sendMessage", chat_id=chat_id, text=text, **params)
+
+    def download_file(self, file_id, max_bytes):
+        file = self.call("getFile", file_id=file_id)
+        path = file.get("file_path", "")
+        if (not isinstance(path, str) or not path or path.startswith("/") or ".." in path.split("/")
+                or "\\" in path or ":" in path or file.get("file_size", 0) > max_bytes):
+            raise FileError("Telegram не повернув доступний файл у межах ліміту 20 МБ.")
+        try:
+            with urlopen(self.file_base_url + quote(path, safe="/"), timeout=45) as response:
+                data = response.read(max_bytes + 1)
+        except OSError:
+            raise FileError("Не вдалося завантажити файл із Telegram. Перешли його боту та повтори команду.") from None
+        if len(data) > max_bytes:
+            raise FileError("Файл перевищує ліміт завантаження.")
+        return data
+
+    def send_bytes(self, chat_id, filename, data, mime="application/octet-stream", **params):
+        from io import BytesIO
+        return self._send_file_stream(chat_id, filename, BytesIO(data), len(data), mime, params)
+
+    def send_file(self, chat_id, path, filename, **params):
+        size = path.stat().st_size
+        if size > 50_000_000:
+            raise FileError("Новий файл через Telegram має бути до 50 МБ. Скачай його на сайті.")
+        with path.open("rb") as source:
+            return self._send_file_stream(chat_id, filename, source, size, "application/octet-stream", params)
+
+    def _send_file_stream(self, chat_id, filename, source, size, mime, params):
+        boundary = secrets.token_hex(24)
+        fields = {"chat_id":chat_id, **params}
+        chunks = []
+        for key, value in fields.items():
+            value = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+            chunks.append(("--" + boundary + '\r\nContent-Disposition: form-data; name="' + key + '"\r\n\r\n' + value + '\r\n').encode('utf-8'))
+        safe_name = filename.replace('"', "'").replace("\\", "_").replace("\r", "").replace("\n", "")
+        chunks.append(("--" + boundary + '\r\nContent-Disposition: form-data; name="document"; filename="' + safe_name +
+                       '"\r\nContent-Type: ' + mime + '\r\n\r\n').encode('utf-8'))
+        head, tail = b"".join(chunks), ('\r\n--' + boundary + '--\r\n').encode('ascii')
+        def body():
+            yield head
+            while True:
+                data = source.read(256 * 1024)
+                if not data:
+                    break
+                yield data
+            yield tail
+        return self.request("sendDocument", body(), "multipart/form-data; boundary=" + boundary,
+                            timeout=90, length=len(head) + size + len(tail))
 
     def download_voice(self, file_id, max_bytes):
         file = self.call("getFile", file_id=file_id)
@@ -241,12 +296,18 @@ def answer_question(api, chat_id, text, conversations, model=MODEL):
         conversations.popitem(last=False)
 
 
+@usage_metrics.track_message("private")
 def handle_update(api, update, db, conversations, model):
     message = update.get("message", {})
     chat = message.get("chat", {})
     chat_id = chat.get("id")
     update_id = update["update_id"]
     if chat.get("type") != "private" or chat_id is None:
+        return
+    def file_reply(value, text):
+        for chunk in ([text] if len(text.encode("utf-16-le")) <= 8000 else wrap(text, 1900, replace_whitespace=False)):
+            api.send(chat_id, format_chat_html(chunk), parse_mode="HTML", link_preview_options={"is_disabled": True})
+    if file_command_response(api, message, model, file_reply):
         return
     if file_response(api, message, model, format_chat_html):
         return
@@ -264,6 +325,8 @@ def handle_update(api, update, db, conversations, model):
                  "«Що змінилося» — порівняння двох останніх надісланих випусків.\n"
                  "Надішли голосове або відповідай на нього зі згадкою @DBresh_bot — отримаєш розшифровку.\n"
                  "Надішли картинку з підписом-запитанням або відповідай на неї зі згадкою @DBresh_bot.\n"
+                 "Файли: збережи в /Папка/ (у відповідь на вкладення), надішли #12, знайди звіт.\n"
+                 "/stats — метрики використання; /stats csv — експорт для звіту.\n"
                  "/id — твій Telegram user_id. /files — сховище для дозволених користувачів.\n"
                  "У звичайному приватному чаті чи групі: надішли @DBresh_bot запитання — бот відповість сам (Guest Mode).",
                  reply_markup=KEYBOARD)
@@ -411,6 +474,7 @@ def main():
         if not bot.get("supports_inline_queries"):
             print("Inline mode: enable /setinline in @BotFather for queries in other chats.", flush=True)
         RUNTIME_DIR.mkdir(exist_ok=True)
+        usage_metrics.configure(RUNTIME_DIR / "usage.sqlite3")
         db = open_state(RUNTIME_DIR / f"bot-{bot['id']}.sqlite3")
         file_web = FileWeb()
         try:

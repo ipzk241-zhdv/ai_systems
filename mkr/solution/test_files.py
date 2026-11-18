@@ -12,7 +12,7 @@ from unittest.mock import Mock, patch
 from urllib.parse import quote
 from zipfile import ZipFile
 
-from file_store import FileStore, FileError, password_hash, password_valid, fingerprint
+from file_store import FileConflict, FileStore, FileError, password_hash, password_valid, fingerprint
 from file_web import FileApp, FileWeb, public_origin
 import file_questions as questions
 import telegram_bot as bot
@@ -210,6 +210,136 @@ class FileTests(unittest.TestCase):
         with self.assertRaises(FileError):
             self.store.import_folders(101, ["Root/Child"], [], parent)
         self.assertEqual(len(self.store.list_folders(101)), 31)
+
+    def test_text_preview_and_save_preserve_id_folder_encoding_and_newlines(self):
+        folder = self.store.create_folder(101, "Notes")
+        original = b"\xef\xbb\xbfline1\r\nline2\r\n"
+        file_id = self.store.upload(101, "notes.md", original, folder)
+        token, csrf = self.session()
+        route = '/api/files/' + str(file_id)
+        response = self.request(route + '/preview', token=token)
+        value = json.loads(response["body"])
+        self.assertEqual(value["text"], "line1\r\nline2\r\n")
+        self.assertTrue(value["editable"])
+        saved = self.request(route + '/content', 'POST', {"text":"Змінено\nновий рядок\n", "revision":value["revision"]}, token, csrf)
+        self.assertEqual(saved["status"], '200 OK')
+        self.assertNotEqual(value["revision"], json.loads(saved["body"])["revision"])
+        path, name, length = self.store.get_file(202, file_id)
+        self.assertEqual(path.read_bytes(), b"\xef\xbb\xbf" + "Змінено\r\nновий рядок\r\n".encode('utf-8'))
+        self.assertEqual(self.store.list_files(101)[0]["folder_id"], folder)
+        self.assertEqual(self.store.storage_info(101)["used_bytes"], length)
+        with self.store.connect() as db:
+            import hashlib
+            self.assertEqual(db.execute('SELECT sha256 FROM files WHERE id=?', (file_id,)).fetchone()[0], hashlib.sha256(path.read_bytes()).hexdigest())
+
+    def test_stale_text_save_conflicts_instead_of_overwriting(self):
+        file_id = self.store.upload(101, 'notes.txt', b'original')
+        preview = self.store.text_preview(101, file_id)
+        self.store.replace_text(202, file_id, 'newer', preview['revision'])
+        token, csrf = self.session()
+        result = self.request('/api/files/' + str(file_id) + '/content', 'POST',
+                              {'text':'stale', 'revision':preview['revision']}, token, csrf)
+        self.assertEqual(result['status'], '409 Conflict')
+        self.assertEqual(self.store.get_file(101, file_id)[0].read_bytes(), b'newer')
+        self.assertEqual(len(list(self.store.blobs.iterdir())), 1)
+
+    def test_save_rejects_other_formats_and_rename_conflicts_and_quota(self):
+        for name in ('book.xlsx', 'document.docx', 'data.csv', 'file.pdf'):
+            file_id = self.store.upload(101, name, b'original')
+            with self.assertRaises(FileError):
+                self.store.replace_text(101, file_id, 'changed', 'revision')
+        file_id = self.store.upload(101, 'notes.txt', b'original')
+        preview = self.store.text_preview(101, file_id)
+        with patch('file_store.MAX_STORAGE_BYTES', 1):
+            with self.assertRaises(FileError):
+                self.store.replace_text(101, file_id, 'changed', preview['revision'])
+        self.store.update_item(101, 'file', file_id, 'renamed.txt')
+        with self.assertRaises(FileConflict):
+            self.store.replace_text(101, file_id, 'changed', preview['revision'])
+        self.assertEqual(self.store.get_file(101, file_id)[0].read_bytes(), b'original')
+
+    def test_failed_save_cleans_up_new_blob_and_keeps_original(self):
+        file_id = self.store.upload(101, 'notes.txt', b'original')
+        revision = self.store.text_preview(101, file_id)['revision']
+        before = set(self.store.blobs.iterdir())
+        with patch('file_store.os.fsync', side_effect=OSError('disk failed')):
+            with self.assertRaises(OSError):
+                self.store.replace_text(101, file_id, 'changed', revision)
+        self.assertEqual(set(self.store.blobs.iterdir()), before)
+        self.assertEqual(self.store.get_file(101, file_id)[0].read_bytes(), b'original')
+
+    def test_preview_and_save_require_login_csrf_origin_and_current_allowlist(self):
+        file_id = self.store.upload(101, 'notes.txt', b'original')
+        route = '/api/files/' + str(file_id)
+        self.assertEqual(self.request(route + '/preview')['status'], '403 Forbidden')
+        token, csrf = self.session()
+        body = {'text':'changed', 'revision':self.store.text_preview(101, file_id)['revision']}
+        self.assertEqual(self.request(route + '/content', 'POST', body, token)['status'], '403 Forbidden')
+        self.assertEqual(self.request(route + '/content', 'POST', body, token, csrf, 'https://evil.example')['status'], '403 Forbidden')
+        self.config['FILES_ALLOWED_USER_IDS'] = '202'
+        self.assertEqual(self.request(route + '/preview', token=token)['status'], '403 Forbidden')
+        self.assertEqual(self.request(route + '/content', 'POST', body, token, csrf)['status'], '403 Forbidden')
+        self.assertEqual(self.store.get_file(202, file_id)[0].read_bytes(), b'original')
+
+    def test_text_limits_and_utf8_errors_do_not_change_original(self):
+        file_id = self.store.upload(101, 'empty.txt', b'')
+        preview = self.store.text_preview(101, file_id)
+        self.assertEqual(preview['text'], '')
+        with self.assertRaises(FileError):
+            self.store.replace_text(101, file_id, 'а' * (1024 * 1024), preview['revision'])
+        for name, data in [('large.md', b'a' * (1024 * 1024 + 1)), ('binary.txt', b'a\x00b'), ('cp1251.txt', b'\xff')]:
+            file_id = self.store.upload(101, name, data)
+            with self.assertRaises(FileError):
+                self.store.text_preview(101, file_id)
+
+    def test_pdf_preview_streams_inline_ranges_with_only_same_origin_framing(self):
+        file_id = self.store.upload(101, 'doc.pdf', b'%PDF-1.7\nsynthetic fixture')
+        token, _ = self.session()
+        route = '/api/files/' + str(file_id)
+        meta = json.loads(self.request(route + '/preview', token=token)['body'])
+        self.assertEqual(meta['kind'], 'pdf')
+        self.assertEqual(self.request(meta['url'])['status'], '403 Forbidden')
+        result = self.request(meta['url'], token=token, headers={'HTTP_RANGE':'bytes=0-3'})
+        self.assertEqual(result['status'], '206 Partial Content')
+        self.assertEqual(result['body'], b'%PDF')
+        self.assertEqual(result['headers']['Content-Type'], 'application/pdf')
+        self.assertTrue(result['headers']['Content-Disposition'].startswith('inline;'))
+        self.assertEqual(result['headers']['X-Frame-Options'], 'SAMEORIGIN')
+        self.assertIn("frame-ancestors 'self'", result['headers']['Content-Security-Policy'])
+        self.assertIn("frame-ancestors 'none'", self.request('/', token=token)['headers']['Content-Security-Policy'])
+        fake = self.store.upload(101, 'fake.pdf', b'<html>not a pdf</html>')
+        self.assertEqual(self.request('/api/files/' + str(fake) + '/preview.pdf', token=token)['status'], '403 Forbidden')
+
+    def test_configurable_folder_count_reaches_both_api_and_browser(self):
+        self.config['FILES_MAX_UPLOAD_ITEMS'] = '2'
+        token, _ = self.session()
+        listing = json.loads(self.request('/api/files', token=token)['body'])
+        self.assertEqual(listing['storage']['max_upload_items'], 2)
+        with self.assertRaises(FileError):
+            self.store.import_folders(101, ['Root'], [{'path':'Root/a', 'size':0}, {'path':'Root/b', 'size':0}])
+        self.assertEqual(self.store.list_folders(101), [])
+        self.config['FILES_MAX_UPLOAD_ITEMS'] = '20000'
+        self.assertEqual(self.store.limits()['max_upload_items'], 20000)
+        self.assertTrue(self.store.import_folders(101, ['Root'], [])['roots'])
+        for raw in ('0', '-1', '100001', 'bad'):
+            self.config['FILES_MAX_UPLOAD_ITEMS'] = raw
+            with self.assertRaises(FileError):
+                self.store.limits()
+
+    def test_office_preview_endpoint_returns_structured_content_and_read_only(self):
+        source = BytesIO()
+        with ZipFile(source, 'w') as archive:
+            archive.writestr('word/document.xml', '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>Привіт</w:t></w:r></w:p></w:body></w:document>')
+        file_id = self.store.upload(101, 'notes.docx', source.getvalue())
+        token, _ = self.session()
+        result = self.request('/api/files/' + str(file_id) + '/preview', token=token)
+        self.assertEqual(result['status'], '200 OK')
+        value = json.loads(result['body'])
+        self.assertEqual(value['kind'], 'word')
+        self.assertFalse(value['editable'])
+        self.assertEqual(value['blocks'][0]['text'], 'Привіт')
+        for asset in ('document-preview.js', 'folder-tree.js'):
+            self.assertEqual(self.request('/' + asset)['status'], '200 OK')
 
     def test_login_requires_nonce_password_and_origin_and_sets_secure_cookie(self):
         grant = self.store.issue_grant(101)
