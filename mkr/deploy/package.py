@@ -11,6 +11,7 @@ def package():
     files.extend(solution.glob("*.py"))
     files.extend(solution / name for name in ("requirements.txt", "importance.txt", "README.md", ".env.example", ".gitignore"))
     files.append(solution / "requirements-files.txt")
+    files.append(solution / "news_examples.json")
     files.append(solution / "FILES.md")
     files.extend((solution / "file_web_assets").glob("*.*"))
     files.extend((root / "deploy").glob("*.md"))

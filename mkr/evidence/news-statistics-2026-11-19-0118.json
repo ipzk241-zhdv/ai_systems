@@ -1,0 +1,1308 @@
+{
+  "start_kyiv": "2026-11-19T01:18:00+02:00",
+  "end_kyiv": "2026-11-19T09:47:21.976331+02:00",
+  "version": "be48b10785e260563c9496e4815a6302d117bf00646a19ff7d2300dcf0b64942",
+  "processed": [
+    {
+      "id": 196,
+      "title": "Через неправильно встановлений димар у місті Житомирської області загорівся будинок, сусіди врятували із задимленої оселі чоловіка",
+      "url": "https://www.zhitomir.info/news_238327.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T09:39:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969790+00:00"
+    },
+    {
+      "id": 206,
+      "title": "Заплатить штраф водій Mercedes, який у Житомирі заблокував виїзд «швидкій»",
+      "url": "https://www.zhitomir.info/news_238328.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T09:50:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969862+00:00"
+    },
+    {
+      "id": 201,
+      "title": "Пилотов польских истребителей F-35 планируют обучить применению американских ядерных бомб в рамках программы Nuclear Sharing",
+      "url": "https://ateobreaking.com/new/pilotov-pol-skikh-istrebitelei-f-35-planiruiut-obuchit-primeneniiu-amerikanskikh-iadernykh-bomb-v-ramkakh-programmy-nuclear-sharing",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T07:50:33.992000+00:00",
+      "label": "important",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969893+00:00"
+    },
+    {
+      "id": 200,
+      "title": "ПОЕЗДА ПОКА КУРСИРУЮТ: ПОЯВИЛОСЬ НОВОЕ ВИДЕО С ПОВРЕЖДЕНИЯМИ КРЫМСКОГО МОСТА",
+      "url": "https://insiderua.net/vojna/poezda-poka-kursiruyut-poyavilos-novoe-video-s-povrezhdeniyami-krymskogo-mosta-251284.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T07:56:04+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969903+00:00"
+    },
+    {
+      "id": 205,
+      "title": "Театральний перформанс, молитва та встановлення лампад: у Житомирі відбудуться пам’ятні заходи до Дня Гідності та Свободи",
+      "url": "https://www.zhitomir.info/news_238329.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T10:16:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969913+00:00"
+    },
+    {
+      "id": 204,
+      "title": "Начальник управління ветеранів Житомирської міськради виборов перемогу на чемпіонаті України з богатирського багатоборства",
+      "url": "https://www.zhitomir.info/news_238330.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T10:17:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969922+00:00"
+    },
+    {
+      "id": 203,
+      "title": "На Богунії у Житомирі з’явиться McDonald's, виконком погодив благоустрій території з облаштуванням скверу",
+      "url": "https://www.zhitomir.info/news_238331.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T10:28:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969930+00:00"
+    },
+    {
+      "id": 210,
+      "title": "Демократка Мэри Пелтола победила на Аляске действующего республиканского сенатора Дэна Салливана",
+      "url": "https://ateobreaking.com/new/demokratka-meri-peltola-pobedila-na-aliaske-deistvuiushchego-respublikanskogo-senatora-dena-sallivana",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T08:34:58.218000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:35.969938+00:00"
+    },
+    {
+      "id": 202,
+      "title": "Мобілізували за день, попри наявність відстрочки: що сказав верховний суд?",
+      "url": "https://www.zhitomir.info/news_238332.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T10:37:00+02:00",
+      "label": "important",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579479+00:00"
+    },
+    {
+      "id": 209,
+      "title": "РОССИЯ СТЯГИВАЕТ ДОПОЛНИТЕЛЬНЫЕ СУДА К КРЫМСКОМУ МОСТУ",
+      "url": "https://insiderua.net/vojna/rossiya-styagivaet-dopolnitelnye-suda-k-krymskomu-mostu-251286.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T08:56:06+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579529+00:00"
+    },
+    {
+      "id": 208,
+      "title": "Викрили директора ДЮСШ міста Житомирської області, який оформив знайомого на роботу тренером, щоб той отримав бронювання",
+      "url": "https://www.zhitomir.info/news_238333.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T11:04:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579541+00:00"
+    },
+    {
+      "id": 211,
+      "title": "Движение по железнодорожной части Крымского моста восстановлено",
+      "url": "https://ateobreaking.com/new/dvizhenie-po-zheleznodorozhnoi-chasti-krymskogo-mosta-vosstanovleno",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T09:04:08.792000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579551+00:00"
+    },
+    {
+      "id": 207,
+      "title": "Внаслідок російської атаки у Житомирі є руйнування енергетичної інфраструктури, в області діють відключення електрики",
+      "url": "https://www.zhitomir.info/news_238334.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T11:05:00+02:00",
+      "label": "important",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579561+00:00"
+    },
+    {
+      "id": 212,
+      "title": "ТРИ ДРОНА НА ОДНОГО ОККУПАНТА: WSJ РАСКРЫЛ, КАК РАБОТАЕТ СЕКРЕТНЫЙ БУНКЕР МАДЯРА",
+      "url": "https://insiderua.net/vojna/tri-drona-na-odnogo-okkupanta-wsj-raskryl-kak-rabotaet-sekretnyj-bunker-madyara-251288.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T09:56:07+00:00",
+      "label": "fun",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579570+00:00"
+    },
+    {
+      "id": 225,
+      "title": "Понад 200 патронів знайшли у будинку жителя Житомирської області поліцейські, які приїхали туди на виклик про домашнє насильство",
+      "url": "https://www.zhitomir.info/news_238335.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T12:04:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579578+00:00"
+    },
+    {
+      "id": 214,
+      "title": "Дональд Трамп прибыл в Китай",
+      "url": "https://ateobreaking.com/new/donal-d-tramp-pribyl-v-kitai",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T10:05:32.402000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:18:36.579586+00:00"
+    },
+    {
+      "id": 258,
+      "title": "В Северодвинске арестовали врача, который ошибочно признал пожилую пациентку мертвой",
+      "url": "https://ateobreaking.com/new/v-severodvinske-arestovali-vracha-kotoryi-oshibochno-priznal-pozhiluiu-patsientku-mertvoi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:17:24.698000+00:00",
+      "label": "skip",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.269841+00:00"
+    },
+    {
+      "id": 257,
+      "title": "Депутаты пророссийской оппозиции в парламенте Армении заявили, что намерены добиваться возвращения Карабаха",
+      "url": "https://ateobreaking.com/new/deputaty-prorossiiskoi-oppozitsii-v-parlamente-armenii-zaiavili-chto-namereny-dobivat-sia-vozvrashcheniia-karabakha",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:43:25.127000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.269974+00:00"
+    },
+    {
+      "id": 260,
+      "title": "Демократы в Палате представителей США выдвинули Хакима Джеффриса кандидатом на пост спикера нижней палаты",
+      "url": "https://ateobreaking.com/new/demokraty-v-palate-predstavitelei-ssha-vydvinuli-khakima-dzheffrisa-kandidatom-na-post-spikera-nizhnei-palaty",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:50:25.389000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.269992+00:00"
+    },
+    {
+      "id": 259,
+      "title": "Госдума одобрила штрафы за «дискредитацию традиционных ценностей»",
+      "url": "https://ateobreaking.com/new/gosduma-odobrila-shtrafy-za-diskreditatsiiu-traditsionnykh-tsennostei",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:53:58.305000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.270011+00:00"
+    },
+    {
+      "id": 256,
+      "title": "УКРАИНА ОБРУШИЛА КРЫМСКИЙ МОСТ БЛАГОДАРЯ \"ЛЕТАЮЩИМ МОДЕМАМ\": FT ПРО НОВУЮ ТЕХНОЛОГИЮ",
+      "url": "https://insiderua.net/vojna/ukraina-obrushila-krymskij-most-blagodarya-quot-letayushhim-modemam-quot-ft-pro-novuyu-tehnologiyu-251305.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T16:56:04+00:00",
+      "label": "important",
+      "relation": "update",
+      "prepared_at": "2026-11-18T23:19:13.270024+00:00"
+    },
+    {
+      "id": 262,
+      "title": "Депутаты Госдумы в четвёртый раз отказались запрещать себе владеть недвижимостью за границей",
+      "url": "https://ateobreaking.com/new/deputaty-gosdumy-v-chetviortyi-raz-otkazalis-zapreshchat-sebe-vladet-nedvizhimost-iu-za-granitsei",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T17:39:02.945000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.270037+00:00"
+    },
+    {
+      "id": 263,
+      "title": "РОССИЯНЕ УДАРИЛИ ПО РЫНКУ В ХАРЬКОВСКОЙ ОБЛАСТИ, РАНЕНЫ 12 ЧЕЛОВЕК (ФОТО)",
+      "url": "https://insiderua.net/vojna/rossiyane-udarili-po-rynku-v-harkovskoj-oblasti-raneny-12-chelovek-foto-251307.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T17:56:07+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.270048+00:00"
+    },
+    {
+      "id": 264,
+      "title": "Госдума РФ одобрила штрафы за «дискредитацию традиционных ценностей»",
+      "url": "https://ateobreaking.com/new/gosduma-rf-odobrila-shtrafy-za-diskreditatsiiu-traditsionnykh-tsennostei",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T18:28:58.651000+00:00",
+      "label": "news",
+      "relation": "repeat",
+      "prepared_at": "2026-11-18T23:19:13.270058+00:00"
+    },
+    {
+      "id": 267,
+      "title": "Основатель Telegram выразил сочувствие жителям Ирака, столкнувшимся с очередной блокировкой платформы в стране",
+      "url": "https://ateobreaking.com/new/osnovatel-telegram-vyrazil-sochuvstvie-zhiteliam-iraka-stolknuvshimsia-s-ocherednoi-blokirovkoi-platformy-v-strane",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T18:51:22.778000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.878858+00:00"
+    },
+    {
+      "id": 266,
+      "title": "Генпрокуратура России признала действия сестёр Хачатурян необходимой самообороной",
+      "url": "https://ateobreaking.com/new/genprokuratura-rossii-priznala-deistviia-sestior-khachaturian-neobkhodimoi-samooboronoi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T18:55:57.333000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.878931+00:00"
+    },
+    {
+      "id": 265,
+      "title": "РФ ПЛАНИРУЕТ ЗАПУСТИТЬ ПО УКРАИНЕ 20 МЛН ДРОНОВ ЗА СЛЕДУЮЩИЙ ГОД, – КОМИССАР ЕС",
+      "url": "https://insiderua.net/vojna/rf-planiruet-zapustit-po-ukraine-20-mln-dronov-za-sleduyushhij-god-komissar-es-251319.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T18:56:06+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.878946+00:00"
+    },
+    {
+      "id": 268,
+      "title": "Путин сообщил о росте ВВП России более чем на 10% за последние 3 года",
+      "url": "https://ateobreaking.com/new/putin-soobshchil-o-roste-vvp-rossii-bolee-chem-na-10-za-poslednie-3-goda",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T19:01:24.816000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.878958+00:00"
+    },
+    {
+      "id": 269,
+      "title": "Генпрокуратура России признала действия сестёр Хачатурян необходимой самообороной и предложила прекратить дело",
+      "url": "https://ateobreaking.com/new/genprokuratura-rossii-priznala-deistviia-sestior-khachaturian-neobkhodimoi-samooboronoi-i-predlozhila-prekratit-delo",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T19:21:33.755000+00:00",
+      "label": "news",
+      "relation": "repeat",
+      "prepared_at": "2026-11-18T23:19:13.878969+00:00"
+    },
+    {
+      "id": 270,
+      "title": "В системе PlayStation Network произошел глобальный сбой",
+      "url": "https://ateobreaking.com/new/v-sisteme-playstation-network-proizoshel-global-nyi-sboi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T19:36:22.664000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.878981+00:00"
+    },
+    {
+      "id": 276,
+      "title": "ОДИН УЖЕ \"МИНУСНУЛИ\": ГЕНШТАБ ДОБАВИЛ МОСТЫ В СПИСОК ПОТЕРЬ АРМИИ РФ",
+      "url": "https://insiderua.net/vojna/odin-uzhe-quot-minusnuli-quot-genshtab-dobavil-mosty-v-spisok-poter-armii-rf-251321.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T19:56:06+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.878992+00:00"
+    },
+    {
+      "id": 271,
+      "title": "Армения движется к необратимому миру с Азербайджаном и Турцией",
+      "url": "https://ateobreaking.com/new/armeniia-dvizhetsia-k-neobratimomu-miru-s-azerbaidzhanom-i-turtsiei",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T20:04:35.411000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:13.879002+00:00"
+    },
+    {
+      "id": 273,
+      "title": "Президент Польши подарил Трампу кресло с янтарем, информация о котором хранилась «в строжайшем секрете» — TVN24+",
+      "url": "https://ateobreaking.com/new/prezident-pol-shi-podaril-trampu-kreslo-s-iantarem-informatsiia-o-kotorom-khranilas-v-strozhaishem-sekrete-tvn24",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T20:29:59.618000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:46.563352+00:00"
+    },
+    {
+      "id": 272,
+      "title": "Атаки украинских беспилотников сократили объемы переработки нефти на российских НПЗ на 45%",
+      "url": "https://ateobreaking.com/new/ataki-ukrainskikh-bespilotnikov-sokratili-ob-emy-pererabotki-nefti-na-rossiiskikh-npz-na-45",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T20:32:01.159000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:46.563410+00:00"
+    },
+    {
+      "id": 274,
+      "title": "Президент Польши подарил Трампу кресло, украшенное янтарем, информация о котором хранилась «в строжайшем секрете» — TVN24+",
+      "url": "https://ateobreaking.com/new/prezident-pol-shi-podaril-trampu-kreslo-ukrashennoe-iantarem-informatsiia-o-kotorom-khranilas-v-strozhaishem-sekrete-tvn24",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T20:40:52.745000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:46.563427+00:00"
+    },
+    {
+      "id": 275,
+      "title": "БИТВА МОСТОВ В САМОМ РАЗГАРЕ, НО ПОБЕДИТЕЛЬ ПОКА НЕ ОПРЕДЕЛЕН, – THE ECONOMIST",
+      "url": "https://insiderua.net/vojna/bitva-mostov-v-samom-razgare-no-pobeditel-poka-ne-opredelen-the-economist-251323.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T20:56:07+00:00",
+      "label": "news",
+      "relation": "repeat",
+      "prepared_at": "2026-11-18T23:19:46.563439+00:00"
+    },
+    {
+      "id": 279,
+      "title": "Глава Центрального Командования США встретился с руководством ЦАХАЛ и Моссад в Израиле",
+      "url": "https://ateobreaking.com/new/glava-tsentral-nogo-komandovaniia-ssha-vstretilsia-s-rukovodstvom-tsakhal-i-mossad-v-izraile",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T21:21:24.002000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:46.563451+00:00"
+    },
+    {
+      "id": 278,
+      "title": "В Люберцах обнаружили тела женщины и ребенка",
+      "url": "https://ateobreaking.com/new/v-liubertsakh-obnaruzhili-tela-zhenshchiny-i-rebenka",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T21:27:01.358000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:46.563462+00:00"
+    },
+    {
+      "id": 277,
+      "title": "В 2025 году количество поданных в мире патентных заявок увеличилось на 6 процентов и достигло 3,9 миллионов, что является рекордным показателем",
+      "url": "https://ateobreaking.com/new/v-2025-godu-kolichestvo-podannykh-v-mire-patentnykh-zaiavok-uvelichilos-na-6-protsentov-i-dostiglo-3-9-millionov-chto-iavliaetsia-rekordnym",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T21:30:26.795000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:46.563473+00:00"
+    },
+    {
+      "id": 282,
+      "title": "Ракетная опасность объявлена в Крыму",
+      "url": "https://ateobreaking.com/new/raketnaia-opasnost-ob-iavlena-v-krymu",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T21:53:29.393000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:19:46.563498+00:00"
+    },
+    {
+      "id": 213,
+      "title": "Новости на Ateo Breaking",
+      "url": "https://ateobreaking.com/new/v-odesse-v-rezul-tate-rossiiskogo-udara-po-tsentru-goroda-odin-chelovek-pogib-tri-postradali",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T10:10:33.879000+00:00",
+      "label": "skip",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595328+00:00"
+    },
+    {
+      "id": 218,
+      "title": "Путин и Трамп могут встретиться уже сегодня вечером",
+      "url": "https://ateobreaking.com/new/putin-i-tramp-mogut-vstretit-sia-uzhe-segodnia-vecherom",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T10:15:27.124000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595384+00:00"
+    },
+    {
+      "id": 217,
+      "title": "Петербург с 1 марта 2027 года запретит розничную продажу вейпов и жидкостей для них",
+      "url": "https://ateobreaking.com/new/peterburg-s-1-marta-2027-goda-zapretit-roznichnuiu-prodazhu-veipov-i-zhidkostei-dlia-nikh",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T10:20:27.462000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595397+00:00"
+    },
+    {
+      "id": 216,
+      "title": "Армения может обратиться в Суд ЕАЭС из-за российских ограничений на армянскую продукцию",
+      "url": "https://ateobreaking.com/new/armeniia-mozhet-obratit-sia-v-sud-eaes-iz-za-rossiiskikh-ogranichenii-na-armianskuiu-produktsiiu",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T10:25:25.783000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595406+00:00"
+    },
+    {
+      "id": 224,
+      "title": "Ще 14 світлофорів на перехрестях Житомира обладнають автономним живленням. Перелік адрес",
+      "url": "https://www.zhitomir.info/news_238336.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T12:29:00+02:00",
+      "label": "important",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595414+00:00"
+    },
+    {
+      "id": 215,
+      "title": "В Одессе в результате российского удара по центру города один человек погиб, трое пострадали",
+      "url": "https://ateobreaking.com/new/v-odesse-v-rezul-tate-rossiiskogo-udara-po-tsentru-goroda-odin-chelovek-pogib-troe-postradali",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T10:29:27.257000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595422+00:00"
+    },
+    {
+      "id": 223,
+      "title": "Жінка з Житомирської області віддала шахраям 5000 доларів, бо її переконали, що треба перевірити походження грошей",
+      "url": "https://www.zhitomir.info/news_238337.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T12:57:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595431+00:00"
+    },
+    {
+      "id": 222,
+      "title": "Трамп заявляет, что война с Ираном якобы «очень близка» к завершению",
+      "url": "https://ateobreaking.com/new/tramp-zaiavliaet-chto-voina-s-iranom-iakoby-ochen-blizka-k-zaversheniiu",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T10:59:52.186000+00:00",
+      "label": "important",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:20:49.595438+00:00"
+    },
+    {
+      "id": 221,
+      "title": "Grand Theft Auto VI первой в мире стала доступна в Новой Зеландии",
+      "url": "https://ateobreaking.com/new/grand-theft-auto-vi-pervoi-v-mire-stala-dostupna-v-novoi-zelandii",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T11:00:31.798000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833515+00:00"
+    },
+    {
+      "id": 220,
+      "title": "Эрдоган призвал исламский мир к самокритике и усилению давления на Израиль",
+      "url": "https://ateobreaking.com/new/erdogan-prizval-islamskii-mir-k-samokritike-i-usileniiu-davleniia-na-izrail",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T11:05:22.816000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833565+00:00"
+    },
+    {
+      "id": 219,
+      "title": "Депутатська комісія Житомирської міськради зацікавилася роботою уповноваженого з питань виявлення корупції",
+      "url": "https://www.zhitomir.info/news_238338.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T13:25:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833578+00:00"
+    },
+    {
+      "id": 228,
+      "title": "Госдума приняла в первом чтении законопроект о штрафах за распространение фильмов и сериалов, дискредитирующих «традиционные ценности»",
+      "url": "https://ateobreaking.com/new/gosduma-priniala-v-pervom-chtenii-zakonoproekt-o-shtrafakh-za-rasprostranenie-fil-mov-i-serialov-diskreditiruiushchikh-traditsionnye-tsennos",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T11:38:23.339000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833588+00:00"
+    },
+    {
+      "id": 227,
+      "title": "У Греції переміг суперників з Малайзії, Ірану та Таїланду: боксер з Житомира виборов «срібло» на чемпіонаті світу з муей-тай",
+      "url": "https://www.zhitomir.info/news_238340.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T13:46:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833597+00:00"
+    },
+    {
+      "id": 226,
+      "title": "У Житомирі зріжуть десятки аварійних дерев, понад 30 з них – у зеленій зоні Голови Чацького",
+      "url": "https://www.zhitomir.info/news_238339.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T13:57:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833610+00:00"
+    },
+    {
+      "id": 232,
+      "title": "Порубку понад 330 вільх, берез та верб виявили поблизу села Житомирської області, збитки сягнули 1,4 млн грн",
+      "url": "https://www.zhitomir.info/news_238341.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T14:06:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833620+00:00"
+    },
+    {
+      "id": 231,
+      "title": "Спортсменам из РФ может быть отказано во въезде в Швецию",
+      "url": "https://ateobreaking.com/new/sportsmenam-iz-rf-mozhet-byt-otkazano-vo-v-ezde-v-shvetsiiu",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T12:06:53.184000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:21:51.833629+00:00"
+    },
+    {
+      "id": 234,
+      "title": "Блогер Лерчек улетела в Китай на лечение",
+      "url": "https://ateobreaking.com/new/bloger-lerchek-uletela-v-kitai-na-lechenie",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T12:30:33.757000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:22:54.704062+00:00"
+    },
+    {
+      "id": 230,
+      "title": "Житомир має заплатити 3,3 млн грн за доставку 11 тролейбусів з Чехії й сподівається отримати ще",
+      "url": "https://www.zhitomir.info/news_238342.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T14:31:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:22:54.704114+00:00"
+    },
+    {
+      "id": 229,
+      "title": "У центрі Житомира за понад 5 млн грн ремонтують приміщення, у яке ще п’ять років тому планували перемістити шахову школу",
+      "url": "https://www.zhitomir.info/news_238343.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T14:40:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:22:54.704126+00:00"
+    },
+    {
+      "id": 233,
+      "title": "У Житомирі знову курсуватимуть тролейбуси, трамваї на маршрути поки не випускатимуть",
+      "url": "https://www.zhitomir.info/news_238344.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T15:08:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:22:54.704136+00:00"
+    },
+    {
+      "id": 240,
+      "title": "Селищна рада з Житомирського району знову заплатила за незаконну порубку дерев – цього разу понад 1,2 млн грн",
+      "url": "https://www.zhitomir.info/news_238345.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T15:29:00+02:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-18T23:22:54.704145+00:00"
+    },
+    {
+      "id": 239,
+      "title": "П’ятьох жителів Житомирської області судитимуть за продаж алкоголю-фальсифікату, одного з них – ще й за відмивання майна",
+      "url": "https://www.zhitomir.info/news_238346.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T15:38:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:22:54.704154+00:00"
+    },
+    {
+      "id": 238,
+      "title": "Житомирська область отримала партію вакцини від грипу для безоплатного щеплення",
+      "url": "https://www.zhitomir.info/news_238347.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T15:43:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:22:54.704163+00:00"
+    },
+    {
+      "id": 237,
+      "title": "РОССИЯНЕ ТРИЖДЫ УДАРИЛИ ПО ЦЕНТРУ ОДЕССЫ: ЕСТЬ ПОГИБШИЕ И РАНЕНЫЕ (ФОТО)",
+      "url": "https://insiderua.net/vojna/rossiyane-trizhdy-udarili-po-tsentru-odessy-est-pogibshie-i-ranenye-foto-251290.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T13:56:07+00:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-18T23:22:54.704171+00:00"
+    },
+    {
+      "id": 236,
+      "title": "Заліз за батарею опалення та не зміг вибратися: у житомирському ліцеї рятувальники допомогли хлопчику вибратися з «пастки»",
+      "url": "https://www.zhitomir.info/news_238348.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T15:57:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790723+00:00"
+    },
+    {
+      "id": 241,
+      "title": "СК РФ отказался возбуждать дело против петербургских полицейских",
+      "url": "https://ateobreaking.com/new/sk-rf-otkazalsia-vozbuzhdat-delo-protiv-peterburgskikh-politseiskikh",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T14:08:53.701000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790771+00:00"
+    },
+    {
+      "id": 235,
+      "title": "На два дні перекриють рух транспорту Новим бульваром і вулицею Малою Бердичівською у Житомирі",
+      "url": "https://www.zhitomir.info/news_238349.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T16:13:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790783+00:00"
+    },
+    {
+      "id": 246,
+      "title": "Вице-президент Ирана Сейед Хамид Пурмохаммади заявил о планах по развитию пограничного перехода с Арменией",
+      "url": "https://ateobreaking.com/new/vitse-prezident-irana-seied-khamid-purmokhammadi-zaiavil-o-planakh-po-razvitiiu-pogranichnogo-perekhoda-s-armeniei",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T14:30:28.325000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790802+00:00"
+    },
+    {
+      "id": 245,
+      "title": "На трасі у Житомирському районі сталася ДТП, рух транспорту ускладнений у напрямку Рівного",
+      "url": "https://www.zhitomir.info/news_238350.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T16:42:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790811+00:00"
+    },
+    {
+      "id": 244,
+      "title": "В Германии предложили ужесточить правила получения гражданства",
+      "url": "https://ateobreaking.com/new/v-germanii-predlozhili-uzhestochit-pravila-polucheniia-grazhdanstva",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T14:43:59.381000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790821+00:00"
+    },
+    {
+      "id": 243,
+      "title": "ТРИ САМОЛЕТА И МОСТ ЧЕРЕЗ СЕВЕРСКИЙ ДОНЕЦ: ГЕНШТАБ СООБЩИЛ О НОВЫХ УДАРАХ ВСУ ПО ВРАГУ",
+      "url": "https://insiderua.net/vojna/tri-samoleta-i-most-cherez-severskij-donets-genshtab-soobshhil-o-novyh-udarah-vsu-po-vragu-251301.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T14:56:05+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790829+00:00"
+    },
+    {
+      "id": 249,
+      "title": "Хиллари Клинтон заявила, что лидеры Китая и России манипулируют Трампом, как «детской гитарой»",
+      "url": "https://ateobreaking.com/new/khillari-klinton-zaiavila-chto-lidery-kitaia-i-rossii-manipuliruiut-trampom-kak-detskoi-gitaroi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T14:58:26.837000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:23:56.790838+00:00"
+    },
+    {
+      "id": 248,
+      "title": "На саммит РФ — США — КНР отводится час",
+      "url": "https://ateobreaking.com/new/na-sammit-rf-ssha-knr-otvoditsia-chas",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:06:52.737000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236125+00:00"
+    },
+    {
+      "id": 247,
+      "title": "Полноформатные переговоры Путина и Трампа 19 ноября не планируются",
+      "url": "https://ateobreaking.com/new/polnoformatnye-peregovory-putina-i-trampa-19-noiabria-ne-planiruiutsia",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:11:26.649000+00:00",
+      "label": "important",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236179+00:00"
+    },
+    {
+      "id": 242,
+      "title": "У Житомирі збираються запровадити послугу «тимчасового відпочинку» для людей, які доглядають близьких: оголосять конкурс",
+      "url": "https://www.zhitomir.info/news_238351.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T17:14:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236191+00:00"
+    },
+    {
+      "id": 255,
+      "title": "Путин привез с собой в Китай ядерный чемоданчик",
+      "url": "https://ateobreaking.com/new/putin-privez-s-soboi-v-kitai-iadernyi-chemodanchik",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:18:33.066000+00:00",
+      "label": "fun",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236201+00:00"
+    },
+    {
+      "id": 254,
+      "title": "Инфляцию в России не удалось снизить до 4% в 2026 году из-за топливного кризиса",
+      "url": "https://ateobreaking.com/new/infliatsiiu-v-rossii-ne-udalos-snizit-do-4-v-2026-godu-iz-za-toplivnogo-krizisa",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:24:53.651000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236210+00:00"
+    },
+    {
+      "id": 261,
+      "title": "На щиті до Житомира повернулися двоє воїнів, один з яких загинув у 2023 році під час евакуації поранених та загиблих",
+      "url": "https://www.zhitomir.info/news_238352.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T17:28:00+02:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236219+00:00"
+    },
+    {
+      "id": 253,
+      "title": "Завтра Трамп проведёт отдельную встречу с Путиным в Китае",
+      "url": "https://ateobreaking.com/new/zavtra-tramp-provediot-otdel-nuiu-vstrechu-s-putinym-v-kitae",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:30:30.709000+00:00",
+      "label": "important",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236227+00:00"
+    },
+    {
+      "id": 252,
+      "title": "ЕС предложил Украине новый заем в размере 45 миллиардов евро на 2027 год",
+      "url": "https://ateobreaking.com/new/es-predlozhil-ukraine-novyi-zaem-v-razmere-45-milliardov-evro-na-2027-god",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:34:30.729000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:24:59.236235+00:00"
+    },
+    {
+      "id": 251,
+      "title": "РОССИЯ НАЧАЛА ИСПЫТЫВАТЬ \"ГЕРАНЬ-6\" СО СКОРОСТЬЮ ДО 1000 КМ/Ч, — ВЕНИСЛАВСКИЙ",
+      "url": "https://insiderua.net/vojna/rossiya-nachala-ispytyvat-quot-geran-6-quot-so-skorostyu-do-1000-km-ch-venislavskij-251303.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T15:56:08+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:26:02.907399+00:00"
+    },
+    {
+      "id": 250,
+      "title": "Совет директоров Nvidia не планирует возвращать Дженсена Хуанга",
+      "url": "https://ateobreaking.com/new/sovet-direktorov-nvidia-ne-planiruet-vozvrashchat-dzhensena-khuanga",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:02:24.687000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:26:02.907454+00:00"
+    },
+    {
+      "id": 281,
+      "title": "УКРАИНА НЕ СЛУЧАЙНО ВЫБРАЛА ДЕНЬ ДЛЯ УДАРА ПО КРЫМСКОМУ МОСТУ, —  LE MONDE",
+      "url": "https://insiderua.net/vojna/ukraina-ne-sluchajno-vybrala-den-dlya-udara-po-krymskomu-mostu-le-monde-251325.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T21:56:07+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:26:02.907468+00:00"
+    },
+    {
+      "id": 280,
+      "title": "Крымский мост, предположительно, был вновь подвергнут ракетной атаке",
+      "url": "https://ateobreaking.com/new/krymskii-most-predpolozhitel-no-byl-vnov-podvergnut-raketnoi-atake",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T21:57:01.696000+00:00",
+      "label": "news",
+      "relation": "repeat",
+      "prepared_at": "2026-11-18T23:26:02.907478+00:00"
+    },
+    {
+      "id": 283,
+      "title": "В Украине GTA 6 стало доступно для запуска",
+      "url": "https://ateobreaking.com/new/v-ukraine-gta-6-stalo-dostupno-dlia-zapuska",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T22:00:29.074000+00:00",
+      "label": "fun",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:26:02.907487+00:00"
+    },
+    {
+      "id": 284,
+      "title": "По Крымскому мосту зафиксировали два попадания в железнодорожную часть",
+      "url": "https://ateobreaking.com/new/po-krymskomu-mostu-zafiksirovali-dva-popadaniia-v-zheleznodorozhnuiu-chast",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T22:28:00.104000+00:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-18T23:26:02.907496+00:00"
+    },
+    {
+      "id": 287,
+      "title": "Беспилотники атаковали комбикормовый завод в Белгородской области",
+      "url": "https://ateobreaking.com/new/bespilotniki-atakovali-kombikormovyi-zavod-v-belgorodskoi-oblasti",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T22:54:30.765000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-18T23:26:02.907504+00:00"
+    },
+    {
+      "id": 286,
+      "title": "КРЫМСКИЙ МОСТ БЫЛ ПОВТОРНО АТАКОВАН, — МОНИТОРЫ",
+      "url": "https://insiderua.net/vojna/krymskij-most-byl-povtorno-atakovan-monitory-251327.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T22:56:06+00:00",
+      "label": "news",
+      "relation": "repeat",
+      "prepared_at": "2026-11-18T23:26:02.907515+00:00"
+    },
+    {
+      "id": 285,
+      "title": "Движение по железнодорожной части Крымского моста «временно перекрыто»",
+      "url": "https://ateobreaking.com/new/dvizhenie-po-zheleznodorozhnoi-chasti-krymskogo-mosta-vremenno-perekryto",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T22:56:31.277000+00:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-18T23:26:03.199449+00:00"
+    },
+    {
+      "id": 288,
+      "title": "КАК БЫСТРО РОССИЯ ВОССТАНОВИТ КРЫМСКИЙ МОСТ: NYT НАЗВАЛА \"ОПТИМИСТИЧНЫЙ\" СРОК",
+      "url": "https://insiderua.net/vojna/kak-bystro-rossiya-vosstanovit-krymskij-most-nyt-nazvala-quot-optimistichnyj-quot-srok-251329.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T23:56:06+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T00:07:17.625280+00:00"
+    },
+    {
+      "id": 291,
+      "title": "БПЛА атаковали нефтеперекачивающую станцию  «Калейкино»  в  Альметьевском районе Татарстана",
+      "url": "https://ateobreaking.com/new/bpla-atakovali-nefteperekachivaiushchuiu-stantsiiu-kaleikino-v-al-met-evskom-raione-tatarstana",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T04:58:55.513000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T05:15:57.069798+00:00"
+    },
+    {
+      "id": 290,
+      "title": "Трамп о встрече с Путиным в Шэньчжэне",
+      "url": "https://ateobreaking.com/new/tramp-o-vstreche-s-putinym-v-shen-chzhene",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:10:33.340000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T05:15:57.070426+00:00"
+    },
+    {
+      "id": 289,
+      "title": "Встреча Путина и Трампа в Шэньчжэне завершилась",
+      "url": "https://ateobreaking.com/new/vstrecha-putina-i-trampa-v-shen-chzhene-zavershilas",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:12:52.552000+00:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-19T05:15:57.070451+00:00"
+    },
+    {
+      "id": 294,
+      "title": "Трамп поприветствовал Пескова в кулуарах саммита АТЭС",
+      "url": "https://ateobreaking.com/new/tramp-poprivetstvoval-peskova-v-kuluarakh-sammita-ates",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:25:00.938000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T05:46:38.667916+00:00"
+    },
+    {
+      "id": 293,
+      "title": "Путин и Трамп не сделали совместных заявлений по итогам встречи на саммите АТЭС",
+      "url": "https://ateobreaking.com/new/putin-i-tramp-ne-sdelali-sovmestnykh-zaiavlenii-po-itogam-vstrechi-na-sammite-ates",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:35:27.137000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T05:46:38.667980+00:00"
+    },
+    {
+      "id": 292,
+      "title": "В результате ночной атаки БПЛА временно приостановлено движение поездов по железнодорожной составляющей Крымского моста",
+      "url": "https://ateobreaking.com/new/v-rezul-tate-nochnoi-ataki-bpla-vremenno-priostanovleno-dvizhenie-poezdov-po-zheleznodorozhnoi-sostavliaiushchei-krymskogo-mosta",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:45:30.170000+00:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-19T05:46:38.667994+00:00"
+    },
+    {
+      "id": 298,
+      "title": "Маск заявил, что не поддерживает MAGA, и пожалел о сотнях миллионов долларов, потраченных на республиканцев",
+      "url": "https://ateobreaking.com/new/mask-zaiavil-chto-ne-podderzhivaet-maga-i-pozhalel-o-sotniakh-millionov-dollarov-potrachennykh-na-respublikantsev",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:50:34.464000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T06:17:25.322372+00:00"
+    },
+    {
+      "id": 297,
+      "title": "РФ АТАКОВАЛА ПОЛТАВСКУЮ, ЗАПОРОЖСКУЮ И ХАРЬКОВСКУЮ ОБЛАСТИ: ВОЗНИКЛИ ПОЖАРЫ, ЕСТЬ РАНЕНЫЕ",
+      "url": "https://insiderua.net/vojna/rf-atakovala-poltavskuyu-zaporozhskuyu-i-harkovskuyu-oblasti-voznikli-pozhary-est-ranenye-251331.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-19T05:56:05+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T06:17:25.322425+00:00"
+    },
+    {
+      "id": 296,
+      "title": "Тема Украины была основной на встрече Путина и Трампа, — помощник президента РФ Ушаков",
+      "url": "https://ateobreaking.com/new/tema-ukrainy-byla-osnovnoi-na-vstreche-putina-i-trampa-pomoshchnik-prezidenta-rf-ushakov",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:59:24.842000+00:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-19T06:17:25.322438+00:00"
+    },
+    {
+      "id": 295,
+      "title": "Встреча Си Цзиньпина и Трампа проходит в Шэньчжэне, — Центральное телевидение Китая",
+      "url": "https://ateobreaking.com/new/vstrecha-si-tszin-pina-i-trampa-prokhodit-v-shen-chzhene-tsentral-noe-televidenie-kitaia",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T06:10:29.280000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T06:17:25.322449+00:00"
+    },
+    {
+      "id": 300,
+      "title": "ОАК передала Минобороны РФ партию истребителей пятого поколения Су-57",
+      "url": "https://ateobreaking.com/new/oak-peredala-minoborony-rf-partiiu-istrebitelei-piatogo-pokoleniia-su-57",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T06:35:33.001000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T06:48:14.825323+00:00"
+    },
+    {
+      "id": 299,
+      "title": "В 2025 году количество поданных в мире патентных заявок увеличилось на 6 процентов и достигло 3,9 миллиона, что является рекордным показателем",
+      "url": "https://ateobreaking.com/new/v-2025-godu-kolichestvo-podannykh-v-mire-patentnykh-zaiavok-uvelichilos-na-6-protsentov-i-dostiglo-3-9-milliona-chto-iavliaetsia-rekordnym-p",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T06:41:01.982000+00:00",
+      "label": "news",
+      "relation": "repeat",
+      "prepared_at": "2026-11-19T06:48:14.825406+00:00"
+    },
+    {
+      "id": 302,
+      "title": "РОССИЯНЕ ОСТАНОВИЛИ ЖЕЛЕЗНОДОРОЖНОЕ ДВИЖЕНИЕ ПО КРЫМСКОМУ МОСТУ ПОСЛЕ НОЧНОЙ АТАКИ ДРОНОВ",
+      "url": "https://insiderua.net/vojna/rossiyane-ostanovili-zheleznodorozhnoe-dvizhenie-po-krymskomu-mostu-posle-nochnoj-ataki-dronov-251341.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-19T06:56:06+00:00",
+      "label": "news",
+      "relation": "update",
+      "prepared_at": "2026-11-19T07:19:22.110549+00:00"
+    },
+    {
+      "id": 301,
+      "title": "Китай и Соединённые Штаты обладают достаточной властью, чтобы остановить Путина в ходе одной встречи",
+      "url": "https://ateobreaking.com/new/kitai-i-soedinionnye-shtaty-obladaiut-dostatochnoi-vlast-iu-chtoby-ostanovit-putina-v-khode-odnoi-vstrechi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T07:10:27.752000+00:00",
+      "label": "news",
+      "relation": "new",
+      "prepared_at": "2026-11-19T07:19:22.110597+00:00"
+    }
+  ],
+  "fresh": [
+    {
+      "id": 288,
+      "title": "КАК БЫСТРО РОССИЯ ВОССТАНОВИТ КРЫМСКИЙ МОСТ: NYT НАЗВАЛА \"ОПТИМИСТИЧНЫЙ\" СРОК",
+      "url": "https://insiderua.net/vojna/kak-bystro-rossiya-vosstanovit-krymskij-most-nyt-nazvala-quot-optimistichnyj-quot-srok-251329.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T23:56:06+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 289,
+      "title": "Встреча Путина и Трампа в Шэньчжэне завершилась",
+      "url": "https://ateobreaking.com/new/vstrecha-putina-i-trampa-v-shen-chzhene-zavershilas",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:12:52.552000+00:00",
+      "label": "news",
+      "relation": "update"
+    },
+    {
+      "id": 290,
+      "title": "Трамп о встрече с Путиным в Шэньчжэне",
+      "url": "https://ateobreaking.com/new/tramp-o-vstreche-s-putinym-v-shen-chzhene",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:10:33.340000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 291,
+      "title": "БПЛА атаковали нефтеперекачивающую станцию  «Калейкино»  в  Альметьевском районе Татарстана",
+      "url": "https://ateobreaking.com/new/bpla-atakovali-nefteperekachivaiushchuiu-stantsiiu-kaleikino-v-al-met-evskom-raione-tatarstana",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T04:58:55.513000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 292,
+      "title": "В результате ночной атаки БПЛА временно приостановлено движение поездов по железнодорожной составляющей Крымского моста",
+      "url": "https://ateobreaking.com/new/v-rezul-tate-nochnoi-ataki-bpla-vremenno-priostanovleno-dvizhenie-poezdov-po-zheleznodorozhnoi-sostavliaiushchei-krymskogo-mosta",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:45:30.170000+00:00",
+      "label": "news",
+      "relation": "update"
+    },
+    {
+      "id": 293,
+      "title": "Путин и Трамп не сделали совместных заявлений по итогам встречи на саммите АТЭС",
+      "url": "https://ateobreaking.com/new/putin-i-tramp-ne-sdelali-sovmestnykh-zaiavlenii-po-itogam-vstrechi-na-sammite-ates",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:35:27.137000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 294,
+      "title": "Трамп поприветствовал Пескова в кулуарах саммита АТЭС",
+      "url": "https://ateobreaking.com/new/tramp-poprivetstvoval-peskova-v-kuluarakh-sammita-ates",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:25:00.938000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 295,
+      "title": "Встреча Си Цзиньпина и Трампа проходит в Шэньчжэне, — Центральное телевидение Китая",
+      "url": "https://ateobreaking.com/new/vstrecha-si-tszin-pina-i-trampa-prokhodit-v-shen-chzhene-tsentral-noe-televidenie-kitaia",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T06:10:29.280000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 296,
+      "title": "Тема Украины была основной на встрече Путина и Трампа, — помощник президента РФ Ушаков",
+      "url": "https://ateobreaking.com/new/tema-ukrainy-byla-osnovnoi-na-vstreche-putina-i-trampa-pomoshchnik-prezidenta-rf-ushakov",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:59:24.842000+00:00",
+      "label": "news",
+      "relation": "update"
+    },
+    {
+      "id": 297,
+      "title": "РФ АТАКОВАЛА ПОЛТАВСКУЮ, ЗАПОРОЖСКУЮ И ХАРЬКОВСКУЮ ОБЛАСТИ: ВОЗНИКЛИ ПОЖАРЫ, ЕСТЬ РАНЕНЫЕ",
+      "url": "https://insiderua.net/vojna/rf-atakovala-poltavskuyu-zaporozhskuyu-i-harkovskuyu-oblasti-voznikli-pozhary-est-ranenye-251331.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-19T05:56:05+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 298,
+      "title": "Маск заявил, что не поддерживает MAGA, и пожалел о сотнях миллионов долларов, потраченных на республиканцев",
+      "url": "https://ateobreaking.com/new/mask-zaiavil-chto-ne-podderzhivaet-maga-i-pozhalel-o-sotniakh-millionov-dollarov-potrachennykh-na-respublikantsev",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:50:34.464000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 299,
+      "title": "В 2025 году количество поданных в мире патентных заявок увеличилось на 6 процентов и достигло 3,9 миллиона, что является рекордным показателем",
+      "url": "https://ateobreaking.com/new/v-2025-godu-kolichestvo-podannykh-v-mire-patentnykh-zaiavok-uvelichilos-na-6-protsentov-i-dostiglo-3-9-milliona-chto-iavliaetsia-rekordnym-p",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T06:41:01.982000+00:00",
+      "label": "news",
+      "relation": "repeat"
+    },
+    {
+      "id": 300,
+      "title": "ОАК передала Минобороны РФ партию истребителей пятого поколения Су-57",
+      "url": "https://ateobreaking.com/new/oak-peredala-minoborony-rf-partiiu-istrebitelei-piatogo-pokoleniia-su-57",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T06:35:33.001000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 301,
+      "title": "Китай и Соединённые Штаты обладают достаточной властью, чтобы остановить Путина в ходе одной встречи",
+      "url": "https://ateobreaking.com/new/kitai-i-soedinionnye-shtaty-obladaiut-dostatochnoi-vlast-iu-chtoby-ostanovit-putina-v-khode-odnoi-vstrechi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T07:10:27.752000+00:00",
+      "label": "news",
+      "relation": "new"
+    },
+    {
+      "id": 302,
+      "title": "РОССИЯНЕ ОСТАНОВИЛИ ЖЕЛЕЗНОДОРОЖНОЕ ДВИЖЕНИЕ ПО КРЫМСКОМУ МОСТУ ПОСЛЕ НОЧНОЙ АТАКИ ДРОНОВ",
+      "url": "https://insiderua.net/vojna/rossiyane-ostanovili-zheleznodorozhnoe-dvizhenie-po-krymskomu-mostu-posle-nochnoj-ataki-dronov-251341.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-19T06:56:06+00:00",
+      "label": "news",
+      "relation": "update"
+    }
+  ],
+  "processed_labels": {
+    "news": 91,
+    "important": 8,
+    "fun": 3,
+    "skip": 2
+  },
+  "fresh_labels": {
+    "news": 15
+  },
+  "processed_relations": {
+    "new": 89,
+    "update": 9,
+    "repeat": 6
+  },
+  "unprepared_fresh": 0,
+  "sources": {
+    "INSIDER UA": 3,
+    "Ateo Breaking": 12
+  },
+  "digests": [
+    {
+      "id": 11,
+      "delivered_at": "2026-11-18T23:43:24.648381+00:00",
+      "since_at": "2026-11-18T16:13:01.960709+00:00",
+      "until_at": "2026-11-18T23:42:32.551872+00:00",
+      "shown": 16
+    },
+    {
+      "id": 12,
+      "delivered_at": "2026-11-19T00:32:29.953448+00:00",
+      "since_at": "2026-11-18T23:42:32.551872+00:00",
+      "until_at": "2026-11-19T00:32:00.409067+00:00",
+      "shown": 1
+    },
+    {
+      "id": 13,
+      "delivered_at": "2026-11-19T06:38:49.648219+00:00",
+      "since_at": "2026-11-19T00:32:00.409067+00:00",
+      "until_at": "2026-11-19T06:37:53.516148+00:00",
+      "shown": 8
+    },
+    {
+      "id": 14,
+      "delivered_at": "2026-11-19T07:37:36.356788+00:00",
+      "since_at": "2026-11-19T06:37:53.516148+00:00",
+      "until_at": "2026-11-19T07:36:39.985404+00:00",
+      "shown": 2
+    },
+    {
+      "id": 15,
+      "delivered_at": "2026-11-19T07:44:45.156230+00:00",
+      "since_at": "2026-11-18T07:43:48.682359+00:00",
+      "until_at": "2026-11-19T07:43:48.682359+00:00",
+      "shown": 16
+    }
+  ],
+  "shown": [
+    {
+      "section": "fun",
+      "n": 3,
+      "unique_articles": 3
+    },
+    {
+      "section": "important",
+      "n": 3,
+      "unique_articles": 3
+    },
+    {
+      "section": "news",
+      "n": 37,
+      "unique_articles": 37
+    }
+  ],
+  "coverage": {
+    "until_at": "2026-11-19T07:46:54.305109+00:00",
+    "status": {
+      "Житомир.info": [
+        0,
+        "Сторінка не містить новин із датою."
+      ],
+      "INSIDER UA": [
+        0,
+        "Поточна RSS-стрічка не охоплює весь період."
+      ],
+      "Суспільне Новини": [
+        0,
+        "curl: (22) The requested URL returned error: 403"
+      ],
+      "Суспільне Житомир": [
+        0,
+        "curl: (22) The requested URL returned error: 403"
+      ],
+      "Ateo Breaking": [
+        0,
+        "Неповне покриття карти сайту. Помилок сторінок: 0."
+      ]
+    }
+  },
+  "runs": [
+    {
+      "context": "background",
+      "status": "error",
+      "n": 6,
+      "prepared": 56,
+      "avg_seconds": 3.67,
+      "max_seconds": 9.92
+    },
+    {
+      "context": "background",
+      "status": "success",
+      "n": 489,
+      "prepared": 24,
+      "avg_seconds": 1.71,
+      "max_seconds": 10.47
+    },
+    {
+      "context": "on_demand",
+      "status": "error",
+      "n": 1,
+      "prepared": 24,
+      "avg_seconds": 69.77,
+      "max_seconds": 69.77
+    }
+  ]
+}

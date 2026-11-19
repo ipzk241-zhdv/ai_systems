@@ -5,7 +5,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 KEYS = {"TELEGRAM_BOT_TOKEN", "LLM_PROVIDER", "LLM_MODEL", "GROQ_API_KEY", "OLLAMA_MODEL",
-        "STT_MODEL", "STT_LANGUAGE", "READING_WPM", "PLAYBACK_SPEED", "VISION_MODEL", "NEWS_POLL_MINUTES",
+        "STT_MODEL", "STT_LANGUAGE", "READING_WPM", "PLAYBACK_SPEED", "VISION_MODEL", "NEWS_POLL_MINUTES", "NEWS_MODEL",
         "FILES_ENABLED", "FILES_ALLOWED_USER_IDS", "FILES_PASSWORD_HASH", "FILES_PUBLIC_URL", "FILES_PORT",
         "FILES_STORAGE_LIMIT_MB", "FILES_MAX_FILE_MB", "FILES_MAX_UPLOAD_ITEMS",
         "FILES_TELEGRAM_CACHE_CHAT_ID"}
@@ -37,3 +37,8 @@ def default_model(config=None):
     if provider(config) == "groq":
         return "openai/gpt-oss-20b"
     return config.get("OLLAMA_MODEL") or "qwen3.5:9b"
+
+
+def news_model(fallback,config=None):
+    config=read_config() if config is None else config
+    return config.get("NEWS_MODEL", "").strip() or fallback

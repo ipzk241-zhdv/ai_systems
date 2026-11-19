@@ -1,0 +1,228 @@
+{
+  "window_start": "2026-11-19T01:18:00+02:00",
+  "window_end": "2026-11-19T09:47:21.976331+02:00",
+  "version": "be48b10785e260563c9496e4815a6302d117bf00646a19ff7d2300dcf0b64942",
+  "compared_count": 31,
+  "matches": 5,
+  "accuracy_on_overlap": 0.16129032258064516,
+  "note": "Only the exact URL+title overlap with previously frozen human ratings; not accuracy of all collected articles.",
+  "pairs": [
+    {
+      "id": 200,
+      "title": "ПОЕЗДА ПОКА КУРСИРУЮТ: ПОЯВИЛОСЬ НОВОЕ ВИДЕО С ПОВРЕЖДЕНИЯМИ КРЫМСКОГО МОСТА",
+      "url": "https://insiderua.net/vojna/poezda-poka-kursiruyut-poyavilos-novoe-video-s-povrezhdeniyami-krymskogo-mosta-251284.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 203,
+      "title": "На Богунії у Житомирі з’явиться McDonald's, виконком погодив благоустрій території з облаштуванням скверу",
+      "url": "https://www.zhitomir.info/news_238331.html",
+      "prediction": "news",
+      "human_label": "news"
+    },
+    {
+      "id": 202,
+      "title": "Мобілізували за день, попри наявність відстрочки: що сказав верховний суд?",
+      "url": "https://www.zhitomir.info/news_238332.html",
+      "prediction": "important",
+      "human_label": "skip"
+    },
+    {
+      "id": 209,
+      "title": "РОССИЯ СТЯГИВАЕТ ДОПОЛНИТЕЛЬНЫЕ СУДА К КРЫМСКОМУ МОСТУ",
+      "url": "https://insiderua.net/vojna/rossiya-styagivaet-dopolnitelnye-suda-k-krymskomu-mostu-251286.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 208,
+      "title": "Викрили директора ДЮСШ міста Житомирської області, який оформив знайомого на роботу тренером, щоб той отримав бронювання",
+      "url": "https://www.zhitomir.info/news_238333.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 212,
+      "title": "ТРИ ДРОНА НА ОДНОГО ОККУПАНТА: WSJ РАСКРЫЛ, КАК РАБОТАЕТ СЕКРЕТНЫЙ БУНКЕР МАДЯРА",
+      "url": "https://insiderua.net/vojna/tri-drona-na-odnogo-okkupanta-wsj-raskryl-kak-rabotaet-sekretnyj-bunker-madyara-251288.html",
+      "prediction": "fun",
+      "human_label": "skip"
+    },
+    {
+      "id": 225,
+      "title": "Понад 200 патронів знайшли у будинку жителя Житомирської області поліцейські, які приїхали туди на виклик про домашнє насильство",
+      "url": "https://www.zhitomir.info/news_238335.html",
+      "prediction": "news",
+      "human_label": "news"
+    },
+    {
+      "id": 214,
+      "title": "Дональд Трамп прибыл в Китай",
+      "url": "https://ateobreaking.com/new/donal-d-tramp-pribyl-v-kitai",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 257,
+      "title": "Депутаты пророссийской оппозиции в парламенте Армении заявили, что намерены добиваться возвращения Карабаха",
+      "url": "https://ateobreaking.com/new/deputaty-prorossiiskoi-oppozitsii-v-parlamente-armenii-zaiavili-chto-namereny-dobivat-sia-vozvrashcheniia-karabakha",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 256,
+      "title": "УКРАИНА ОБРУШИЛА КРЫМСКИЙ МОСТ БЛАГОДАРЯ \"ЛЕТАЮЩИМ МОДЕМАМ\": FT ПРО НОВУЮ ТЕХНОЛОГИЮ",
+      "url": "https://insiderua.net/vojna/ukraina-obrushila-krymskij-most-blagodarya-quot-letayushhim-modemam-quot-ft-pro-novuyu-tehnologiyu-251305.html",
+      "prediction": "important",
+      "human_label": "fun"
+    },
+    {
+      "id": 263,
+      "title": "РОССИЯНЕ УДАРИЛИ ПО РЫНКУ В ХАРЬКОВСКОЙ ОБЛАСТИ, РАНЕНЫ 12 ЧЕЛОВЕК (ФОТО)",
+      "url": "https://insiderua.net/vojna/rossiyane-udarili-po-rynku-v-harkovskoj-oblasti-raneny-12-chelovek-foto-251307.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 265,
+      "title": "РФ ПЛАНИРУЕТ ЗАПУСТИТЬ ПО УКРАИНЕ 20 МЛН ДРОНОВ ЗА СЛЕДУЮЩИЙ ГОД, – КОМИССАР ЕС",
+      "url": "https://insiderua.net/vojna/rf-planiruet-zapustit-po-ukraine-20-mln-dronov-za-sleduyushhij-god-komissar-es-251319.html",
+      "prediction": "news",
+      "human_label": "news"
+    },
+    {
+      "id": 272,
+      "title": "Атаки украинских беспилотников сократили объемы переработки нефти на российских НПЗ на 45%",
+      "url": "https://ateobreaking.com/new/ataki-ukrainskikh-bespilotnikov-sokratili-ob-emy-pererabotki-nefti-na-rossiiskikh-npz-na-45",
+      "prediction": "news",
+      "human_label": "fun"
+    },
+    {
+      "id": 223,
+      "title": "Жінка з Житомирської області віддала шахраям 5000 доларів, бо її переконали, що треба перевірити походження грошей",
+      "url": "https://www.zhitomir.info/news_238337.html",
+      "prediction": "news",
+      "human_label": "fun"
+    },
+    {
+      "id": 222,
+      "title": "Трамп заявляет, что война с Ираном якобы «очень близка» к завершению",
+      "url": "https://ateobreaking.com/new/tramp-zaiavliaet-chto-voina-s-iranom-iakoby-ochen-blizka-k-zaversheniiu",
+      "prediction": "important",
+      "human_label": "skip"
+    },
+    {
+      "id": 221,
+      "title": "Grand Theft Auto VI первой в мире стала доступна в Новой Зеландии",
+      "url": "https://ateobreaking.com/new/grand-theft-auto-vi-pervoi-v-mire-stala-dostupna-v-novoi-zelandii",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 226,
+      "title": "У Житомирі зріжуть десятки аварійних дерев, понад 30 з них – у зеленій зоні Голови Чацького",
+      "url": "https://www.zhitomir.info/news_238339.html",
+      "prediction": "news",
+      "human_label": "news"
+    },
+    {
+      "id": 232,
+      "title": "Порубку понад 330 вільх, берез та верб виявили поблизу села Житомирської області, збитки сягнули 1,4 млн грн",
+      "url": "https://www.zhitomir.info/news_238341.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 230,
+      "title": "Житомир має заплатити 3,3 млн грн за доставку 11 тролейбусів з Чехії й сподівається отримати ще",
+      "url": "https://www.zhitomir.info/news_238342.html",
+      "prediction": "news",
+      "human_label": "news"
+    },
+    {
+      "id": 240,
+      "title": "Селищна рада з Житомирського району знову заплатила за незаконну порубку дерев – цього разу понад 1,2 млн грн",
+      "url": "https://www.zhitomir.info/news_238345.html",
+      "prediction": "news",
+      "human_label": "fun"
+    },
+    {
+      "id": 238,
+      "title": "Житомирська область отримала партію вакцини від грипу для безоплатного щеплення",
+      "url": "https://www.zhitomir.info/news_238347.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 237,
+      "title": "РОССИЯНЕ ТРИЖДЫ УДАРИЛИ ПО ЦЕНТРУ ОДЕССЫ: ЕСТЬ ПОГИБШИЕ И РАНЕНЫЕ (ФОТО)",
+      "url": "https://insiderua.net/vojna/rossiyane-trizhdy-udarili-po-tsentru-odessy-est-pogibshie-i-ranenye-foto-251290.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 236,
+      "title": "Заліз за батарею опалення та не зміг вибратися: у житомирському ліцеї рятувальники допомогли хлопчику вибратися з «пастки»",
+      "url": "https://www.zhitomir.info/news_238348.html",
+      "prediction": "news",
+      "human_label": "fun"
+    },
+    {
+      "id": 241,
+      "title": "СК РФ отказался возбуждать дело против петербургских полицейских",
+      "url": "https://ateobreaking.com/new/sk-rf-otkazalsia-vozbuzhdat-delo-protiv-peterburgskikh-politseiskikh",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 235,
+      "title": "На два дні перекриють рух транспорту Новим бульваром і вулицею Малою Бердичівською у Житомирі",
+      "url": "https://www.zhitomir.info/news_238349.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 243,
+      "title": "ТРИ САМОЛЕТА И МОСТ ЧЕРЕЗ СЕВЕРСКИЙ ДОНЕЦ: ГЕНШТАБ СООБЩИЛ О НОВЫХ УДАРАХ ВСУ ПО ВРАГУ",
+      "url": "https://insiderua.net/vojna/tri-samoleta-i-most-cherez-severskij-donets-genshtab-soobshhil-o-novyh-udarah-vsu-po-vragu-251301.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 248,
+      "title": "На саммит РФ — США — КНР отводится час",
+      "url": "https://ateobreaking.com/new/na-sammit-rf-ssha-knr-otvoditsia-chas",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 247,
+      "title": "Полноформатные переговоры Путина и Трампа 19 ноября не планируются",
+      "url": "https://ateobreaking.com/new/polnoformatnye-peregovory-putina-i-trampa-19-noiabria-ne-planiruiutsia",
+      "prediction": "important",
+      "human_label": "skip"
+    },
+    {
+      "id": 242,
+      "title": "У Житомирі збираються запровадити послугу «тимчасового відпочинку» для людей, які доглядають близьких: оголосять конкурс",
+      "url": "https://www.zhitomir.info/news_238351.html",
+      "prediction": "news",
+      "human_label": "fun"
+    },
+    {
+      "id": 261,
+      "title": "На щиті до Житомира повернулися двоє воїнів, один з яких загинув у 2023 році під час евакуації поранених та загиблих",
+      "url": "https://www.zhitomir.info/news_238352.html",
+      "prediction": "news",
+      "human_label": "skip"
+    },
+    {
+      "id": 251,
+      "title": "РОССИЯ НАЧАЛА ИСПЫТЫВАТЬ \"ГЕРАНЬ-6\" СО СКОРОСТЬЮ ДО 1000 КМ/Ч, — ВЕНИСЛАВСКИЙ",
+      "url": "https://insiderua.net/vojna/rossiya-nachala-ispytyvat-quot-geran-6-quot-so-skorostyu-do-1000-km-ch-venislavskij-251303.html",
+      "prediction": "news",
+      "human_label": "important"
+    }
+  ]
+}

@@ -64,8 +64,10 @@ def limit_items(articles, items, limit=16):
         return items
     important = [item for item in items if item["section"] == "important"]
     important.sort(key=lambda item: articles[item["id"] - 1].source not in LOCAL_SOURCES)
-    fun = [item for item in items if item["section"] == "fun"]
-    news = [item for item in items if item["section"] == "news"]
+    fun = [item for item in items if item["section"] == "fun" or (
+        item["section"] == "news" and any(tag in {"funny","interesting","positive"} for tag in item.get("tags",[])))]
+    featured_ids = {item["id"] for item in fun}
+    news = [item for item in items if item["section"] == "news" and item["id"] not in featured_ids]
     return (important + fun[:3] + news + fun[3:])[:limit]
 
 

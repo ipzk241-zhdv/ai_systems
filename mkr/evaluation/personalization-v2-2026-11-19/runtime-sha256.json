@@ -1,0 +1,14 @@
+{
+  "news_personalization.py": "bf42bd540caf4d3976c8dab50d126cecd64750e5863183d45c03c063c0db47f6",
+  "news_examples.json": "75339f18655d8a15c13240c0835f48e0c55c9963a62044baa935366ae48a5cf4",
+  "test_news_personalization.py": "793fd0305b009bcc8c9c2e80f503aafa531d063b2a1be893c4de57a0dae600ce",
+  "news_preparation.py": "b683550b38abc4efa152b93cbec5dd97ee1406b841e02948dee3dd389f4c99d2",
+  "test_news_preparation.py": "987e57fd6fcf5df446f61c9574a9a02d64dbfc909c6b49e1ed1273b9a511168f",
+  "importance.txt": "2d8bdca6204dcebb918327cee6d9f5190caa59b61be6e2842080d3df680d86a0",
+  "html_digest.py": "9700580599168f27bc6a9e87f5f59e89bfe14ebfcd9bd3b27e23fa78846d9934",
+  "digest.py": "157dbd87452c41dfb40000399bd5ed573aaeeebec82d05ccea988f69df111546",
+  "settings.py": "e1aa3d905b27dbe423b6638884ef49a06cd8587ac89e475760c5cee4479929d0",
+  "telegram_bot.py": "809a0bcef7a43f12eeae90a3fbd7cec0fc6d1195059a9135454d8303bf9c08b2",
+  ".env.example": "64470512e110f56c4c2f55773da22fe78458a0bd1299d645d96b27e4708a821f",
+  "README.md": "3caa024224696af8104a2a9f268c5e4186e6a7368ae55bfe6c83a290472112a1"
+}

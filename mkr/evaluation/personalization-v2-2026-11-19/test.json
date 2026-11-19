@@ -1,0 +1,424 @@
+{
+  "articles": [
+    {
+      "id": "e911b57e0a3233ae1b5bada0",
+      "title": "По сообщению читателя Ateo Breaking, над Кишинёвом замечен беспилотник, предположительно типа «Шахед»",
+      "url": "https://ateobreaking.com/new/po-soobshcheniiu-chitatelia-ateo-breaking-nad-kishiniovom-zamechen-bespilotnik-predpolozhitel-no-tipa-shakhed",
+      "source": "Ateo Breaking",
+      "published": "2026-11-17T14:50:54+00:00",
+      "last_seen": "2026-11-18T10:44:59.262592+00:00",
+      "sections": [
+        "news"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "e911b57e0a3233ae1b5bada0",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:39:05.056282+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "9d1dcb5f6e16e1b723a84d35",
+      "title": "КРЫМСКИЙ МОСТ СТАЛ СИЛЬНЫМ УДАРОМ ДЛЯ ПУТИНА: АНАЛИТИК ОБЪЯСНИЛ, ЧЕМ ЭТО ГРОЗИТ АРМИИ РФ",
+      "url": "https://insiderua.net/vojna/krymskij-most-stal-silnym-udarom-dlya-putina-analitik-obyasnil-chem-eto-grozit-armii-rf-251280.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T05:56:04+00:00",
+      "last_seen": "2026-11-18T18:59:22.909255+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "9d1dcb5f6e16e1b723a84d35",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:36:14.293110+00:00"
+      },
+      "prediction": "important",
+      "in_sample": true
+    },
+    {
+      "id": "3a51ada599f63215c57cde44",
+      "title": "СКОЛЬКО ВРЕМЕНИ ПОТРЕБУЕТСЯ РФ НА ВОССТАНОВЛЕНИЕ КРЫМСКОГО МОСТА: АНАЛИТИКИ ПОДЕЛИЛИСЬ ПРОГНОЗОМ",
+      "url": "https://insiderua.net/vojna/skolko-vremeni-potrebuetsya-rf-na-vosstanovlenie-krymskogo-mosta-analitiki-podelilis-prognozom-251264.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-17T20:56:08+00:00",
+      "last_seen": "2026-11-18T07:44:59.261647+00:00",
+      "sections": [
+        "important"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "3a51ada599f63215c57cde44",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "мені буде доступний лише заголовок при перегляді дайджесту, або мені відкривати окремо сторінку з новиною, або просити бота, щоб дізнатись відповідь \"скільки\", а відповідь взагалі може бути - \"невідомо\"",
+        "updated_at": "2026-11-18T22:31:08.585589+00:00"
+      },
+      "prediction": "important",
+      "in_sample": true
+    },
+    {
+      "id": "1da6a55cf1d25a04ec51ba0a",
+      "title": "Трамп объявил о строительстве более 22 заводов по производству Patriot, THAAD и Tomahawk",
+      "url": "https://ateobreaking.com/new/tramp-ob-iavil-o-stroitel-stve-bolee-22-zavodov-po-proizvodstvu-patriot-thaad-i-tomahawk",
+      "source": "Ateo Breaking",
+      "published": "2026-11-17T19:59:54.946000+00:00",
+      "last_seen": "2026-11-18T16:44:59.264596+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "1da6a55cf1d25a04ec51ba0a",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:28:31.146258+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "105f3c26ead9ea7f7e8fd718",
+      "title": "РОССИЯНЕ УДАРИЛИ ПО РЫНКУ В ХАРЬКОВСКОЙ ОБЛАСТИ, РАНЕНЫ 12 ЧЕЛОВЕК (ФОТО)",
+      "url": "https://insiderua.net/vojna/rossiyane-udarili-po-rynku-v-harkovskoj-oblasti-raneny-12-chelovek-foto-251307.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T17:56:07+00:00",
+      "last_seen": "2026-11-18T21:59:22.912041+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "105f3c26ead9ea7f7e8fd718",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "постійно росія б'є кудись і є жертви. це погано, але і я не хочу жити постійно з поганим настроєм",
+        "updated_at": "2026-11-18T22:27:53.362670+00:00"
+      },
+      "prediction": "important",
+      "in_sample": true
+    },
+    {
+      "id": "2c0fdab5ff41955695c470ac",
+      "title": "5 типових помилок при приготуванні омлету — поради METRO",
+      "url": "https://www.zhitomir.info/news_238282.html",
+      "source": "Житомир.info",
+      "published": "2026-11-16T12:24:00+02:00",
+      "last_seen": "2026-11-17T04:55:02.986426+00:00",
+      "sections": [
+        "fun"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "2c0fdab5ff41955695c470ac",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:29:27.778945+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "247df6dd6488976a22e384cd",
+      "title": "БПЛА атаковали НПЗ в Ильском и Афипском в Краснодарском крае",
+      "url": "https://ateobreaking.com/new/bpla-atakovali-npz-v-il-skom-i-afipskom-v-krasnodarskom-krae",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T04:45:04.315000+00:00",
+      "last_seen": "2026-11-18T19:59:22.910084+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "247df6dd6488976a22e384cd",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:28:48.721976+00:00"
+      },
+      "prediction": "important",
+      "in_sample": true
+    },
+    {
+      "id": "ef8415247d37a28d4cfbe3a8",
+      "title": "РОССИЙСКИЙ УДАР ПО КАМЫШЕВАХЕ: ПОИСКИ ЗАВЕРШЕНЫ, НАЗВАНО ЧИСЛО ЖЕРТВ",
+      "url": "https://insiderua.net/vojna/rossijskij-udar-po-kamyshevahe-poiski-zaversheny-nazvano-chislo-zhertv-251220.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-16T19:56:10+00:00",
+      "last_seen": "2026-11-17T04:55:02.986426+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "ef8415247d37a28d4cfbe3a8",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:39:38.872166+00:00"
+      },
+      "prediction": "important",
+      "in_sample": true
+    },
+    {
+      "id": "7c77e642362196423db44f4f",
+      "title": "Житомирянину повідомили про підозру через смертельну ДТП на Київщині: був за кермом MAN та не пропустив Mazda",
+      "url": "https://www.zhitomir.info/news_238281.html",
+      "source": "Житомир.info",
+      "published": "2026-11-16T12:19:00+02:00",
+      "last_seen": "2026-11-17T04:55:02.986426+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "7c77e642362196423db44f4f",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:35:00.837662+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "47d51f74e6f789606ccc07d2",
+      "title": "Батьки можуть оплачувати «дитячими» виплатами послуги зубних і медичних лабораторій  – Кабмін розширив перелік",
+      "url": "https://www.zhitomir.info/news_238323.html",
+      "source": "Житомир.info",
+      "published": "2026-11-17T16:50:00+02:00",
+      "last_seen": "2026-11-18T14:14:59.263802+00:00",
+      "sections": [
+        "news"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "47d51f74e6f789606ccc07d2",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:32:13.241241+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "ee52527622119117d4d7af23",
+      "title": "КРЫМСКИЙ МОСТ ВТОРОЙ РАЗ ЗА СУТКИ ПОДВЕРГСЯ АТАКЕ: ПЕРВЫЕ ПОДРОБНОСТИ О ПОСЛЕДСТВИЯХ",
+      "url": "https://insiderua.net/vojna/krymskij-most-vtoroj-raz-za-sutki-podvergsya-atake-pervye-podrobnosti-o-posledstviyah-251237.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-17T04:56:07+00:00",
+      "last_seen": "2026-11-17T05:16:45.093157+00:00",
+      "sections": [
+        "news"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "ee52527622119117d4d7af23",
+        "label": "fun",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:39:31.066213+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "752f42d695b77522ce5d8ec7",
+      "title": "Селищна рада з Житомирського району знову заплатила за незаконну порубку дерев – цього разу понад 1,2 млн грн",
+      "url": "https://www.zhitomir.info/news_238345.html",
+      "source": "Житомир.info",
+      "published": "2026-11-18T15:29:00+02:00",
+      "last_seen": "2026-11-18T21:59:22.912041+00:00",
+      "sections": [
+        "news"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "752f42d695b77522ce5d8ec7",
+        "label": "fun",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:34:56.984611+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "a24e9eaa26073a34757b0435",
+      "title": "Дмитрий Медведев пожаловался на страдания от санкций и призвал объявить их «преступлением против человечности»",
+      "url": "https://ateobreaking.com/new/dmitrii-medvedev-pozhalovalsia-na-stradaniia-ot-sanktsii-i-prizval-ob-iavit-ikh-prestupleniem-protiv-chelovechnosti",
+      "source": "Ateo Breaking",
+      "published": "2026-11-16T17:22:01.571000+00:00",
+      "last_seen": "2026-11-17T04:55:02.986426+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "a24e9eaa26073a34757b0435",
+        "label": "fun",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:36:42.781817+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "4373d154dcaaf9300d46af63",
+      "title": "РОССИЯ НАЧАЛА ИСПЫТЫВАТЬ \"ГЕРАНЬ-6\" СО СКОРОСТЬЮ ДО 1000 КМ/Ч, — ВЕНИСЛАВСКИЙ",
+      "url": "https://insiderua.net/vojna/rossiya-nachala-ispytyvat-quot-geran-6-quot-so-skorostyu-do-1000-km-ch-venislavskij-251303.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T15:56:08+00:00",
+      "last_seen": "2026-11-18T21:59:22.912041+00:00",
+      "sections": [
+        "news"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "4373d154dcaaf9300d46af63",
+        "label": "important",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "прямі засоби ураження українського населення",
+        "updated_at": "2026-11-18T22:31:38.884030+00:00"
+      },
+      "prediction": "important",
+      "in_sample": true
+    },
+    {
+      "id": "73147e8a4e4bf107680ac318",
+      "title": "У Житомирі судитимуть двох чоловіків, які газовим пальником катували 18-річну дівчину за відмову від інтимних стосунків",
+      "url": "https://www.zhitomir.info/news_238321.html",
+      "source": "Житомир.info",
+      "published": "2026-11-17T15:27:00+02:00",
+      "last_seen": "2026-11-18T13:14:59.263511+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "73147e8a4e4bf107680ac318",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:34:43.418403+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "c1e5f27a3db8a6b4b942ad6f",
+      "title": "Молдова. Пролет дрона над столичным районом Рышкановка в направлении центра Кишинёва",
+      "url": "https://ateobreaking.com/new/moldova-prolet-drona-nad-stolichnym-raionom-ryshkanovka-v-napravlenii-tsentra-kishiniova",
+      "source": "Ateo Breaking",
+      "published": "2026-11-17T14:57:00.369000+00:00",
+      "last_seen": "2026-11-18T11:14:59.262766+00:00",
+      "sections": [
+        "news"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "c1e5f27a3db8a6b4b942ad6f",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:38:07.661154+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "0b8c3bc3b4a3b8320aa76a88",
+      "title": "ПОЕЗДА ПОКА КУРСИРУЮТ: ПОЯВИЛОСЬ НОВОЕ ВИДЕО С ПОВРЕЖДЕНИЯМИ КРЫМСКОГО МОСТА",
+      "url": "https://insiderua.net/vojna/poezda-poka-kursiruyut-poyavilos-novoe-video-s-povrezhdeniyami-krymskogo-mosta-251284.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T07:56:04+00:00",
+      "last_seen": "2026-11-18T20:59:22.911063+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "0b8c3bc3b4a3b8320aa76a88",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:26:48.930150+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "eda87b8b66657fbadabc2049",
+      "title": "ГЕНСЕК НАТО СДЕЛАЛ ЗАЯВЛЕНИЕ ОБ ОГРАНИЧЕНИИ СКОРОСТИ STARSHIELD ДЛЯ УКРАИНЫ",
+      "url": "https://insiderua.net/vojna/gensek-nato-sdelal-zayavlenie-ob-ogranichenii-skorosti-starshield-dlya-ukrainy-251260.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-17T16:56:09+00:00",
+      "last_seen": "2026-11-18T05:44:59.261076+00:00",
+      "sections": [
+        "important"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "eda87b8b66657fbadabc2049",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:39:25.892310+00:00"
+      },
+      "prediction": "important",
+      "in_sample": true
+    },
+    {
+      "id": "b5096062f5ee9330941e2086",
+      "title": "Донька депутата Житомирської міськради виставила на аукціон за 60 млн грн комерційну будівлю на вул.Бориса Тена",
+      "url": "https://www.zhitomir.info/news_238315.html",
+      "source": "Житомир.info",
+      "published": "2026-11-17T13:54:00+02:00",
+      "last_seen": "2026-11-18T11:44:59.262999+00:00",
+      "sections": [
+        "news"
+      ],
+      "deliveries": 1,
+      "rating": {
+        "article_id": "b5096062f5ee9330941e2086",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:37:17.835683+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    },
+    {
+      "id": "0c9dba7c5b79bd14af20cc1c",
+      "title": "\"ВРЯД ЛИ ОН ПОСЛЕДНИЙ\": В ВЕНГРИИ ОТРЕАГИРОВАЛИ НА РОССИЙСКИЙ УДАР ПО ЗАКАРПАТЬЮ",
+      "url": "https://insiderua.net/vojna/quot-vryad-li-on-poslednij-quot-v-vengrii-otreagirovali-na-rossijskij-udar-po-zakarpatyu-251270.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-17T23:56:07+00:00",
+      "last_seen": "2026-11-18T13:44:59.263688+00:00",
+      "sections": [],
+      "deliveries": 0,
+      "rating": {
+        "article_id": "0c9dba7c5b79bd14af20cc1c",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-18T22:27:06.177605+00:00"
+      },
+      "prediction": "news",
+      "in_sample": true
+    }
+  ]
+}

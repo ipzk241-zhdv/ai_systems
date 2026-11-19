@@ -51,6 +51,7 @@ h2 { font-size: 1.32rem; letter-spacing: -.025em; margin: 0 0 .65rem; }
 .meta { color: var(--muted); font-size: .82rem; margin-top: .28rem; }
 .update { display: inline-block; color: #136045; background: #e8f5ee; border-radius: .3rem;
           padding: .15rem .4rem; margin-bottom: .35rem; font-size: .76rem; font-weight: 700; }
+.news-tag { display:inline-block; padding:.15rem .4rem; margin:0 .25rem .35rem 0; border-radius:.3rem; background:#edf0fb; color:#454a83; font-size:.76rem; font-weight:650; }
 .previous { margin-top: .5rem; color: var(--muted); font-size: .85rem; line-height: 1.45; }
 details summary { cursor: pointer; font-weight: 650; }
 .coverage { margin: .75rem 0 0; padding-left: 1.25rem; color: var(--muted); line-height: 1.6; }
@@ -99,6 +100,8 @@ def render_html(articles, items, status, quotes, since, until, *, updates=None, 
     updates = updates or {}
     start, end = since.astimezone(KYIV), until.astimezone(KYIV)
     links = []
+    tag_names={'funny':'Кумедне','interesting':'Цікаве','positive':'Позитивне'}
+    tags_by_url={articles[item['id']-1].url:item.get('tags',[]) for item in items}
     sections = []
     number = 0
     for n, (title, group) in enumerate(group_items(articles, items), 1):
@@ -111,6 +114,7 @@ def render_html(articles, items, status, quotes, since, until, *, updates=None, 
             stamp = article.published.astimezone(KYIV)
             previous = updates.get(article.url)
             badge = '<span class="update">Оновлення події</span>' if previous else ""
+            badge += ' '.join('<span class="news-tag">'+tag_names[tag]+'</span>' for tag in tags_by_url.get(article.url,[]) if isinstance(tag,str) and tag in tag_names)
             earlier = (f'<details class="previous"><summary>Що було в попередньому дайджесті</summary>'
                        f'<a href="{escape(previous["url"])}">{escape(previous["title"])}</a></details>') if previous else ""
             rows.append(f'''<li>

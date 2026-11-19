@@ -1,0 +1,212 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "started_at": "2026-11-19T08:09:04.585863+00:00",
+  "condition": "20 reserved mini-test headlines after development clarifications; no previous event context; no human mood ground truth; previously inspected dataset",
+  "predictions": {
+    "96d81a9bb06c02d69c6e5f52": {
+      "label": "news",
+      "tags": [
+        "interesting",
+        "positive"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "a97c6f783720774f67b20bce": {
+      "label": "news",
+      "tags": [
+        "funny",
+        "interesting"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "4e3624f9a79b60e42d2bbc5b": {
+      "label": "news",
+      "tags": [
+        "interesting",
+        "positive"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "14765f49e9e2f07d11c26091": {
+      "label": "important",
+      "tags": [
+        "interesting"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "2f3341c504b3397460ddfc43": {
+      "label": "news",
+      "tags": [
+        "interesting"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "9d7ef1c7ec83238ae004845e": {
+      "label": "news",
+      "tags": [
+        "interesting"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "3106f30f693d4cf6e492532d": {
+      "label": "important",
+      "tags": [
+        "interesting"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "d591bcf4b9b44a5c96937944": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "467b298db82da8269696e919": {
+      "label": "news",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "f01bc30d3e9d1f798d693df2": {
+      "label": "news",
+      "tags": [
+        "positive"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "8235dc4c29c30804b0bb7c3b": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "984c0eda71b0cc89200a8446": {
+      "label": "news",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "861e041c3f89cafae0409e74": {
+      "label": "important",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "b578e30522cfd040b5e35ac3": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "b1f92faab41972edc90fbb27": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "b269df4a97c294734961300f": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "4a5da35e23b8c2b95c9f7458": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "969b57d2c8b584d4cb6f3bdc": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "2a10e5e724eccb991981d555": {
+      "label": "news",
+      "tags": [
+        "interesting"
+      ],
+      "relation": "new",
+      "previous_id": 0
+    },
+    "b114f2ab252aa7672686f5bb": {
+      "label": "skip",
+      "tags": [],
+      "relation": "new",
+      "previous_id": 0
+    }
+  },
+  "usage": [
+    {
+      "queue_time": 0.21298365,
+      "prompt_tokens": 2751,
+      "prompt_time": 0.152274015,
+      "completion_tokens": 384,
+      "completion_time": 0.8057081,
+      "total_tokens": 3135,
+      "total_time": 0.957982115,
+      "completion_tokens_details": {
+        "reasoning_tokens": 220
+      }
+    },
+    {
+      "queue_time": 0.314411435,
+      "prompt_tokens": 2776,
+      "prompt_time": 0.24199572,
+      "completion_tokens": 456,
+      "completion_time": 0.955632619,
+      "total_tokens": 3232,
+      "total_time": 1.197628339,
+      "completion_tokens_details": {
+        "reasoning_tokens": 304
+      }
+    },
+    {
+      "queue_time": 0.284511057,
+      "prompt_tokens": 2722,
+      "prompt_time": 0.123025151,
+      "completion_tokens": 305,
+      "completion_time": 0.65074463,
+      "total_tokens": 3027,
+      "total_time": 0.773769781,
+      "completion_tokens_details": {
+        "reasoning_tokens": 157
+      }
+    },
+    {
+      "queue_time": 0.289774912,
+      "prompt_tokens": 2792,
+      "prompt_time": 0.165875665,
+      "completion_tokens": 341,
+      "completion_time": 0.719258809,
+      "total_tokens": 3133,
+      "total_time": 0.885134474,
+      "completion_tokens_details": {
+        "reasoning_tokens": 195
+      }
+    },
+    {
+      "queue_time": 0.28629832,
+      "prompt_tokens": 2770,
+      "prompt_time": 0.173821798,
+      "completion_tokens": 323,
+      "completion_time": 0.680476397,
+      "total_tokens": 3093,
+      "total_time": 0.854298195,
+      "completion_tokens_details": {
+        "reasoning_tokens": 171
+      }
+    }
+  ],
+  "errors": [],
+  "finished_at": "2026-11-19T08:10:49.875495+00:00"
+}

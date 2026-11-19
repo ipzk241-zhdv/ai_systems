@@ -29,7 +29,7 @@ class PreparationTests(unittest.TestCase):
         return article,value
 
     def classifier(self,label='news'):
-        return Mock(side_effect=lambda batch,*args,**kwargs:[{'label':label,'relation':'new','previous_id':0} for _ in batch])
+        return Mock(side_effect=lambda batch,*args,**kwargs:[{'label':label,'tags':[],'relation':'new','previous_id':0} for _ in batch])
 
     def deliver(self,article_id,chat_id=123):
         with self.db:
@@ -82,7 +82,7 @@ class PreparationTests(unittest.TestCase):
         def classifier(batch,*args,**kwargs):
             entered.set()
             if not release.wait(3):raise AssertionError('timeout')
-            return [{'label':'news','relation':'new','previous_id':0} for _ in batch]
+            return [{'label':'news','tags':[],'relation':'new','previous_id':0} for _ in batch]
         model=Mock(side_effect=classifier)
         def run():
             db=sqlite3.connect(self.path,timeout=5)
@@ -102,7 +102,7 @@ class PreparationTests(unittest.TestCase):
         ids=[self.article('Story '+str(i),str(i),offset=20-i)[1] for i in range(9)]
         def classify(batch,*args,**kwargs):
             if len(batch)==1:raise ValueError('provider unavailable')
-            return [{'label':'news','relation':'new','previous_id':0} for _ in batch]
+            return [{'label':'news','tags':[],'relation':'new','previous_id':0} for _ in batch]
         with self.assertRaises(ValueError):prep.prepare(self.db,'model',ids,annotate_fn=classify)
         self.assertEqual(len(prep.missing(self.db,ids,'version')),1)
         model=self.classifier();prep.prepare(self.db,'model',ids,annotate_fn=model)
@@ -112,7 +112,7 @@ class PreparationTests(unittest.TestCase):
     def test_invalid_relation_does_not_commit_fabricated_or_cyclic_link(self):
         _,article_id=self.article()
         for predecessor in (article_id,999999):
-            model=Mock(return_value=[{'label':'news','relation':'repeat','previous_id':predecessor}])
+            model=Mock(return_value=[{'label':'news','tags':[],'relation':'repeat','previous_id':predecessor}])
             with self.assertRaises(ValueError):prep.prepare(self.db,'model',[article_id],annotate_fn=model)
         self.assertEqual(prep.missing(self.db,[article_id],'version'),[article_id])
 
@@ -120,7 +120,7 @@ class PreparationTests(unittest.TestCase):
         old,old_id=self.article('Water supply restored','old',offset=10)
         prep.prepare(self.db,'model',[old_id],annotate_fn=self.classifier());self.deliver(old_id)
         new,new_id=self.article('Water supply restored in city','new')
-        model=Mock(return_value=[{'label':'news','relation':'repeat','previous_id':old_id}])
+        model=Mock(return_value=[{'label':'news','tags':[],'relation':'repeat','previous_id':old_id}])
         prep.prepare(self.db,'model',[new_id],annotate_fn=model)
         self.assertEqual(prep.ready_items(self.db,[new],[new_id],123,'model',self.now)[0],[])
         self.assertEqual(len(prep.ready_items(self.db,[new],[new_id],456,'model',self.now)[0]),1)
@@ -129,7 +129,7 @@ class PreparationTests(unittest.TestCase):
         old,old_id=self.article('Bridge damaged','old',offset=10)
         prep.prepare(self.db,'model',[old_id],annotate_fn=self.classifier());self.deliver(old_id)
         new,new_id=self.article('Bridge repaired after damage','new')
-        prep.prepare(self.db,'model',[new_id],annotate_fn=Mock(return_value=[{'label':'important','relation':'update','previous_id':old_id}]))
+        prep.prepare(self.db,'model',[new_id],annotate_fn=Mock(return_value=[{'label':'important','tags':[],'relation':'update','previous_id':old_id}]))
         with patch.object(prep,'chat',side_effect=AssertionError('ready digest must not call LLM')):
             items,updates,_,_=prep.ready_items(self.db,[new],[new_id],123,'model',self.now)
         self.assertEqual(items,[{'id':1,'section':'important'}]);self.assertEqual(updates[new.url]['id'],old_id)
@@ -165,7 +165,7 @@ class PreparationTests(unittest.TestCase):
         ids=[self.article('News story '+str(i),str(i),offset=20-i)[1] for i in range(8)]
         def classify(batch,*args,**kwargs):
             if len(batch)>2:raise prep.LLMSchemaError('invalid generated label')
-            return [{'label':'skip','relation':'new','previous_id':0} for _ in batch]
+            return [{'label':'skip','tags':[],'relation':'new','previous_id':0} for _ in batch]
         model=Mock(side_effect=classify)
         self.assertEqual(prep.prepare(self.db,'model',ids,annotate_fn=model),8)
         self.assertEqual(prep.missing(self.db,ids,'version'),[])
@@ -175,7 +175,7 @@ class PreparationTests(unittest.TestCase):
     def test_persistent_invalid_singleton_keeps_other_successful_parts(self):
         ids=[self.article('News story '+str(i),str(i),offset=20-i)[1] for i in range(8)]
         def classify(batch,*args,**kwargs):
-            return [{'label':'wrong' if article['id']==ids[4] else 'news','relation':'new','previous_id':0} for article in batch]
+            return [{'label':'wrong' if article['id']==ids[4] else 'news','tags':[],'relation':'new','previous_id':0} for article in batch]
         with self.assertRaises(prep.AnnotationError):prep.prepare(self.db,'model',ids,annotate_fn=classify)
         ready={row[0] for row in self.db.execute('SELECT article_id FROM news_annotations')}
         self.assertEqual(ready,set(ids[:4]))
@@ -193,7 +193,7 @@ class PreparationTests(unittest.TestCase):
     def test_singleton_relaxed_provider_schema_still_validates_enums_locally(self):
         import json
         _,article_id=self.article()
-        good={'message':{'content':json.dumps({'annotations':[{'label':'skip','relation':'new','previous_id':0}]})}}
+        good={'message':{'content':json.dumps({'annotations':[{'label':'skip','tags':[],'relation':'new','previous_id':0}]})}}
         with patch.object(prep,'chat',side_effect=[prep.LLMSchemaError('invalid enum'),good]) as request:
             prep.prepare(self.db,'model',[article_id])
         self.assertEqual(request.call_count,2)
@@ -204,7 +204,7 @@ class PreparationTests(unittest.TestCase):
     def test_relaxed_response_with_invalid_enum_is_never_saved(self):
         import json
         _,article_id=self.article()
-        bad={'message':{'content':json.dumps({'annotations':[{'label':'not-a-category','relation':'new','previous_id':0}]})}}
+        bad={'message':{'content':json.dumps({'annotations':[{'label':'not-a-category','tags':[],'relation':'new','previous_id':0}]})}}
         with patch.object(prep,'chat',side_effect=[prep.LLMSchemaError('invalid enum'),bad]) as request:
             with self.assertRaises(prep.AnnotationError):prep.prepare(self.db,'model',[article_id])
         self.assertEqual(request.call_count,2)
@@ -214,7 +214,7 @@ class PreparationTests(unittest.TestCase):
         old,old_id=self.article('Water restored','old',offset=10)
         prep.prepare(self.db,'model',[old_id],annotate_fn=self.classifier())
         new,new_id=self.article('Water restored to consumers','new')
-        prep.prepare(self.db,'model',[new_id],annotate_fn=Mock(return_value=[{'label':'news','relation':'repeat','previous_id':old_id}]))
+        prep.prepare(self.db,'model',[new_id],annotate_fn=Mock(return_value=[{'label':'news','tags':[],'relation':'repeat','previous_id':old_id}]))
         items,_,repeated,_=prep.ready_items(self.db,[new,old],[new_id,old_id],456,'model',self.now)
         self.assertEqual(items,[{'id':1,'section':'news'}]);self.assertEqual(repeated,1)
 

@@ -1,0 +1,615 @@
+{
+  "schema_version": 1,
+  "description": "60 initial ratings plus 3 explicit development clarifications; final test remains excluded.",
+  "examples": [
+    {
+      "id": "cf2692567ba0fbbc74b8985d",
+      "title": "ПОСЛЕ АТАКИ ДВИЖЕНИЕ ПО КРЫМСКОМУ МОСТУ ПОЛНОСТЬЮ ОСТАНОВЛЕНО",
+      "source": "INSIDER UA",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": true
+    },
+    {
+      "id": "3b86f7b84d2bdbcd277ccc85",
+      "title": "КРЫМСКИЙ МОСТ МОЖЕТ БЫТЬ ЧАСТИЧНО ПОРАЖЕН: ЭКСПЕРТ РАСКРЫЛ ПОСЛЕДСТВИЯ УДАРА",
+      "source": "INSIDER UA",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": true
+    },
+    {
+      "id": "d2d2315b0c5d443b4eb23589",
+      "title": "УКРАИНА УСПЕШНО УДАРИЛА ПО КРЫМСКОМУ МОСТУ: В ISW РАСКРЫЛИ, О ЧЕМ ЭТО ГОВОРИТ",
+      "source": "INSIDER UA",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": true
+    },
+    {
+      "id": "62389bb27ef5234d6e1e41a8",
+      "title": "Атаки украинских беспилотников сократили объемы переработки нефти на российских НПЗ на 45%",
+      "source": "Ateo Breaking",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "674ea18337393ab0e260998d",
+      "title": "Крымский мост будет восстановлен «и будет еще лучше прежнего»",
+      "source": "Ateo Breaking",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": true
+    },
+    {
+      "id": "8f584c14c4df88cfdfe68669",
+      "title": "УКРАИНА ОБРУШИЛА КРЫМСКИЙ МОСТ БЛАГОДАРЯ \"ЛЕТАЮЩИМ МОДЕМАМ\": FT ПРО НОВУЮ ТЕХНОЛОГИЮ",
+      "source": "INSIDER UA",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": true
+    },
+    {
+      "id": "211b9968126e47b762eff4d8",
+      "title": "Жінка з Житомирської області віддала шахраям 5000 доларів, бо її переконали, що треба перевірити походження грошей",
+      "source": "Житомир.info",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "07b1c172ed6ef63ec4821b2a",
+      "title": "УДАР ПО КРЫМСКОМУ МОСТУ: ПОЯВИЛИСЬ СПУТНИКОВЫЕ СНИМКИ ПОСЛЕДСТВИЙ",
+      "source": "INSIDER UA",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "коли удар тільки стався - новина відносилась би до важливої. а подальші новини вже більше як цікаві і смішні",
+      "duplicate": true
+    },
+    {
+      "id": "13367c6a4efec4181bab2559",
+      "title": "Зеленский после ударов по Крымскому мосту заявил, что война возвращается туда, откуда началась",
+      "source": "Ateo Breaking",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "ed4090fab74c01d44767f651",
+      "title": "«Житомирські ласощі» – тепер LASO: відоме житомирське підприємство відкриває нову сторінку своєї історії після 82 років",
+      "source": "Житомир.info",
+      "label": "important",
+      "legacy_label": "important",
+      "comment": "важлива тільки лише тому що мені відомий цей бренд",
+      "duplicate": false
+    },
+    {
+      "id": "286c68fc27fcd45435399c45",
+      "title": "Появилось видео прилёта по Крымскому мосту",
+      "source": "Ateo Breaking",
+      "label": "important",
+      "legacy_label": "important",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "de26017a7f2d7b96bc259f01",
+      "title": "РОССИЯ ГОТОВИТ НОВЫЙ УДАР ПО ЭНЕРГЕТИКЕ УКРАИНЫ, – ИГНАТ",
+      "source": "INSIDER UA",
+      "label": "important",
+      "legacy_label": "important",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "04ac4d80d9023993caef7bdc",
+      "title": "КОГДА ПОЯВИТСЯ АНТИБАЛЛИСТИКА ДЛЯ УКРАИНЫ: МИНИСТР ОБОРОНЫ ШВЕЦИИ НАЗВАЛ РЕАЛЬНЫЕ СРОКИ",
+      "source": "INSIDER UA",
+      "label": "important",
+      "legacy_label": "important",
+      "comment": "балістика постійна проблема для населення україни, в тому числі для електроживлення",
+      "duplicate": false
+    },
+    {
+      "id": "b85e0afb444a20846a3f03b1",
+      "title": "На Богунії у Житомирі з’явиться McDonald's, виконком погодив благоустрій території з облаштуванням скверу",
+      "source": "Житомир.info",
+      "label": "news",
+      "legacy_label": "news",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "fb7b36d27fc3df2eb5254f4f",
+      "title": "Совет директоров Nvidia не рассматривает возможность возвращения Дженсена Хуанга на пост гендиректора",
+      "source": "Ateo Breaking",
+      "label": "news",
+      "legacy_label": "news",
+      "comment": "",
+      "duplicate": true
+    },
+    {
+      "id": "3232a4c163ab7143213a87bb",
+      "title": "У Житомирі зріжуть десятки аварійних дерев, понад 30 з них – у зеленій зоні Голови Чацького",
+      "source": "Житомир.info",
+      "label": "news",
+      "legacy_label": "news",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "e28c4bd6245c7b8f49c6eb37",
+      "title": "РФ ПЛАНИРУЕТ ЗАПУСТИТЬ ПО УКРАИНЕ 20 МЛН ДРОНОВ ЗА СЛЕДУЮЩИЙ ГОД, – КОМИССАР ЕС",
+      "source": "INSIDER UA",
+      "label": "news",
+      "legacy_label": "news",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "2aa35c73ff611222a696d914",
+      "title": "Житомир має заплатити 3,3 млн грн за доставку 11 тролейбусів з Чехії й сподівається отримати ще",
+      "source": "Житомир.info",
+      "label": "news",
+      "legacy_label": "news",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "105bd430db760c9ddb4a4600",
+      "title": "На два дні перекриють рух транспорту Новим бульваром і вулицею Малою Бердичівською у Житомирі",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "не маю авто, мені пофік",
+      "duplicate": false
+    },
+    {
+      "id": "c0ca3399bec111eb6965f275",
+      "title": "«HUB 95»: житомирські десантники відкрили простір для побратимів та їхніх родин",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "61f030425c0be4bb69da59df",
+      "title": "\"УДАРАМИ ПО КРЫМСКОМУ МОСТУ ИЗОЛИРОВАТЬ ПОЛУОСТРОВ НЕ ПОЛУЧИТСЯ\", – ЛУЦЕНКО",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "61e57740cf1eaac276586f9a",
+      "title": "РОССИЯНЕ ТРИЖДЫ УДАРИЛИ ПО ЦЕНТРУ ОДЕССЫ: ЕСТЬ ПОГИБШИЕ И РАНЕНЫЕ (ФОТО)",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "cc2370f7bd601c036d84fce0",
+      "title": "Дональд Трамп прибыл в Китай",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "c26039c9280ece7135378e55",
+      "title": "Світло, зв'язок і домашній комфорт: на що здатна зарядна станція EcoFlow DELTA 3 Classic?",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "реклама як новина не цікавить",
+      "duplicate": false
+    },
+    {
+      "id": "f4a7ae3086f6b340941215d2",
+      "title": "Водій мікроавтобуса зіткнувся з попутною вантажівкою і з травмами потрапив до лікарні – подробиці ДТП на трасі у Житомирському районі",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "всі дтп-новини не потрібні",
+      "duplicate": false
+    },
+    {
+      "id": "f17c35744f3fe0ef1a2aab89",
+      "title": "В Адыгее, Дагестане, Ростове-на-Дону и на Кубани задержаны «четверо агентов спецслужб Киева»",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "09c1d7ab8adcac3234bda3f9",
+      "title": "Трамп заявляет, что война с Ираном якобы «очень близка» к завершению",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "вже 100 раз він заявляв таке",
+      "duplicate": false
+    },
+    {
+      "id": "b8468cd9259f4e16c7c045ae",
+      "title": "Один из крупнейших российских хостинг-провайдеров Timeweb сообщил, что его облачные сервисы недоступны",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "21ea8b0c79c799c84c662dff",
+      "title": "Мобілізували за день, попри наявність відстрочки: що сказав верховний суд?",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "d4074512e211489714403845",
+      "title": "На неосвітленій дорозі у Житомирській області водій Volkswagen збив пішохода, який загинув на місці ДТП",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "983b0e015e1210c796e1e266",
+      "title": "Ремонт комунальних будівель: чому стеля повертається в роботу першою",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "ec947f6a4b2849ce8e7a8683",
+      "title": "Сооснователь Telegram Николай Дуров впервые женился и стал отцом — сообщает кремлёвская «Baza",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "a60a824dc274da23e544cf65",
+      "title": "РОССИЯ СТЯГИВАЕТ ДОПОЛНИТЕЛЬНЫЕ СУДА К КРЫМСКОМУ МОСТУ",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "5bbe0e8fe0a67c858a7ac14e",
+      "title": "Більше 4 млрд грн ПДВ до держбюджету надійшло від виробників Житомирської області за 10 місяців: на 29% більше, ніж у минулому році",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "b99cf2eae1281a1593a4cd11",
+      "title": "«Поїду додому! Піду на війну!»: у Житомирі поховали 18-річного контрактника, який приїхав з-за кордону і став на захист Батьківщини",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "98d924d5dc7b3227e411b803",
+      "title": "Третий американский авианосец прибыл на Ближний Восток",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "244e1aa004935a9614f84fb7",
+      "title": "Иранские БПЛА атаковали американскую военную базу в Бахрейне",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "4c05adbc8ed3fc793970e34f",
+      "title": "У ПУТИНА ПРОКОММЕНТИРОВАЛИ АТАКУ НА КРЫМСКИЙ МОСТ: ЧТО ГОВОРЯТ О ПОВРЕЖДЕНИЯХ",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "заголовок не передає ніякої новини як по собі",
+      "duplicate": false
+    },
+    {
+      "id": "6d2296c7cf2bf57b85011626",
+      "title": "Полноформатные переговоры Путина и Трампа 19 ноября не планируются",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "ну як не планується, то нафік воно мені",
+      "duplicate": false
+    },
+    {
+      "id": "45007eb8ba3a75cc26d86fe4",
+      "title": "ЗАМЕСТИТЕЛЬ ХЕГСЕТА ПОЖАЛЕЛ РОССИЯН И РАСКРИТИКОВАЛ УКРАИНУ ЗА ДАЛЬНИЕ УДАРЫ ПО ТЫЛУ РФ",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "398309ef924555ee8ccc7bf0",
+      "title": "Як вибрати офісний папір, щоб принтер працював стабільно, а документи мали охайний вигляд",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "такі гайди частіше всього нафіг не треба\nпо типу, як закрутити болт, як зварити яйця, і тд",
+      "duplicate": false
+    },
+    {
+      "id": "d087bdd1dd142b8caa36fc41",
+      "title": "Викрили директора ДЮСШ міста Житомирської області, який оформив знайомого на роботу тренером, щоб той отримав бронювання",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "27b556939e19958546ddf50f",
+      "title": "УДАРЫ РФ ПО СЕВЕРНОМУ И ЮЖНОМУ МОСТАМ: ЗЕЛЕНСКИЙ РАСКРЫЛ КОЛИЧЕСТВО БАЛЛИСТИКИ",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "9e875940f4c9c5e09de1f492",
+      "title": "Депутаты пророссийской оппозиции в парламенте Армении заявили, что намерены добиваться возвращения Карабаха",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "310047f9f6aaea0bde914fec",
+      "title": "Житомирська область отримала партію вакцини від грипу для безоплатного щеплення",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "d480f0391c40264615b5e233",
+      "title": "На щиті до Житомира повернулися двоє воїнів, один з яких загинув у 2023 році під час евакуації поранених та загиблих",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "25c40d00952d263a1ab96486",
+      "title": "Grand Theft Auto VI первой в мире стала доступна в Новой Зеландии",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "7247ed6b7c2bb0e3796065e6",
+      "title": "МВД России объявило в федеральный розыск журналистку Катерину Гордееву",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "815152407137fa4e98cd7fa2",
+      "title": "Молдова запретила выезжать из страны главе оккупированного Россией Приднестровья",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "7218c99f310aea7a5a6ad81c",
+      "title": "В Москве женщина ранила ножом в шею 10-месячного ребенка и покончила с собой",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "88eb640adf16aac07497786e",
+      "title": "Правящая партия Азербайджана предложила пересмотреть бюджетное финансирование обучения на русском языке",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "1d397e81353c76a41e249e16",
+      "title": "Укрзалізниця виставила на аукціон за майже 12 млн грн будівлю басейну у райцентрі Житомирської області",
+      "source": "Житомир.info",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "fac1845d40c28a4d8bbf6ca7",
+      "title": "Лукашенко направил соболезнования Путину в связи с крушением самолета в Кузбассе",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "c0db7d39f4e6bf16b8400026",
+      "title": "В КРЕМЛЕ ПРИЗВАЛИ ДЕПУТАТОВ ГОТОВИТЬСЯ К \"ПОБЕДЕ\" И ЗАВЕРШЕНИЮ ВОЙНЫ ПРОТИВ УКРАИНЫ",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "b168bf5e49bd6feb57182adf",
+      "title": "На саммит РФ — США — КНР отводится час",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "a648ab3864222fcc5cd688d2",
+      "title": "ТРИ ДРОНА НА ОДНОГО ОККУПАНТА: WSJ РАСКРЫЛ, КАК РАБОТАЕТ СЕКРЕТНЫЙ БУНКЕР МАДЯРА",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "82ccbea0d822183f0b00c095",
+      "title": "НА КАЖДЫЙ УДАР БУДЕМ ОТВЕЧАТЬ В РАЗЫ СИЛЬНЕЕ: ХМАРА ОБРАТИЛСЯ К РОССИИ",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "3fa8887e4394d73be9a89fc4",
+      "title": "ТРИ САМОЛЕТА И МОСТ ЧЕРЕЗ СЕВЕРСКИЙ ДОНЕЦ: ГЕНШТАБ СООБЩИЛ О НОВЫХ УДАРАХ ВСУ ПО ВРАГУ",
+      "source": "INSIDER UA",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "",
+      "duplicate": false
+    },
+    {
+      "id": "0625385a9bbb25c3e34f492b",
+      "title": "Суд в Казани не арестовал Юлию Галямину, назначив штраф",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "не знаю хто така юлия галямин і тим більше мені пофік на казань",
+      "duplicate": false
+    },
+    {
+      "id": "55367b17d4b35df87f05a912",
+      "title": "СК РФ отказался возбуждать дело против петербургских полицейских",
+      "source": "Ateo Breaking",
+      "label": "skip",
+      "legacy_label": "skip",
+      "comment": "взагалі пофік мені на ск рф і на петербургзьких поцілейських",
+      "duplicate": false
+    },
+    {
+      "id": "4e3624f9a79b60e42d2bbc5b",
+      "title": "232 беспилотника атакуют Москву, заявил Собянин",
+      "source": "Ateo Breaking",
+      "label": "news",
+      "legacy_label": "fun",
+      "comment": "Так, масштабна подія вже цікава; результат не вигадувати",
+      "duplicate": false,
+      "origin": "explicit_user_clarification_2026-11-19"
+    },
+    {
+      "id": "14765f49e9e2f07d11c26091",
+      "title": "Трамп заявил, что хотел бы провести двухстороннюю встречу с Путиным",
+      "source": "Ateo Breaking",
+      "label": "important",
+      "legacy_label": "important",
+      "comment": "Так, якщо це нова ініціатива, а не повтор старої заяви",
+      "duplicate": false,
+      "origin": "explicit_user_clarification_2026-11-19"
+    },
+    {
+      "id": "2f3341c504b3397460ddfc43",
+      "title": "Рублёвые пожертвования на кошелёк Максима Каца стали поводом для двух уголовных дел в России, сообщает «Медиазона»",
+      "source": "Ateo Breaking",
+      "label": "news",
+      "legacy_label": "news",
+      "comment": "Цікавлять окремі знайомі персонажі та блогери",
+      "duplicate": false,
+      "origin": "explicit_user_clarification_2026-11-19"
+    }
+  ],
+  "held_out_ids": [
+    "96d81a9bb06c02d69c6e5f52",
+    "a97c6f783720774f67b20bce",
+    "9d7ef1c7ec83238ae004845e",
+    "3106f30f693d4cf6e492532d",
+    "d591bcf4b9b44a5c96937944",
+    "467b298db82da8269696e919",
+    "f01bc30d3e9d1f798d693df2",
+    "8235dc4c29c30804b0bb7c3b",
+    "984c0eda71b0cc89200a8446",
+    "861e041c3f89cafae0409e74",
+    "b578e30522cfd040b5e35ac3",
+    "b1f92faab41972edc90fbb27",
+    "b269df4a97c294734961300f",
+    "4a5da35e23b8c2b95c9f7458",
+    "969b57d2c8b584d4cb6f3bdc",
+    "2a10e5e724eccb991981d555",
+    "b114f2ab252aa7672686f5bb",
+    "752f42d695b77522ce5d8ec7",
+    "a24e9eaa26073a34757b0435",
+    "ee52527622119117d4d7af23",
+    "4373d154dcaaf9300d46af63",
+    "73147e8a4e4bf107680ac318",
+    "1da6a55cf1d25a04ec51ba0a",
+    "9d1dcb5f6e16e1b723a84d35",
+    "105f3c26ead9ea7f7e8fd718",
+    "2c0fdab5ff41955695c470ac",
+    "0c9dba7c5b79bd14af20cc1c",
+    "3a51ada599f63215c57cde44",
+    "47d51f74e6f789606ccc07d2",
+    "247df6dd6488976a22e384cd",
+    "ef8415247d37a28d4cfbe3a8",
+    "c1e5f27a3db8a6b4b942ad6f",
+    "7c77e642362196423db44f4f",
+    "e911b57e0a3233ae1b5bada0",
+    "eda87b8b66657fbadabc2049",
+    "0b8c3bc3b4a3b8320aa76a88",
+    "b5096062f5ee9330941e2086"
+  ]
+}

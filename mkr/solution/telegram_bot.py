@@ -20,7 +20,7 @@ from news_history import initialize, prepare_digest, confirm_delivery
 from news_questions import respond as news_response, EXPLAIN, COMPARE
 from outages import current_message, schedule_messages
 from sources import KYIV, page
-from settings import read_config, default_model, provider
+from settings import read_config, default_model, provider, news_model
 from llm import error_message, LLMError
 from inline_bot import InlineAnswers
 from message_worker import PrivateMessages
@@ -390,13 +390,14 @@ def handle_update(api, update, db, conversations, model):
             api.send(chat_id, "У БД поки немає новин за цей період; джерела не вдалося повністю прочитати. Фоновий збір повторить спробу.")
             return
         article_ids = cached_ids(db, articles)
-        pending = pending_count(db, model, article_ids)
+        classifier_model = news_model(model)
+        pending = pending_count(db, classifier_model, article_ids)
         preparation_note = (f"\nЄ {pending} новин без готової оцінки. Запускаю позапланове оцінювання; наступний відлік почнеться після нього."
                             if pending else "\nОцінки вже готові; збираю файл зі збережених результатів.")
         api.send(chat_id, f"Формую дайджест. Останній збір: {checked_at.astimezone(KYIV):%d.%m %H:%M} за Києвом." + note + preparation_note)
         # A missed background run is shared with the request; committed annotations are reused.
-        prepare_news(db, model, article_ids, interval=poll_seconds(read_config()))
-        items, updates, repeated, preparation_stats = ready_items(db, articles, article_ids, chat_id, model, until)
+        prepare_news(db, classifier_model, article_ids, interval=poll_seconds(read_config()))
+        items, updates, repeated, preparation_stats = ready_items(db, articles, article_ids, chat_id, classifier_model, until)
         items = limit_items(articles, items)
         shown_urls = {articles[item["id"] - 1].url for item in items}
         updates = {url: previous for url, previous in updates.items() if url in shown_urls}
@@ -419,7 +420,7 @@ def poll(api, db, model):
     messages = PrivateMessages(api, database_path, model, handle_update, open_state)
     inline = InlineAnswers(api, model, format_chat_html)
     guests = GuestAnswers(api, model, format_chat_html, username=getattr(api, "username", "DBresh_bot"), database_path=database_path)
-    collector = NewsCollector(database_path, interval=poll_seconds(read_config()), model=model)
+    collector = NewsCollector(database_path, interval=poll_seconds(read_config()), model=news_model(model))
     messages.start()
     inline.start()
     guests.start()
