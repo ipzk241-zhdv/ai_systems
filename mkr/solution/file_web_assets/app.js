@@ -79,6 +79,23 @@ async function askFile(file) {
   try { await navigator.clipboard.writeText(command); notice('Скопійовано: ' + command + '. Надішли команду боту в особистий чат.'); }
   catch { notice('Надішли боту: ' + command); }
 }
+let deleteBusy = false;
+async function deleteEntry(entry) {
+  if (deleteBusy || uploadBusy) { notice('Дочекайся завершення поточної операції.'); return; }
+  const isFolder = entry.kind === 'folder';
+  const message = isFolder ? 'Видалити папку «' + entry.name + '» разом з усіма вкладеними папками та файлами?' : 'Видалити файл «' + entry.name + '»?';
+  if (!window.confirm(message + '\n\nЦе спільне сховище: об’єкт зникне для всіх учасників. Відновлення з кошика немає.')) return;
+  deleteBusy = true;
+  document.querySelectorAll('[data-delete]').forEach(button => button.disabled = true);
+  try {
+    const result = await api('/api/' + (isFolder ? 'folders/' : 'files/') + entry.id + '/delete', jsonOptions({name:entry.name, confirmed:true}));
+    if (editState && editState.id === entry.id && editState.kind === entry.kind) $('edit-dialog').close();
+    await load();
+    notice('Видалено файлів: ' + result.files + ', папок: ' + result.folders + '.' +
+      (result.cleanup_pending ? ' Частина фізичних файлів очікує очищення диска; повідом адміністратора.' : ''));
+  } catch(error) { notice(error.message); }
+  finally { deleteBusy = false; document.querySelectorAll('[data-delete]').forEach(button => button.disabled = false); }
+}
 function render() {
   if (currentFolder && !folders.some(folder => folder.id === currentFolder)) currentFolder = null;
   const query = $('search').value.trim().toLocaleLowerCase('uk');
@@ -136,6 +153,8 @@ function render() {
       download.setAttribute('aria-label', download.title); download.href = '/api/files/' + entry.id + '/download'; actions.append(download);
     } else actions.append(iconButton('↗', 'Відкрити папку ' + entry.name, () => navigate(entry.id)));
     actions.append(iconButton('⋮', 'Властивості: ' + entry.name, () => edit(entry)));
+    const remove = iconButton('🗑', 'Видалити: ' + entry.name, () => deleteEntry(entry));
+    remove.classList.add('delete-button'); remove.dataset.delete = ''; remove.disabled = deleteBusy; actions.append(remove);
     row.append(icon, details, date, bytes, actions); $('files').append(row);
   }
   if (storage.limit_bytes) {

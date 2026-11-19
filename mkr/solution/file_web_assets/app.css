@@ -14,4 +14,5 @@
 .tree-row{display:flex;align-items:center;min-width:0}.folder-tree .tree-toggle{flex:0 0 24px;width:24px;padding:5px 0;text-align:center}.tree-spacer{flex:0 0 24px}.folder-tree .tree-name{min-width:0;flex:1;padding:5px 4px}
 
 .file-actions{flex-wrap:wrap}
+.delete-button{color:#b42318}.delete-button:hover{background:#fff1f0!important;color:#912018}
 @media(min-width:801px){.list-header,.file-row{grid-template-columns:38px minmax(0,1fr) 120px 84px 140px}}

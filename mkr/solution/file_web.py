@@ -143,6 +143,13 @@ class FileApp:
             result = self.store.import_folders(user_id, body.get("directories"), body.get("files"), body.get("parent_id"))
             return self.json_response(result)
         match = re.fullmatch(r"/api/(files|folders)/([1-9][0-9]*)", path)
+        removal = re.fullmatch(r"/api/(files|folders)/([1-9][0-9]*)/delete", path)
+        if method == "POST" and removal:
+            body = self.read_json(env, 4096)
+            if body.get("confirmed") is not True:
+                raise FileError("Підтвердь видалення.")
+            result = self.store.delete_item(user_id, "file" if removal[1] == "files" else "folder", int(removal[2]), body.get("name"))
+            return self.json_response(result)
         if method == "POST" and match:
             body = self.read_json(env, 4096)
             self.store.update_item(user_id, "file" if match[1] == "files" else "folder", int(match[2]),

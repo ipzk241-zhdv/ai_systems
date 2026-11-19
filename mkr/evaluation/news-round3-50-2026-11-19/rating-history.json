@@ -1,0 +1,532 @@
+[
+  {
+    "id": 1,
+    "article_id": "03648a1088aeb8f3d25a89b6",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:06:17.725313+00:00"
+  },
+  {
+    "id": 2,
+    "article_id": "062baae3b24d5a84454e50c0",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:06:25.151050+00:00"
+  },
+  {
+    "id": 3,
+    "article_id": "06710184dee0cd76261b1a3b",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:06:33.166818+00:00"
+  },
+  {
+    "id": 4,
+    "article_id": "081d552f0aacb84b3f0bc26d",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:06:39.251234+00:00"
+  },
+  {
+    "id": 5,
+    "article_id": "0b0fd4d2491e5fb417a74f39",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:06:43.425798+00:00"
+  },
+  {
+    "id": 6,
+    "article_id": "0d0cda10316b02de3d010f7c",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:06:47.531228+00:00"
+  },
+  {
+    "id": 7,
+    "article_id": "11378ef3250f1f519a41ce46",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:06:57.501728+00:00"
+  },
+  {
+    "id": 8,
+    "article_id": "11e9ebd12bedf7d1f4ac0184",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:07:01.553012+00:00"
+  },
+  {
+    "id": 9,
+    "article_id": "18fb197243fed6d92093abfa",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:07:06.160060+00:00"
+  },
+  {
+    "id": 10,
+    "article_id": "1a1f1175ae260de888316be9",
+    "label": "important",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:07:28.409166+00:00"
+  },
+  {
+    "id": 11,
+    "article_id": "21518e5adccb1e2211450590",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\", \"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:07:37.169602+00:00"
+  },
+  {
+    "id": 12,
+    "article_id": "288d4162385613c99e455cd4",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:07:40.553001+00:00"
+  },
+  {
+    "id": 13,
+    "article_id": "2974dd305edc38a3cabbcf22",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:07:49.361227+00:00"
+  },
+  {
+    "id": 14,
+    "article_id": "30c038fe7094940f7b313d10",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:07:53.196324+00:00"
+  },
+  {
+    "id": 15,
+    "article_id": "339a3592aa9bb9e4db903906",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:08:16.182065+00:00"
+  },
+  {
+    "id": 16,
+    "article_id": "440394125de91c11fc63c076",
+    "label": "news",
+    "tags_json": "[\"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:08:23.094888+00:00"
+  },
+  {
+    "id": 17,
+    "article_id": "5878cb2a86a98e8118f9e9f9",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:08:29.611999+00:00"
+  },
+  {
+    "id": 18,
+    "article_id": "5878cb2a86a98e8118f9e9f9",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:08:45.927277+00:00"
+  },
+  {
+    "id": 19,
+    "article_id": "59356cf33ded15a3fa2202af",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:08:55.609613+00:00"
+  },
+  {
+    "id": 20,
+    "article_id": "6e271939e12a8f1716f23c5c",
+    "label": "important",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:05.110586+00:00"
+  },
+  {
+    "id": 21,
+    "article_id": "739302a07d39d3fe66eae656",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:11.190148+00:00"
+  },
+  {
+    "id": 22,
+    "article_id": "76f8cbdf89a136b6b9344324",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:17.072887+00:00"
+  },
+  {
+    "id": 23,
+    "article_id": "77e14d196cfaa41a37353f9d",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:25.517911+00:00"
+  },
+  {
+    "id": 24,
+    "article_id": "78cdfba919089c18b6ac0ea8",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:32.557062+00:00"
+  },
+  {
+    "id": 25,
+    "article_id": "7a8c967dbb718126a584a032",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:46.292617+00:00"
+  },
+  {
+    "id": 26,
+    "article_id": "7e7f8dc791a581795ed3baba",
+    "label": "news",
+    "tags_json": "[\"interesting\", \"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:56.712887+00:00"
+  },
+  {
+    "id": 27,
+    "article_id": "85f29e4207a0a5ffc3a53a75",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:09:59.841956+00:00"
+  },
+  {
+    "id": 28,
+    "article_id": "8c6b6ba494aa25931e4e8dd7",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:05.245390+00:00"
+  },
+  {
+    "id": 29,
+    "article_id": "96c48ce351bfb4e58919c6bd",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:09.224192+00:00"
+  },
+  {
+    "id": 30,
+    "article_id": "9a293365a9d299563c6b679e",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:16.239438+00:00"
+  },
+  {
+    "id": 31,
+    "article_id": "9b2cac6271a98125f52a39e1",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:21.538063+00:00"
+  },
+  {
+    "id": 32,
+    "article_id": "9b50ebda28c063678e428dec",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:25.115867+00:00"
+  },
+  {
+    "id": 33,
+    "article_id": "9d2a9e7fb4be0835a1a61420",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:29.394591+00:00"
+  },
+  {
+    "id": 34,
+    "article_id": "9f224397bf627d9bf940a987",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:39.967733+00:00"
+  },
+  {
+    "id": 35,
+    "article_id": "a07b9842e4d5e2fef42ea579",
+    "label": "news",
+    "tags_json": "[\"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:51.116968+00:00"
+  },
+  {
+    "id": 36,
+    "article_id": "af48128a5ed379306ea7971a",
+    "label": "news",
+    "tags_json": "[\"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:10:57.301394+00:00"
+  },
+  {
+    "id": 37,
+    "article_id": "b13fd27ee3ac5a8942f449f7",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:05.330895+00:00"
+  },
+  {
+    "id": 38,
+    "article_id": "bc309a141d11fd8b85f3de45",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:08.396720+00:00"
+  },
+  {
+    "id": 39,
+    "article_id": "cb73bd23af4097f4045aee0b",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:14.094819+00:00"
+  },
+  {
+    "id": 40,
+    "article_id": "d92a1d67ca418bc9c1efee69",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:20.395271+00:00"
+  },
+  {
+    "id": 41,
+    "article_id": "e2915359c68123967c438ef1",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:27.392008+00:00"
+  },
+  {
+    "id": 42,
+    "article_id": "e2d472efa4e819cce76cb752",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:30.512651+00:00"
+  },
+  {
+    "id": 43,
+    "article_id": "e3b5fe6daa22f54d12f994cb",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:33.842963+00:00"
+  },
+  {
+    "id": 44,
+    "article_id": "e4d1a1f36e6a43c8e9f3b8ff",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:36.644374+00:00"
+  },
+  {
+    "id": 45,
+    "article_id": "e72874451d8682f209d710fc",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:42.910832+00:00"
+  },
+  {
+    "id": 46,
+    "article_id": "e72874451d8682f209d710fc",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:48.780980+00:00"
+  },
+  {
+    "id": 47,
+    "article_id": "ebc3fe07226eb85d44d620d9",
+    "label": "important",
+    "tags_json": "[\"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:11:57.182273+00:00"
+  },
+  {
+    "id": 48,
+    "article_id": "ebd073ba4826484f1faad7db",
+    "label": "news",
+    "tags_json": "[\"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:12:04.070064+00:00"
+  },
+  {
+    "id": 49,
+    "article_id": "eea05bfeb1441cfefed2d92e",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:12:07.161149+00:00"
+  },
+  {
+    "id": 50,
+    "article_id": "f45794f81f0610a389b16d40",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:12:10.745888+00:00"
+  },
+  {
+    "id": 51,
+    "article_id": "f45794f81f0610a389b16d40",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:12:14.540329+00:00"
+  },
+  {
+    "id": 52,
+    "article_id": "f5a2d9642e4cc10779204121",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:12:22.126527+00:00"
+  },
+  {
+    "id": 53,
+    "article_id": "fb025ed8118d9fad9bce5550",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T13:12:27.760741+00:00"
+  }
+]

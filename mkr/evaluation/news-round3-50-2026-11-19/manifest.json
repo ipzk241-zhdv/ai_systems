@@ -1,0 +1,14 @@
+{
+  "files_sha256": {
+    "archive.json": "223b55658a032221aafdb3d7d96b4a16fed535aa129ee76a835728e242e95106",
+    "first-save-intervals.csv": "c7910e137cde940194d85ff55e1f1e98cbde30794af75d6e00e46ebc4ce5324c",
+    "metrics.json": "759abf7c3bf694e356f2cefdee665c0eae24145ba4e2a6b98025d2240227ed8b",
+    "predictions.json": "0d745f41e63d52c222c3db0666dcea3874a691f920379b00fc4dfc68e0358c03",
+    "rated-news.json": "ecb9988ad3a53e68162287da9270864f7b2d35ec67de8b3ce56d58d3acde7762",
+    "rating-history.json": "21a0025f92cc133a3a01c297a71f6800bc09bf6922de6c646b9dfa62840f5bce",
+    "ratings.sqlite3": "7c55f000543755244079d477d25291abca443439af1d9c5e2f8262d4e2de883a",
+    "report.md": "7564b7b11050baac5c6d9cf2fc9671fb3c9ca054ace78d5cb9044e4caf4d951b",
+    "sample.json": "acc028b1028fb46be988ff3036910db780a5dae38ebcf7a91b2a9a74bd11621c",
+    "timing.json": "0403013b0ee6f371717b1244f286455d0080c9976bf6eed00d899720e9f39a66"
+  }
+}

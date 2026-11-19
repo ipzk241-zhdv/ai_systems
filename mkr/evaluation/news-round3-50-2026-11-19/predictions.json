@@ -1,0 +1,218 @@
+{
+  "model": "server revision 73f93bb1c1a3",
+  "version": "73f93bb1c1a3ec39728ec512fbf5e64a3a5758325d65a96488a1ac91e6e42d68",
+  "predictions": {
+    "21518e5adccb1e2211450590": "news",
+    "5878cb2a86a98e8118f9e9f9": "skip",
+    "ebd073ba4826484f1faad7db": "news",
+    "eea05bfeb1441cfefed2d92e": "news",
+    "d92a1d67ca418bc9c1efee69": "news",
+    "cb73bd23af4097f4045aee0b": "news",
+    "76f8cbdf89a136b6b9344324": "skip",
+    "9b50ebda28c063678e428dec": "important",
+    "f5a2d9642e4cc10779204121": "skip",
+    "bc309a141d11fd8b85f3de45": "skip",
+    "e3b5fe6daa22f54d12f994cb": "news",
+    "7e7f8dc791a581795ed3baba": "skip",
+    "6e271939e12a8f1716f23c5c": "important",
+    "fb025ed8118d9fad9bce5550": "skip",
+    "e2915359c68123967c438ef1": "news",
+    "0b0fd4d2491e5fb417a74f39": "news",
+    "e72874451d8682f209d710fc": "news",
+    "30c038fe7094940f7b313d10": "skip",
+    "1a1f1175ae260de888316be9": "important",
+    "18fb197243fed6d92093abfa": "skip",
+    "062baae3b24d5a84454e50c0": "important",
+    "96c48ce351bfb4e58919c6bd": "skip",
+    "59356cf33ded15a3fa2202af": "news",
+    "f45794f81f0610a389b16d40": "skip",
+    "9d2a9e7fb4be0835a1a61420": "skip",
+    "9f224397bf627d9bf940a987": "news",
+    "440394125de91c11fc63c076": "news",
+    "0d0cda10316b02de3d010f7c": "news",
+    "9b2cac6271a98125f52a39e1": "news",
+    "11378ef3250f1f519a41ce46": "news",
+    "11e9ebd12bedf7d1f4ac0184": "news",
+    "339a3592aa9bb9e4db903906": "important",
+    "85f29e4207a0a5ffc3a53a75": "news",
+    "ebc3fe07226eb85d44d620d9": "news",
+    "081d552f0aacb84b3f0bc26d": "skip",
+    "e2d472efa4e819cce76cb752": "news",
+    "9a293365a9d299563c6b679e": "news",
+    "03648a1088aeb8f3d25a89b6": "skip",
+    "78cdfba919089c18b6ac0ea8": "important",
+    "af48128a5ed379306ea7971a": "skip",
+    "77e14d196cfaa41a37353f9d": "skip",
+    "288d4162385613c99e455cd4": "news",
+    "739302a07d39d3fe66eae656": "important",
+    "e4d1a1f36e6a43c8e9f3b8ff": "news",
+    "a07b9842e4d5e2fef42ea579": "skip",
+    "7a8c967dbb718126a584a032": "skip",
+    "b13fd27ee3ac5a8942f449f7": "skip",
+    "06710184dee0cd76261b1a3b": "skip",
+    "8c6b6ba494aa25931e4e8dd7": "news",
+    "2974dd305edc38a3cabbcf22": "skip"
+  },
+  "tags": {
+    "21518e5adccb1e2211450590": [
+      "interesting"
+    ],
+    "5878cb2a86a98e8118f9e9f9": [],
+    "ebd073ba4826484f1faad7db": [
+      "interesting",
+      "positive"
+    ],
+    "eea05bfeb1441cfefed2d92e": [
+      "funny",
+      "interesting"
+    ],
+    "d92a1d67ca418bc9c1efee69": [
+      "funny",
+      "interesting"
+    ],
+    "cb73bd23af4097f4045aee0b": [
+      "funny",
+      "interesting"
+    ],
+    "76f8cbdf89a136b6b9344324": [],
+    "9b50ebda28c063678e428dec": [
+      "interesting"
+    ],
+    "f5a2d9642e4cc10779204121": [],
+    "bc309a141d11fd8b85f3de45": [],
+    "e3b5fe6daa22f54d12f994cb": [
+      "funny",
+      "interesting"
+    ],
+    "7e7f8dc791a581795ed3baba": [],
+    "6e271939e12a8f1716f23c5c": [
+      "interesting"
+    ],
+    "fb025ed8118d9fad9bce5550": [],
+    "e2915359c68123967c438ef1": [
+      "interesting"
+    ],
+    "0b0fd4d2491e5fb417a74f39": [
+      "interesting"
+    ],
+    "e72874451d8682f209d710fc": [],
+    "30c038fe7094940f7b313d10": [],
+    "1a1f1175ae260de888316be9": [
+      "positive",
+      "interesting"
+    ],
+    "18fb197243fed6d92093abfa": [],
+    "062baae3b24d5a84454e50c0": [],
+    "96c48ce351bfb4e58919c6bd": [],
+    "59356cf33ded15a3fa2202af": [
+      "interesting"
+    ],
+    "f45794f81f0610a389b16d40": [],
+    "9d2a9e7fb4be0835a1a61420": [],
+    "9f224397bf627d9bf940a987": [
+      "interesting"
+    ],
+    "440394125de91c11fc63c076": [],
+    "0d0cda10316b02de3d010f7c": [
+      "interesting"
+    ],
+    "9b2cac6271a98125f52a39e1": [
+      "interesting"
+    ],
+    "11378ef3250f1f519a41ce46": [
+      "funny",
+      "interesting"
+    ],
+    "11e9ebd12bedf7d1f4ac0184": [
+      "interesting"
+    ],
+    "339a3592aa9bb9e4db903906": [
+      "interesting",
+      "positive"
+    ],
+    "85f29e4207a0a5ffc3a53a75": [],
+    "ebc3fe07226eb85d44d620d9": [
+      "interesting",
+      "positive"
+    ],
+    "081d552f0aacb84b3f0bc26d": [],
+    "e2d472efa4e819cce76cb752": [],
+    "9a293365a9d299563c6b679e": [
+      "interesting"
+    ],
+    "03648a1088aeb8f3d25a89b6": [],
+    "78cdfba919089c18b6ac0ea8": [
+      "interesting"
+    ],
+    "af48128a5ed379306ea7971a": [],
+    "77e14d196cfaa41a37353f9d": [],
+    "288d4162385613c99e455cd4": [
+      "interesting"
+    ],
+    "739302a07d39d3fe66eae656": [],
+    "e4d1a1f36e6a43c8e9f3b8ff": [
+      "interesting"
+    ],
+    "a07b9842e4d5e2fef42ea579": [],
+    "7a8c967dbb718126a584a032": [],
+    "b13fd27ee3ac5a8942f449f7": [],
+    "06710184dee0cd76261b1a3b": [],
+    "8c6b6ba494aa25931e4e8dd7": [],
+    "2974dd305edc38a3cabbcf22": []
+  },
+  "sample_ids": [
+    "21518e5adccb1e2211450590",
+    "5878cb2a86a98e8118f9e9f9",
+    "ebd073ba4826484f1faad7db",
+    "eea05bfeb1441cfefed2d92e",
+    "d92a1d67ca418bc9c1efee69",
+    "cb73bd23af4097f4045aee0b",
+    "76f8cbdf89a136b6b9344324",
+    "9b50ebda28c063678e428dec",
+    "f5a2d9642e4cc10779204121",
+    "bc309a141d11fd8b85f3de45",
+    "e3b5fe6daa22f54d12f994cb",
+    "7e7f8dc791a581795ed3baba",
+    "6e271939e12a8f1716f23c5c",
+    "fb025ed8118d9fad9bce5550",
+    "e2915359c68123967c438ef1",
+    "0b0fd4d2491e5fb417a74f39",
+    "e72874451d8682f209d710fc",
+    "30c038fe7094940f7b313d10",
+    "1a1f1175ae260de888316be9",
+    "18fb197243fed6d92093abfa",
+    "062baae3b24d5a84454e50c0",
+    "96c48ce351bfb4e58919c6bd",
+    "59356cf33ded15a3fa2202af",
+    "f45794f81f0610a389b16d40",
+    "9d2a9e7fb4be0835a1a61420",
+    "9f224397bf627d9bf940a987",
+    "440394125de91c11fc63c076",
+    "0d0cda10316b02de3d010f7c",
+    "9b2cac6271a98125f52a39e1",
+    "11378ef3250f1f519a41ce46",
+    "11e9ebd12bedf7d1f4ac0184",
+    "339a3592aa9bb9e4db903906",
+    "85f29e4207a0a5ffc3a53a75",
+    "ebc3fe07226eb85d44d620d9",
+    "081d552f0aacb84b3f0bc26d",
+    "e2d472efa4e819cce76cb752",
+    "9a293365a9d299563c6b679e",
+    "03648a1088aeb8f3d25a89b6",
+    "78cdfba919089c18b6ac0ea8",
+    "af48128a5ed379306ea7971a",
+    "77e14d196cfaa41a37353f9d",
+    "288d4162385613c99e455cd4",
+    "739302a07d39d3fe66eae656",
+    "e4d1a1f36e6a43c8e9f3b8ff",
+    "a07b9842e4d5e2fef42ea579",
+    "7a8c967dbb718126a584a032",
+    "b13fd27ee3ac5a8942f449f7",
+    "06710184dee0cd76261b1a3b",
+    "8c6b6ba494aa25931e4e8dd7",
+    "2974dd305edc38a3cabbcf22"
+  ],
+  "usage": [],
+  "finished_at": "2026-11-19T13:04:20.572630+00:00",
+  "usage_note": "Cached predictions; no extra API calls; per-row model not recorded"
+}

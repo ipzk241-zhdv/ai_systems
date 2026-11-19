@@ -124,12 +124,28 @@ class FileStore:
             );
             CREATE UNIQUE INDEX IF NOT EXISTS folders_unique_name
                 ON folders(COALESCE(parent_id, 0), name_key);
+            CREATE TABLE IF NOT EXISTS item_ids (kind TEXT PRIMARY KEY, last_id INTEGER NOT NULL);
         """)
+        for kind, table in (("file", "files"), ("folder", "folders")):
+            if db.execute("SELECT 1 FROM item_ids WHERE kind=?", (kind,)).fetchone() is None:
+                db.execute("INSERT OR IGNORE INTO item_ids SELECT ?, COALESCE(max(id),0) FROM " + table, (kind,))
         if "folder_id" not in {row[1] for row in db.execute("PRAGMA table_info(files)")}:
             db.execute("ALTER TABLE files ADD COLUMN folder_id INTEGER REFERENCES folders(id)")
         db.execute("CREATE INDEX IF NOT EXISTS files_folder ON files(folder_id)")
         db.commit()
         return db
+
+    @staticmethod
+    def next_item_id(db, kind):
+        # Deleted IDs must never identify a new file in old Telegram commands/tabs.
+        table = {"file": "files", "folder": "folders"}[kind]
+        last = db.execute("SELECT last_id FROM item_ids WHERE kind=?", (kind,)).fetchone()[0]
+        maximum = db.execute("SELECT COALESCE(max(id),0) FROM " + table).fetchone()[0]
+        value = max(last, maximum) + 1
+        if value >= 2 ** 63:
+            raise FileError("Вичерпано доступні номери об’єктів.")
+        db.execute("UPDATE item_ids SET last_id=? WHERE kind=?", (value, kind))
+        return value
 
     def issue_grant(self, user_id):
         self.require_user(user_id)
@@ -256,8 +272,8 @@ class FileStore:
                 db.execute("BEGIN IMMEDIATE")
                 if len(self.folder_path(db, parent_id)) >= 32:
                     raise FileError("Максимальна глибина папок — 32 рівні.")
-                cursor = db.execute("INSERT INTO folders (parent_id,name,name_key,created_at) VALUES (?,?,?,?)",
-                                    (parent_id, name, name.casefold(), time.time()))
+                cursor = db.execute("INSERT INTO folders (id,parent_id,name,name_key,created_at) VALUES (?,?,?,?,?)",
+                                    (self.next_item_id(db, "folder"), parent_id, name, name.casefold(), time.time()))
                 return cursor.lastrowid
         except sqlite3.IntegrityError:
             raise FileError("У цій папці вже є папка з такою назвою.") from None
@@ -337,8 +353,8 @@ class FileStore:
                             number += 1
                             suffix = " (" + str(number) + ")"
                             name = base[:180 - len(suffix)].rstrip() + suffix
-                    cursor = db.execute("INSERT INTO folders (parent_id,name,name_key,created_at) VALUES (?,?,?,?)",
-                                        (parent, name, name.casefold(), time.time()))
+                    cursor = db.execute("INSERT INTO folders (id,parent_id,name,name_key,created_at) VALUES (?,?,?,?,?)",
+                                        (self.next_item_id(db, "folder"), parent, name, name.casefold(), time.time()))
                     mapping[path] = cursor.lastrowid
                     if len(names) == 1:
                         roots.append({"id": cursor.lastrowid, "name": name})
@@ -382,6 +398,68 @@ class FileStore:
     def upload(self, user_id, name, data, folder_id=None):
         return self.upload_stream(user_id, name, BytesIO(data), len(data), folder_id)
 
+    def delete_item(self, user_id, kind, item_id, expected_name):
+        """Delete a file or a whole virtual subtree; stage blobs until SQL commits."""
+        self.require_user(user_id)
+        if kind not in {"file", "folder"} or type(item_id) is not int or not 1 <= item_id < 2 ** 63:
+            raise FileError("Об’єкт не знайдено.")
+        if not isinstance(expected_name, str):
+            raise FileError("Підтвердь назву об’єкта для видалення.")
+        db, staged = self.connect(), []
+        try:
+            with db:
+                db.execute("BEGIN IMMEDIATE")
+                table = "files" if kind == "file" else "folders"
+                row = db.execute("SELECT name FROM " + table + " WHERE id=?", (item_id,)).fetchone()
+                if not row:
+                    raise FileError("Об’єкт уже видалено або не знайдено.")
+                if row[0] != expected_name:
+                    raise FileConflict("Назва змінилася. Онови список і підтвердь видалення ще раз.")
+                db.execute("CREATE TEMP TABLE delete_folders(id INTEGER PRIMARY KEY)")
+                db.execute("CREATE TEMP TABLE delete_files(id INTEGER PRIMARY KEY)")
+                if kind == "folder":
+                    db.execute("""INSERT INTO delete_folders WITH RECURSIVE subtree(id) AS (
+                        SELECT id FROM folders WHERE id=? UNION
+                        SELECT f.id FROM folders f JOIN subtree s ON f.parent_id=s.id)
+                        SELECT id FROM subtree""", (item_id,))
+                    db.execute("INSERT INTO delete_files SELECT id FROM files WHERE folder_id IN (SELECT id FROM delete_folders)")
+                else:
+                    db.execute("INSERT INTO delete_files VALUES (?)", (item_id,))
+                targets = db.execute("SELECT blob,size FROM files WHERE id IN (SELECT id FROM delete_files)").fetchall()
+                # No user-supplied filesystem paths or recursive filesystem removal.
+                base = self.blobs.resolve()
+                if self.blobs.is_symlink() or base.parent != self.root.resolve():
+                    raise FileError("Некоректне розташування сховища.")
+                paths = []
+                for blob, _ in targets:
+                    if not isinstance(blob, str) or not re.fullmatch(r"[0-9a-f]{48}", blob):
+                        raise FileError("Некоректний запис файла у сховищі.")
+                    path = self.blobs / blob
+                    if path.is_symlink() or path.resolve().parent != base or (path.exists() and not path.is_file()):
+                        raise FileError("Некоректний файл у сховищі.")
+                    if path.exists():paths.append(path)
+                self.require_user(user_id)
+                for path in paths:
+                    temporary = self.blobs / (".delete-" + secrets.token_hex(24))
+                    path.replace(temporary)
+                    staged.append((path, temporary))
+                result = {"files": len(targets), "folders": db.execute("SELECT count(*) FROM delete_folders").fetchone()[0],
+                          "bytes": sum(row[1] for row in targets), "cleanup_pending": 0}
+                db.execute("DELETE FROM telegram_files WHERE file_id IN (SELECT id FROM delete_files)")
+                db.execute("DELETE FROM telegram_saves WHERE file_id IN (SELECT id FROM delete_files)")
+                db.execute("DELETE FROM files WHERE id IN (SELECT id FROM delete_files)")
+                db.execute("DELETE FROM folders WHERE id IN (SELECT id FROM delete_folders)")
+        except Exception:
+            for original, temporary in reversed(staged):
+                temporary.replace(original)
+            raise
+        finally:
+            db.close()
+        for _, temporary in staged:
+            try:temporary.unlink()
+            except OSError:result["cleanup_pending"] += 1
+        return result
+
     def upload_stream(self, user_id, name, stream, length, folder_id=None, unique=False, request_key=None):
         self.require_user(user_id)
         name = str(name).replace("\\", "/").rsplit("/", 1)[-1].strip()
@@ -423,8 +501,8 @@ class FileStore:
                         output.write(chunk)
                         digest.update(chunk)
                         remaining -= len(chunk)
-                cursor = db.execute("INSERT INTO files (blob, name, size, sha256, uploaded_by, created_at,folder_id) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                                    (blob, name, length, digest.hexdigest(), user_id, time.time(), folder_id))
+                cursor = db.execute("INSERT INTO files (id,blob,name,size,sha256,uploaded_by,created_at,folder_id) VALUES (?,?,?,?,?,?,?,?)",
+                                    (self.next_item_id(db, "file"), blob, name, length, digest.hexdigest(), user_id, time.time(), folder_id))
                 if request_key:
                     db.execute("INSERT INTO telegram_saves(request_key,file_id) VALUES (?,?)", (request_key, cursor.lastrowid))
                 return cursor.lastrowid

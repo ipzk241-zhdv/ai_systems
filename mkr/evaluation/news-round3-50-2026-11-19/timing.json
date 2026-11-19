@@ -1,0 +1,260 @@
+{
+  "method": "Intervals between successive first saves for distinct articles, excludes repeated-save endpoints; may include prior edits, reading, choosing tags, navigation and pauses. No timer for the first article.",
+  "first_save_count": 50,
+  "all_save_events": 53,
+  "interval_count": 49,
+  "minimum_seconds": 2.801411,
+  "fastest_5_mean_seconds": 3.0416065999999997,
+  "fastest_10_mean_seconds": 3.2919384,
+  "fastest_25_mean_seconds": 4.42588836,
+  "median_seconds": 6.266458,
+  "mean_seconds": 7.551743428571428,
+  "first_to_last_first_save_seconds": 370.035428,
+  "intervals": [
+    {
+      "article_id": "062baae3b24d5a84454e50c0",
+      "saved_at": "2026-11-19T13:06:25.151050+00:00",
+      "seconds_since_previous_first_save": 7.425737
+    },
+    {
+      "article_id": "06710184dee0cd76261b1a3b",
+      "saved_at": "2026-11-19T13:06:33.166818+00:00",
+      "seconds_since_previous_first_save": 8.015768
+    },
+    {
+      "article_id": "081d552f0aacb84b3f0bc26d",
+      "saved_at": "2026-11-19T13:06:39.251234+00:00",
+      "seconds_since_previous_first_save": 6.084416
+    },
+    {
+      "article_id": "0b0fd4d2491e5fb417a74f39",
+      "saved_at": "2026-11-19T13:06:43.425798+00:00",
+      "seconds_since_previous_first_save": 4.174564
+    },
+    {
+      "article_id": "0d0cda10316b02de3d010f7c",
+      "saved_at": "2026-11-19T13:06:47.531228+00:00",
+      "seconds_since_previous_first_save": 4.10543
+    },
+    {
+      "article_id": "11378ef3250f1f519a41ce46",
+      "saved_at": "2026-11-19T13:06:57.501728+00:00",
+      "seconds_since_previous_first_save": 9.9705
+    },
+    {
+      "article_id": "11e9ebd12bedf7d1f4ac0184",
+      "saved_at": "2026-11-19T13:07:01.553012+00:00",
+      "seconds_since_previous_first_save": 4.051284
+    },
+    {
+      "article_id": "18fb197243fed6d92093abfa",
+      "saved_at": "2026-11-19T13:07:06.160060+00:00",
+      "seconds_since_previous_first_save": 4.607048
+    },
+    {
+      "article_id": "1a1f1175ae260de888316be9",
+      "saved_at": "2026-11-19T13:07:28.409166+00:00",
+      "seconds_since_previous_first_save": 22.249106
+    },
+    {
+      "article_id": "21518e5adccb1e2211450590",
+      "saved_at": "2026-11-19T13:07:37.169602+00:00",
+      "seconds_since_previous_first_save": 8.760436
+    },
+    {
+      "article_id": "288d4162385613c99e455cd4",
+      "saved_at": "2026-11-19T13:07:40.553001+00:00",
+      "seconds_since_previous_first_save": 3.383399
+    },
+    {
+      "article_id": "2974dd305edc38a3cabbcf22",
+      "saved_at": "2026-11-19T13:07:49.361227+00:00",
+      "seconds_since_previous_first_save": 8.808226
+    },
+    {
+      "article_id": "30c038fe7094940f7b313d10",
+      "saved_at": "2026-11-19T13:07:53.196324+00:00",
+      "seconds_since_previous_first_save": 3.835097
+    },
+    {
+      "article_id": "339a3592aa9bb9e4db903906",
+      "saved_at": "2026-11-19T13:08:16.182065+00:00",
+      "seconds_since_previous_first_save": 22.985741
+    },
+    {
+      "article_id": "440394125de91c11fc63c076",
+      "saved_at": "2026-11-19T13:08:23.094888+00:00",
+      "seconds_since_previous_first_save": 6.912823
+    },
+    {
+      "article_id": "5878cb2a86a98e8118f9e9f9",
+      "saved_at": "2026-11-19T13:08:29.611999+00:00",
+      "seconds_since_previous_first_save": 6.517111
+    },
+    {
+      "article_id": "59356cf33ded15a3fa2202af",
+      "saved_at": "2026-11-19T13:08:55.609613+00:00",
+      "seconds_since_previous_first_save": 25.997614
+    },
+    {
+      "article_id": "6e271939e12a8f1716f23c5c",
+      "saved_at": "2026-11-19T13:09:05.110586+00:00",
+      "seconds_since_previous_first_save": 9.500973
+    },
+    {
+      "article_id": "739302a07d39d3fe66eae656",
+      "saved_at": "2026-11-19T13:09:11.190148+00:00",
+      "seconds_since_previous_first_save": 6.079562
+    },
+    {
+      "article_id": "76f8cbdf89a136b6b9344324",
+      "saved_at": "2026-11-19T13:09:17.072887+00:00",
+      "seconds_since_previous_first_save": 5.882739
+    },
+    {
+      "article_id": "77e14d196cfaa41a37353f9d",
+      "saved_at": "2026-11-19T13:09:25.517911+00:00",
+      "seconds_since_previous_first_save": 8.445024
+    },
+    {
+      "article_id": "78cdfba919089c18b6ac0ea8",
+      "saved_at": "2026-11-19T13:09:32.557062+00:00",
+      "seconds_since_previous_first_save": 7.039151
+    },
+    {
+      "article_id": "7a8c967dbb718126a584a032",
+      "saved_at": "2026-11-19T13:09:46.292617+00:00",
+      "seconds_since_previous_first_save": 13.735555
+    },
+    {
+      "article_id": "7e7f8dc791a581795ed3baba",
+      "saved_at": "2026-11-19T13:09:56.712887+00:00",
+      "seconds_since_previous_first_save": 10.42027
+    },
+    {
+      "article_id": "85f29e4207a0a5ffc3a53a75",
+      "saved_at": "2026-11-19T13:09:59.841956+00:00",
+      "seconds_since_previous_first_save": 3.129069
+    },
+    {
+      "article_id": "8c6b6ba494aa25931e4e8dd7",
+      "saved_at": "2026-11-19T13:10:05.245390+00:00",
+      "seconds_since_previous_first_save": 5.403434
+    },
+    {
+      "article_id": "96c48ce351bfb4e58919c6bd",
+      "saved_at": "2026-11-19T13:10:09.224192+00:00",
+      "seconds_since_previous_first_save": 3.978802
+    },
+    {
+      "article_id": "9a293365a9d299563c6b679e",
+      "saved_at": "2026-11-19T13:10:16.239438+00:00",
+      "seconds_since_previous_first_save": 7.015246
+    },
+    {
+      "article_id": "9b2cac6271a98125f52a39e1",
+      "saved_at": "2026-11-19T13:10:21.538063+00:00",
+      "seconds_since_previous_first_save": 5.298625
+    },
+    {
+      "article_id": "9b50ebda28c063678e428dec",
+      "saved_at": "2026-11-19T13:10:25.115867+00:00",
+      "seconds_since_previous_first_save": 3.577804
+    },
+    {
+      "article_id": "9d2a9e7fb4be0835a1a61420",
+      "saved_at": "2026-11-19T13:10:29.394591+00:00",
+      "seconds_since_previous_first_save": 4.278724
+    },
+    {
+      "article_id": "9f224397bf627d9bf940a987",
+      "saved_at": "2026-11-19T13:10:39.967733+00:00",
+      "seconds_since_previous_first_save": 10.573142
+    },
+    {
+      "article_id": "a07b9842e4d5e2fef42ea579",
+      "saved_at": "2026-11-19T13:10:51.116968+00:00",
+      "seconds_since_previous_first_save": 11.149235
+    },
+    {
+      "article_id": "af48128a5ed379306ea7971a",
+      "saved_at": "2026-11-19T13:10:57.301394+00:00",
+      "seconds_since_previous_first_save": 6.184426
+    },
+    {
+      "article_id": "b13fd27ee3ac5a8942f449f7",
+      "saved_at": "2026-11-19T13:11:05.330895+00:00",
+      "seconds_since_previous_first_save": 8.029501
+    },
+    {
+      "article_id": "bc309a141d11fd8b85f3de45",
+      "saved_at": "2026-11-19T13:11:08.396720+00:00",
+      "seconds_since_previous_first_save": 3.065825
+    },
+    {
+      "article_id": "cb73bd23af4097f4045aee0b",
+      "saved_at": "2026-11-19T13:11:14.094819+00:00",
+      "seconds_since_previous_first_save": 5.698099
+    },
+    {
+      "article_id": "d92a1d67ca418bc9c1efee69",
+      "saved_at": "2026-11-19T13:11:20.395271+00:00",
+      "seconds_since_previous_first_save": 6.300452
+    },
+    {
+      "article_id": "e2915359c68123967c438ef1",
+      "saved_at": "2026-11-19T13:11:27.392008+00:00",
+      "seconds_since_previous_first_save": 6.996737
+    },
+    {
+      "article_id": "e2d472efa4e819cce76cb752",
+      "saved_at": "2026-11-19T13:11:30.512651+00:00",
+      "seconds_since_previous_first_save": 3.120643
+    },
+    {
+      "article_id": "e3b5fe6daa22f54d12f994cb",
+      "saved_at": "2026-11-19T13:11:33.842963+00:00",
+      "seconds_since_previous_first_save": 3.330312
+    },
+    {
+      "article_id": "e4d1a1f36e6a43c8e9f3b8ff",
+      "saved_at": "2026-11-19T13:11:36.644374+00:00",
+      "seconds_since_previous_first_save": 2.801411
+    },
+    {
+      "article_id": "e72874451d8682f209d710fc",
+      "saved_at": "2026-11-19T13:11:42.910832+00:00",
+      "seconds_since_previous_first_save": 6.266458
+    },
+    {
+      "article_id": "ebc3fe07226eb85d44d620d9",
+      "saved_at": "2026-11-19T13:11:57.182273+00:00",
+      "seconds_since_previous_first_save": 14.271441
+    },
+    {
+      "article_id": "ebd073ba4826484f1faad7db",
+      "saved_at": "2026-11-19T13:12:04.070064+00:00",
+      "seconds_since_previous_first_save": 6.887791
+    },
+    {
+      "article_id": "eea05bfeb1441cfefed2d92e",
+      "saved_at": "2026-11-19T13:12:07.161149+00:00",
+      "seconds_since_previous_first_save": 3.091085
+    },
+    {
+      "article_id": "f45794f81f0610a389b16d40",
+      "saved_at": "2026-11-19T13:12:10.745888+00:00",
+      "seconds_since_previous_first_save": 3.584739
+    },
+    {
+      "article_id": "f5a2d9642e4cc10779204121",
+      "saved_at": "2026-11-19T13:12:22.126527+00:00",
+      "seconds_since_previous_first_save": 11.380639
+    },
+    {
+      "article_id": "fb025ed8118d9fad9bce5550",
+      "saved_at": "2026-11-19T13:12:27.760741+00:00",
+      "seconds_since_previous_first_save": 5.634214
+    }
+  ]
+}
