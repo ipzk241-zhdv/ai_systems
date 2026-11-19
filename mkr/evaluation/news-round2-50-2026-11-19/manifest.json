@@ -1,0 +1,14 @@
+{
+  "frozen_at": "2026-11-19T12:36:25.484394+00:00",
+  "files_sha256": {
+    "archive.json": "7844741ad57c46fdbbb586de462f01c9eba28a26b7755518e40195979384e65a",
+    "metrics.json": "389114683fd9e21992e4ed5cf4746383fc42f56fefe14651d0f4c378fe24d270",
+    "predictions.json": "9baa54ff77c187bd2763d32f825bd689f18ffaae4ee9fed8a65b786b906b4b5d",
+    "rated-news.json": "dbb29ecbd011a2090232f1f9dc9b5f72c00363b57b2a6a6f2d66b5920aeb14fb",
+    "rating-history.json": "94291a55fd9a1e25edbc7f6c7f075da28739e0ad1402f560e86878b57b87a334",
+    "ratings.csv": "c4828efb85975f1bdd6b9a10b82d7e6d062d39ed1b6f0be8b46ae210fb5b7a81",
+    "ratings.sqlite3": "9495ef88e10ccc0dbc8e3d8c3eea486740f385586dc9d9e8d4da13fa23b49120",
+    "report.md": "e87d0574a8963ef7d4c82732251cf63f994c0bf8353444bbe2149266e82de164",
+    "sample.json": "65cf1ba113ba55f20518b3400beb4f7a92bcc6b106b8caa8ad9f9ba03c3d82c9"
+  }
+}

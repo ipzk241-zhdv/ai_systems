@@ -1,0 +1,512 @@
+[
+  {
+    "id": 1,
+    "article_id": "059096990f5a0ed116d01675",
+    "label": "news",
+    "tags_json": "[\"interesting\", \"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:17:51.938774+00:00"
+  },
+  {
+    "id": 2,
+    "article_id": "0ab03b0fe774a823296575a0",
+    "label": "news",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:18:24.414292+00:00"
+  },
+  {
+    "id": 3,
+    "article_id": "0c852115ccf269368cc3dfba",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\", \"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:18:33.666901+00:00"
+  },
+  {
+    "id": 4,
+    "article_id": "14c8f1ec99212e9246404ebe",
+    "label": "news",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:18:41.824517+00:00"
+  },
+  {
+    "id": 5,
+    "article_id": "1b2271d7c4eaeefbfbe7840c",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:18:53.363196+00:00"
+  },
+  {
+    "id": 6,
+    "article_id": "1b2271d7c4eaeefbfbe7840c",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:18:59.356358+00:00"
+  },
+  {
+    "id": 7,
+    "article_id": "1e66e4993d124a099df73177",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:19:38.406335+00:00"
+  },
+  {
+    "id": 8,
+    "article_id": "292e24f48d14837d90ea10d8",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:19:47.687452+00:00"
+  },
+  {
+    "id": 9,
+    "article_id": "2f49eb393a6544ecb31ecaf7",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:19:55.717268+00:00"
+  },
+  {
+    "id": 10,
+    "article_id": "32d1f206e9d84fb8c673a389",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:19:59.713869+00:00"
+  },
+  {
+    "id": 11,
+    "article_id": "331beacb425e87c488ed5bc1",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:20:10.522751+00:00"
+  },
+  {
+    "id": 12,
+    "article_id": "3cba3cb9514cfee6ca85712e",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:20:14.968249+00:00"
+  },
+  {
+    "id": 13,
+    "article_id": "48b02721dd7cd19dd375da0f",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:20:19.331800+00:00"
+  },
+  {
+    "id": 14,
+    "article_id": "5116f76c0056d864c9ba0835",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:20:23.558270+00:00"
+  },
+  {
+    "id": 15,
+    "article_id": "62215ce29b88535c662131bb",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:20:26.949550+00:00"
+  },
+  {
+    "id": 16,
+    "article_id": "71ed6b79512625627b24d951",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:20:32.431700+00:00"
+  },
+  {
+    "id": 17,
+    "article_id": "73df292bf67e6e6d4a9cf451",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:22:49.194707+00:00"
+  },
+  {
+    "id": 18,
+    "article_id": "79b30fa13b3a4cff8c01d61f",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:23:00.068384+00:00"
+  },
+  {
+    "id": 19,
+    "article_id": "7bf9275c2666a67c1ac73492",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:23:05.654174+00:00"
+  },
+  {
+    "id": 20,
+    "article_id": "7dfc0294a2b2deb59c416286",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:23:15.049740+00:00"
+  },
+  {
+    "id": 21,
+    "article_id": "8c530e537db0829d1af710cc",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:24:52.527654+00:00"
+  },
+  {
+    "id": 22,
+    "article_id": "8cef07aa682d39fac417cc65",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:24:59.277142+00:00"
+  },
+  {
+    "id": 23,
+    "article_id": "93195d4a99c6b479d8a2aad7",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:25:08.259598+00:00"
+  },
+  {
+    "id": 24,
+    "article_id": "94b84c0693c1dc35dc0425c1",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:25:13.006821+00:00"
+  },
+  {
+    "id": 25,
+    "article_id": "a12d62588610ab87ed519d72",
+    "label": "news",
+    "tags_json": "[\"interesting\", \"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:25:20.869202+00:00"
+  },
+  {
+    "id": 26,
+    "article_id": "a62722ad44bdddf45a004b28",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:25:24.848006+00:00"
+  },
+  {
+    "id": 27,
+    "article_id": "ac552101a4429fd3369a4d89",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:26:45.075882+00:00"
+  },
+  {
+    "id": 28,
+    "article_id": "aec641cf94b027b8c5fc4ec9",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:26:51.231002+00:00"
+  },
+  {
+    "id": 29,
+    "article_id": "b00b26bb3a308b8c2e4cfee0",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\", \"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:26:59.529379+00:00"
+  },
+  {
+    "id": 30,
+    "article_id": "b374ce832ad5d4c85a6291fc",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:27:09.549016+00:00"
+  },
+  {
+    "id": 31,
+    "article_id": "ba8e3fc493478cfcfff0f843",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:27:18.221141+00:00"
+  },
+  {
+    "id": 32,
+    "article_id": "bb96a6dc8c20695f878d836c",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:27:27.723081+00:00"
+  },
+  {
+    "id": 33,
+    "article_id": "bd1e89fda861776971d7d411",
+    "label": "news",
+    "tags_json": "[\"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:29:03.716392+00:00"
+  },
+  {
+    "id": 34,
+    "article_id": "be4190496f7fc6b694c26dc3",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:29:07.373456+00:00"
+  },
+  {
+    "id": 35,
+    "article_id": "c0052080d25b4cdda860c913",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:29:21.227477+00:00"
+  },
+  {
+    "id": 36,
+    "article_id": "c09e9048df0fc4915dbd30cb",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:29:26.880899+00:00"
+  },
+  {
+    "id": 37,
+    "article_id": "c0fa3b647725e89992c25e0c",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:29:31.371186+00:00"
+  },
+  {
+    "id": 38,
+    "article_id": "d523f53c7f47a0cb71818142",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:29:36.069504+00:00"
+  },
+  {
+    "id": 39,
+    "article_id": "d7b6a6962c3b3b27afe5eb8e",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:29:42.534756+00:00"
+  },
+  {
+    "id": 40,
+    "article_id": "d8011dda528b59e0721d8e50",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:12.123492+00:00"
+  },
+  {
+    "id": 41,
+    "article_id": "d98a2588cb7fef0226b0bb45",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:15.937103+00:00"
+  },
+  {
+    "id": 42,
+    "article_id": "e30549d96bdd5e356ced8aae",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:19.185841+00:00"
+  },
+  {
+    "id": 43,
+    "article_id": "e3c2d4c92727d96fc03ba948",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:24.196599+00:00"
+  },
+  {
+    "id": 44,
+    "article_id": "e5f9ba847a260b380251acef",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 1,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:30.330948+00:00"
+  },
+  {
+    "id": 45,
+    "article_id": "e7cda82fb36478a43332f718",
+    "label": "news",
+    "tags_json": "[\"funny\", \"interesting\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:41.329943+00:00"
+  },
+  {
+    "id": 46,
+    "article_id": "f1f60326e5f7a41589d3df25",
+    "label": "news",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:51.347226+00:00"
+  },
+  {
+    "id": 47,
+    "article_id": "f2a31ff50fb69ef0c9dd7bc2",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:30:55.644285+00:00"
+  },
+  {
+    "id": 48,
+    "article_id": "f2df2a713c4b5b1a6b8ad165",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:31:01.539732+00:00"
+  },
+  {
+    "id": 49,
+    "article_id": "f51ee3ff96febebcfa815cfe",
+    "label": "news",
+    "tags_json": "[\"interesting\", \"positive\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:31:07.180573+00:00"
+  },
+  {
+    "id": 50,
+    "article_id": "fcef5340bd6de470bc4e0abe",
+    "label": "news",
+    "tags_json": "[\"funny\"]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:31:14.514685+00:00"
+  },
+  {
+    "id": 51,
+    "article_id": "fe765ae46f2ed41f057eb43c",
+    "label": "skip",
+    "tags_json": "[]",
+    "duplicate": 0,
+    "basis": "title",
+    "comment": "",
+    "saved_at": "2026-11-19T12:31:18.707865+00:00"
+  }
+]

@@ -19,12 +19,32 @@ class PersonalizationTests(unittest.TestCase):
     def test_runtime_corpus_has_calibration_examples_and_excludes_reserved_ids(self):
         examples,_=personal.load()
         metadata=json.loads(personal.EXAMPLES.read_text(encoding='utf-8'))
-        self.assertEqual(len(examples),100)
+        self.assertEqual(len(examples),141)
         self.assertEqual(metadata['held_out_ids'],[])
         self.assertEqual(len(metadata['historical_mini_test_ids']),20)
         self.assertFalse({a['id'] for a in examples}&set(metadata['held_out_ids']))
         self.assertEqual({a['label'] for a in examples},{'skip','news','important'})
         self.assertTrue(all(a['label']=='news' for a in examples if a['legacy_label']=='fun'))
+        self.assertEqual(sum('tags' in a for a in examples),41)
+        self.assertFalse({a['id'] for a in examples}&set(metadata['round2_contextual_duplicate_ids_excluded']))
+
+    def test_retrieval_preserves_real_human_humor_tags(self):
+        examples,_=personal.load()
+        item=next(a for a in examples if 'funny' in a.get('tags',[]))
+        result=personal.retrieve([{'title':item['title']}])
+        self.assertTrue(any('funny' in r.get('tags',[]) for r in result))
+        for view in result:
+            matches=[a for a in examples if a['title'][:220]==view['title']]
+            if 'tags' in view:
+                self.assertTrue(any(a.get('tags')==view['tags'] for a in matches))
+
+    def test_bad_human_tags_are_rejected(self):
+        with tempfile.TemporaryDirectory() as folder:
+            file=Path(folder)/'examples.json'
+            for label,tags in [('skip',['funny']),('news',['invalid']),('news',['funny','funny'])]:
+                file.write_text(json.dumps({'examples':[{'id':'a','title':'Test','label':label,'tags':tags}]}),encoding='utf-8')
+                with patch.object(personal,'EXAMPLES',file):
+                    with self.assertRaises(ValueError):personal.load()
 
     def test_retrieval_is_bounded_and_only_contains_actual_calibration_examples(self):
         examples,_=personal.load()

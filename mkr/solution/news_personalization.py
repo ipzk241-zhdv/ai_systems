@@ -9,7 +9,7 @@ import re
 EXAMPLES = Path(__file__).with_name('news_examples.json')
 LABELS = ['important','news','skip']
 TAGS = ['funny','interesting','positive']
-RETRIEVAL_VERSION = 'rated-headline-retrieval-v1'
+RETRIEVAL_VERSION = 'rated-headline-retrieval-v2-human-tags'
 STOP = {'після','перед','серед','через','цього','цьому','також','стало','стали','будуть','україн','російс',
         'после','перед','среди','через','этого','этому','также','стали','будет','украин','россий'}
 _cached = None
@@ -39,6 +39,11 @@ def load():
                 raise ValueError('Invalid news example')
             if item['id'] in held_out or item['id'] in ids:
                 raise ValueError('Duplicate or held-out news example')
+            tags=item.get('tags',[])
+            if (not isinstance(tags,list) or len(tags)>3
+                    or any(not isinstance(tag,str) or tag not in TAGS for tag in tags)
+                    or len(set(tags))!=len(tags) or (item['label']=='skip' and tags)):
+                raise ValueError('Invalid human news tags')
             ids.add(item['id'])
         _cached, _cache_signature = examples, signature
     return _cached, signature
@@ -69,11 +74,16 @@ def retrieve(incoming, max_examples=6, byte_budget=3600, exclude_ids=()):
     for label in ['skip','important','news']:
         index=next((i for i in ranked if examples[i]['label']==label),None)
         if index is not None:chosen.append(index)
+    # Keep one real human humor example visible; otherwise abundant skip examples
+    # can suppress this less common preference even in mixed batches.
+    funny=next((i for i in ranked if 'funny' in examples[i].get('tags',[])),None)
+    if funny is not None and funny not in chosen:chosen.append(funny)
     chosen += [i for i in ranked if i not in chosen]
     result=[]
     for index in chosen:
         item=examples[index]
         view={'title':item['title'][:220],'label':item['label'],'explanation':(item.get('comment','')+' '+item.get('clarification','')).strip()[:180]}
+        if 'tags' in item:view['tags']=list(item['tags'])
         candidate=result+[view]
         if len(json.dumps(candidate,ensure_ascii=False).encode('utf-8'))>byte_budget:continue
         result=candidate
