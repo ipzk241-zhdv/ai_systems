@@ -1,0 +1,182 @@
+{
+  "train_unique": 121,
+  "validation_unique": 39,
+  "threshold": 0.75,
+  "before_threshold": 0.7000000000000001,
+  "before": {
+    "n": 40,
+    "accuracy": 0.6,
+    "macro_f1": 0.42652329749103945,
+    "show_precision": 0.2,
+    "show_recall": 0.07692307692307693,
+    "important_recall": 0.0,
+    "missed_relevant": 12,
+    "confusion_matrix": [
+      [
+        23,
+        4
+      ],
+      [
+        12,
+        1
+      ]
+    ]
+  },
+  "training_s": 11.431156900001952,
+  "peak_gpu_gb": 2.298086912,
+  "history": [
+    {
+      "embedding_loss": 0.64,
+      "grad_norm": 5.971877098083496,
+      "learning_rate": 0.0,
+      "epoch": 0.006578947368421052,
+      "step": 1
+    },
+    {
+      "embedding_loss": 0.2897,
+      "grad_norm": 4.673292636871338,
+      "learning_rate": 1.6944444444444446e-05,
+      "epoch": 0.13157894736842105,
+      "step": 20
+    },
+    {
+      "eval_embedding_loss": 0.2736021876335144,
+      "eval_embedding_runtime": 0.5737,
+      "eval_embedding_samples_per_second": 1359.657,
+      "eval_embedding_steps_per_second": 85.414,
+      "epoch": 0.13157894736842105,
+      "step": 20
+    },
+    {
+      "embedding_loss": 0.2474,
+      "grad_norm": 3.1914784908294678,
+      "learning_rate": 1.138888888888889e-05,
+      "epoch": 0.2631578947368421,
+      "step": 40
+    },
+    {
+      "eval_embedding_loss": 0.25853464007377625,
+      "eval_embedding_runtime": 0.5741,
+      "eval_embedding_samples_per_second": 1358.656,
+      "eval_embedding_steps_per_second": 85.351,
+      "epoch": 0.2631578947368421,
+      "step": 40
+    },
+    {
+      "embedding_loss": 0.2373,
+      "grad_norm": 1.9176136255264282,
+      "learning_rate": 5.833333333333334e-06,
+      "epoch": 0.39473684210526316,
+      "step": 60
+    },
+    {
+      "eval_embedding_loss": 0.2547629773616791,
+      "eval_embedding_runtime": 0.5539,
+      "eval_embedding_samples_per_second": 1408.073,
+      "eval_embedding_steps_per_second": 88.456,
+      "epoch": 0.39473684210526316,
+      "step": 60
+    },
+    {
+      "embedding_loss": 0.2193,
+      "grad_norm": 3.6889138221740723,
+      "learning_rate": 2.7777777777777776e-07,
+      "epoch": 0.5263157894736842,
+      "step": 80
+    },
+    {
+      "eval_embedding_loss": 0.2533358335494995,
+      "eval_embedding_runtime": 0.527,
+      "eval_embedding_samples_per_second": 1480.183,
+      "eval_embedding_steps_per_second": 92.986,
+      "epoch": 0.5263157894736842,
+      "step": 80
+    },
+    {
+      "train_runtime": 11.232,
+      "train_samples_per_second": 113.96,
+      "train_steps_per_second": 7.122,
+      "total_flos": 0.0,
+      "train_loss": 0.2528084509074688,
+      "epoch": 0.5263157894736842,
+      "step": 80
+    }
+  ],
+  "best_checkpoint": "D:\\HomeWork\\4 курс\\сші\\lab5\\artifacts\\minilm_human\\checkpoints\\checkpoint-80",
+  "validation": {
+    "n": 39,
+    "accuracy": 0.7435897435897436,
+    "macro_f1": 0.6388888888888888,
+    "show_precision": 0.8,
+    "show_recall": 0.3076923076923077,
+    "important_recall": 0.5,
+    "missed_relevant": 9,
+    "confusion_matrix": [
+      [
+        25,
+        1
+      ],
+      [
+        9,
+        4
+      ]
+    ]
+  },
+  "common_test": {
+    "n": 40,
+    "accuracy": 0.55,
+    "macro_f1": 0.3548387096774194,
+    "show_precision": 0.0,
+    "show_recall": 0.0,
+    "important_recall": 0.0,
+    "missed_relevant": 13,
+    "confusion_matrix": [
+      [
+        22,
+        5
+      ],
+      [
+        13,
+        0
+      ]
+    ]
+  },
+  "test": {
+    "n": 40,
+    "accuracy": 0.55,
+    "macro_f1": 0.3548387096774194,
+    "show_precision": 0.0,
+    "show_recall": 0.0,
+    "important_recall": 0.0,
+    "missed_relevant": 13,
+    "confusion_matrix": [
+      [
+        22,
+        5
+      ],
+      [
+        13,
+        0
+      ]
+    ]
+  },
+  "test_non_duplicate": {
+    "n": 37,
+    "accuracy": 0.5405405405405406,
+    "macro_f1": 0.3508771929824561,
+    "show_precision": 0.0,
+    "show_recall": 0.0,
+    "important_recall": 0.0,
+    "missed_relevant": 12,
+    "confusion_matrix": [
+      [
+        20,
+        5
+      ],
+      [
+        12,
+        0
+      ]
+    ]
+  }
+}

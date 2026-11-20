@@ -1,0 +1,2002 @@
+[
+  {
+    "sample_id": "human-news-100-2026-11-19-d591bcf4b9b44a5c96937944",
+    "text": "КНДР опубликовала новую конституцию без упоминаний об объединении двух Корей",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7586933374404907,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-e911b57e0a3233ae1b5bada0",
+    "text": "По сообщению читателя Ateo Breaking, над Кишинёвом замечен беспилотник, предположительно типа «Шахед»",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.6438674330711365,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-9d1dcb5f6e16e1b723a84d35",
+    "text": "КРЫМСКИЙ МОСТ СТАЛ СИЛЬНЫМ УДАРОМ ДЛЯ ПУТИНА: АНАЛИТИК ОБЪЯСНИЛ, ЧЕМ ЭТО ГРОЗИТ АРМИИ РФ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9656310677528381,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-3a51ada599f63215c57cde44",
+    "text": "СКОЛЬКО ВРЕМЕНИ ПОТРЕБУЕТСЯ РФ НА ВОССТАНОВЛЕНИЕ КРЫМСКОГО МОСТА: АНАЛИТИКИ ПОДЕЛИЛИСЬ ПРОГНОЗОМ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9679646492004395,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "мені буде доступний лише заголовок при перегляді дайджесту, або мені відкривати окремо сторінку з новиною, або просити бота, щоб дізнатись відповідь \"скільки\", а відповідь взагалі може бути - \"невідомо\""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-9d7ef1c7ec83238ae004845e",
+    "text": "Понад 200 патронів знайшли у будинку жителя Житомирської області поліцейські, які приїхали туди на виклик про домашнє насильство",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.816972017288208,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-211b9968126e47b762eff4d8",
+    "text": "Жінка з Житомирської області віддала шахраям 5000 доларів, бо її переконали, що треба перевірити походження грошей",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7330787181854248,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-fac1845d40c28a4d8bbf6ca7",
+    "text": "Лукашенко направил соболезнования Путину в связи с крушением самолета в Кузбассе",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8905321359634399,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-244e1aa004935a9614f84fb7",
+    "text": "Иранские БПЛА атаковали американскую военную базу в Бахрейне",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9751890301704407,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-a648ab3864222fcc5cd688d2",
+    "text": "ТРИ ДРОНА НА ОДНОГО ОККУПАНТА: WSJ РАСКРЫЛ, КАК РАБОТАЕТ СЕКРЕТНЫЙ БУНКЕР МАДЯРА",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8466984629631042,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-61e57740cf1eaac276586f9a",
+    "text": "РОССИЯНЕ ТРИЖДЫ УДАРИЛИ ПО ЦЕНТРУ ОДЕССЫ: ЕСТЬ ПОГИБШИЕ И РАНЕНЫЕ (ФОТО)",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9230092167854309,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-398309ef924555ee8ccc7bf0",
+    "text": "Як вибрати офісний папір, щоб принтер працював стабільно, а документи мали охайний вигляд",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.21404780447483063,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "такі гайди частіше всього нафіг не треба\nпо типу, як закрутити болт, як зварити яйця, і тд"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-1d397e81353c76a41e249e16",
+    "text": "Укрзалізниця виставила на аукціон за майже 12 млн грн будівлю басейну у райцентрі Житомирської області",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8727779388427734,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-674ea18337393ab0e260998d",
+    "text": "Крымский мост будет восстановлен «и будет еще лучше прежнего»",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.39508047699928284,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-13367c6a4efec4181bab2559",
+    "text": "Зеленский после ударов по Крымскому мосту заявил, что война возвращается туда, откуда началась",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.5932493805885315,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-c0db7d39f4e6bf16b8400026",
+    "text": "В КРЕМЛЕ ПРИЗВАЛИ ДЕПУТАТОВ ГОТОВИТЬСЯ К \"ПОБЕДЕ\" И ЗАВЕРШЕНИЮ ВОЙНЫ ПРОТИВ УКРАИНЫ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7427733540534973,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-61f030425c0be4bb69da59df",
+    "text": "\"УДАРАМИ ПО КРЫМСКОМУ МОСТУ ИЗОЛИРОВАТЬ ПОЛУОСТРОВ НЕ ПОЛУЧИТСЯ\", – ЛУЦЕНКО",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8104239106178284,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-c0ca3399bec111eb6965f275",
+    "text": "«HUB 95»: житомирські десантники відкрили простір для побратимів та їхніх родин",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9136533737182617,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-96d81a9bb06c02d69c6e5f52",
+    "text": "У Житомирі збираються запровадити послугу «тимчасового відпочинку» для людей, які доглядають близьких: оголосять конкурс",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6686182022094727,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-1da6a55cf1d25a04ec51ba0a",
+    "text": "Трамп объявил о строительстве более 22 заводов по производству Patriot, THAAD и Tomahawk",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.967431902885437,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b168bf5e49bd6feb57182adf",
+    "text": "На саммит РФ — США — КНР отводится час",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9407621622085571,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-a60a824dc274da23e544cf65",
+    "text": "РОССИЯ СТЯГИВАЕТ ДОПОЛНИТЕЛЬНЫЕ СУДА К КРЫМСКОМУ МОСТУ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9318912029266357,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-de26017a7f2d7b96bc259f01",
+    "text": "РОССИЯ ГОТОВИТ НОВЫЙ УДАР ПО ЭНЕРГЕТИКЕ УКРАИНЫ, – ИГНАТ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9115715622901917,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-d087bdd1dd142b8caa36fc41",
+    "text": "Викрили директора ДЮСШ міста Житомирської області, який оформив знайомого на роботу тренером, щоб той отримав бронювання",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7135928273200989,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-105bd430db760c9ddb4a4600",
+    "text": "На два дні перекриють рух транспорту Новим бульваром і вулицею Малою Бердичівською у Житомирі",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8929638862609863,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "не маю авто, мені пофік"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-984c0eda71b0cc89200a8446",
+    "text": "ВС РФ ночью поразили объекты инфраструктуры порта Измаил",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9037491083145142,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-7218c99f310aea7a5a6ad81c",
+    "text": "В Москве женщина ранила ножом в шею 10-месячного ребенка и покончила с собой",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.5014326572418213,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-82ccbea0d822183f0b00c095",
+    "text": "НА КАЖДЫЙ УДАР БУДЕМ ОТВЕЧАТЬ В РАЗЫ СИЛЬНЕЕ: ХМАРА ОБРАТИЛСЯ К РОССИИ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9476328492164612,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-4a5da35e23b8c2b95c9f7458",
+    "text": "\"ЕСТЬ КУДА ЖЕСТЧЕ\": ПЕСКОВ ЦИНИЧНО ОТРЕАГИРОВАЛ НА СЛОВА ТРАМПА О ДЕЙСТВИЯХ РФ В УКРАИНЕ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9364520311355591,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-2aa35c73ff611222a696d914",
+    "text": "Житомир має заплатити 3,3 млн грн за доставку 11 тролейбусів з Чехії й сподівається отримати ще",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.722494900226593,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-a97c6f783720774f67b20bce",
+    "text": "Заліз за батарею опалення та не зміг вибратися: у житомирському ліцеї рятувальники допомогли хлопчику вибратися з «пастки»",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.2580529451370239,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-88eb640adf16aac07497786e",
+    "text": "Правящая партия Азербайджана предложила пересмотреть бюджетное финансирование обучения на русском языке",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8864519000053406,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-6d2296c7cf2bf57b85011626",
+    "text": "Полноформатные переговоры Путина и Трампа 19 ноября не планируются",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9661256074905396,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "ну як не планується, то нафік воно мені"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-105f3c26ead9ea7f7e8fd718",
+    "text": "РОССИЯНЕ УДАРИЛИ ПО РЫНКУ В ХАРЬКОВСКОЙ ОБЛАСТИ, РАНЕНЫ 12 ЧЕЛОВЕК (ФОТО)",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8359537124633789,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "постійно росія б'є кудись і є жертви. це погано, але і я не хочу жити постійно з поганим настроєм"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-861e041c3f89cafae0409e74",
+    "text": "РФ ПЕРЕВОДИТ \"ДАНЬ-Т\" НА НАЗЕМНЫЙ ЗАПУСК: ЭТО ОПАСНЕЕ ДЛЯ УКРАИНЫ, НО ЕСТЬ НЮАНС, – ЭКСПЕРТ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9429029822349548,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-8235dc4c29c30804b0bb7c3b",
+    "text": "Порубку понад 330 вільх, берез та верб виявили поблизу села Житомирської області, збитки сягнули 1,4 млн грн",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8204987049102783,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-2c0fdab5ff41955695c470ac",
+    "text": "5 типових помилок при приготуванні омлету — поради METRO",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.2989467680454254,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-247df6dd6488976a22e384cd",
+    "text": "БПЛА атаковали НПЗ в Ильском и Афипском в Краснодарском крае",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8838314414024353,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b8468cd9259f4e16c7c045ae",
+    "text": "Один из крупнейших российских хостинг-провайдеров Timeweb сообщил, что его облачные сервисы недоступны",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.6476380228996277,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-ef8415247d37a28d4cfbe3a8",
+    "text": "РОССИЙСКИЙ УДАР ПО КАМЫШЕВАХЕ: ПОИСКИ ЗАВЕРШЕНЫ, НАЗВАНО ЧИСЛО ЖЕРТВ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8658541440963745,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-d2d2315b0c5d443b4eb23589",
+    "text": "УКРАИНА УСПЕШНО УДАРИЛА ПО КРЫМСКОМУ МОСТУ: В ISW РАСКРЫЛИ, О ЧЕМ ЭТО ГОВОРИТ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9568979144096375,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-7c77e642362196423db44f4f",
+    "text": "Житомирянину повідомили про підозру через смертельну ДТП на Київщині: був за кермом MAN та не пропустив Mazda",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.797301709651947,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-47d51f74e6f789606ccc07d2",
+    "text": "Батьки можуть оплачувати «дитячими» виплатами послуги зубних і медичних лабораторій  – Кабмін розширив перелік",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.2384294718503952,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-98d924d5dc7b3227e411b803",
+    "text": "Третий американский авианосец прибыл на Ближний Восток",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8031792640686035,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-4e3624f9a79b60e42d2bbc5b",
+    "text": "232 беспилотника атакуют Москву, заявил Собянин",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.956075131893158,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-2a10e5e724eccb991981d555",
+    "text": "ЖЕЛЕЗНОДОРОЖНАЯ ЧАСТЬ КРЫМСКОГО МОСТА ВЫДЕРЖАЛА УДАРЫ: ИНЖЕНЕР ОБЪЯСНИЛ ПОЧЕМУ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9520832896232605,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-ee52527622119117d4d7af23",
+    "text": "КРЫМСКИЙ МОСТ ВТОРОЙ РАЗ ЗА СУТКИ ПОДВЕРГСЯ АТАКЕ: ПЕРВЫЕ ПОДРОБНОСТИ О ПОСЛЕДСТВИЯХ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9640005826950073,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-d480f0391c40264615b5e233",
+    "text": "На щиті до Житомира повернулися двоє воїнів, один з яких загинув у 2023 році під час евакуації поранених та загиблих",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.6937046051025391,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-752f42d695b77522ce5d8ec7",
+    "text": "Селищна рада з Житомирського району знову заплатила за незаконну порубку дерев – цього разу понад 1,2 млн грн",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9636765718460083,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-7247ed6b7c2bb0e3796065e6",
+    "text": "МВД России объявило в федеральный розыск журналистку Катерину Гордееву",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8806572556495667,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-286c68fc27fcd45435399c45",
+    "text": "Появилось видео прилёта по Крымскому мосту",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6914135217666626,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-e28c4bd6245c7b8f49c6eb37",
+    "text": "РФ ПЛАНИРУЕТ ЗАПУСТИТЬ ПО УКРАИНЕ 20 МЛН ДРОНОВ ЗА СЛЕДУЮЩИЙ ГОД, – КОМИССАР ЕС",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9673076272010803,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-3106f30f693d4cf6e492532d",
+    "text": "РОССИЯ НАНЕСЛА УДАР ПО КИЕВУ БАЛЛИСТИЧЕСКИМИ РАКЕТАМИ: ЕСТЬ ПОПАДАНИЯ ПО МОСТАМ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9795739650726318,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-983b0e015e1210c796e1e266",
+    "text": "Ремонт комунальних будівель: чому стеля повертається в роботу першою",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.86960768699646,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b99cf2eae1281a1593a4cd11",
+    "text": "«Поїду додому! Піду на війну!»: у Житомирі поховали 18-річного контрактника, який приїхав з-за кордону і став на захист Батьківщини",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7824992537498474,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-a24e9eaa26073a34757b0435",
+    "text": "Дмитрий Медведев пожаловался на страдания от санкций и призвал объявить их «преступлением против человечности»",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.4249032735824585,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-14765f49e9e2f07d11c26091",
+    "text": "Трамп заявил, что хотел бы провести двухстороннюю встречу с Путиным",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9148104786872864,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b114f2ab252aa7672686f5bb",
+    "text": "РФ ПОДГОТОВИЛАСЬ К НОВОМУ РАКЕТНОМУ УДАРУ: ЗЕЛЕНСКИЙ ПРИЗВАЛ НЕ ИГНОРИРОВАТЬ ТРЕВОГУ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9091140627861023,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-4373d154dcaaf9300d46af63",
+    "text": "РОССИЯ НАЧАЛА ИСПЫТЫВАТЬ \"ГЕРАНЬ-6\" СО СКОРОСТЬЮ ДО 1000 КМ/Ч, — ВЕНИСЛАВСКИЙ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.806014895439148,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "прямі засоби ураження українського населення"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-f01bc30d3e9d1f798d693df2",
+    "text": "Випередив суперника, хоча злетів ланцюг з велосипеда: підліток з Житомирської області став призером чемпіонату з велоспорту",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.2700934112071991,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-f4a7ae3086f6b340941215d2",
+    "text": "Водій мікроавтобуса зіткнувся з попутною вантажівкою і з травмами потрапив до лікарні – подробиці ДТП на трасі у Житомирському районі",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.79742032289505,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "всі дтп-новини не потрібні"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-62389bb27ef5234d6e1e41a8",
+    "text": "Атаки украинских беспилотников сократили объемы переработки нефти на российских НПЗ на 45%",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.967366635799408,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-25c40d00952d263a1ab96486",
+    "text": "Grand Theft Auto VI первой в мире стала доступна в Новой Зеландии",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.3130139410495758,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-07b1c172ed6ef63ec4821b2a",
+    "text": "УДАР ПО КРЫМСКОМУ МОСТУ: ПОЯВИЛИСЬ СПУТНИКОВЫЕ СНИМКИ ПОСЛЕДСТВИЙ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9690295457839966,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": "коли удар тільки стався - новина відносилась би до важливої. а подальші новини вже більше як цікаві і смішні"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-04ac4d80d9023993caef7bdc",
+    "text": "КОГДА ПОЯВИТСЯ АНТИБАЛЛИСТИКА ДЛЯ УКРАИНЫ: МИНИСТР ОБОРОНЫ ШВЕЦИИ НАЗВАЛ РЕАЛЬНЫЕ СРОКИ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9242287874221802,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "балістика постійна проблема для населення україни, в тому числі для електроживлення"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-73147e8a4e4bf107680ac318",
+    "text": "У Житомирі судитимуть двох чоловіків, які газовим пальником катували 18-річну дівчину за відмову від інтимних стосунків",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6075488328933716,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-310047f9f6aaea0bde914fec",
+    "text": "Житомирська область отримала партію вакцини від грипу для безоплатного щеплення",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7196205258369446,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-815152407137fa4e98cd7fa2",
+    "text": "Молдова запретила выезжать из страны главе оккупированного Россией Приднестровья",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8483991622924805,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-c1e5f27a3db8a6b4b942ad6f",
+    "text": "Молдова. Пролет дрона над столичным районом Рышкановка в направлении центра Кишинёва",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9147313833236694,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-0b8c3bc3b4a3b8320aa76a88",
+    "text": "ПОЕЗДА ПОКА КУРСИРУЮТ: ПОЯВИЛОСЬ НОВОЕ ВИДЕО С ПОВРЕЖДЕНИЯМИ КРЫМСКОГО МОСТА",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9052423238754272,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-eda87b8b66657fbadabc2049",
+    "text": "ГЕНСЕК НАТО СДЕЛАЛ ЗАЯВЛЕНИЕ ОБ ОГРАНИЧЕНИИ СКОРОСТИ STARSHIELD ДЛЯ УКРАИНЫ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9460632801055908,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b85e0afb444a20846a3f03b1",
+    "text": "На Богунії у Житомирі з’явиться McDonald's, виконком погодив благоустрій території з облаштуванням скверу",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7264240384101868,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b5096062f5ee9330941e2086",
+    "text": "Донька депутата Житомирської міськради виставила на аукціон за 60 млн грн комерційну будівлю на вул.Бориса Тена",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8793705105781555,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-cc2370f7bd601c036d84fce0",
+    "text": "Дональд Трамп прибыл в Китай",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7734996676445007,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-55367b17d4b35df87f05a912",
+    "text": "СК РФ отказался возбуждать дело против петербургских полицейских",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.6459366679191589,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "взагалі пофік мені на ск рф і на петербургзьких поцілейських"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b578e30522cfd040b5e35ac3",
+    "text": "РЮТТЕ ПРОКОММЕНТИРОВАЛ УДАР ПО КРЫМСКОМУ МОСТУ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8451412916183472,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-cf2692567ba0fbbc74b8985d",
+    "text": "ПОСЛЕ АТАКИ ДВИЖЕНИЕ ПО КРЫМСКОМУ МОСТУ ПОЛНОСТЬЮ ОСТАНОВЛЕНО",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.8036292791366577,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-ed4090fab74c01d44767f651",
+    "text": "«Житомирські ласощі» – тепер LASO: відоме житомирське підприємство відкриває нову сторінку своєї історії після 82 років",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.8074401021003723,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "важлива тільки лише тому що мені відомий цей бренд"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-c26039c9280ece7135378e55",
+    "text": "Світло, зв'язок і домашній комфорт: на що здатна зарядна станція EcoFlow DELTA 3 Classic?",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.36806508898735046,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "реклама як новина не цікавить"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-2f3341c504b3397460ddfc43",
+    "text": "Рублёвые пожертвования на кошелёк Максима Каца стали поводом для двух уголовных дел в России, сообщает «Медиазона»",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.3145875036716461,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-fb7b36d27fc3df2eb5254f4f",
+    "text": "Совет директоров Nvidia не рассматривает возможность возвращения Дженсена Хуанга на пост гендиректора",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.4322800934314728,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-8f584c14c4df88cfdfe68669",
+    "text": "УКРАИНА ОБРУШИЛА КРЫМСКИЙ МОСТ БЛАГОДАРЯ \"ЛЕТАЮЩИМ МОДЕМАМ\": FT ПРО НОВУЮ ТЕХНОЛОГИЮ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.988154411315918,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-3fa8887e4394d73be9a89fc4",
+    "text": "ТРИ САМОЛЕТА И МОСТ ЧЕРЕЗ СЕВЕРСКИЙ ДОНЕЦ: ГЕНШТАБ СООБЩИЛ О НОВЫХ УДАРАХ ВСУ ПО ВРАГУ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9467005133628845,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-969b57d2c8b584d4cb6f3bdc",
+    "text": "Синоптики прогнозують дощі та максимум 13 градусів тепла у Житомирській області",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9276115298271179,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-21ea8b0c79c799c84c662dff",
+    "text": "Мобілізували за день, попри наявність відстрочки: що сказав верховний суд?",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.04041054844856262,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-0625385a9bbb25c3e34f492b",
+    "text": "Суд в Казани не арестовал Юлию Галямину, назначив штраф",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.3026489019393921,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "не знаю хто така юлия галямин і тим більше мені пофік на казань"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-467b298db82da8269696e919",
+    "text": "Вид на Крымский мост после удара со стороны ВСУ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8811010718345642,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "нічого не дає новина, бо не збираємо фото"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-45007eb8ba3a75cc26d86fe4",
+    "text": "ЗАМЕСТИТЕЛЬ ХЕГСЕТА ПОЖАЛЕЛ РОССИЯН И РАСКРИТИКОВАЛ УКРАИНУ ЗА ДАЛЬНИЕ УДАРЫ ПО ТЫЛУ РФ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9270350933074951,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-3b86f7b84d2bdbcd277ccc85",
+    "text": "КРЫМСКИЙ МОСТ МОЖЕТ БЫТЬ ЧАСТИЧНО ПОРАЖЕН: ЭКСПЕРТ РАСКРЫЛ ПОСЛЕДСТВИЯ УДАРА",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9600281715393066,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-5bbe0e8fe0a67c858a7ac14e",
+    "text": "Більше 4 млрд грн ПДВ до держбюджету надійшло від виробників Житомирської області за 10 місяців: на 29% більше, ніж у минулому році",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.27625852823257446,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-d4074512e211489714403845",
+    "text": "На неосвітленій дорозі у Житомирській області водій Volkswagen збив пішохода, який загинув на місці ДТП",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8047821521759033,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-f17c35744f3fe0ef1a2aab89",
+    "text": "В Адыгее, Дагестане, Ростове-на-Дону и на Кубани задержаны «четверо агентов спецслужб Киева»",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9331880807876587,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-ec947f6a4b2849ce8e7a8683",
+    "text": "Сооснователь Telegram Николай Дуров впервые женился и стал отцом — сообщает кремлёвская «Baza",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.3083384931087494,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b1f92faab41972edc90fbb27",
+    "text": "\"МЫ ТОЛЬКО НАЧИНАЕМ\": ХМАРА ОБ УДАРЕ ПО КРЫМСКОМУ МОСТУ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9308196306228638,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-4c05adbc8ed3fc793970e34f",
+    "text": "У ПУТИНА ПРОКОММЕНТИРОВАЛИ АТАКУ НА КРЫМСКИЙ МОСТ: ЧТО ГОВОРЯТ О ПОВРЕЖДЕНИЯХ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9278672933578491,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "заголовок не передає ніякої новини як по собі"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-b269df4a97c294734961300f",
+    "text": "Команда «Полісся Житомирська політехніка» ОШВСМ поступилася «Буковинці», але зберегла лідерство у чемпіонаті",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8706011772155762,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-3232a4c163ab7143213a87bb",
+    "text": "У Житомирі зріжуть десятки аварійних дерев, понад 30 з них – у зеленій зоні Голови Чацького",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.8282031416893005,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-9e875940f4c9c5e09de1f492",
+    "text": "Депутаты пророссийской оппозиции в парламенте Армении заявили, что намерены добиваться возвращения Карабаха",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8092222213745117,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-09c1d7ab8adcac3234bda3f9",
+    "text": "Трамп заявляет, что война с Ираном якобы «очень близка» к завершению",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9076900482177734,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": "вже 100 раз він заявляв таке"
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-0c9dba7c5b79bd14af20cc1c",
+    "text": "\"ВРЯД ЛИ ОН ПОСЛЕДНИЙ\": В ВЕНГРИИ ОТРЕАГИРОВАЛИ НА РОССИЙСКИЙ УДАР ПО ЗАКАРПАТЬЮ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9210200309753418,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-100-2026-11-19-27b556939e19958546ddf50f",
+    "text": "УДАРЫ РФ ПО СЕВЕРНОМУ И ЮЖНОМУ МОСТАМ: ЗЕЛЕНСКИЙ РАСКРЫЛ КОЛИЧЕСТВО БАЛЛИСТИКИ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8063051104545593,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-1b2271d7c4eaeefbfbe7840c",
+    "text": "Дональд Трамп покинул Китай после встречи с Путиным и Си Цзиньпином",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9547500610351562,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-c0fa3b647725e89992c25e0c",
+    "text": "Встреча Си Цзиньпина и Трампа проходит в Шэньчжэне, — Центральное телевидение Китая",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.861125648021698,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-62215ce29b88535c662131bb",
+    "text": "Зеленский вскоре встретится с лидерами Британии, Германии и Франции",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7372690439224243,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-7dfc0294a2b2deb59c416286",
+    "text": "Хиллари Клинтон заявила, что лидеры Китая и России манипулируют Трампом, как «детской гитарой»",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7676033973693848,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-292e24f48d14837d90ea10d8",
+    "text": "Генпрокуратура России признала действия сестёр Хачатурян необходимой самообороной и предложила прекратить дело",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.582533597946167,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-059096990f5a0ed116d01675",
+    "text": "В Украине GTA 6 стало доступно для запуска",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.4639216363430023,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-e5f9ba847a260b380251acef",
+    "text": "КАК БЫСТРО РОССИЯ ВОССТАНОВИТ КРЫМСКИЙ МОСТ: NYT НАЗВАЛА \"ОПТИМИСТИЧНЫЙ\" СРОК",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9678569436073303,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-7bf9275c2666a67c1ac73492",
+    "text": "Эрдоган призвал исламский мир к самокритике и усилению давления на Израиль",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.5174006223678589,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-f1f60326e5f7a41589d3df25",
+    "text": "Тема Украины была основной на встрече Путина и Трампа, — помощник президента РФ Ушаков",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9149535298347473,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-b00b26bb3a308b8c2e4cfee0",
+    "text": "Инфляцию в России не удалось снизить до 4% в 2026 году из-за топливного кризиса",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.89925616979599,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-73df292bf67e6e6d4a9cf451",
+    "text": "У центрі Житомира за понад 5 млн грн ремонтують приміщення, у яке ще п’ять років тому планували перемістити шахову школу",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6063762307167053,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-e3c2d4c92727d96fc03ba948",
+    "text": "В 2025 году количество поданных в мире патентных заявок увеличилось на 6 процентов и достигло 3,9 миллионов, что является рекордным показателем",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.055467892438173294,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-8c530e537db0829d1af710cc",
+    "text": "Встреча Путина и Трампа в Шэньчжэне завершилась",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9529753923416138,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-d8011dda528b59e0721d8e50",
+    "text": "Наши страны имеют множество общих интересов в урегулировании региональных конфликтов, включая, очевидно, конфликт в Украине",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8555307984352112,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-ba8e3fc493478cfcfff0f843",
+    "text": "БИТВА МОСТОВ В САМОМ РАЗГАРЕ, НО ПОБЕДИТЕЛЬ ПОКА НЕ ОПРЕДЕЛЕН, – THE ECONOMIST",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.6074753999710083,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-48b02721dd7cd19dd375da0f",
+    "text": "На трасі у Житомирському районі сталася ДТП, рух транспорту ускладнений у напрямку Рівного",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9032533764839172,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-b374ce832ad5d4c85a6291fc",
+    "text": "Дональд Трамп заявил, что Международный уголовный суд (МУС) вышел из-под контроля",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6238374710083008,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-d7b6a6962c3b3b27afe5eb8e",
+    "text": "США, Россия и Китай будут вести диалог по снижению ядерных рисков",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.991928219795227,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-d523f53c7f47a0cb71818142",
+    "text": "Спортсменам из РФ может быть отказано во въезде в Швецию",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.5442642569541931,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-bb96a6dc8c20695f878d836c",
+    "text": "П’ятьох жителів Житомирської області судитимуть за продаж алкоголю-фальсифікату, одного з них – ще й за відмивання майна",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.26466336846351624,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-0ab03b0fe774a823296575a0",
+    "text": "США, Россия и Китай выступили против злоупотребления полномочиями МУС, выдавшего ордер на арест Путина",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9657688140869141,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-94b84c0693c1dc35dc0425c1",
+    "text": "Вице-президент Ирана Сейед Хамид Пурмохаммади заявил о планах по развитию пограничного перехода с Арменией",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9189736843109131,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-a12d62588610ab87ed519d72",
+    "text": "Ще 14 світлофорів на перехрестях Житомира обладнають автономним живленням. Перелік адрес",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7317410707473755,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-0c852115ccf269368cc3dfba",
+    "text": "ГЕНШТАБ ВСУ ПОЗДРАВИЛ МОСТ ВАСКО ДА ГАМЫ СО ЗВАНИЕМ САМОГО ДЛИННОГО В ЕВРОПЕ: ЧТО ЭТО ЗНАЧИТ",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9277872443199158,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-79b30fa13b3a4cff8c01d61f",
+    "text": "Крымский мост, предположительно, был вновь подвергнут ракетной атаке",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7120311260223389,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-8cef07aa682d39fac417cc65",
+    "text": "По Крымскому мосту зафиксировали два попадания в железнодорожную часть",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7057062983512878,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-f2a31ff50fb69ef0c9dd7bc2",
+    "text": "ЕС предложил Украине новый заем в размере 45 миллиардов евро на 2027 год",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7249761819839478,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-71ed6b79512625627b24d951",
+    "text": "В 2025 году количество поданных в мире патентных заявок увеличилось на 6 процентов и достигло 3,9 миллиона, что является рекордным показателем",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.056054357439279556,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-aec641cf94b027b8c5fc4ec9",
+    "text": "Глава Центрального Командования США встретился с руководством ЦАХАЛ и Моссад в Израиле",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8280120491981506,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-fe765ae46f2ed41f057eb43c",
+    "text": "Рособрнадзор прорабатывает запрет продажи микронаушников в России",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7333045601844788,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-32d1f206e9d84fb8c673a389",
+    "text": "ДТП з потерпілими: коли аварія стає кримінальною справою і чому стан сп'яніння змінює все",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.2136640101671219,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-ac552101a4429fd3369a4d89",
+    "text": "США рискуют упереться в лимит заимствований в $41,1 трлн уже в феврале 2027 года, — The New York Times",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.43266957998275757,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-331beacb425e87c488ed5bc1",
+    "text": "Эти двое [Зеленский и Путин] ненавидят друг друга, и им нужно найти общий язык», — Трамп о войне в Украине",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6190255880355835,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-fcef5340bd6de470bc4e0abe",
+    "text": "Трамп искренне стремится к заверщению конфлкта, в том числе украинского",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.73953777551651,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-1e66e4993d124a099df73177",
+    "text": "У Греції переміг суперників з Малайзії, Ірану та Таїланду: боксер з Житомира виборов «срібло» на чемпіонаті світу з муей-тай",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9196034669876099,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-f2df2a713c4b5b1a6b8ad165",
+    "text": "Беспилотники атаковали комбикормовый завод в Белгородской области",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9684948921203613,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-f51ee3ff96febebcfa815cfe",
+    "text": "Товстолоб та білий амур: понад 2,6 тонни риби запустили в одну з річок Житомирської області",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6434686779975891,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-bd1e89fda861776971d7d411",
+    "text": "У Житомирі знову курсуватимуть тролейбуси, трамваї на маршрути поки не випускатимуть",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7640595436096191,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-c0052080d25b4cdda860c913",
+    "text": "БПЛА атаковали нефтеперекачивающую станцию  «Калейкино»  в  Альметьевском районе Татарстана",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8990287780761719,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-5116f76c0056d864c9ba0835",
+    "text": "Путин и Трамп не сделали совместных заявлений по итогам встречи на саммите АТЭС",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9716787934303284,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-d98a2588cb7fef0226b0bb45",
+    "text": "Госдума РФ одобрила штрафы за «дискредитацию традиционных ценностей»",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.5308651924133301,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-2f49eb393a6544ecb31ecaf7",
+    "text": "Беспилотники атаковали Курск",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.966609001159668,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-c09e9048df0fc4915dbd30cb",
+    "text": "ПАДЕНИЕ АРКИ КРЫМСКОГО МОСТА НАДОЛГО ПАРАЛИЗОВАЛО РФ: ЭКСПЕРТ РАСКРЫЛ МАСШТАБЫ ПОСЛЕДСТВИЙ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9785935878753662,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-e30549d96bdd5e356ced8aae",
+    "text": "Блогер Лерчек улетела в Китай на лечение",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.5705316066741943,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-e7cda82fb36478a43332f718",
+    "text": "Президент Польши подарил Трампу кресло с янтарем, информация о котором хранилась «в строжайшем секрете» — TVN24+",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.4642648696899414,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-93195d4a99c6b479d8a2aad7",
+    "text": "Армения может обратиться в Суд ЕАЭС из-за российских ограничений на армянскую продукцию",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8832600116729736,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-a62722ad44bdddf45a004b28",
+    "text": "Внаслідок лобового зіткнення Ford і Volkswagen на проспекті Незалежності у Житомирі до лікарень потрапили двоє водіїв",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8363468050956726,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-be4190496f7fc6b694c26dc3",
+    "text": "Скидки на российскую нефть Urals выросли в ноябре — Argus",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8775589466094971,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-3cba3cb9514cfee6ca85712e",
+    "text": "DJI vs FPV: який дрон обрати та які комплектуючі знадобляться?",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9234740138053894,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round2-50-2026-11-19-14c8f1ec99212e9246404ebe",
+    "text": "Встреча Си Цзиньпина, Путина и Трампа завершилась",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.943754255771637,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-21518e5adccb1e2211450590",
+    "text": "Правительство Латвии планирует создать правовую основу для ограничения использования русского языка",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6258020997047424,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-5878cb2a86a98e8118f9e9f9",
+    "text": "Именно киевский режим начал войну на Юго-Востоке Украины",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8540930151939392,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-ebd073ba4826484f1faad7db",
+    "text": "Житомирська міська рада хоче змінити регламент, щоб проводити сесії в укритті",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7322657108306885,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-eea05bfeb1441cfefed2d92e",
+    "text": "Путин на вопрос о «новой Ялте» отметил, что ничего плохого в «Ялте» не было",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.14939838647842407,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-d92a1d67ca418bc9c1efee69",
+    "text": "Путин привез с собой в Китай ядерный чемоданчик",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.8380502462387085,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-cb73bd23af4097f4045aee0b",
+    "text": "Путин сообщил, что Крымский мост якобы используется исключительно в мирных целях",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.4740739166736603,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-76f8cbdf89a136b6b9344324",
+    "text": "Никакого аномального бегства в наличные деньги на рынке нет",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.09014933556318283,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-9b50ebda28c063678e428dec",
+    "text": "Началась закрытая часть встречи между Трампом, Си Цзиньпином и Путиным",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.972682774066925,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-f5a2d9642e4cc10779204121",
+    "text": "Путин сообщил о росте ВВП России более чем на 10% за последние 3 года",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7702773809432983,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-bc309a141d11fd8b85f3de45",
+    "text": "Жительницу Забайкалья осудили на 24 года за подрыв ж/д путей под Читой",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.6869043707847595,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-e3b5fe6daa22f54d12f994cb",
+    "text": "Россия восемь лет старалась урегулировать кризис на Украине",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.914323091506958,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-7e7f8dc791a581795ed3baba",
+    "text": "Крайне важно, чтобы мы сотрудничали в борьбе с угрозой распространения ядерного оружия в других странах мира",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9704549908638,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-6e271939e12a8f1716f23c5c",
+    "text": "Били по об’єктам генерації й мережі передачі і розподілу електроенергії: внаслідок ударів рф у Житомирській і ще чотирьох областях є знеструмлення (доповнено)",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6906097531318665,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-fb025ed8118d9fad9bce5550",
+    "text": "У Житомирі відбудуться матчі ВК «Полісся Житомирська політехніка» ОШВСМ проти СК «Балта» в межах Суперліги",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.942227303981781,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-e2915359c68123967c438ef1",
+    "text": "Продавав у TikTok автомобілі, але насправді їх не мав: у Житомирі на 2,5 роки засудили чоловіка, який з в’язниці ошукав 10 людей",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.3176605999469757,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-0b0fd4d2491e5fb417a74f39",
+    "text": "На саммит G20 также пригласили лидеров Узбекистана, Азербайджана и Казахстана",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9713448286056519,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-e72874451d8682f209d710fc",
+    "text": "В результате ночной атаки БПЛА временно приостановлено движение поездов по железнодорожной составляющей Крымского моста",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7048845887184143,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-30c038fe7094940f7b313d10",
+    "text": "В Люберцах обнаружили тела женщины и ребенка",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.19976748526096344,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-1a1f1175ae260de888316be9",
+    "text": "Завтра Трамп проведёт отдельную встречу с Путиным в Китае",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9588143229484558,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-18fb197243fed6d92093abfa",
+    "text": "Генпрокуратура России признала действия сестёр Хачатурян необходимой самообороной",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7769967913627625,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-062baae3b24d5a84454e50c0",
+    "text": "КРЫМСКИЙ МОСТ БЫЛ ПОВТОРНО АТАКОВАН, — МОНИТОРЫ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8734498620033264,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-96c48ce351bfb4e58919c6bd",
+    "text": "Перший триместр: які симптоми вагітності слід вважати нормальними",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.06163947656750679,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-59356cf33ded15a3fa2202af",
+    "text": "ОДИН УЖЕ \"МИНУСНУЛИ\": ГЕНШТАБ ДОБАВИЛ МОСТЫ В СПИСОК ПОТЕРЬ АРМИИ РФ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9674059152603149,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-f45794f81f0610a389b16d40",
+    "text": "Интернет будет доступен на скорости 400 км/ч для пассажиров высокоскоростной железнодорожной магистрали Москва — Петербург",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7766848206520081,
+    "saved_prediction": 0,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-9d2a9e7fb4be0835a1a61420",
+    "text": "Интернет на скорости 400 км/ч для пассажиров высокоскоростной железнодорожной магистрали Москва — Петербург",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.7819865942001343,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-9f224397bf627d9bf940a987",
+    "text": "США присоединились к России и Беларуси, воздержавшись от голосования в ООН по резолюции о борьбе с насилием в отношении женщин",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9435480237007141,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-440394125de91c11fc63c076",
+    "text": "Рибоохоронний патруль попереджає про заборону на вилов раків у річках Житомирської області, яка розпочнеться в перший день зими",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6675277948379517,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-0d0cda10316b02de3d010f7c",
+    "text": "Демократы в Палате представителей США выдвинули Хакима Джеффриса кандидатом на пост спикера нижней палаты",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.47644829750061035,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-9b2cac6271a98125f52a39e1",
+    "text": "ОАК передала Минобороны РФ партию истребителей пятого поколения Су-57",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9433385729789734,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-11378ef3250f1f519a41ce46",
+    "text": "Россия не начинала никакой войны на Украине, но пытается ее закончить",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8959861993789673,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-11e9ebd12bedf7d1f4ac0184",
+    "text": "Россию не допустили к отбору на чемпионат Европы по футболу 2028",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.5364596843719482,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-339a3592aa9bb9e4db903906",
+    "text": "Путин, Си Цзиньпин и Дональд Трамп приняли совместную «декларацию о мире»",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9357860684394836,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-85f29e4207a0a5ffc3a53a75",
+    "text": "РФ УДАРИЛА ПО МНОГОЭТАЖКЕ В ИЗЮМЕ: РАЗРУШЕН ПОДЪЕЗД, ЕСТЬ ПОСТРАДАВШИЕ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.8703293800354004,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-ebc3fe07226eb85d44d620d9",
+    "text": "Ядерное оружие нужно полностью запретить и уничтожить, заявил Си Цзиньпин на встрече с Путиным и Трампом",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.9832381010055542,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-081d552f0aacb84b3f0bc26d",
+    "text": "Путин, Си Цзиньпин и Трамп привержены поддержанию стратегической стабильности и международной безопасности",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9744720458984375,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-e2d472efa4e819cce76cb752",
+    "text": "Трамп о встрече с Путиным в Шэньчжэне",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9732542634010315,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-9a293365a9d299563c6b679e",
+    "text": "«Если народ скажет “да” Конституции, я не буду баллотироваться на пост премьер-министра на следующих выборах», — Пашинян",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.39149317145347595,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-03648a1088aeb8f3d25a89b6",
+    "text": "Глава Instagram Адам Моссери сообщил о возможности редактировать «Stories»",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.08621116727590561,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-78cdfba919089c18b6ac0ea8",
+    "text": "Полный текст «декларации о мире» не содержит упоминаний о мире в Украине",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.7036212682723999,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-af48128a5ed379306ea7971a",
+    "text": "Совет директоров Nvidia не планирует возвращать Дженсена Хуанга",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.2551400661468506,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-77e14d196cfaa41a37353f9d",
+    "text": "Маск заявил, что не поддерживает MAGA, и пожалел о сотнях миллионов долларов, потраченных на республиканцев",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.4827914834022522,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-288d4162385613c99e455cd4",
+    "text": "Никол Пашинян примет участие в саммите G20",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9262908101081848,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-739302a07d39d3fe66eae656",
+    "text": "Путин заявил, что Крымский мост будет восстановлен",
+    "target": 1,
+    "prediction": 0,
+    "probability": 0.34540697932243347,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-e4d1a1f36e6a43c8e9f3b8ff",
+    "text": "Армения движется к необратимому миру с Азербайджаном и Турцией",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9531596302986145,
+    "saved_prediction": 1,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-a07b9842e4d5e2fef42ea579",
+    "text": "Фірма отримала дозвіл на реконструкцію піцерії в центрі Житомира, але перевірку все одно можуть провести",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.8195353150367737,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-7a8c967dbb718126a584a032",
+    "text": "В Северодвинске арестовали врача, который ошибочно признал пожилую пациентку мертвой",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.32265132665634155,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-b13fd27ee3ac5a8942f449f7",
+    "text": "Вирок суду за крадіжку отримав пенсіонер, який поцупив чужі 10 тис. грн з банкомата у місті Житомирської області",
+    "target": 1,
+    "prediction": 1,
+    "probability": 0.6852737069129944,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-06710184dee0cd76261b1a3b",
+    "text": "Госдума одобрила штрафы за «дискредитацию традиционных ценностей»",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.30588164925575256,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-8c6b6ba494aa25931e4e8dd7",
+    "text": "ЖЕЛЕЗНОДОРОЖНУЮ ЧАСТЬ КРЫМСКОГО МОСТА БУДУТ ДОБИВАТЬ: В СЕТИ АНОНСИРОВАЛИ НОВЫЕ УДАРЫ",
+    "target": 0,
+    "prediction": 1,
+    "probability": 0.9402033686637878,
+    "saved_prediction": 1,
+    "duplicate": true,
+    "comment": ""
+  },
+  {
+    "sample_id": "human-news-round3-50-2026-11-19-2974dd305edc38a3cabbcf22",
+    "text": "В системе PlayStation Network произошел глобальный сбой",
+    "target": 0,
+    "prediction": 0,
+    "probability": 0.125671848654747,
+    "saved_prediction": 0,
+    "duplicate": false,
+    "comment": ""
+  }
+]

@@ -1,0 +1,1921 @@
+{
+  "frozen_at": "2026-11-19T13:14:46.743517+00:00",
+  "articles": [
+    {
+      "id": "21518e5adccb1e2211450590",
+      "title": "Правительство Латвии планирует создать правовую основу для ограничения использования русского языка",
+      "url": "https://ateobreaking.com/new/pravitel-stvo-latvii-planiruet-sozdat-pravovuiu-osnovu-dlia-ogranicheniia-ispol-zovaniia-russkogo-iazyka",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T11:54:01.740000+00:00",
+      "first_seen": "2026-11-19T12:10:29.803530+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:01:03.521476+00:00",
+      "rating": {
+        "article_id": "21518e5adccb1e2211450590",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:07:37.169602+00:00",
+        "tags": [
+          "funny",
+          "interesting",
+          "positive"
+        ]
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "5878cb2a86a98e8118f9e9f9",
+      "title": "Именно киевский режим начал войну на Юго-Востоке Украины",
+      "url": "https://ateobreaking.com/new/imenno-kievskii-rezhim-nachal-voinu-na-iugo-vostoke-ukrainy",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:10:59.870000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:01:33.026474+00:00",
+      "rating": {
+        "article_id": "5878cb2a86a98e8118f9e9f9",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:08:45.927277+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "ebd073ba4826484f1faad7db",
+      "title": "Житомирська міська рада хоче змінити регламент, щоб проводити сесії в укритті",
+      "url": "https://www.zhitomir.info/news_238355.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T09:47:00+02:00",
+      "first_seen": "2026-11-19T07:49:57.837458+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:55:18.756688+00:00",
+      "rating": {
+        "article_id": "ebd073ba4826484f1faad7db",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:12:04.070064+00:00",
+        "tags": [
+          "interesting"
+        ]
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting",
+        "positive"
+      ]
+    },
+    {
+      "id": "eea05bfeb1441cfefed2d92e",
+      "title": "Путин на вопрос о «новой Ялте» отметил, что ничего плохого в «Ялте» не было",
+      "url": "https://ateobreaking.com/new/putin-na-vopros-o-novoi-ialte-otmetil-chto-nichego-plokhogo-v-ialte-ne-bylo",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:17:28.117000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:02:01.615999+00:00",
+      "rating": {
+        "article_id": "eea05bfeb1441cfefed2d92e",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:12:07.161149+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "funny",
+        "interesting"
+      ]
+    },
+    {
+      "id": "d92a1d67ca418bc9c1efee69",
+      "title": "Путин привез с собой в Китай ядерный чемоданчик",
+      "url": "https://ateobreaking.com/new/putin-privez-s-soboi-v-kitai-iadernyi-chemodanchik",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:18:33.066000+00:00",
+      "first_seen": "2026-11-18T16:14:59.264456+00:00",
+      "last_seen": "2026-11-19T08:35:07.101640+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:48:40.250378+00:00",
+      "rating": {
+        "article_id": "d92a1d67ca418bc9c1efee69",
+        "label": "news",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:20.395271+00:00",
+        "tags": [
+          "funny"
+        ]
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "funny",
+        "interesting"
+      ]
+    },
+    {
+      "id": "cb73bd23af4097f4045aee0b",
+      "title": "Путин сообщил, что Крымский мост якобы используется исключительно в мирных целях",
+      "url": "https://ateobreaking.com/new/putin-soobshchil-chto-krymskii-most-iakoby-ispol-zuetsia-iskliuchitel-no-v-mirnykh-tseliakh",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:17:59.930000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:02:01.616155+00:00",
+      "rating": {
+        "article_id": "cb73bd23af4097f4045aee0b",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:14.094819+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "funny",
+        "interesting"
+      ]
+    },
+    {
+      "id": "76f8cbdf89a136b6b9344324",
+      "title": "Никакого аномального бегства в наличные деньги на рынке нет",
+      "url": "https://ateobreaking.com/new/nikakogo-anomal-nogo-begstva-v-nalichnye-den-gi-na-rynke-net",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T10:50:29.131000+00:00",
+      "first_seen": "2026-11-19T11:08:38.493857+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:59:35.212019+00:00",
+      "rating": {
+        "article_id": "76f8cbdf89a136b6b9344324",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:17.072887+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "9b50ebda28c063678e428dec",
+      "title": "Началась закрытая часть встречи между Трампом, Си Цзиньпином и Путиным",
+      "url": "https://ateobreaking.com/new/nachalas-zakrytaia-chast-vstrechi-mezhdu-trampom-si-tszin-pinom-i-putinym",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T08:50:31.256000+00:00",
+      "first_seen": "2026-11-19T09:05:17.068499+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:57:10.084547+00:00",
+      "rating": {
+        "article_id": "9b50ebda28c063678e428dec",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:25.115867+00:00",
+        "tags": []
+      },
+      "prediction": "important",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "f5a2d9642e4cc10779204121",
+      "title": "Путин сообщил о росте ВВП России более чем на 10% за последние 3 года",
+      "url": "https://ateobreaking.com/new/putin-soobshchil-o-roste-vvp-rossii-bolee-chem-na-10-za-poslednie-3-goda",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T19:01:24.816000+00:00",
+      "first_seen": "2026-11-18T19:19:22.909513+00:00",
+      "last_seen": "2026-11-19T09:36:04.218590+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:50:03.261590+00:00",
+      "rating": {
+        "article_id": "f5a2d9642e4cc10779204121",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:12:22.126527+00:00",
+        "tags": [
+          "funny"
+        ]
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "bc309a141d11fd8b85f3de45",
+      "title": "Жительницу Забайкалья осудили на 24 года за подрыв ж/д путей под Читой",
+      "url": "https://ateobreaking.com/new/zhitel-nitsu-zabaikal-ia-osudili-na-24-goda-za-podryv-zh-d-putei-pod-chitoi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T09:20:32.610000+00:00",
+      "first_seen": "2026-11-19T09:36:04.218590+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:58:07.893199+00:00",
+      "rating": {
+        "article_id": "bc309a141d11fd8b85f3de45",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:08.396720+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "e3b5fe6daa22f54d12f994cb",
+      "title": "Россия восемь лет старалась урегулировать кризис на Украине",
+      "url": "https://ateobreaking.com/new/rossiia-vosem-let-staralas-uregulirovat-krizis-na-ukraine",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:11:24.608000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:02:01.615571+00:00",
+      "rating": {
+        "article_id": "e3b5fe6daa22f54d12f994cb",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:33.842963+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "funny",
+        "interesting"
+      ]
+    },
+    {
+      "id": "7e7f8dc791a581795ed3baba",
+      "title": "Крайне важно, чтобы мы сотрудничали в борьбе с угрозой распространения ядерного оружия в других странах мира",
+      "url": "https://ateobreaking.com/new/kraine-vazhno-chtoby-my-sotrudnichali-v-bor-be-s-ugrozoi-rasprostraneniia-iadernogo-oruzhiia-v-drugikh-stranakh-mira",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T08:48:55.162000+00:00",
+      "first_seen": "2026-11-19T09:05:17.068499+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:56:16.412838+00:00",
+      "rating": {
+        "article_id": "7e7f8dc791a581795ed3baba",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:56.712887+00:00",
+        "tags": [
+          "interesting",
+          "positive"
+        ]
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "6e271939e12a8f1716f23c5c",
+      "title": "Били по об’єктам генерації й мережі передачі і розподілу електроенергії: внаслідок ударів рф у Житомирській і ще чотирьох областях є знеструмлення (доповнено)",
+      "url": "https://www.zhitomir.info/news_238357.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T10:10:00+02:00",
+      "first_seen": "2026-11-19T09:36:04.218590+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:55:18.757295+00:00",
+      "rating": {
+        "article_id": "6e271939e12a8f1716f23c5c",
+        "label": "important",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:05.110586+00:00",
+        "tags": []
+      },
+      "prediction": "important",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "fb025ed8118d9fad9bce5550",
+      "title": "У Житомирі відбудуться матчі ВК «Полісся Житомирська політехніка» ОШВСМ проти СК «Балта» в межах Суперліги",
+      "url": "https://www.zhitomir.info/news_238361.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T11:35:00+02:00",
+      "first_seen": "2026-11-19T09:36:04.218590+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:58:07.893354+00:00",
+      "rating": {
+        "article_id": "fb025ed8118d9fad9bce5550",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:12:27.760741+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "e2915359c68123967c438ef1",
+      "title": "Продавав у TikTok автомобілі, але насправді їх не мав: у Житомирі на 2,5 роки засудили чоловіка, який з в’язниці ошукав 10 людей",
+      "url": "https://www.zhitomir.info/news_238365.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T12:56:00+02:00",
+      "first_seen": "2026-11-19T11:08:38.493857+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:00:04.599084+00:00",
+      "rating": {
+        "article_id": "e2915359c68123967c438ef1",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:27.392008+00:00",
+        "tags": [
+          "funny",
+          "interesting"
+        ]
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "0b0fd4d2491e5fb417a74f39",
+      "title": "На саммит G20 также пригласили лидеров Узбекистана, Азербайджана и Казахстана",
+      "url": "https://ateobreaking.com/new/na-sammit-g20-takzhe-priglasili-liderov-uzbekistana-azerbaidzhana-i-kazakhstana",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:38:22.167000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:02:59.329421+00:00",
+      "rating": {
+        "article_id": "0b0fd4d2491e5fb417a74f39",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:06:43.425798+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "e72874451d8682f209d710fc",
+      "title": "В результате ночной атаки БПЛА временно приостановлено движение поездов по железнодорожной составляющей Крымского моста",
+      "url": "https://ateobreaking.com/new/v-rezul-tate-nochnoi-ataki-bpla-vremenno-priostanovleno-dvizhenie-poezdov-po-zheleznodorozhnoi-sostavliaiushchei-krymskogo-mosta",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:45:30.170000+00:00",
+      "first_seen": "2026-11-19T05:46:30.612026+00:00",
+      "last_seen": "2026-11-19T12:10:29.803530+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "update",
+      "prepared_at": "2026-11-19T12:53:22.540440+00:00",
+      "rating": {
+        "article_id": "e72874451d8682f209d710fc",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:48.780980+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "30c038fe7094940f7b313d10",
+      "title": "В Люберцах обнаружили тела женщины и ребенка",
+      "url": "https://ateobreaking.com/new/v-liubertsakh-obnaruzhili-tela-zhenshchiny-i-rebenka",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T21:27:01.358000+00:00",
+      "first_seen": "2026-11-18T21:39:22.911704+00:00",
+      "last_seen": "2026-11-19T10:37:50.101200+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:51:53.808789+00:00",
+      "rating": {
+        "article_id": "30c038fe7094940f7b313d10",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:07:53.196324+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "1a1f1175ae260de888316be9",
+      "title": "Завтра Трамп проведёт отдельную встречу с Путиным в Китае",
+      "url": "https://ateobreaking.com/new/zavtra-tramp-provediot-otdel-nuiu-vstrechu-s-putinym-v-kitae",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T15:30:30.709000+00:00",
+      "first_seen": "2026-11-18T16:14:59.264456+00:00",
+      "last_seen": "2026-11-19T08:35:07.101640+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:48:40.250717+00:00",
+      "rating": {
+        "article_id": "1a1f1175ae260de888316be9",
+        "label": "important",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:07:28.409166+00:00",
+        "tags": []
+      },
+      "prediction": "important",
+      "in_sample": true,
+      "prediction_tags": [
+        "positive",
+        "interesting"
+      ]
+    },
+    {
+      "id": "18fb197243fed6d92093abfa",
+      "title": "Генпрокуратура России признала действия сестёр Хачатурян необходимой самообороной",
+      "url": "https://ateobreaking.com/new/genprokuratura-rossii-priznala-deistviia-sestior-khachaturian-neobkhodimoi-samooboronoi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T18:55:57.333000+00:00",
+      "first_seen": "2026-11-18T19:09:22.909378+00:00",
+      "last_seen": "2026-11-18T19:29:22.909642+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:50:03.261264+00:00",
+      "rating": {
+        "article_id": "18fb197243fed6d92093abfa",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:07:06.160060+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "062baae3b24d5a84454e50c0",
+      "title": "КРЫМСКИЙ МОСТ БЫЛ ПОВТОРНО АТАКОВАН, — МОНИТОРЫ",
+      "url": "https://insiderua.net/vojna/krymskij-most-byl-povtorno-atakovan-monitory-251327.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T22:56:06+00:00",
+      "first_seen": "2026-11-18T23:09:22.913152+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "repeat",
+      "prepared_at": "2026-11-19T12:52:52.406759+00:00",
+      "rating": {
+        "article_id": "062baae3b24d5a84454e50c0",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:06:25.151050+00:00",
+        "tags": []
+      },
+      "prediction": "important",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "96c48ce351bfb4e58919c6bd",
+      "title": "Перший триместр: які симптоми вагітності слід вважати нормальними",
+      "url": "https://www.zhitomir.info/news_238368.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T13:14:00+02:00",
+      "first_seen": "2026-11-19T11:39:37.005063+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:00:34.262241+00:00",
+      "rating": {
+        "article_id": "96c48ce351bfb4e58919c6bd",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:09.224192+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "59356cf33ded15a3fa2202af",
+      "title": "ОДИН УЖЕ \"МИНУСНУЛИ\": ГЕНШТАБ ДОБАВИЛ МОСТЫ В СПИСОК ПОТЕРЬ АРМИИ РФ",
+      "url": "https://insiderua.net/vojna/odin-uzhe-quot-minusnuli-quot-genshtab-dobavil-mosty-v-spisok-poter-armii-rf-251321.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-18T19:56:06+00:00",
+      "first_seen": "2026-11-18T21:09:22.911203+00:00",
+      "last_seen": "2026-11-19T10:37:50.101200+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:50:30.514475+00:00",
+      "rating": {
+        "article_id": "59356cf33ded15a3fa2202af",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:08:55.609613+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "f45794f81f0610a389b16d40",
+      "title": "Интернет будет доступен на скорости 400 км/ч для пассажиров высокоскоростной железнодорожной магистрали Москва — Петербург",
+      "url": "https://ateobreaking.com/new/internet-budet-dostupen-na-skorosti-400-km-ch-dlia-passazhirov-vysokoskorostnoi-zheleznodorozhnoi-magistrali-moskva-peterburg",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T08:27:57.617000+00:00",
+      "first_seen": "2026-11-19T08:33:02.982349+00:00",
+      "last_seen": "2026-11-19T12:10:29.803530+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:55:46.768314+00:00",
+      "rating": {
+        "article_id": "f45794f81f0610a389b16d40",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:12:14.540329+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "9d2a9e7fb4be0835a1a61420",
+      "title": "Интернет на скорости 400 км/ч для пассажиров высокоскоростной железнодорожной магистрали Москва — Петербург",
+      "url": "https://ateobreaking.com/new/internet-na-skorosti-400-km-ch-dlia-passazhirov-vysokoskorostnoi-zheleznodorozhnoi-magistrali-moskva-peterburg",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T07:50:23.509000+00:00",
+      "first_seen": "2026-11-19T08:20:45.377346+00:00",
+      "last_seen": "2026-11-19T08:20:45.377346+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:55:18.756943+00:00",
+      "rating": {
+        "article_id": "9d2a9e7fb4be0835a1a61420",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:29.394591+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "9f224397bf627d9bf940a987",
+      "title": "США присоединились к России и Беларуси, воздержавшись от голосования в ООН по резолюции о борьбе с насилием в отношении женщин",
+      "url": "https://ateobreaking.com/new/ssha-prisoedinilis-k-rossii-i-belarusi-vozderzhavshis-ot-golosovaniia-v-oon-po-rezoliutsii-o-bor-be-s-nasiliem-v-otnoshenii-zhenshchin",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T11:50:25.916000+00:00",
+      "first_seen": "2026-11-19T12:10:29.803530+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:01:03.521319+00:00",
+      "rating": {
+        "article_id": "9f224397bf627d9bf940a987",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:39.967733+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "440394125de91c11fc63c076",
+      "title": "Рибоохоронний патруль попереджає про заборону на вилов раків у річках Житомирської області, яка розпочнеться в перший день зими",
+      "url": "https://www.zhitomir.info/news_238353.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T09:31:00+02:00",
+      "first_seen": "2026-11-19T07:49:57.837458+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:54:50.264243+00:00",
+      "rating": {
+        "article_id": "440394125de91c11fc63c076",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:08:23.094888+00:00",
+        "tags": [
+          "interesting"
+        ]
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "0d0cda10316b02de3d010f7c",
+      "title": "Демократы в Палате представителей США выдвинули Хакима Джеффриса кандидатом на пост спикера нижней палаты",
+      "url": "https://ateobreaking.com/new/demokraty-v-palate-predstavitelei-ssha-vydvinuli-khakima-dzheffrisa-kandidatom-na-post-spikera-nizhnei-palaty",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:50:25.389000+00:00",
+      "first_seen": "2026-11-18T17:19:22.907553+00:00",
+      "last_seen": "2026-11-19T09:05:17.068499+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:49:35.312054+00:00",
+      "rating": {
+        "article_id": "0d0cda10316b02de3d010f7c",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:06:47.531228+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "9b2cac6271a98125f52a39e1",
+      "title": "ОАК передала Минобороны РФ партию истребителей пятого поколения Су-57",
+      "url": "https://ateobreaking.com/new/oak-peredala-minoborony-rf-partiiu-istrebitelei-piatogo-pokoleniia-su-57",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T06:35:33.001000+00:00",
+      "first_seen": "2026-11-19T06:48:04.369645+00:00",
+      "last_seen": "2026-11-19T12:10:29.803530+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:54:21.929941+00:00",
+      "rating": {
+        "article_id": "9b2cac6271a98125f52a39e1",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:21.538063+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "11378ef3250f1f519a41ce46",
+      "title": "Россия не начинала никакой войны на Украине, но пытается ее закончить",
+      "url": "https://ateobreaking.com/new/rossiia-ne-nachinala-nikakoi-voiny-na-ukraine-no-pytaetsia-ee-zakonchit",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:12:28.743000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:02:01.615825+00:00",
+      "rating": {
+        "article_id": "11378ef3250f1f519a41ce46",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:06:57.501728+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "funny",
+        "interesting"
+      ]
+    },
+    {
+      "id": "11e9ebd12bedf7d1f4ac0184",
+      "title": "Россию не допустили к отбору на чемпионат Европы по футболу 2028",
+      "url": "https://ateobreaking.com/new/rossiiu-ne-dopustili-k-otboru-na-chempionat-evropy-po-futbolu-2028",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T10:21:04.137000+00:00",
+      "first_seen": "2026-11-19T10:37:50.101200+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:59:06.198446+00:00",
+      "rating": {
+        "article_id": "11e9ebd12bedf7d1f4ac0184",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:07:01.553012+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "339a3592aa9bb9e4db903906",
+      "title": "Путин, Си Цзиньпин и Дональд Трамп приняли совместную «декларацию о мире»",
+      "url": "https://ateobreaking.com/new/putin-si-tszin-pin-i-donal-d-tramp-priniali-sovmestnuiu-deklaratsiiu-o-mire",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T10:55:02.932000+00:00",
+      "first_seen": "2026-11-19T11:08:38.493857+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:00:04.598648+00:00",
+      "rating": {
+        "article_id": "339a3592aa9bb9e4db903906",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:08:16.182065+00:00",
+        "tags": [
+          "funny",
+          "interesting"
+        ]
+      },
+      "prediction": "important",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting",
+        "positive"
+      ]
+    },
+    {
+      "id": "85f29e4207a0a5ffc3a53a75",
+      "title": "РФ УДАРИЛА ПО МНОГОЭТАЖКЕ В ИЗЮМЕ: РАЗРУШЕН ПОДЪЕЗД, ЕСТЬ ПОСТРАДАВШИЕ",
+      "url": "https://insiderua.net/vojna/rf-udarila-po-mnogoetazhke-v-izyume-razrushen-podezd-est-postradavshie-251353.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-19T12:56:05+00:00",
+      "first_seen": "2026-11-19T13:02:59.456175+00:00",
+      "last_seen": "2026-11-19T13:02:59.456175+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:03:27.720278+00:00",
+      "rating": {
+        "article_id": "85f29e4207a0a5ffc3a53a75",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:59.841956+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "ebc3fe07226eb85d44d620d9",
+      "title": "Ядерное оружие нужно полностью запретить и уничтожить, заявил Си Цзиньпин на встрече с Путиным и Трампом",
+      "url": "https://ateobreaking.com/new/iadernoe-oruzhie-nuzhno-polnost-iu-zapretit-i-unichtozhit-zaiavil-si-tszin-pin-na-vstreche-s-putinym-i-trampom",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T09:15:59.728000+00:00",
+      "first_seen": "2026-11-19T09:36:04.218590+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:57:39.487346+00:00",
+      "rating": {
+        "article_id": "ebc3fe07226eb85d44d620d9",
+        "label": "important",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:57.182273+00:00",
+        "tags": [
+          "interesting"
+        ]
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting",
+        "positive"
+      ]
+    },
+    {
+      "id": "081d552f0aacb84b3f0bc26d",
+      "title": "Путин, Си Цзиньпин и Трамп привержены поддержанию стратегической стабильности и международной безопасности",
+      "url": "https://ateobreaking.com/new/putin-si-tszin-pin-i-tramp-priverzheny-podderzhaniiu-strategicheskoi-stabil-nosti-i-mezhdunarodnoi-bezopasnosti",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T10:56:58.211000+00:00",
+      "first_seen": "2026-11-19T11:08:38.493857+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "repeat",
+      "prepared_at": "2026-11-19T13:00:34.261684+00:00",
+      "rating": {
+        "article_id": "081d552f0aacb84b3f0bc26d",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:06:39.251234+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "e2d472efa4e819cce76cb752",
+      "title": "Трамп о встрече с Путиным в Шэньчжэне",
+      "url": "https://ateobreaking.com/new/tramp-o-vstreche-s-putinym-v-shen-chzhene",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:10:33.340000+00:00",
+      "first_seen": "2026-11-19T05:15:48.888218+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:53:22.539947+00:00",
+      "rating": {
+        "article_id": "e2d472efa4e819cce76cb752",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:30.512651+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "9a293365a9d299563c6b679e",
+      "title": "«Если народ скажет “да” Конституции, я не буду баллотироваться на пост премьер-министра на следующих выборах», — Пашинян",
+      "url": "https://ateobreaking.com/new/esli-narod-skazhet-da-konstitutsii-ia-ne-budu-ballotirovat-sia-na-post-prem-er-ministra-na-sleduiushchikh-vyborakh-pashinian",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T10:01:25.806000+00:00",
+      "first_seen": "2026-11-19T10:06:55.338977+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:59:06.197901+00:00",
+      "rating": {
+        "article_id": "9a293365a9d299563c6b679e",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:16.239438+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "03648a1088aeb8f3d25a89b6",
+      "title": "Глава Instagram Адам Моссери сообщил о возможности редактировать «Stories»",
+      "url": "https://ateobreaking.com/new/glava-instagram-adam-mosseri-soobshchil-o-vozmozhnosti-redaktirovat-stories",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:24:31.866000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:02:30.380839+00:00",
+      "rating": {
+        "article_id": "03648a1088aeb8f3d25a89b6",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:06:17.725313+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "78cdfba919089c18b6ac0ea8",
+      "title": "Полный текст «декларации о мире» не содержит упоминаний о мире в Украине",
+      "url": "https://ateobreaking.com/new/polnyi-tekst-deklaratsii-o-mire-ne-soderzhit-upominanii-o-mire-v-ukraine",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T11:05:04.954000+00:00",
+      "first_seen": "2026-11-19T11:08:38.493857+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "update",
+      "prepared_at": "2026-11-19T13:00:34.262087+00:00",
+      "rating": {
+        "article_id": "78cdfba919089c18b6ac0ea8",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:32.557062+00:00",
+        "tags": [
+          "funny"
+        ]
+      },
+      "prediction": "important",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "af48128a5ed379306ea7971a",
+      "title": "Совет директоров Nvidia не планирует возвращать Дженсена Хуанга",
+      "url": "https://ateobreaking.com/new/sovet-direktorov-nvidia-ne-planiruet-vozvrashchat-dzhensena-khuanga",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:02:24.687000+00:00",
+      "first_seen": "2026-11-18T16:13:01.960709+00:00",
+      "last_seen": "2026-11-19T09:05:17.068499+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:49:08.724712+00:00",
+      "rating": {
+        "article_id": "af48128a5ed379306ea7971a",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:57.301394+00:00",
+        "tags": [
+          "interesting"
+        ]
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "77e14d196cfaa41a37353f9d",
+      "title": "Маск заявил, что не поддерживает MAGA, и пожалел о сотнях миллионов долларов, потраченных на республиканцев",
+      "url": "https://ateobreaking.com/new/mask-zaiavil-chto-ne-podderzhivaet-maga-i-pozhalel-o-sotniakh-millionov-dollarov-potrachennykh-na-respublikantsev",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T05:50:34.464000+00:00",
+      "first_seen": "2026-11-19T06:17:17.179009+00:00",
+      "last_seen": "2026-11-19T12:10:29.803530+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:53:52.433790+00:00",
+      "rating": {
+        "article_id": "77e14d196cfaa41a37353f9d",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:25.517911+00:00",
+        "tags": [
+          "funny",
+          "interesting"
+        ]
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "288d4162385613c99e455cd4",
+      "title": "Никол Пашинян примет участие в саммите G20",
+      "url": "https://ateobreaking.com/new/nikol-pashinian-primet-uchastie-v-sammite-g20",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T09:50:57.664000+00:00",
+      "first_seen": "2026-11-19T10:06:55.338977+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:58:37.438092+00:00",
+      "rating": {
+        "article_id": "288d4162385613c99e455cd4",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:07:40.553001+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "739302a07d39d3fe66eae656",
+      "title": "Путин заявил, что Крымский мост будет восстановлен",
+      "url": "https://ateobreaking.com/new/putin-zaiavil-chto-krymskii-most-budet-vosstanovlen",
+      "source": "Ateo Breaking",
+      "published": "2026-11-19T12:20:54.242000+00:00",
+      "first_seen": "2026-11-19T12:41:26.621105+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T13:02:30.380511+00:00",
+      "rating": {
+        "article_id": "739302a07d39d3fe66eae656",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:11.190148+00:00",
+        "tags": [
+          "funny"
+        ]
+      },
+      "prediction": "important",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "e4d1a1f36e6a43c8e9f3b8ff",
+      "title": "Армения движется к необратимому миру с Азербайджаном и Турцией",
+      "url": "https://ateobreaking.com/new/armeniia-dvizhetsia-k-neobratimomu-miru-s-azerbaidzhanom-i-turtsiei",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T20:04:35.411000+00:00",
+      "first_seen": "2026-11-18T20:09:22.910241+00:00",
+      "last_seen": "2026-11-19T10:06:55.338977+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:50:30.514713+00:00",
+      "rating": {
+        "article_id": "e4d1a1f36e6a43c8e9f3b8ff",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:36.644374+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": [
+        "interesting"
+      ]
+    },
+    {
+      "id": "a07b9842e4d5e2fef42ea579",
+      "title": "Фірма отримала дозвіл на реконструкцію піцерії в центрі Житомира, але перевірку все одно можуть провести",
+      "url": "https://www.zhitomir.info/news_238364.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T12:36:00+02:00",
+      "first_seen": "2026-11-19T11:08:38.493857+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:59:35.211628+00:00",
+      "rating": {
+        "article_id": "a07b9842e4d5e2fef42ea579",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:51.116968+00:00",
+        "tags": [
+          "interesting"
+        ]
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "7a8c967dbb718126a584a032",
+      "title": "В Северодвинске арестовали врача, который ошибочно признал пожилую пациентку мертвой",
+      "url": "https://ateobreaking.com/new/v-severodvinske-arestovali-vracha-kotoryi-oshibochno-priznal-pozhiluiu-patsientku-mertvoi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:17:24.698000+00:00",
+      "first_seen": "2026-11-18T17:09:22.907402+00:00",
+      "last_seen": "2026-11-19T09:05:17.068499+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:49:08.724980+00:00",
+      "rating": {
+        "article_id": "7a8c967dbb718126a584a032",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:09:46.292617+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "b13fd27ee3ac5a8942f449f7",
+      "title": "Вирок суду за крадіжку отримав пенсіонер, який поцупив чужі 10 тис. грн з банкомата у місті Житомирської області",
+      "url": "https://www.zhitomir.info/news_238363.html",
+      "source": "Житомир.info",
+      "published": "2026-11-19T12:31:00+02:00",
+      "first_seen": "2026-11-19T10:31:41.198782+00:00",
+      "last_seen": "2026-11-19T11:39:37.005063+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:59:35.211411+00:00",
+      "rating": {
+        "article_id": "b13fd27ee3ac5a8942f449f7",
+        "label": "news",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:11:05.330895+00:00",
+        "tags": [
+          "funny",
+          "interesting"
+        ]
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "06710184dee0cd76261b1a3b",
+      "title": "Госдума одобрила штрафы за «дискредитацию традиционных ценностей»",
+      "url": "https://ateobreaking.com/new/gosduma-odobrila-shtrafy-za-diskreditatsiiu-traditsionnykh-tsennostei",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T16:53:58.305000+00:00",
+      "first_seen": "2026-11-18T17:19:22.907553+00:00",
+      "last_seen": "2026-11-18T18:19:22.908426+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:49:35.312286+00:00",
+      "rating": {
+        "article_id": "06710184dee0cd76261b1a3b",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:06:33.166818+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "8c6b6ba494aa25931e4e8dd7",
+      "title": "ЖЕЛЕЗНОДОРОЖНУЮ ЧАСТЬ КРЫМСКОГО МОСТА БУДУТ ДОБИВАТЬ: В СЕТИ АНОНСИРОВАЛИ НОВЫЕ УДАРЫ",
+      "url": "https://insiderua.net/vojna/zheleznodorozhnuyu-chast-krymskogo-mosta-budut-dobivat-v-seti-anonsirovali-novye-udary-251345.html",
+      "source": "INSIDER UA",
+      "published": "2026-11-19T08:56:07+00:00",
+      "first_seen": "2026-11-19T10:06:55.338977+00:00",
+      "last_seen": "2026-11-19T12:47:41.156607+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "update",
+      "prepared_at": "2026-11-19T12:57:39.486972+00:00",
+      "rating": {
+        "article_id": "8c6b6ba494aa25931e4e8dd7",
+        "label": "skip",
+        "duplicate": 1,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:10:05.245390+00:00",
+        "tags": []
+      },
+      "prediction": "news",
+      "in_sample": true,
+      "prediction_tags": []
+    },
+    {
+      "id": "2974dd305edc38a3cabbcf22",
+      "title": "В системе PlayStation Network произошел глобальный сбой",
+      "url": "https://ateobreaking.com/new/v-sisteme-playstation-network-proizoshel-global-nyi-sboi",
+      "source": "Ateo Breaking",
+      "published": "2026-11-18T19:36:22.664000+00:00",
+      "first_seen": "2026-11-18T19:49:22.909927+00:00",
+      "last_seen": "2026-11-19T10:06:55.338977+00:00",
+      "deliveries": 0,
+      "sections": [],
+      "model_relation": "new",
+      "prepared_at": "2026-11-19T12:50:03.261763+00:00",
+      "rating": {
+        "article_id": "2974dd305edc38a3cabbcf22",
+        "label": "skip",
+        "duplicate": 0,
+        "basis": "title",
+        "comment": "",
+        "updated_at": "2026-11-19T13:07:49.361227+00:00",
+        "tags": []
+      },
+      "prediction": "skip",
+      "in_sample": true,
+      "prediction_tags": []
+    }
+  ],
+  "metrics": {
+    "total": 50,
+    "rated": 50,
+    "sample_total": 50,
+    "sample_rated": 50,
+    "comparable": 50,
+    "accuracy": 0.42,
+    "macro_f1_present": 0.3995240523542411,
+    "matrix": [
+      [
+        14,
+        17,
+        2
+      ],
+      [
+        6,
+        5,
+        3
+      ],
+      [
+        0,
+        1,
+        2
+      ]
+    ],
+    "classes": [
+      {
+        "label": "skip",
+        "precision": 0.7,
+        "recall": 0.42424242424242425,
+        "f1": 0.5283018867924528,
+        "support": 33
+      },
+      {
+        "label": "news",
+        "precision": 0.21739130434782608,
+        "recall": 0.35714285714285715,
+        "f1": 0.2702702702702703,
+        "support": 14
+      },
+      {
+        "label": "important",
+        "precision": 0.2857142857142857,
+        "recall": 0.6666666666666666,
+        "f1": 0.4,
+        "support": 3
+      }
+    ],
+    "tag_classes": [
+      {
+        "label": "funny",
+        "precision": 0.2,
+        "recall": 0.1111111111111111,
+        "f1": 0.14285714285714285,
+        "support": 9
+      },
+      {
+        "label": "interesting",
+        "precision": 0.21739130434782608,
+        "recall": 0.45454545454545453,
+        "f1": 0.29411764705882354,
+        "support": 11
+      },
+      {
+        "label": "positive",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2
+      }
+    ],
+    "duplicates": 8,
+    "binary": {
+      "unwanted_hidden": 14,
+      "unwanted_shown": 19,
+      "wanted_hidden": 6,
+      "wanted_shown": 11,
+      "skip_precision": 0.7,
+      "skip_recall": 0.42424242424242425,
+      "wanted_recall": 0.6470588235294118
+    },
+    "excluding_human_duplicates": {
+      "unwanted_hidden": 12,
+      "unwanted_shown": 14,
+      "wanted_hidden": 6,
+      "wanted_shown": 10,
+      "skip_precision": 0.6666666666666666,
+      "skip_recall": 0.46153846153846156,
+      "wanted_recall": 0.625
+    },
+    "important": {
+      "human_count": 3,
+      "shown": 3,
+      "prioritized": 2
+    },
+    "timing": {
+      "method": "Intervals between successive first saves for distinct articles, excludes repeated-save endpoints; may include prior edits, reading, choosing tags, navigation and pauses. No timer for the first article.",
+      "first_save_count": 50,
+      "all_save_events": 53,
+      "interval_count": 49,
+      "minimum_seconds": 2.801411,
+      "fastest_5_mean_seconds": 3.0416065999999997,
+      "fastest_10_mean_seconds": 3.2919384,
+      "fastest_25_mean_seconds": 4.42588836,
+      "median_seconds": 6.266458,
+      "mean_seconds": 7.551743428571428,
+      "first_to_last_first_save_seconds": 370.035428,
+      "intervals": [
+        {
+          "article_id": "062baae3b24d5a84454e50c0",
+          "saved_at": "2026-11-19T13:06:25.151050+00:00",
+          "seconds_since_previous_first_save": 7.425737
+        },
+        {
+          "article_id": "06710184dee0cd76261b1a3b",
+          "saved_at": "2026-11-19T13:06:33.166818+00:00",
+          "seconds_since_previous_first_save": 8.015768
+        },
+        {
+          "article_id": "081d552f0aacb84b3f0bc26d",
+          "saved_at": "2026-11-19T13:06:39.251234+00:00",
+          "seconds_since_previous_first_save": 6.084416
+        },
+        {
+          "article_id": "0b0fd4d2491e5fb417a74f39",
+          "saved_at": "2026-11-19T13:06:43.425798+00:00",
+          "seconds_since_previous_first_save": 4.174564
+        },
+        {
+          "article_id": "0d0cda10316b02de3d010f7c",
+          "saved_at": "2026-11-19T13:06:47.531228+00:00",
+          "seconds_since_previous_first_save": 4.10543
+        },
+        {
+          "article_id": "11378ef3250f1f519a41ce46",
+          "saved_at": "2026-11-19T13:06:57.501728+00:00",
+          "seconds_since_previous_first_save": 9.9705
+        },
+        {
+          "article_id": "11e9ebd12bedf7d1f4ac0184",
+          "saved_at": "2026-11-19T13:07:01.553012+00:00",
+          "seconds_since_previous_first_save": 4.051284
+        },
+        {
+          "article_id": "18fb197243fed6d92093abfa",
+          "saved_at": "2026-11-19T13:07:06.160060+00:00",
+          "seconds_since_previous_first_save": 4.607048
+        },
+        {
+          "article_id": "1a1f1175ae260de888316be9",
+          "saved_at": "2026-11-19T13:07:28.409166+00:00",
+          "seconds_since_previous_first_save": 22.249106
+        },
+        {
+          "article_id": "21518e5adccb1e2211450590",
+          "saved_at": "2026-11-19T13:07:37.169602+00:00",
+          "seconds_since_previous_first_save": 8.760436
+        },
+        {
+          "article_id": "288d4162385613c99e455cd4",
+          "saved_at": "2026-11-19T13:07:40.553001+00:00",
+          "seconds_since_previous_first_save": 3.383399
+        },
+        {
+          "article_id": "2974dd305edc38a3cabbcf22",
+          "saved_at": "2026-11-19T13:07:49.361227+00:00",
+          "seconds_since_previous_first_save": 8.808226
+        },
+        {
+          "article_id": "30c038fe7094940f7b313d10",
+          "saved_at": "2026-11-19T13:07:53.196324+00:00",
+          "seconds_since_previous_first_save": 3.835097
+        },
+        {
+          "article_id": "339a3592aa9bb9e4db903906",
+          "saved_at": "2026-11-19T13:08:16.182065+00:00",
+          "seconds_since_previous_first_save": 22.985741
+        },
+        {
+          "article_id": "440394125de91c11fc63c076",
+          "saved_at": "2026-11-19T13:08:23.094888+00:00",
+          "seconds_since_previous_first_save": 6.912823
+        },
+        {
+          "article_id": "5878cb2a86a98e8118f9e9f9",
+          "saved_at": "2026-11-19T13:08:29.611999+00:00",
+          "seconds_since_previous_first_save": 6.517111
+        },
+        {
+          "article_id": "59356cf33ded15a3fa2202af",
+          "saved_at": "2026-11-19T13:08:55.609613+00:00",
+          "seconds_since_previous_first_save": 25.997614
+        },
+        {
+          "article_id": "6e271939e12a8f1716f23c5c",
+          "saved_at": "2026-11-19T13:09:05.110586+00:00",
+          "seconds_since_previous_first_save": 9.500973
+        },
+        {
+          "article_id": "739302a07d39d3fe66eae656",
+          "saved_at": "2026-11-19T13:09:11.190148+00:00",
+          "seconds_since_previous_first_save": 6.079562
+        },
+        {
+          "article_id": "76f8cbdf89a136b6b9344324",
+          "saved_at": "2026-11-19T13:09:17.072887+00:00",
+          "seconds_since_previous_first_save": 5.882739
+        },
+        {
+          "article_id": "77e14d196cfaa41a37353f9d",
+          "saved_at": "2026-11-19T13:09:25.517911+00:00",
+          "seconds_since_previous_first_save": 8.445024
+        },
+        {
+          "article_id": "78cdfba919089c18b6ac0ea8",
+          "saved_at": "2026-11-19T13:09:32.557062+00:00",
+          "seconds_since_previous_first_save": 7.039151
+        },
+        {
+          "article_id": "7a8c967dbb718126a584a032",
+          "saved_at": "2026-11-19T13:09:46.292617+00:00",
+          "seconds_since_previous_first_save": 13.735555
+        },
+        {
+          "article_id": "7e7f8dc791a581795ed3baba",
+          "saved_at": "2026-11-19T13:09:56.712887+00:00",
+          "seconds_since_previous_first_save": 10.42027
+        },
+        {
+          "article_id": "85f29e4207a0a5ffc3a53a75",
+          "saved_at": "2026-11-19T13:09:59.841956+00:00",
+          "seconds_since_previous_first_save": 3.129069
+        },
+        {
+          "article_id": "8c6b6ba494aa25931e4e8dd7",
+          "saved_at": "2026-11-19T13:10:05.245390+00:00",
+          "seconds_since_previous_first_save": 5.403434
+        },
+        {
+          "article_id": "96c48ce351bfb4e58919c6bd",
+          "saved_at": "2026-11-19T13:10:09.224192+00:00",
+          "seconds_since_previous_first_save": 3.978802
+        },
+        {
+          "article_id": "9a293365a9d299563c6b679e",
+          "saved_at": "2026-11-19T13:10:16.239438+00:00",
+          "seconds_since_previous_first_save": 7.015246
+        },
+        {
+          "article_id": "9b2cac6271a98125f52a39e1",
+          "saved_at": "2026-11-19T13:10:21.538063+00:00",
+          "seconds_since_previous_first_save": 5.298625
+        },
+        {
+          "article_id": "9b50ebda28c063678e428dec",
+          "saved_at": "2026-11-19T13:10:25.115867+00:00",
+          "seconds_since_previous_first_save": 3.577804
+        },
+        {
+          "article_id": "9d2a9e7fb4be0835a1a61420",
+          "saved_at": "2026-11-19T13:10:29.394591+00:00",
+          "seconds_since_previous_first_save": 4.278724
+        },
+        {
+          "article_id": "9f224397bf627d9bf940a987",
+          "saved_at": "2026-11-19T13:10:39.967733+00:00",
+          "seconds_since_previous_first_save": 10.573142
+        },
+        {
+          "article_id": "a07b9842e4d5e2fef42ea579",
+          "saved_at": "2026-11-19T13:10:51.116968+00:00",
+          "seconds_since_previous_first_save": 11.149235
+        },
+        {
+          "article_id": "af48128a5ed379306ea7971a",
+          "saved_at": "2026-11-19T13:10:57.301394+00:00",
+          "seconds_since_previous_first_save": 6.184426
+        },
+        {
+          "article_id": "b13fd27ee3ac5a8942f449f7",
+          "saved_at": "2026-11-19T13:11:05.330895+00:00",
+          "seconds_since_previous_first_save": 8.029501
+        },
+        {
+          "article_id": "bc309a141d11fd8b85f3de45",
+          "saved_at": "2026-11-19T13:11:08.396720+00:00",
+          "seconds_since_previous_first_save": 3.065825
+        },
+        {
+          "article_id": "cb73bd23af4097f4045aee0b",
+          "saved_at": "2026-11-19T13:11:14.094819+00:00",
+          "seconds_since_previous_first_save": 5.698099
+        },
+        {
+          "article_id": "d92a1d67ca418bc9c1efee69",
+          "saved_at": "2026-11-19T13:11:20.395271+00:00",
+          "seconds_since_previous_first_save": 6.300452
+        },
+        {
+          "article_id": "e2915359c68123967c438ef1",
+          "saved_at": "2026-11-19T13:11:27.392008+00:00",
+          "seconds_since_previous_first_save": 6.996737
+        },
+        {
+          "article_id": "e2d472efa4e819cce76cb752",
+          "saved_at": "2026-11-19T13:11:30.512651+00:00",
+          "seconds_since_previous_first_save": 3.120643
+        },
+        {
+          "article_id": "e3b5fe6daa22f54d12f994cb",
+          "saved_at": "2026-11-19T13:11:33.842963+00:00",
+          "seconds_since_previous_first_save": 3.330312
+        },
+        {
+          "article_id": "e4d1a1f36e6a43c8e9f3b8ff",
+          "saved_at": "2026-11-19T13:11:36.644374+00:00",
+          "seconds_since_previous_first_save": 2.801411
+        },
+        {
+          "article_id": "e72874451d8682f209d710fc",
+          "saved_at": "2026-11-19T13:11:42.910832+00:00",
+          "seconds_since_previous_first_save": 6.266458
+        },
+        {
+          "article_id": "ebc3fe07226eb85d44d620d9",
+          "saved_at": "2026-11-19T13:11:57.182273+00:00",
+          "seconds_since_previous_first_save": 14.271441
+        },
+        {
+          "article_id": "ebd073ba4826484f1faad7db",
+          "saved_at": "2026-11-19T13:12:04.070064+00:00",
+          "seconds_since_previous_first_save": 6.887791
+        },
+        {
+          "article_id": "eea05bfeb1441cfefed2d92e",
+          "saved_at": "2026-11-19T13:12:07.161149+00:00",
+          "seconds_since_previous_first_save": 3.091085
+        },
+        {
+          "article_id": "f45794f81f0610a389b16d40",
+          "saved_at": "2026-11-19T13:12:10.745888+00:00",
+          "seconds_since_previous_first_save": 3.584739
+        },
+        {
+          "article_id": "f5a2d9642e4cc10779204121",
+          "saved_at": "2026-11-19T13:12:22.126527+00:00",
+          "seconds_since_previous_first_save": 11.380639
+        },
+        {
+          "article_id": "fb025ed8118d9fad9bce5550",
+          "saved_at": "2026-11-19T13:12:27.760741+00:00",
+          "seconds_since_previous_first_save": 5.634214
+        }
+      ]
+    }
+  },
+  "prediction_run": {
+    "model": "server revision 73f93bb1c1a3",
+    "version": "73f93bb1c1a3ec39728ec512fbf5e64a3a5758325d65a96488a1ac91e6e42d68",
+    "predictions": {
+      "21518e5adccb1e2211450590": "news",
+      "5878cb2a86a98e8118f9e9f9": "skip",
+      "ebd073ba4826484f1faad7db": "news",
+      "eea05bfeb1441cfefed2d92e": "news",
+      "d92a1d67ca418bc9c1efee69": "news",
+      "cb73bd23af4097f4045aee0b": "news",
+      "76f8cbdf89a136b6b9344324": "skip",
+      "9b50ebda28c063678e428dec": "important",
+      "f5a2d9642e4cc10779204121": "skip",
+      "bc309a141d11fd8b85f3de45": "skip",
+      "e3b5fe6daa22f54d12f994cb": "news",
+      "7e7f8dc791a581795ed3baba": "skip",
+      "6e271939e12a8f1716f23c5c": "important",
+      "fb025ed8118d9fad9bce5550": "skip",
+      "e2915359c68123967c438ef1": "news",
+      "0b0fd4d2491e5fb417a74f39": "news",
+      "e72874451d8682f209d710fc": "news",
+      "30c038fe7094940f7b313d10": "skip",
+      "1a1f1175ae260de888316be9": "important",
+      "18fb197243fed6d92093abfa": "skip",
+      "062baae3b24d5a84454e50c0": "important",
+      "96c48ce351bfb4e58919c6bd": "skip",
+      "59356cf33ded15a3fa2202af": "news",
+      "f45794f81f0610a389b16d40": "skip",
+      "9d2a9e7fb4be0835a1a61420": "skip",
+      "9f224397bf627d9bf940a987": "news",
+      "440394125de91c11fc63c076": "news",
+      "0d0cda10316b02de3d010f7c": "news",
+      "9b2cac6271a98125f52a39e1": "news",
+      "11378ef3250f1f519a41ce46": "news",
+      "11e9ebd12bedf7d1f4ac0184": "news",
+      "339a3592aa9bb9e4db903906": "important",
+      "85f29e4207a0a5ffc3a53a75": "news",
+      "ebc3fe07226eb85d44d620d9": "news",
+      "081d552f0aacb84b3f0bc26d": "skip",
+      "e2d472efa4e819cce76cb752": "news",
+      "9a293365a9d299563c6b679e": "news",
+      "03648a1088aeb8f3d25a89b6": "skip",
+      "78cdfba919089c18b6ac0ea8": "important",
+      "af48128a5ed379306ea7971a": "skip",
+      "77e14d196cfaa41a37353f9d": "skip",
+      "288d4162385613c99e455cd4": "news",
+      "739302a07d39d3fe66eae656": "important",
+      "e4d1a1f36e6a43c8e9f3b8ff": "news",
+      "a07b9842e4d5e2fef42ea579": "skip",
+      "7a8c967dbb718126a584a032": "skip",
+      "b13fd27ee3ac5a8942f449f7": "skip",
+      "06710184dee0cd76261b1a3b": "skip",
+      "8c6b6ba494aa25931e4e8dd7": "news",
+      "2974dd305edc38a3cabbcf22": "skip"
+    },
+    "tags": {
+      "21518e5adccb1e2211450590": [
+        "interesting"
+      ],
+      "5878cb2a86a98e8118f9e9f9": [],
+      "ebd073ba4826484f1faad7db": [
+        "interesting",
+        "positive"
+      ],
+      "eea05bfeb1441cfefed2d92e": [
+        "funny",
+        "interesting"
+      ],
+      "d92a1d67ca418bc9c1efee69": [
+        "funny",
+        "interesting"
+      ],
+      "cb73bd23af4097f4045aee0b": [
+        "funny",
+        "interesting"
+      ],
+      "76f8cbdf89a136b6b9344324": [],
+      "9b50ebda28c063678e428dec": [
+        "interesting"
+      ],
+      "f5a2d9642e4cc10779204121": [],
+      "bc309a141d11fd8b85f3de45": [],
+      "e3b5fe6daa22f54d12f994cb": [
+        "funny",
+        "interesting"
+      ],
+      "7e7f8dc791a581795ed3baba": [],
+      "6e271939e12a8f1716f23c5c": [
+        "interesting"
+      ],
+      "fb025ed8118d9fad9bce5550": [],
+      "e2915359c68123967c438ef1": [
+        "interesting"
+      ],
+      "0b0fd4d2491e5fb417a74f39": [
+        "interesting"
+      ],
+      "e72874451d8682f209d710fc": [],
+      "30c038fe7094940f7b313d10": [],
+      "1a1f1175ae260de888316be9": [
+        "positive",
+        "interesting"
+      ],
+      "18fb197243fed6d92093abfa": [],
+      "062baae3b24d5a84454e50c0": [],
+      "96c48ce351bfb4e58919c6bd": [],
+      "59356cf33ded15a3fa2202af": [
+        "interesting"
+      ],
+      "f45794f81f0610a389b16d40": [],
+      "9d2a9e7fb4be0835a1a61420": [],
+      "9f224397bf627d9bf940a987": [
+        "interesting"
+      ],
+      "440394125de91c11fc63c076": [],
+      "0d0cda10316b02de3d010f7c": [
+        "interesting"
+      ],
+      "9b2cac6271a98125f52a39e1": [
+        "interesting"
+      ],
+      "11378ef3250f1f519a41ce46": [
+        "funny",
+        "interesting"
+      ],
+      "11e9ebd12bedf7d1f4ac0184": [
+        "interesting"
+      ],
+      "339a3592aa9bb9e4db903906": [
+        "interesting",
+        "positive"
+      ],
+      "85f29e4207a0a5ffc3a53a75": [],
+      "ebc3fe07226eb85d44d620d9": [
+        "interesting",
+        "positive"
+      ],
+      "081d552f0aacb84b3f0bc26d": [],
+      "e2d472efa4e819cce76cb752": [],
+      "9a293365a9d299563c6b679e": [
+        "interesting"
+      ],
+      "03648a1088aeb8f3d25a89b6": [],
+      "78cdfba919089c18b6ac0ea8": [
+        "interesting"
+      ],
+      "af48128a5ed379306ea7971a": [],
+      "77e14d196cfaa41a37353f9d": [],
+      "288d4162385613c99e455cd4": [
+        "interesting"
+      ],
+      "739302a07d39d3fe66eae656": [],
+      "e4d1a1f36e6a43c8e9f3b8ff": [
+        "interesting"
+      ],
+      "a07b9842e4d5e2fef42ea579": [],
+      "7a8c967dbb718126a584a032": [],
+      "b13fd27ee3ac5a8942f449f7": [],
+      "06710184dee0cd76261b1a3b": [],
+      "8c6b6ba494aa25931e4e8dd7": [],
+      "2974dd305edc38a3cabbcf22": []
+    },
+    "sample_ids": [
+      "21518e5adccb1e2211450590",
+      "5878cb2a86a98e8118f9e9f9",
+      "ebd073ba4826484f1faad7db",
+      "eea05bfeb1441cfefed2d92e",
+      "d92a1d67ca418bc9c1efee69",
+      "cb73bd23af4097f4045aee0b",
+      "76f8cbdf89a136b6b9344324",
+      "9b50ebda28c063678e428dec",
+      "f5a2d9642e4cc10779204121",
+      "bc309a141d11fd8b85f3de45",
+      "e3b5fe6daa22f54d12f994cb",
+      "7e7f8dc791a581795ed3baba",
+      "6e271939e12a8f1716f23c5c",
+      "fb025ed8118d9fad9bce5550",
+      "e2915359c68123967c438ef1",
+      "0b0fd4d2491e5fb417a74f39",
+      "e72874451d8682f209d710fc",
+      "30c038fe7094940f7b313d10",
+      "1a1f1175ae260de888316be9",
+      "18fb197243fed6d92093abfa",
+      "062baae3b24d5a84454e50c0",
+      "96c48ce351bfb4e58919c6bd",
+      "59356cf33ded15a3fa2202af",
+      "f45794f81f0610a389b16d40",
+      "9d2a9e7fb4be0835a1a61420",
+      "9f224397bf627d9bf940a987",
+      "440394125de91c11fc63c076",
+      "0d0cda10316b02de3d010f7c",
+      "9b2cac6271a98125f52a39e1",
+      "11378ef3250f1f519a41ce46",
+      "11e9ebd12bedf7d1f4ac0184",
+      "339a3592aa9bb9e4db903906",
+      "85f29e4207a0a5ffc3a53a75",
+      "ebc3fe07226eb85d44d620d9",
+      "081d552f0aacb84b3f0bc26d",
+      "e2d472efa4e819cce76cb752",
+      "9a293365a9d299563c6b679e",
+      "03648a1088aeb8f3d25a89b6",
+      "78cdfba919089c18b6ac0ea8",
+      "af48128a5ed379306ea7971a",
+      "77e14d196cfaa41a37353f9d",
+      "288d4162385613c99e455cd4",
+      "739302a07d39d3fe66eae656",
+      "e4d1a1f36e6a43c8e9f3b8ff",
+      "a07b9842e4d5e2fef42ea579",
+      "7a8c967dbb718126a584a032",
+      "b13fd27ee3ac5a8942f449f7",
+      "06710184dee0cd76261b1a3b",
+      "8c6b6ba494aa25931e4e8dd7",
+      "2974dd305edc38a3cabbcf22"
+    ],
+    "usage": [],
+    "finished_at": "2026-11-19T13:04:20.572630+00:00",
+    "usage_note": "Cached predictions; no extra API calls; per-row model not recorded"
+  }
+}
